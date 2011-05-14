@@ -50,6 +50,10 @@ p.submit {
 	clear: both;
 }
 
+/* rather than trying to fix the display of our rating box...
+   ...we just hide it from hide to ie 6+7... */
+* html #humanstxt-metabox { display: none !important; }
+*+html #humanstxt-metabox { display: none !important; }
 
 /* taken from /wp-admin/css/theme-install.dev.css */
 div.star-holder {

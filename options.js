@@ -10,8 +10,7 @@ jQuery(document).ready(function($) {
 	})
 
 	// humans.txt textarea auto-grow and tab key support
-	$humanstxt_textarea = $('#humanstxt_content');
-	$humanstxt_textarea.autoGrow();
+	$humanstxt_textarea = $('#humanstxt_content').attr('rows', $(this).val().split("\n").length + 2).autoGrow();
 
 	// taken from /wp-admin/js/common.dev.js
 	$humanstxt_textarea.keydown(function(e) {
