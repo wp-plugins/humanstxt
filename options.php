@@ -43,6 +43,7 @@ define('HUMANSTXT_OPTIONS_URL', get_admin_url().'options-general.php?page=humans
  */
 add_action('admin_init', 'humanstxt_admin_init');
 add_action('admin_menu', 'humanstxt_admin_menu');
+add_action('admin_notices', 'humanstxt_version_warning'); 
 add_action('contextual_help', 'humanstxt_contextual_help', 10, 2);
 add_filter('plugin_action_links_'.HUMANSTXT_PLUGIN_BASENAME, 'humanstxt_actionlinks');
 register_uninstall_hook(__FILE__, 'humanstxt_uninstall');
@@ -53,8 +54,8 @@ register_uninstall_hook(__FILE__, 'humanstxt_uninstall');
 humanstxt_load_textdomain();
 
 /**
- * Callback function for 'admin_init' action. Registers our
- * CSS and JavaScript file and calls humanstxt_update_options() if necessary.
+ * Callback function for 'admin_init' action. Registers our CSS
+ * and JavaScript file and calls humanstxt_update_options() if necessary.
  */
 function humanstxt_admin_init() {
 
@@ -82,6 +83,24 @@ function humanstxt_admin_init() {
 function humanstxt_uninstall() {
 	delete_option('humanstxt_options');
 	delete_option('humanstxt_content');
+}
+
+/**
+ * Callback function for 'admin_notices' action.
+ * Prints warning message if WordPress version is to old.
+ * 
+ * @since 1.0.1
+ * 
+ * @global $wp_version
+ */
+function humanstxt_version_warning() {
+
+	global $wp_version;
+
+	if (version_compare($wp_version, '3.1', '<')) {
+		echo '<div id="humanstxt-warning" class="updated"><p><strong>'.sprintf(__('Humans TXT %s requires WordPress 3.1 or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION).'</strong> '.__('Please upgrade your WordPress installation.', HUMANSTXT_DOMAIN).'</p></div>';
+	}
+
 }
 
 /**
@@ -152,6 +171,7 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 		$contextual_help .= '
 			<ul>
 				<li>'.sprintf('<a href="%s">%s</a>', __('http://humanstxt.org/', HUMANSTXT_DOMAIN), __('Official Humans TXT website', HUMANSTXT_DOMAIN)).'</li>
+				<li><a href="http://wordpress.org/extend/plugins/humanstxt/">'.__('Plugin Homepage', HUMANSTXT_DOMAIN).'</a></li>
 				<li><a href="http://wordpress.org/tags/humanstxt">'.__('Plugin Support Forum', HUMANSTXT_DOMAIN).'</a></li>
 			</ul>';
 
