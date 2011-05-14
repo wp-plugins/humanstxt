@@ -28,10 +28,18 @@ If the plugin is not working properly, please open a topic in the [support forum
 2. Login to your WordPress installation and activate the plugin through the _Plugins_ menu.
 3. Edit your humans.txt file in the _Settings_ menu under _Humans TXT_.
 
+**Please not:** This plugin does not modify or create a physical `humans.txt` file on your server, it generates it on the fly. If your site root already contains a `humans.txt` file, this file will be shown to the visitor. If you want to use this plugin, delete your physical `humans.txt`, but don't forget to migrate its contents.
+
 
 == Frequently Asked Questions ==
 
-= Where is the humans.txt file? =
+= My humans.txt file isn't mofified! =
+
+This plugin does not modify or create a physical `humans.txt` file on your server, it generates it on the fly. If your site root already contains a `humans.txt` file, this file will be shown to the visitor. If you want to use this plugin, delete your physical `humans.txt`, but don't forget to migrate its contents. 
+
+it serves it on the fly.
+
+= I can't find the humans.txt file! =
 
 This plugin doesn't create a physical `humans.txt` file, it serves it on the fly.
 
