@@ -242,12 +242,16 @@ function humanstxt_options() {
 
 	<h2><?php _e('Humans TXT', HUMANSTXT_DOMAIN) ?></h2>
 
+	<?php if (isset($_GET['settings-updated'])) : ?>
+		<div class="updated"><p><strong><?php _e('Settings saved.') ?></strong></p></div>
+	<?php endif; ?>
+
 	<?php if (!humanstxt_is_rootinstall()) : ?>
 		<div class="error"><p><strong><?php _e('This plugin only works if WordPress is installed in the site root.', HUMANSTXT_DOMAIN) ?></strong></p></div>
-	<?php elseif (isset($_GET['settings-updated'])) : ?>
-		<div class="updated"><p><strong><?php _e('Settings saved.') ?></strong></p></div>
 	<?php elseif (humanstxt_exists()) : ?>
 		<div class="error"><p><strong><?php _e('Your site root already contains a humans.txt file. This plugin will have no effect.', HUMANSTXT_DOMAIN) ?></strong></p></div>
+	<?php elseif (get_option('permalink_structure') == '') : ?>
+		<div class="error"><p><strong><?php _e('This plugin only works if WordPress uses "Pretty Permalinks".', HUMANSTXT_DOMAIN) ?> <a href="<?php admin_url() ?>options-permalink.php"><?php _e('Update Permalink structure &raquo;', HUMANSTXT_DOMAIN) ?></a></strong></p></div>
 	<?php endif; ?>
 
 	<form method="post" action="<?=HUMANSTXT_OPTIONS_URL?>">
@@ -317,7 +321,7 @@ function humanstxt_options() {
 				<ul>
 					<?php foreach ($humanstxt_variables as $variable) : ?>
 						<?php $callback_result = call_user_func($variable[1]); ?>
-						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview:', HUMANSTXT_DOMAIN); ?> <?=$callback_result?>"<?php endif; ?>>
+						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview:', HUMANSTXT_DOMAIN); ?> <?=esc_attr($callback_result)?>"<?php endif; ?>>
 							<code>$<?=$variable[0]?>$</code>
 							<?php if (isset($variable[2]) && !empty($variable[2])) : ?>
 								<small> &mdash; <?=$variable[2]?></small>

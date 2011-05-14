@@ -463,7 +463,7 @@ function humanstxt_callback_wptheme() {
 	if (!empty($theme_data['Name'])) {
 		$theme = $theme_data['Name'];
 		if (!empty($theme_data['Version'])) $theme .= ' ('.$theme_data['Version'].')';
-		if (!empty($theme_data['Author'])) $theme .= ' by '.$theme_data['Author'];
+		if (!empty($theme_data['Author Name'])) $theme .= ' by '.$theme_data['Author Name'];
 		if (!empty($theme_data['Author URI'])) { $theme .= ' ('.$theme_data['Author URI'].')'; }
 	}
 	return apply_filters('humanstxt_wptheme', $theme);
@@ -496,7 +496,7 @@ function humanstxt_callback_wptheme_version() {
  */
 function humanstxt_callback_wptheme_author() {
 	$theme_data = get_theme(get_current_theme());
-	return empty($theme_data['Author']) ? null : $theme_data['Author'];
+	return empty($theme_data['Author Name']) ? null : $theme_data['Author Name'];
 }
 
 /**
