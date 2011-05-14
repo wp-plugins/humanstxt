@@ -247,11 +247,11 @@ function humanstxt_options() {
 	<?php endif; ?>
 
 	<?php if (!humanstxt_is_rootinstall()) : ?>
-		<div class="error"><p><strong><?php _e('This plugin only works if WordPress is installed in the site root.', HUMANSTXT_DOMAIN) ?></strong></p></div>
+		<div class="error"><p><strong><?php _e('WordPress is not installed in the site root.', HUMANSTXT_DOMAIN) ?></strong> <a href="http://wordpress.org/extend/plugins/humanstxt/faq/"><?php _e('Read FAQ...', HUMANSTXT_DOMAIN) ?></a></p></div>
 	<?php elseif (humanstxt_exists()) : ?>
-		<div class="error"><p><strong><?php _e('Your site root already contains a humans.txt file. This plugin will have no effect.', HUMANSTXT_DOMAIN) ?></strong></p></div>
+		<div class="error"><p><strong><?php _e('Site root contains a humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <a href="http://wordpress.org/extend/plugins/humanstxt/faq/"><?php _e('Read FAQ...', HUMANSTXT_DOMAIN) ?></a></p></div>
 	<?php elseif (get_option('permalink_structure') == '') : ?>
-		<div class="error"><p><strong><?php _e('This plugin only works if WordPress uses "Pretty Permalinks".', HUMANSTXT_DOMAIN) ?> <a href="<?php admin_url() ?>options-permalink.php"><?php _e('Update Permalink structure &raquo;', HUMANSTXT_DOMAIN) ?></a></strong></p></div>
+		<div class="error"><p><strong><?php _e('"Pretty Permalinks" are not activated.', HUMANSTXT_DOMAIN) ?></strong> <a href="http://wordpress.org/extend/plugins/humanstxt/faq/"><?php _e('Read FAQ...', HUMANSTXT_DOMAIN) ?></a></p></div>
 	<?php endif; ?>
 
 	<form method="post" action="<?=HUMANSTXT_OPTIONS_URL?>">
