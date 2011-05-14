@@ -42,7 +42,7 @@ If your site root contains a physical `humans.txt` file, this file will be shown
 
 = Error: "Pretty Permalinks" are not activated =
 
-The plugin will only work, if WordPress is using the "Pretty Permalinks". You can activate them in WordPress in the _Settings_ menu under _Permalinks_. More information on: [Using Permalinks](http://codex.wordpress.org/Using_Permalinks).
+The plugin will only work, if WordPress is using the "Pretty Permalinks". You can activate them in WordPress in the _Settings_ menu under _Permalinks_. Read more about [using permalinks](http://codex.wordpress.org/Using_Permalinks).
 
 = Why isn't my humans.txt file modified? =
 
@@ -50,8 +50,7 @@ This plugin does not modify or create a physical `humans.txt` file on your serve
 
 = Where is the humans.txt file located! =
 
-Usually in the root of your site, **but** this plugin doesn't need or create a physical `humans.txt` file, it serves it on the fly.
-
+Usually in the root of your site, **BUT** this plugin doesn't need or create a physical `humans.txt` file, it serves it on the fly.
 
 
 == Screenshots ==
@@ -61,21 +60,35 @@ Usually in the root of your site, **but** this plugin doesn't need or create a p
 
 == Changelog ==
 
+= 1.0.1 =
+
+* Added warning message if WordPress version is older than 3.1
+* Prevented potential issue with `$wp-theme-author$` variable
+* Prevented potential issue with preview of variable-callback result
+* Improved textarea auto-grow functionality
+* Improved Internet Explorer 6+7 support
+* Added filter for `humanstxt_content()` result
+* Revised plugin warning messages
+
 = 1.0 =
 
 * Initial release
 
+== Upgrade Notice ==
 
-== Available Variables (unfinished) ==
+= 1.0.1 =
 
-`$wp-lastupdate$`  
-Timestamp of the latest modified post/page which is published.
+This version contains several fixes and improvements.
 
-`$wp-version$` - The current WordPress version.
+== Available Variables ==
 
-`$php-version$`: The running PHP version.
-
-`$wp-language$` -- The current WordPress language.
-
-...
-
+* `$wp-lastupdate$` - Time of last modified post/page
+* `$wp-version$` - Installed WordPress version
+* `$php-version$` - Running PHP version
+* `$wp-language$` - Active WordPress language
+* `$wp-plugins$` - List of activated WordPress plugins
+* `$wp-theme$` - Summary of the active WP theme
+* `$wp-theme-name$` - Name of active WordPress theme
+* `$wp-theme-version$` - Version of active WP theme
+* `$wp-theme-author$` - Author name of active WP theme
+* `$wp-theme-author-link$` - Author URL of active WP theme
