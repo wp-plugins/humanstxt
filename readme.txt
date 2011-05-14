@@ -16,10 +16,11 @@ Maintain your [humans.txt](http://humanstxt.org/ "Official Humans TXT website") 
 * A list of active plugins
 * The active theme
 * The WordPress/PHP version
+* ... and many others.
 
-More information about the Humans TXT initiative can be found on the [official Humans TXT website](http://humanstxt.org/).
+More information on the Humans TXT can be found on the [official Humans TXT website](http://humanstxt.org/).
 
-If the plugin is not working properly, please open a topic in the [support forum](http://wordpress.org/tags/humanstxt).
+If something is not working properly, please read the [FAQ](http://wordpress.org/extend/plugins/humanstxt/faq/) or open a topic in the [support forum](http://wordpress.org/tags/humanstxt).
 
 
 == Installation ==
