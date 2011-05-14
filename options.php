@@ -210,7 +210,7 @@ function humanstxt_rating() {
 		$api = plugins_api('plugin_information', array('slug' => 'humanstxt'));
 
 		if (!is_wp_error($api)) {
-			set_transient('humanstxt_plugin_information', $api, 3600);
+			set_transient('humanstxt_plugin_information', $api, 60 * 10);
 		}
 
 	}

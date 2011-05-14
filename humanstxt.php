@@ -88,8 +88,9 @@ function is_humans() {
 function humanstxt_exists() {
 	return file_exists(ABSPATH.'humans.txt');
 }
+
 /**
- * Callback function for 'admin_init' action.
+ * Callback function for 'init' action.
  * Loads plugin settings from database and registers
  * rewrite rules for the humans.txt file.
  * 
