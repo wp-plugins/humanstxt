@@ -123,9 +123,11 @@ function humanstxt_init() {
 
 		// rewrite humans.txt file only if installed at the root
 		if (humanstxt_is_rootinstall()) {
-			add_action('wp_head', 'humanstxt_authortag', 1);
 			add_filter('query_vars', create_function('$qv', '$qv[] = "humans"; return $qv;'));
 			add_rewrite_rule('humans\.txt$', $wp_rewrite->index.'?humans=1', 'top');
+			if (humanstxt_option('authortag')) {
+				add_action('wp_head', 'humanstxt_authortag', 1);
+			}
 		}
 
 		// flush rewrite rules if ours is missing
