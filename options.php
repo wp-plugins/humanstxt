@@ -199,7 +199,7 @@ function humanstxt_update_options() {
 		update_option('humanstxt_options', $humanstxt_options);
 
 		if (isset($_POST['humanstxt_content'])) {
-			$humanstxt_content = stripslashes(trim($_POST['humanstxt_content']));
+			$humanstxt_content = stripslashes($_POST['humanstxt_content']);
 			update_option('humanstxt_content', $humanstxt_content);
 		}
 

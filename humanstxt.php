@@ -3,7 +3,7 @@
 Plugin Name: Humans TXT
 Plugin URI: http://tillkruess.com/projects/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
-Version: 1.0.1
+Version: 1.0.2
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
@@ -35,7 +35,7 @@ License: GPLv3
 /**
  * @since 1.0.1
  */
-define('HUMANSTXT_VERSION', '1.0.1');
+define('HUMANSTXT_VERSION', '1.0.2');
 
 /**
  * Absolute path to the main plugin file.
@@ -383,9 +383,11 @@ function humanstxt_default_content() {
 	CMS: WordPress $wp-version$ (running PHP $php-version$)
 	Language: <English, Klingon, ...>
 	Components: <jQuery, Typekit, Modernizr, ...>
-	IDE: <Coda, Zend Studio, Photoshop, Terminal, ...>', HUMANSTXT_DOMAIN);
+	IDE: <Coda, Zend Studio, Photoshop, Terminal, ...>
+', HUMANSTXT_DOMAIN);
 
 }
+
 /**
  * Returns the server's PHP version.
  * 
@@ -405,14 +407,49 @@ function humanstxt_callback_wpversion() {
 }
 
 /**
- * Returns user-friendly WordPress language. 
+ * Returns user-friendly language of WordPress.
+ * Supports qTranslate and xili-language.
  * 
  * @uses format_code_lang()
- * @return string Name of WordPress language.
+ * @return string Name(s) of WordPress language(s).
  */
 function humanstxt_callback_wplanguage() {
+
+	global $q_config, $xili_language;
+
 	require_once ABSPATH.'wp-admin/includes/ms.php';
-	return format_code_lang(get_bloginfo('language'));
+
+	$separator = apply_filters('humanstxt_separator', ', ');
+	$separator = apply_filters('humanstxt_languages_separator', $separator);
+
+	if (function_exists('qtrans_getSortedLanguages')) {
+
+		// is qTranslate active?
+		$languages = qtrans_getSortedLanguages();
+		foreach ($languages as $key => $language) {
+			// try to get internatinal language name
+			$languages[$key] = isset($q_config['locale'][$language]) ? format_code_lang($language) : qtrans_getLanguageName($language);
+		}
+
+		return implode($separator, $languages);
+
+	} elseif (defined('XILILANGUAGE_VER')) {
+
+		// is xili-language active?
+		$languages = $xili_language->get_listlanguages();
+		foreach ($languages as $key => $language) {
+			$languages[$key] = $language->description;
+		}
+
+		return implode($separator, $languages);
+
+	} else {
+
+		// just return the standard WordPress language...
+		return format_code_lang(get_bloginfo('language'));
+
+	}
+
 }
 
 /**

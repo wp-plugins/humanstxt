@@ -10,10 +10,18 @@ jQuery(document).ready(function($) {
 	})
 
 	// humans.txt textarea auto-grow and tab key support
-	$humanstxt_textarea = $('#humanstxt_content').attr('rows', $(this).val().split("\n").length + 2).autoGrow();
+	var $humanstxt_editor = $('#humanstxt_content');
+	var humanstxt_editor_height = $humanstxt_editor.val().split("\n").length + 2;
+	var humanstxt_editor_minheight = $humanstxt_editor.attr('rows');
+
+	if (humanstxt_editor_height > humanstxt_editor_minheight) {
+		$humanstxt_editor.attr('rows', humanstxt_editor_height);
+	}
+
+	$humanstxt_editor.autoGrow();
 
 	// taken from /wp-admin/js/common.dev.js
-	$humanstxt_textarea.keydown(function(e) {
+	$humanstxt_editor.keydown(function(e) {
 		if ( e.keyCode != 9 )
 			return true;
 
@@ -40,7 +48,7 @@ jQuery(document).ready(function($) {
 			e.preventDefault();
 	});
 
-	$humanstxt_textarea.blur(function(e) {
+	$humanstxt_editor.blur(function(e) {
 		if ( this.lastKey && 9 == this.lastKey )
 			this.focus();
 	});
