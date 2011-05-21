@@ -4,7 +4,7 @@ Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credits
 Requires at least: 3.1
 Tested up to: 3.1.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Credit the people behind your website in your humans.txt file. Easy to edit, directly within WordPress.
 
@@ -60,6 +60,12 @@ Usually in the root of your site, **BUT** this plugin doesn't need or create a p
 
 == Changelog ==
 
+= 1.0.2 =
+
+* Improved text editor functionality
+* `$wp-language$` supports now WPML/SitePress, qTranslate and xili-language
+* Fixed unwanted injection of author tag
+
 = 1.0.1 =
 
 * Added warning message if WordPress version is older than 3.1
@@ -75,6 +81,10 @@ Usually in the root of your site, **BUT** this plugin doesn't need or create a p
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+
+This version contains minor fixes and improvements.
 
 = 1.0.1 =
 
