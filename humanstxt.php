@@ -408,23 +408,31 @@ function humanstxt_callback_wpversion() {
 
 /**
  * Returns user-friendly language of WordPress.
- * Supports qTranslate and xili-language.
+ * Supports WPML, qTranslate and xili-language.
  * 
  * @uses format_code_lang()
- * @return string Name(s) of WordPress language(s).
+ * @return string Name(s) of language(s).
  */
 function humanstxt_callback_wplanguage() {
 
-	global $q_config, $xili_language;
+	global $sitepress, $q_config, $xili_language;
 
 	require_once ABSPATH.'wp-admin/includes/ms.php';
 
 	$separator = apply_filters('humanstxt_separator', ', ');
 	$separator = apply_filters('humanstxt_languages_separator', $separator);
 
-	if (function_exists('qtrans_getSortedLanguages')) {
+	if (defined('ICL_SITEPRESS_VERSION')) { // is WPML/SitePress active?
 
-		// is qTranslate active?
+		$languages = $sitepress->get_active_languages();
+		foreach ($languages as $code => $information) {
+			$languages[$code] = $information['display_name'];
+		}
+
+		return implode($separator, $languages);
+
+	} elseif (function_exists('qtrans_getSortedLanguages')) { // is qTranslate active?
+
 		$languages = qtrans_getSortedLanguages();
 		foreach ($languages as $key => $language) {
 			// try to get internatinal language name
@@ -433,9 +441,8 @@ function humanstxt_callback_wplanguage() {
 
 		return implode($separator, $languages);
 
-	} elseif (defined('XILILANGUAGE_VER')) {
+	} elseif (defined('XILILANGUAGE_VER')) { // is xili-language active?
 
-		// is xili-language active?
 		$languages = $xili_language->get_listlanguages();
 		foreach ($languages as $key => $language) {
 			$languages[$key] = $language->description;
