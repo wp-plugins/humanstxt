@@ -5,6 +5,9 @@
 	padding: 10px 20px;
 	text-align: center;
 	min-width: 0;
+	background-color: #F9F9F9;
+	background-image: none;
+	border-color: #DFDFDF;
 }
 
 	#humanstxt .text-rateit {
@@ -90,6 +93,6 @@ div.star {
 div.star img {
 	width: 19px;
 	height: 19px;
-	border-left: 1px solid #fff;
-	border-right: 1px solid #fff;
+	border-left: 1px solid #F9F9F9;
+	border-right: 1px solid #F9F9F9;
 }

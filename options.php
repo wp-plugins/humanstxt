@@ -36,7 +36,7 @@ define('HUMANSTXT_PLUGIN_BASENAME', plugin_basename(HUMANSTXT_PLUGIN_FILE));
 /**
  * URL to plugin options page.
  */
-define('HUMANSTXT_OPTIONS_URL', get_admin_url().'options-general.php?page=humanstxt');
+define('HUMANSTXT_OPTIONS_URL', admin_url('options-general.php?page=humanstxt'));
 
 /**
  * Register plugin admin actions, filters and hooks.
@@ -88,17 +88,16 @@ function humanstxt_uninstall() {
 /**
  * Callback function for 'admin_notices' action.
  * Prints warning message if WordPress version is to old.
+ * The required version in the readme.txt file might differ
+ * to ensure a perfectly styled GUI.
  * 
  * @since 1.0.1
- * 
- * @global $wp_version
  */
 function humanstxt_version_warning() {
 
-	global $wp_version;
-
-	if (version_compare($wp_version, '3.1', '<')) {
-		echo '<div id="humanstxt-warning" class="updated"><p><strong>'.sprintf(__('Humans TXT %s requires WordPress 3.1 or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION).'</strong> '.__('Please upgrade your WordPress installation.', HUMANSTXT_DOMAIN).'</p></div>';
+	if (version_compare($GLOBALS['wp_version'], '3.1', '<')) {
+		$updatelink = ' <a href="'.admin_url('update-core.php').'">'.sprintf(__('Please update your WordPress installation.', HUMANSTXT_DOMAIN)).'</a>';
+		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %1$s requires WordPress 3.1 or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
 	}
 
 }
@@ -139,9 +138,10 @@ function humanstxt_actionlinks($actions) {
 /**
  * Returns the content of our custom help menu.
  * 
+ * @global $humanstxt_screen_id
+ * 
  * @param string $contextual_help
  * @param string $screen_id
- * 
  * @return string $contextual_help Custom help menu content.
  */
 function humanstxt_contextual_help($contextual_help, $screen_id) {
@@ -186,6 +186,7 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
  * Redirects to plugin options page if successful.
  * 
  * @uses HUMANSTXT_OPTIONS_URL
+ * @global $humanstxt_options
  */
 function humanstxt_update_options() {
 
@@ -266,12 +267,14 @@ function humanstxt_options() {
 		<div class="updated"><p><strong><?php _e('Settings saved.') ?></strong></p></div>
 	<?php endif; ?>
 
+	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Read FAQ...', HUMANSTXT_DOMAIN)) ?>
+
 	<?php if (!humanstxt_is_rootinstall()) : ?>
-		<div class="error"><p><strong><?php _e('WordPress is not installed in the site root.', HUMANSTXT_DOMAIN) ?></strong> <a href="http://wordpress.org/extend/plugins/humanstxt/faq/"><?php _e('Read FAQ...', HUMANSTXT_DOMAIN) ?></a></p></div>
+		<div class="error"><p><strong><?php _e('WordPress is not installed in the site root.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
 	<?php elseif (humanstxt_exists()) : ?>
-		<div class="error"><p><strong><?php _e('Site root contains a humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <a href="http://wordpress.org/extend/plugins/humanstxt/faq/"><?php _e('Read FAQ...', HUMANSTXT_DOMAIN) ?></a></p></div>
+		<div class="error"><p><strong><?php _e('The site root contains physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
 	<?php elseif (get_option('permalink_structure') == '') : ?>
-		<div class="error"><p><strong><?php _e('"Pretty Permalinks" are not activated.', HUMANSTXT_DOMAIN) ?></strong> <a href="http://wordpress.org/extend/plugins/humanstxt/faq/"><?php _e('Read FAQ...', HUMANSTXT_DOMAIN) ?></a></p></div>
+		<div class="error"><p><strong><?php printf(__('Please <a href="%s">update your permalink structure</a> to something other than the default.', HUMANSTXT_DOMAIN), admin_url('options-permalink.php')) ?></strong> <?=$faqlink?></p></div>
 	<?php endif; ?>
 
 	<form method="post" action="<?=HUMANSTXT_OPTIONS_URL?>">
@@ -280,16 +283,16 @@ function humanstxt_options() {
 
 		<?php if (($rating = humanstxt_rating()) !== false) : ?>
 			<div id="humanstxt-metabox" class="postbox">
-				<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)); ?></p>
+				<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
 				<div class="star-holder">
 					<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
-					<div class="star star5"><img src="<?php echo admin_url('images/star.gif'); ?>" alt="<?php _e('5 stars') ?>" /></div>
-					<div class="star star4"><img src="<?php echo admin_url('images/star.gif'); ?>" alt="<?php _e('4 stars') ?>" /></div>
-					<div class="star star3"><img src="<?php echo admin_url('images/star.gif'); ?>" alt="<?php _e('3 stars') ?>" /></div>
-					<div class="star star2"><img src="<?php echo admin_url('images/star.gif'); ?>" alt="<?php _e('2 stars') ?>" /></div>
-					<div class="star star1"><img src="<?php echo admin_url('images/star.gif'); ?>" alt="<?php _e('1 star') ?>" /></div>
+					<div class="star star5"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '5 stars' ) ?>" /></div>
+                    <div class="star star4"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '4 stars' ) ?>" /></div>
+                    <div class="star star3"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '3 stars' ) ?>" /></div>
+                    <div class="star star2"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '2 stars' ) ?>" /></div>
+                    <div class="star star1"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '1 star' ) ?>" /></div>
 				</div>
-				<small class="text-votes"><?php printf(_n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])); ?></small>
+				<small class="text-votes"><?php printf(_n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
 			</div>
 		<?php endif; ?>
 
@@ -334,14 +337,14 @@ function humanstxt_options() {
 			</tr>
 		</table>
 
-		<?php $humanstxt_variables = humanstxt_valid_variables(); ?>
+		<?php $humanstxt_variables = humanstxt_valid_variables() ?>
 		<?php if (!empty($humanstxt_variables)) : ?>
 			<div id="humanstxt-vars">
 				<h4><?php _e('Variables', HUMANSTXT_DOMAIN) ?></h4>
 				<ul>
 					<?php foreach ($humanstxt_variables as $variable) : ?>
-						<?php $callback_result = call_user_func($variable[1]); ?>
-						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview:', HUMANSTXT_DOMAIN); ?> <?=esc_attr($callback_result)?>"<?php endif; ?>>
+						<?php $callback_result = call_user_func($variable[1]) ?>
+						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview:', HUMANSTXT_DOMAIN) ?> <?=esc_attr($callback_result)?>"<?php endif; ?>>
 							<code>$<?=$variable[0]?>$</code>
 							<?php if (isset($variable[2]) && !empty($variable[2])) : ?>
 								<small> &mdash; <?=$variable[2]?></small>

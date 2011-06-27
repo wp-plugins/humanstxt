@@ -3,7 +3,7 @@
 Plugin Name: Humans TXT
 Plugin URI: http://tillkruess.com/projects/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
-Version: 1.0.2
+Version: 1.0.3
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
@@ -35,7 +35,7 @@ License: GPLv3
 /**
  * @since 1.0.1
  */
-define('HUMANSTXT_VERSION', '1.0.2');
+define('HUMANSTXT_VERSION', '1.0.3');
 
 /**
  * Absolute path to the main plugin file.
@@ -100,7 +100,6 @@ function humanstxt_exists() {
  * rewrite rules for the humans.txt file.
  * 
  * @uses humanstxt_is_rootinstall()
- * 
  * @global $humanstxt_options
  * @global $humanstxt_defaults
  * @global $wp_rewrite
@@ -187,6 +186,9 @@ function humanstxt_authortag() {
  * Returns plugin default value if $option is not set.
  * Return NULL if $option doesn't exist.
  * 
+ * @global $humanstxt_options
+ * @global $humanstxt_defaults
+ * 
  * @param string $option Name of the option.
  * @return mixed Plugin option value
  */
@@ -212,7 +214,6 @@ function humanstxt_option($option) {
  * Stores and returns default humans.txt content, if not set yet.
  * 
  * @uses humanstxt_default_content()
- * 
  * @return string $content
  */
 function humanstxt_content() {
@@ -352,8 +353,7 @@ function humanstxt_valid_variables() {
  * but we have a translated string *without* having to load the plugin
  * text-domain on every request.
  * 
- * @used humanstxt_load_textdomain()
- * 
+ * @uses humanstxt_load_textdomain()
  * @return string Default humans.txt file content.
  */
 function humanstxt_default_content() {
@@ -411,6 +411,10 @@ function humanstxt_callback_wpversion() {
  * Supports WPML, qTranslate and xili-language.
  * 
  * @uses format_code_lang()
+ * @global $sitepress
+ * @global $q_config
+ * @global $xili_language
+ * 
  * @return string Name(s) of language(s).
  */
 function humanstxt_callback_wplanguage() {
