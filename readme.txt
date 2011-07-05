@@ -3,8 +3,8 @@ Contributors: tillkruess
 Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credits
 Requires at least: 3.1
-Tested up to: 3.2-RC2
-Stable tag: 1.0.2
+Tested up to: 3.2
+Stable tag: 1.0.3
 
 Credit the people behind your website in your humans.txt file. Easy to edit, directly within WordPress.
 
@@ -60,6 +60,11 @@ Usually in the root of your site, **BUT** this plugin doesn't create a physical 
 
 == Changelog ==
 
+= 1.0.3 =
+
+* Adjusted admin UI metabox styling for WP 3.2
+* Improved warning messages and notices
+
 = 1.0.2 =
 
 * Improved text editor functionality
@@ -81,6 +86,10 @@ Usually in the root of your site, **BUT** this plugin doesn't create a physical 
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+
+This version ensures WordPress 3.2 compatibility and contains minor fixes and improvements.
 
 = 1.0.2 =
 
