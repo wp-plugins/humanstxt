@@ -1,0 +1,313 @@
+# Copyright (C) 2010 Humans TXT
+# This file is distributed under the same license as the Humans TXT package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Humans TXT 1.0.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
+"POT-Creation-Date: 2011-06-27 09:11:16+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: humanstxt.php:306
+msgid "wp-lastupdate"
+msgstr ""
+
+#: humanstxt.php:306
+msgid "Time of last modified post/page"
+msgstr ""
+
+#: humanstxt.php:307
+msgid "wp-version"
+msgstr ""
+
+#: humanstxt.php:307
+msgid "Installed WordPress version"
+msgstr ""
+
+#: humanstxt.php:308
+msgid "php-version"
+msgstr ""
+
+#: humanstxt.php:308
+msgid "Running PHP version"
+msgstr ""
+
+#: humanstxt.php:309
+msgid "wp-language"
+msgstr ""
+
+#: humanstxt.php:309
+msgid "Active WordPress language"
+msgstr ""
+
+#: humanstxt.php:310
+msgid "wp-plugins"
+msgstr ""
+
+#: humanstxt.php:310
+msgid "List of activated WordPress plugins"
+msgstr ""
+
+#: humanstxt.php:311
+msgid "wp-theme"
+msgstr ""
+
+#: humanstxt.php:311
+msgid "Summary of the active WP theme"
+msgstr ""
+
+#: humanstxt.php:312
+msgid "wp-theme-name"
+msgstr ""
+
+#: humanstxt.php:312
+msgid "Name of active WordPress theme"
+msgstr ""
+
+#: humanstxt.php:313
+msgid "wp-theme-version"
+msgstr ""
+
+#: humanstxt.php:313
+msgid "Version of active WP theme"
+msgstr ""
+
+#: humanstxt.php:314
+msgid "wp-theme-author"
+msgstr ""
+
+#: humanstxt.php:314
+msgid "Author name of active WP theme"
+msgstr ""
+
+#: humanstxt.php:315
+msgid "wp-theme-author-link"
+msgstr ""
+
+#: humanstxt.php:315
+msgid "Author URL of active WP theme"
+msgstr ""
+
+#: humanstxt.php:363
+msgid ""
+"/* the humans responsible & colophon */\n"
+"/* humanstxt.org */\n"
+"\n"
+"/* TEAM */\n"
+"\t<your title>: <your name>\n"
+"\tSite: <website url>\n"
+"\tTwitter: <@username>\n"
+"\tLocation: <city, country>\n"
+"\n"
+"\t\t[...]\n"
+"\n"
+"/* THANKS */\n"
+"\t<name>: <link, email, @twittername, ...>\n"
+"\n"
+"\t\t[...]\n"
+"\n"
+"/* SITE */\n"
+"\tLast update: $wp-lastupdate$\n"
+"\tStandards: <HTML5, CSS3, ...>\n"
+"\tCMS: WordPress $wp-version$ (running PHP $php-version$)\n"
+"\tLanguage: <English, Klingon, ...>\n"
+"\tComponents: <jQuery, Typekit, Modernizr, ...>\n"
+"\tIDE: <Coda, Zend Studio, Photoshop, Terminal, ...>\n"
+msgstr ""
+
+#: options.php:70
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: options.php:99
+msgid "Please update your WordPress installation."
+msgstr ""
+
+#: options.php:100
+msgid "Humans TXT %1$s requires WordPress 3.1 or higher."
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (Humans TXT 1.0.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: options.php:116 options.php:264
+msgid "Humans TXT"
+msgstr ""
+
+#: options.php:133 options.php:299
+msgid "Settings"
+msgstr ""
+
+#: options.php:155
+msgid "What is the humans.txt?"
+msgstr ""
+
+#: options.php:156
+msgid ""
+"It's an initiative for knowing the people behind a website. It's a TXT file "
+"in the site root that contains information about the humans who have "
+"contributed to the website."
+msgstr ""
+
+#: options.php:161
+msgid "Who should I mention?"
+msgstr ""
+
+#: options.php:162
+msgid ""
+"Whoever you want to, provided they wish you to do so. You can mention the "
+"developer, the designer, the copywriter, the webmaster, the editor, ... "
+"anyone who contributed to the website."
+msgstr ""
+
+#: options.php:167
+msgid "How should I format it?"
+msgstr ""
+
+#: options.php:168
+msgid ""
+"It's recommended to follow the official follow the <a href=\"http://"
+"humanstxt.org/Standard.html\">official guidelines</a>, but you are free to "
+"add any information you want."
+msgstr ""
+
+#: options.php:173
+msgid "http://humanstxt.org/"
+msgstr ""
+
+#: options.php:173
+msgid "Official Humans TXT website"
+msgstr ""
+
+#: options.php:174
+msgid "Plugin Homepage"
+msgstr ""
+
+#: options.php:175
+msgid "Plugin Support Forum"
+msgstr ""
+
+#: options.php:267
+msgid "Settings saved."
+msgstr ""
+
+#: options.php:270
+msgid "Read FAQ..."
+msgstr ""
+
+#: options.php:273
+msgid "WordPress is not installed in the site root."
+msgstr ""
+
+#: options.php:275
+msgid "The site root contains physical humans.txt file."
+msgstr ""
+
+#: options.php:277
+msgid ""
+"Please <a href=\"%s\">update your permalink structure</a> to something other "
+"than the default."
+msgstr ""
+
+#: options.php:286
+msgid ""
+"If you like this plugin, why not <br /><a href=\"%s\" title=\"%s\">recommend "
+"it to others</a> by rating it?"
+msgstr ""
+
+#: options.php:286
+msgid "Rate this plugin on WordPress.org"
+msgstr ""
+
+#: options.php:289
+msgid "5 stars"
+msgstr ""
+
+#: options.php:290
+msgid "4 stars"
+msgstr ""
+
+#: options.php:291
+msgid "3 stars"
+msgstr ""
+
+#: options.php:292
+msgid "2 stars"
+msgstr ""
+
+#: options.php:293
+msgid "1 star"
+msgstr ""
+
+#: options.php:295
+msgid "(based on %s rating)"
+msgid_plural "(based on %s ratings)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: options.php:302 options.php:305
+msgid "Enable Plugin"
+msgstr ""
+
+#: options.php:308
+msgid "Serve the humans.txt from below"
+msgstr ""
+
+#: options.php:314 options.php:317
+msgid "Author Tag"
+msgstr ""
+
+#: options.php:320
+msgid "Add an author tag to the site's <code>&lt;head&gt;</code>"
+msgstr ""
+
+#: options.php:327
+msgid "Humans TXT File"
+msgstr ""
+
+#: options.php:332
+msgid "Humans.txt file contents"
+msgstr ""
+
+#: options.php:333
+msgid ""
+"If you need a little help, try the \"Help\" button in the top right corner "
+"of this page."
+msgstr ""
+
+#: options.php:343
+msgid "Variables"
+msgstr ""
+
+#: options.php:347
+msgid "Preview:"
+msgstr ""
+
+#: options.php:355
+msgid "Suggest another variable..."
+msgstr ""
+
+#: options.php:360
+msgid "Save Changes"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://tillkruess.com/projects/humanstxt/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Credit the people behind your website in your <strong>humans.txt</strong> "
+"file. Easy to edit, directly within WordPress."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Till Krüss"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://tillkruess.com/"
+msgstr ""
