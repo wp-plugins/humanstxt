@@ -1,60 +1,20 @@
 
-#humanstxt-metabox {
-	float: right;
-	width: auto;
-	padding: 10px 20px;
-	text-align: center;
-	min-width: 0;
-	background-color: #F9F9F9;
-	background-image: none;
-	border-color: #DFDFDF;
-}
+#humanstxt-metabox { float: right; width: auto; min-width: 0; padding: 10px 20px; text-align: center; border-color: #DFDFDF; background-color: #F9F9F9; background-image: none; }
+	#humanstxt .text-rateit { margin-top: 0; }
+	#humanstxt .star-holder { margin: 0 auto; }
 
-	#humanstxt .text-rateit {
-		margin-top: 0;
-	}
+#humanstxt .form-table { width: auto; clear: left; }
+	#humanstxt #humanstxt_table_content { float: left; margin: 0; }
+		#humanstxt_content { display: block; resize: none; }
 
-	#humanstxt .star-holder {
-		margin: 0 auto;
-	}
+#humanstxt-vars { float: left; padding: 40px 0 0 20px; }
+	#humanstxt-vars h4 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }
+	#humanstxt-vars li.has-result { cursor: help; }
 
-#humanstxt .form-table {
-	width: auto;
-	clear: left;
-	margin-bottom: 2em;
-}
-
-	#humanstxt #humanstxt_table_content {
-		float: left;
-		margin: 0;
-	}
-
-		#humanstxt_content {
-			display: block;
-			resize: none;
-		}
-
-#humanstxt-vars {
-	float: left;
-	padding: 40px 0 0 20px;
-}
-
-	#humanstxt-vars h4 {
-		font-size: 16px;
-		font-weight: bold;
-		margin: 0 0 1em 0;
-	}
-
-	#humanstxt-vars li.has-result {
-		cursor: help;
-	}
-
-p.submit {
-	clear: both;
-}
+p.submit { clear: both; }
 
 /* rather than trying to fix the display of our rating box...
-   ...we just hide it from hide to ie 6+7... */
+   ...we just hide it from hide to ie 6 & 7... */
 * html #humanstxt-metabox { display: none !important; }
 *+html #humanstxt-metabox { display: none !important; }
 

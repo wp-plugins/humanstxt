@@ -1,12 +1,12 @@
 jQuery(document).ready(function($) {
 
-	// open links in new tab
-	$('#humanstxt a.external, #humanstxt-metabox .text-rateit a, #contextual-help-wrap a').attr('target', '_tab');
+	// open external links in new tab
+	$('#humanstxt a[rel*="external"], #humanstxt-metabox .text-rateit a, #contextual-help-wrap a').attr('target', '_tab');
 
 	// make star rating clickable
-	var humanstxt_rateit_text = $('#humanstxt-metabox .text-rateit a').attr('title');
-	$('#humanstxt-metabox .star-holder, #humanstxt-metabox .text-votes').css('cursor', 'pointer').attr('title', humanstxt_rateit_text).click(function() {
-		window.location.href = 'http://wordpress.org/extend/plugins/humanstxt/';
+	var $humanstxt_rateit = $('#humanstxt-metabox .text-rateit a');
+	$('#humanstxt-metabox .star-holder, #humanstxt-metabox .text-votes').css('cursor', 'pointer').attr('title', $humanstxt_rateit.attr('title')).click(function() {
+		window.location.href = $humanstxt_rateit.attr('href');
 	})
 
 	// humans.txt textarea auto-grow and tab key support

@@ -3,7 +3,7 @@
 Plugin Name: Humans TXT
 Plugin URI: http://tillkruess.com/projects/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
-Version: 1.0.3
+Version: 1.0.4
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
@@ -29,31 +29,31 @@ License: GPLv3
  *
  * @package Humans TXT
  * @copyright 2011 Till Krüss
- *
  */
 
 /**
+ * Humans TXT plugin version.
  * @since 1.0.1
  */
-define('HUMANSTXT_VERSION', '1.0.3');
+define('HUMANSTXT_VERSION', '1.0.4');
 
 /**
- * Absolute path to the main plugin file.
+ * Absolute path to the main Humans TXT plugin file.
  */
 define('HUMANSTXT_PLUGIN_FILE', __FILE__);
 
 /**
- * Absolute path the the plugin directory.
+ * Absolute path to the Humans TXT plugin directory.
  */
 define('HUMANSTXT_PLUGIN_PATH', dirname(HUMANSTXT_PLUGIN_FILE));
 
 /**
- * Plugin basename and text domain.
+ * Humans TXT plugin basename and text domain.
  */
 define('HUMANSTXT_DOMAIN', basename(HUMANSTXT_PLUGIN_PATH));
 
 /**
- * The default plugin settings.
+ * Default Humans TXT plugin settings.
  * @global array $humanstxt_defaults Default plugin settings.
  */
 $humanstxt_defaults = array(
@@ -62,18 +62,62 @@ $humanstxt_defaults = array(
 );
 
 /**
- * Register plugin actions and filters.
+ * Register plugin actions, filters and shortcode.
  */
 add_action('init', 'humanstxt_init');
 add_action('template_redirect', 'humanstxt_template_redirect', 8);
 add_action('do_humans', 'humanstxt_do_humans');
 add_filter('humans_txt', 'humanstxt_replace_variables');
+add_shortcode('humanstxt', 'humanstxt_shortcode');
 
 /**
  * Load plugin code for WordPress backend, if needed.
  */
 if (is_admin()) {
 	require_once HUMANSTXT_PLUGIN_PATH.'/options.php';
+}
+
+/**
+ * Echos the content of the virtual humans.txt file. 
+ *
+ * @since 1.0.4
+ */
+function humanstxt() {
+	echo get_humanstxt();
+}
+
+/**
+ * Returns the content of the virtual humans.txt file,
+ * after applying the 'humans_txt' filter to it.
+ *
+ * @since 1.0.4
+ *
+ * @return string Content of the virtual humans.txt file
+ */
+function get_humanstxt() {
+	return apply_filters('humans_txt', humanstxt_content());
+}
+
+/**
+ * Echos a XHTML-conform author link tag.
+ *
+ * @uses get_humanstxt_authortag()
+ */
+function humanstxt_authortag() {
+	echo get_humanstxt_authortag();
+}
+
+/**
+ * Returns a XHTML-conform author link tag, pointed to
+ * the humans.txt URL, after applying the 'humans_authortag'
+ * filter to it.
+ * 
+ * @since 1.0.4
+ *
+ * @return string XHTML-conform author link tag
+ */
+function get_humanstxt_authortag() {
+	return apply_filters('humans_authortag', '<link rel="author" type="text/plain" href="'.home_url('humans.txt').'" />'."\n");
 }
 
 /**
@@ -92,6 +136,23 @@ function is_humans() {
  */
 function humanstxt_exists() {
 	return file_exists(ABSPATH.'humans.txt');
+}
+
+/**
+ * Determines if WordPress is installed the site root.
+ * 
+ * @return bool
+ */
+function humanstxt_is_rootinstall() {
+
+	$homeurl = parse_url(home_url());
+
+	if (!isset($homeurl['path']) || empty($homeurl['path']) || $homeul['path'] == '/') {
+		return true;
+	}
+
+	return false;
+
 }
 
 /**
@@ -160,25 +221,119 @@ function humanstxt_template_redirect() {
 
 /**
  * Callback function for 'do_humans' action.
- * Calls 'do_humanstxt' action and prints humanstxt_content()
- * after applying 'humans_txt' filter to it.
+ * Calls 'do_humanstxt' action and echos humanstxt_content()
+ * after applying the 'humans_txt' filter to it.
  * 
- * @uses humanstxt_content()
+ * @uses get_humanstxt()
  */
 function humanstxt_do_humans() {
 
 	header('Content-Type: text/plain; charset=utf-8');
 	do_action('do_humanstxt');
 
-	echo apply_filters('humans_txt', humanstxt_content());
+	echo get_humanstxt();
 
 }
 
 /**
- * Prints XHTML-conform author tag.
+ * Callback function for [humanstxt] shortcode. Processes
+ * shortcode call and returns result as string. The un-wrapped
+ * output can be filtered with the 'humanstxt_shortcode_content'
+ * filter and the final output can be filtered with the
+ * 'humanstxt_shortcode_output' filter.
+ *
+ * @since 1.0.4
+ *
+ * @param array $attributes
+ * @return string
  */
-function humanstxt_authortag() {
-	echo '<link rel="author" type="text/plain" href="'.home_url('humans.txt').'" />'."\n";
+function humanstxt_shortcode($attributes) {
+
+	extract(shortcode_atts(array(
+		'id' => '', // id-attribute of wrapping HTML element, if $wrap isn't false
+		'pre' => false, // perfect for preformatted text: <pre>[humanstxt pre="1"]</pre>
+		'plain' => false, // clean output, all options are ignored except $wrap and $id
+		'wrap' => true, // wrap content of humans.txt in <p> element
+		'filter' => true, // convert/format common entities and encode plain text email addresses		
+		'clickable' => true, // make URLs, email addresses and Twitter accounts clickable
+		'urls' => true, // force/prevent clickable URLs, regardless $clickable
+		'emails' => true, // force/prevent clickable email addresses, regardless $clickable
+		'twitter' => true // force/prevent clickable Twitter accounts, regardless $clickable
+	), $attributes));
+
+	$classes = array('humanstxt');
+	$content = get_humanstxt();
+	$content = esc_html($content);
+
+	if (!$plain) {
+
+		if (!$pre) $content = nl2br($content); // convert line breaks
+
+		if ($filter) {
+			if (!$pre) $content = wptexturize($content); // format common entities
+			$content = convert_chars($content); // convert certain characters
+			$content = capital_P_dangit($content); // correct "Wordpress"
+		}
+
+		// format standard headlines
+		if (!$pre) {
+			$headline_replacement = '<strong class="humanstxt-headline">$1</strong>';
+			$headline_replacement = apply_filters('humanstxt_shortcode_headline_replacement', $headline_replacement);
+			$content = preg_replace('~/\*(.+?)\*/~', $headline_replacement, $content);
+		}
+
+		// make URLs clickable
+		if (($clickable && $urls) || (!$clickable && $urls && isset($attributes['urls']))) {
+			$_content = preg_replace_callback('#(?<!=[\'"])(?<=[*\')+.,;:!&$\s>])(\()?([\w]+?://(?:[\w\\x80-\\xff\#%~/?@\[\]-]{1,2000}|[\'*(+.,;:!=&$](?![\b\)]|(\))?([\s]|$))|(?(1)\)(?![\s<.,;:]|$)|\)))+)#is', '_make_url_clickable_cb', $content);
+			if (!is_null($_content)) $content = $_content;
+			$content = preg_replace_callback('#([\s>])((www)\.[\w\\x80-\\xff\#$%&~/.\-;:=,?@\[\]+]+)#is', '_make_web_ftp_clickable_cb', $content);
+		}
+
+		// make email addresses clickable
+		if (($clickable && $emails) || (!$clickable && $emails && isset($attributes['emails']))) {
+			$content = preg_replace_callback('#([\s>])([.0-9a-z_+-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})#i', '_make_email_clickable_cb', $content);
+		}
+
+		// make Twitter account names clickable
+		if (($clickable && $twitter) || (!$clickable && $twitter && isset($attributes['twitter']))) {
+			$twitter_replacement = '$1<a href="http://twitter.com/$2" rel="external">@$2</a>';
+			$twitter_replacement = apply_filters('humanstxt_shortcode_twitter_replacement', $twitter_replacement);
+			$content = preg_replace('/(^|[^a-z0-9_])[@＠]([a-z0-9_]{1,20})([@＠\xC0-\xD6\xD8-\xF6\xF8-\xFF]?)/iu', $twitter_replacement, $content);
+		}
+
+		if ($filter) {
+			// encode email addresses to block spam bots
+			$content = preg_replace_callback('{(?:mailto:)?((?:[-!#$%&\'*+/=?^_`.{|}~\w\x80-\xFF]+|".*?")\@(?:[-a-z0-9\x80-\xFF]+(\.[-a-z0-9\x80-\xFF]+)*\.[a-z]+|\[[\d.a-fA-F:]+\]))}xi', create_function('$matches', 'return antispambot($matches[0]);'), $content);
+		}
+
+		if ($pre) $classes[] = 'humanstxt-pre';
+
+	} else {
+		$classes[] = 'humanstxt-plain';
+	}
+
+	$content = apply_filters('humanstxt_shortcode_content', $content, $attributes);
+
+	// do we have an id attribute?
+	$id = preg_replace('~[^a-z0-9_-]~i', '', $id);
+	if (!empty($id)) {
+		$id = ' id="'.$id.'"';
+	}
+
+	// do we have a class attribute?
+	$classes = preg_replace('~[^a-z0-9_-]~i', '', $classes);
+	foreach ($classes as $key => $classname) {
+		if (empty($classname)) unset($classes[$key]);
+	}
+	$class = empty($classes) ? '' : ' class="'.implode(' ', $classes).'"';
+
+	// wrap the output?
+	if ($wrap) {
+		$content = '<p'.$id.$class.'>'.$content.'</p>';
+	}
+
+	return apply_filters('humanstxt_shortcode_output', $content, $attributes);
+
 }
 
 /**
@@ -227,23 +382,6 @@ function humanstxt_content() {
 	}
 
 	return apply_filters('humanstxt_content', $content);
-
-}
-
-/**
- * Determines if WordPress is installed the site root.
- * 
- * @return bool
- */
-function humanstxt_is_rootinstall() {
-
-	$homeurl = parse_url(home_url());
-
-	if (!isset($homeurl['path']) || empty($homeurl['path']) || $homeul['path'] == '/') {
-		return true;
-	}
-
-	return false;
 
 }
 
@@ -350,8 +488,8 @@ function humanstxt_valid_variables() {
 
 /**
  * Returns default content of humans.txt file. Quite ugly function,
- * but we have a translated string *without* having to load the plugin
- * text-domain on every request.
+ * but fast, since we have a translated string *without* having to
+ * load the plugin text-domain on every request.
  * 
  * @uses humanstxt_load_textdomain()
  * @return string Default humans.txt file content.

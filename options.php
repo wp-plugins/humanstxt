@@ -20,21 +20,20 @@
  *
  * @package Humans TXT
  * @copyright 2011 Till Krüss
- *
  */
 
 /**
- * URL to plugin folder.
+ * URL to Humans TXT plugin folder.
  */
 define('HUMANSTXT_PLUGIN_URL', plugin_dir_url(HUMANSTXT_PLUGIN_FILE));
 
 /**
- * Plugin WordPress basename.
+ * Humans TXT's "WordPress basename".
  */
 define('HUMANSTXT_PLUGIN_BASENAME', plugin_basename(HUMANSTXT_PLUGIN_FILE));
 
 /**
- * URL to plugin options page.
+ * URL to Humans TXT options page.
  */
 define('HUMANSTXT_OPTIONS_URL', admin_url('options-general.php?page=humanstxt'));
 
@@ -165,7 +164,7 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 		$contextual_help .= sprintf(
 			'<p><strong>%s</strong> &mdash; %s</p>',
 			__('How should I format it?', HUMANSTXT_DOMAIN),
-			__('It\'s recommended to follow the official follow the <a href="http://humanstxt.org/Standard.html">official guidelines</a>, but you are free to add any information you want.', HUMANSTXT_DOMAIN)
+			__('However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href="http://humanstxt.org/humans.txt">humanstxt.org</a> or <a href="http://html5boilerplate.com/humans.txt">html5boilerplate.com</a>.', HUMANSTXT_DOMAIN)
 		);
 
 		$contextual_help .= '
@@ -173,7 +172,8 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 				<li>'.sprintf('<a href="%s">%s</a>', __('http://humanstxt.org/', HUMANSTXT_DOMAIN), __('Official Humans TXT website', HUMANSTXT_DOMAIN)).'</li>
 				<li><a href="http://wordpress.org/extend/plugins/humanstxt/">'.__('Plugin Homepage', HUMANSTXT_DOMAIN).'</a></li>
 				<li><a href="http://wordpress.org/tags/humanstxt">'.__('Plugin Support Forum', HUMANSTXT_DOMAIN).'</a></li>
-			</ul>';
+			</ul>
+		';
 
 	}
 
@@ -305,24 +305,29 @@ function humanstxt_options() {
 						<legend class="screen-reader-text"><span><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></span></legend>
 						<label for="humanstxt_enable">
 							<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?>>
-							<?php _e('Serve the humans.txt from below', HUMANSTXT_DOMAIN) ?>
+							<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">'.__('humans.txt', HUMANSTXT_DOMAIN).'</a>' ?>
+							<?php printf(__("Activate %s file", HUMANSTXT_DOMAIN), $humanstxt_link) ?>
 						</label>
 					</fieldset>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Author Tag', HUMANSTXT_DOMAIN) ?></th>
+				<th scope="row"><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></th>
 				<td>
 					<fieldset>
-						<legend class="screen-reader-text"><span><?php _e('Author Tag', HUMANSTXT_DOMAIN) ?></span></legend>
+						<legend class="screen-reader-text"><span><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></span></legend>
 						<label for="humanstxt_authortag">
 							<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?>>
-							<?php _e("Add an author tag to the site's <code>&lt;head&gt;</code>", HUMANSTXT_DOMAIN) ?>
+							<?php printf(__('Add an author link tag to the site, linked to the %s', HUMANSTXT_DOMAIN), '<em>'.__('humans.txt', HUMANSTXT_DOMAIN).'</em>') ?>
 						</label>
 					</fieldset>
 				</td>
 			</tr>
 		</table>
+		
+		<p class="submit">
+			<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
+		</p>
 
 		<h3><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></h3>
 		<table id="humanstxt_table_content" class="form-table">
@@ -330,7 +335,7 @@ function humanstxt_options() {
 				<td>
 					<fieldset>
 						<legend class="screen-reader-text"><span><?php _e('Humans.txt file contents', HUMANSTXT_DOMAIN) ?></span></legend>
-						<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help, try the "Help" button in the top right corner of this page.', HUMANSTXT_DOMAIN) ?></label></span>
+						<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button in the top right corner of this page.', HUMANSTXT_DOMAIN) ?></label></span>
 						<textarea name="humanstxt_content" rows="25" cols="80" id="humanstxt_content" class="large-text code"><?=esc_textarea(humanstxt_content())?></textarea>
 					</fieldset>
 				</td>
@@ -352,7 +357,7 @@ function humanstxt_options() {
 						</li>
 					<?php endforeach; ?>
 				</ul>
-				<p><a href="http://wordpress.org/tags/humanstxt" class="external"><?php _e('Suggest another variable...', HUMANSTXT_DOMAIN) ?></a></p>
+				<p><a href="http://wordpress.org/tags/humanstxt" rel="external"><?php _e('Suggest another variable...', HUMANSTXT_DOMAIN) ?></a></p>
 			</div>
 		<?php endif; ?>
 
