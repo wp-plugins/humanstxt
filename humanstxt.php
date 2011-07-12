@@ -221,8 +221,7 @@ function humanstxt_template_redirect() {
 
 /**
  * Callback function for 'do_humans' action.
- * Calls 'do_humanstxt' action and echos humanstxt_content()
- * after applying the 'humans_txt' filter to it.
+ * Calls 'do_humanstxt' action and echos get_humanstxt().
  * 
  * @uses get_humanstxt()
  */
@@ -571,7 +570,7 @@ function humanstxt_callback_wplanguage() {
 			$languages[$code] = $information['display_name'];
 		}
 
-		return implode($separator, $languages);
+		$active_languages = implode($separator, $languages);
 
 	} elseif (function_exists('qtrans_getSortedLanguages')) { // is qTranslate active?
 
@@ -581,7 +580,7 @@ function humanstxt_callback_wplanguage() {
 			$languages[$key] = isset($q_config['locale'][$language]) ? format_code_lang($language) : qtrans_getLanguageName($language);
 		}
 
-		return implode($separator, $languages);
+		$active_languages = implode($separator, $languages);
 
 	} elseif (defined('XILILANGUAGE_VER')) { // is xili-language active?
 
@@ -590,14 +589,16 @@ function humanstxt_callback_wplanguage() {
 			$languages[$key] = $language->description;
 		}
 
-		return implode($separator, $languages);
+		$active_languages = implode($separator, $languages);
 
 	} else {
 
 		// just return the standard WordPress language...
-		return format_code_lang(get_bloginfo('language'));
+		$active_languages = format_code_lang(get_bloginfo('language'));
 
 	}
+
+	return apply_filters('humanstxt_languages', $active_languages);
 
 }
 
