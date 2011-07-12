@@ -444,6 +444,8 @@ function humanstxt_variables() {
 	$variables[] = array(__('wp-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpversion', __('Installed WordPress version', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('php-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_phpversion', __('Running PHP version', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('wp-language', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('Active WordPress language', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-posts', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpposts', __('Number of published posts', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-pages', HUMANSTXT_DOMAIN), 'humanstxt_callback_wppages', __('Number of published pages', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('wp-plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('List of activated WordPress plugins', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('wp-theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme', __('Summary of the active WP theme', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('wp-theme-name', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_name', __('Name of active WordPress theme', HUMANSTXT_DOMAIN));
@@ -541,6 +543,32 @@ function humanstxt_callback_phpversion() {
  */
 function humanstxt_callback_wpversion() {
 	return get_bloginfo('version');
+}
+
+/**
+ * Returns count of posts that are published. Can be
+ * modified using the 'humanstxt_postcount' filter.
+ * 
+ * @since 1.0.4
+ * @uses wp_count_posts()
+ * 
+ * @return string Number of published posts
+ */
+function humanstxt_callback_wpposts() {
+	return apply_filters('humanstxt_postcount', wp_count_posts()->publish);
+}
+
+/**
+ * Returns count of pages that are published. Can be
+ * modified using the 'humanstxt_pagecount' filter.
+ * 
+ * @since 1.0.4
+ * @uses wp_count_posts()
+ * 
+ * @return string Number of published pages
+ */
+function humanstxt_callback_wppages() {
+	return apply_filters('humanstxt_pagecount', wp_count_posts('page')->publish);
 }
 
 /**
