@@ -432,6 +432,9 @@ function humanstxt_replace_variables($string) {
  * Returns an array of default content-variables after
  * applying the 'humanstxt_variables' filter to it.
  * 
+ * Each array value represents a content-variable:
+ * array(string $varname, callback $function, string $description);
+ * 
  * @uses humanstxt_load_textdomain()
  * @return array $variables Default content-variables.
  */
