@@ -555,7 +555,8 @@ function humanstxt_callback_wpversion() {
  * @return string Number of published posts
  */
 function humanstxt_callback_wpposts() {
-	return apply_filters('humanstxt_postcount', wp_count_posts()->publish);
+	$postcounts = wp_count_posts();
+	return apply_filters('humanstxt_postcount', $postcounts->publish);
 }
 
 /**
@@ -568,7 +569,8 @@ function humanstxt_callback_wpposts() {
  * @return string Number of published pages
  */
 function humanstxt_callback_wppages() {
-	return apply_filters('humanstxt_pagecount', wp_count_posts('page')->publish);
+	$pagecounts = wp_count_posts('page');
+	return apply_filters('humanstxt_pagecount', $pagecounts->publish);
 }
 
 /**
