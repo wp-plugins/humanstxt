@@ -1,7 +1,7 @@
 === Humans TXT ===
 Contributors: tillkruess
 Donate link: http://tillkruess.com/donations/
-Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credits
+Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.1
 Tested up to: 3.2
 Stable tag: 1.0.3
@@ -10,13 +10,12 @@ Credit the people behind your website in your humans.txt file. Easy to edit, dir
 
 == Description ==
 
-Maintain your **humans.txt** file easily within WordPress and use **handy variables** in it like:
+Credit the people behind your website in your **humans.txt** file. Easy to edit, directly within WordPress.
 
-* A "last-updated" date
-* A list of active plugins
-* Information about the active theme
-* The WP and PHP version
-* ... and [many others](http://wordpress.org/extend/plugins/humanstxt/other_notes/).
+* Use **convenient variables** like a _last-updated_ date, active plugins and [many others...](http://wordpress.org/extend/plugins/humanstxt/other_notes/)
+* Add an author link tag to your site's `<head>` tag
+* Use the `[humanstxt]` shortcode to display your _humans.txt_ on a page or in a post
+* Extend or modify this plugin with custom [filters and actions](http://wordpress.org/extend/plugins/humanstxt/other_notes/)
 
 More information on the Humans TXT can be found on the [official Humans TXT website](http://humanstxt.org/).
 
@@ -25,7 +24,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 1. Upload the `/humanstxt/` directory and its contents to `/wp-content/plugins/`.
 2. Login to your WordPress installation and activate the plugin through the _Plugins_ menu.
-3. Edit your humans.txt file in the _Settings_ menu under _Humans TXT_.
+3. Activate the and edit your humans.txt file in the _Settings_ menu under _Humans TXT_.
 
 **Please note:** This plugin does not modify or create a physical `humans.txt` file on your server, it generates it on the fly. If your site root already contains a `humans.txt` file, this file will be shown to the visitor. In order to use this plugin, please delete your physical `humans.txt`, but don't forget to migrate its contents.
 
@@ -50,7 +49,7 @@ This plugin does not modify or create a physical `humans.txt` file on your serve
 
 = Where is the humans.txt file located? =
 
-Usually in the root of your site, **BUT** this plugin doesn't create a physical `humans.txt` file on your server, it serves it on the fly.
+Usually in the root of your site, **however** this plugin doesn't create a physical `humans.txt` file on your server, it serves it dynamically.
 
 
 == Screenshots ==
@@ -103,8 +102,6 @@ This version contains several fixes and improvements.
 
 == Variables ==
 
-The following variables can be used in your *humans.txt*.
-
 * `$wp-lastupdate$` - Time of last modified post/page
 * `$wp-version$` - Installed WordPress version
 * `$php-version$` - Running PHP version
@@ -117,6 +114,38 @@ The following variables can be used in your *humans.txt*.
 * `$wp-theme-version$` - Version of active WP theme
 * `$wp-theme-author$` - Author name of active WP theme
 * `$wp-theme-author-link$` - Author URL of active WP theme
+
+
+== Shortcode Usage ==
+
+The default shortcode `[humanstxt]` will display the contents of the virtual humans.txt file. URLs, email addresses and Twitter account names are converted into clickable links. Plain email addresses are encoded for spam protection. The output will be wrapped with a `<p>` tag and can be styled via the `humanstxt` CSS class.
+
+You can turn off the "clickable links" functionality: `[humanstxt clickable="0"]`
+
+You can also toggle the clickable links individually: `[humanstxt urls="1" emails="0" twitter="1"]`
+
+To display the humans.txt as preformatted text, use the `pre` attribute: `<pre>[humanstxt pre="1"]</pre>`
+
+To display the untouched humans.txt, use the `plain` attribute: `[humanstxt plain="1"]`
+
+You can omit the wrapping with the `<p>` tag: `[humanstxt wrap="0"]`
+
+You can set a CSS id for the wrapping `<p>` tag: `[humanstxt id="my-humans-txt"]`
+
+And you can turn off the entity conversion for plain email addresses and common text entities: `[humanstxt filter="0"]` 
+
+
+== Plugin Functions ==
+
+**humanstxt()**  
+Echos the content of the virtual humans.txt file. Use `get_humanstxt()` to get the contents as a _string_. 
+
+**is_humans()**  
+Determines if the current request is for the virtual humans.txt file.
+
+**humanstxt_authortag()**  
+Echos a XHTML-conform author link tag linked to the humans.txt file. Use `get_humanstxt_authortag()` to get the tag as a _string_.
+
 
 == Plugin Actions & Filters ==
 
@@ -155,7 +184,7 @@ Applied to replacement string for matched standard headlines: `/* Title */`. See
 Applied to replacement string for matched twitter account names. See `humanstxt_shortcode()` for details.
 
 **humanstxt_separator**  
-Applied to the global text separator. Default is a comma followed by a space: `, `.
+Applied to the global text separator. Default is a comma followed by a space.
 
 **humanstxt_plugins_separator**  
 Use to override the global text separator (see `humanstxt_separator` filter) for the list of active WordPress plugins.
@@ -166,7 +195,7 @@ Use to override the global text separator (see `humanstxt_separator` filter), fo
 **humanstxt_wptheme**  
 Applied to the summary of the active WordPress theme: `$wp-theme$`.
 
-**humanstxt_plugins**
+**humanstxt_plugins**  
 Applied to the list of active WordPress plugins: `$wp-plugins$`.
 
 **humanstxt_languages**  
