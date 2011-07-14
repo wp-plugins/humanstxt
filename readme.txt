@@ -55,6 +55,8 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 == Screenshots ==
 
 1. Plugin options page.
+2. Default shortcode result. (Theme: Twenty Eleven)
+2. Shortcode result using `pre` attribute. (Theme: Twenty Eleven)
 
 
 == Changelog ==
