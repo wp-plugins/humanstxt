@@ -4,7 +4,7 @@ Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.1
 Tested up to: 3.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 
 Credit the people behind your website in your humans.txt file. Easy to edit, directly within WordPress.
 
@@ -61,6 +61,14 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 == Changelog ==
 
+= 1.0.4 =
+
+* Added `[humanstxt]` shortcode with several attributes
+* Added new variables for the number of published posts and pages: `$wp-posts$`; `$wp-pages$`
+* Minor changes to admin interface text, layout and scripts 
+* Added few shortcut functions like: `humanstxt()` and `humanstxt_authortag()`
+* Added filter for result of `$wp-language$` variable callback function 
+
 = 1.0.3 =
 
 * Adjusted admin UI metabox styling for WP 3.2
@@ -88,6 +96,10 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+
+This version introduces a shortcode, new variables and minor interface improvements.
 
 = 1.0.3 =
 
