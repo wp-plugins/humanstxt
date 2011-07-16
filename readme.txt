@@ -22,6 +22,8 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 == Installation ==
 
+For detailed installation instructions, please read the [standard installation procedure for WordPress plugins](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
+
 1. Upload the `/humanstxt/` directory and its contents to `/wp-content/plugins/`.
 2. Login to your WordPress installation and activate the plugin through the _Plugins_ menu.
 3. Activate the and edit your humans.txt file in the _Settings_ menu under _Humans TXT_.
@@ -134,26 +136,19 @@ This version contains several fixes and improvements.
 
 The default shortcode `[humanstxt]` will display the contents of the virtual humans.txt file. URLs, email addresses and Twitter account names are converted into clickable links. Plain email addresses are encoded for spam protection. The output will be wrapped with a `<p>` tag and can be styled via the `humanstxt` CSS class.
 
-You can turn off the "clickable links" functionality:  
-`[humanstxt clickable="0"]`
+You can turn off the "clickable links" functionality: `[humanstxt clickable="0"]`
 
-You can also toggle the clickable links individually:  
-`[humanstxt urls="1" emails="0" twitter="1"]`
+You can also toggle the clickable links individually: `[humanstxt urls="1" emails="0" twitter="1"]`
 
-To display the humans.txt as preformatted text, use the `pre` attribute:  
-`<pre>[humanstxt pre="1"]</pre>`
+To display the humans.txt as preformatted text, use the `pre` attribute: `<pre>[humanstxt pre="1"]</pre>`
 
-To display the untouched humans.txt, use the `plain` attribute:  
-`[humanstxt plain="1"]`
+To display the untouched humans.txt, use the `plain` attribute: `[humanstxt plain="1"]`
 
-You can omit the wrapping with the `<p>` tag:  
-`[humanstxt wrap="0"]`
+You can omit the wrapping with the `<p>` tag: `[humanstxt wrap="0"]`
 
-You can set a CSS id for the wrapping `<p>` tag:  
-`[humanstxt id="my-humans-txt"]`
+You can set a CSS id for the wrapping `<p>` tag: `[humanstxt id="my-humans-txt"]`
 
-And you can turn off the entity conversion for plain email addresses and common text entities:  
-`[humanstxt filter="0"]` 
+And you can turn off the entity conversion for plain email addresses and common text entities: `[humanstxt filter="0"]` 
 
 
 == Plugin Functions ==
