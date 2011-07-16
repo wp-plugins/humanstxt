@@ -2,7 +2,7 @@
 Contributors: tillkruess
 Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
-Requires at least: 3.1
+Requires at least: 3.2
 Tested up to: 3.2.1
 Stable tag: 1.0.4
 

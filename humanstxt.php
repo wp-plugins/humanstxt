@@ -58,7 +58,8 @@ define('HUMANSTXT_DOMAIN', basename(HUMANSTXT_PLUGIN_PATH));
  */
 $humanstxt_defaults = array(
 	'enabled' => false,
-	'authortag' => false
+	'authortag' => false,
+	'roles' => array()
 );
 
 /**
@@ -157,37 +158,31 @@ function humanstxt_is_rootinstall() {
 
 /**
  * Callback function for 'init' action.
- * Loads plugin settings from database and registers
- * rewrite rules for the humans.txt file.
+ * Registers humans.txt rewrite rules, flushes rules if necessary.
  * 
+ * @uses humanstxt_load_options()
  * @uses humanstxt_is_rootinstall()
- * @global $humanstxt_options
- * @global $humanstxt_defaults
  * @global $wp_rewrite
  */
 function humanstxt_init() {
 
-	global $humanstxt_options, $humanstxt_defaults, $wp_rewrite;
+	global $wp_rewrite;
 
 	$rewrite_rules = get_option('rewrite_rules');
-	$humanstxt_options = get_option('humanstxt_options');
-
-	// populate $humanstxt_options with defaults if necessary
-	foreach ($humanstxt_defaults as $option => $value) {
-		if (!isset($humanstxt_options[$option])) {
-			$humanstxt_options[$option] = $value;
-		}
-	}
 
 	if (humanstxt_option('enabled')) {
 
 		// rewrite humans.txt file only if installed at the root
 		if (humanstxt_is_rootinstall()) {
+
 			add_filter('query_vars', create_function('$qv', '$qv[] = "humans"; return $qv;'));
 			add_rewrite_rule('humans\.txt$', $wp_rewrite->index.'?humans=1', 'top');
+
+			// register author link tag action if enabled
 			if (humanstxt_option('authortag')) {
 				add_action('wp_head', 'humanstxt_authortag', 1);
 			}
+
 		}
 
 		// flush rewrite rules if ours is missing
@@ -336,30 +331,50 @@ function humanstxt_shortcode($attributes) {
 }
 
 /**
- * Returns plugin setting value of given $option.
- * Returns plugin default value if $option is not set.
- * Return NULL if $option doesn't exist.
- * 
+ * Loads plugin options from database and sets missing
+ * options to their default values.
+ *
+ * @since 1.0.5
+ *
  * @global $humanstxt_options
  * @global $humanstxt_defaults
+ */
+function humanstxt_load_options() {
+
+	global $humanstxt_options, $humanstxt_defaults;
+
+	// already loaded?
+	if (is_null($humanstxt_options)) {
+
+		$humanstxt_options = get_option('humanstxt_options');
+
+		// populate with defaults options if missing...
+		foreach ($humanstxt_defaults as $option => $value) {
+			if (!isset($humanstxt_options[$option])) {
+				$humanstxt_options[$option] = $value;
+			}
+		}
+
+	}
+
+}
+
+/**
+ * Returns options value of given $option.
+ * Returns NULL if $option doesn't exist.
+ * 
+ * @global $humanstxt_options
  * 
  * @param string $option Name of the option.
  * @return mixed Plugin option value
  */
 function humanstxt_option($option) {
 
-	global $humanstxt_options, $humanstxt_defaults;
+	global $humanstxt_options;
 
-	if (isset($humanstxt_options[$option])) {
-		return $humanstxt_options[$option];
-	}
+	humanstxt_load_options();
 
-	// just in case humanstxt_init() has not been called
-	if (isset($humanstxt_defaults[$option])) {
-		return $humanstxt_defaults[$option];
-	}
-
-	return null;
+	return isset($humanstxt_options[$option]) ? $humanstxt_options[$option] : null;
 
 }
 

@@ -88,7 +88,7 @@ function humanstxt_uninstall() {
  * Callback function for 'admin_notices' action.
  * Prints warning message if WordPress version is to old.
  * The required version in the readme.txt file might differ
- * to ensure a perfectly styled GUI.
+ * to ensure a prettier styled GUI.
  * 
  * @since 1.0.1
  */
@@ -111,6 +111,8 @@ function humanstxt_version_warning() {
 function humanstxt_admin_menu() {
 
 	global $humanstxt_screen_id;
+
+// TODO: can this role really access that menu? or is that nessaray?
 
 	$humanstxt_screen_id = add_options_page(__('Humans TXT', HUMANSTXT_DOMAIN), __('Humans TXT', HUMANSTXT_DOMAIN), 'manage_options', HUMANSTXT_DOMAIN, 'humanstxt_options');
 
@@ -182,8 +184,8 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 }
 
 /**
- * Updates plugin options from valid $_POST request.
- * Redirects to plugin options page if successful.
+ * Updates plugin options and redirects to
+ * plugin options page if successful.
  * 
  * @uses HUMANSTXT_OPTIONS_URL
  * @global $humanstxt_options
@@ -194,10 +196,20 @@ function humanstxt_update_options() {
 
 	if (isset($_POST['action']) && $_POST['action'] == 'update') {
 
-		$humanstxt_options['enabled'] = isset($_POST['humanstxt_enable']);
-		$humanstxt_options['authortag'] = isset($_POST['humanstxt_authortag']);
+		// only update the admin-only options if current user is an admin
+		if (current_user_can('administrator')) {
 
-		update_option('humanstxt_options', $humanstxt_options);
+			$humanstxt_options['enabled'] = isset($_POST['humanstxt_enable']);
+			$humanstxt_options['authortag'] = isset($_POST['humanstxt_authortag']);
+
+			$humanstxt_options['roles'] = array();
+			if (isset($_POST['humanstxt_roles']) && is_array($_POST['humanstxt_roles'])) {
+				$humanstxt_options['roles'] = array_keys($_POST['humanstxt_roles']);
+			}
+
+			update_option('humanstxt_options', $humanstxt_options);
+
+		}
 
 		if (isset($_POST['humanstxt_content'])) {
 			$humanstxt_content = stripslashes($_POST['humanstxt_content']);
@@ -281,53 +293,78 @@ function humanstxt_options() {
 
 		<?php settings_fields('humanstxt') ?>
 
-		<?php if (($rating = humanstxt_rating()) !== false) : ?>
-			<div id="humanstxt-metabox" class="postbox">
-				<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
-				<div class="star-holder">
-					<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
-					<div class="star star5"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '5 stars' ) ?>" /></div>
-                    <div class="star star4"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '4 stars' ) ?>" /></div>
-                    <div class="star star3"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '3 stars' ) ?>" /></div>
-                    <div class="star star2"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '2 stars' ) ?>" /></div>
-                    <div class="star star1"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e( '1 star' ) ?>" /></div>
-				</div>
-				<small class="text-votes"><?php printf(_n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
-			</div>
-		<?php endif; ?>
+		<?php if (current_user_can('administrator')) : ?>
 
-		<h3><?php _e('Settings', HUMANSTXT_DOMAIN) ?></h3>
-		<table class="form-table">
-			<tr valign="top">
-				<th scope="row"><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></th>
-				<td>
-					<fieldset>
-						<legend class="screen-reader-text"><span><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></span></legend>
-						<label for="humanstxt_enable">
-							<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?>>
-							<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">'.__('humans.txt', HUMANSTXT_DOMAIN).'</a>' ?>
-							<?php printf(__("Activate %s file", HUMANSTXT_DOMAIN), $humanstxt_link) ?>
-						</label>
-					</fieldset>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></th>
-				<td>
-					<fieldset>
-						<legend class="screen-reader-text"><span><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></span></legend>
-						<label for="humanstxt_authortag">
-							<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?>>
-							<?php printf(__('Add an author link tag to the site, linked to the %s', HUMANSTXT_DOMAIN), '<em>'.__('humans.txt', HUMANSTXT_DOMAIN).'</em>') ?>
-						</label>
-					</fieldset>
-				</td>
-			</tr>
-		</table>
+			<?php if (($rating = humanstxt_rating()) !== false) : ?>
+				<div id="humanstxt-metabox" class="postbox">
+					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
+					<div class="star-holder">
+						<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
+						<div class="star star5"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('5 stars') ?>" /></div>
+						<div class="star star4"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('4 stars') ?>" /></div>
+						<div class="star star3"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('3 stars') ?>" /></div>
+						<div class="star star2"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('2 stars') ?>" /></div>
+						<div class="star star1"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('1 star') ?>" /></div>
+					</div>
+					<small class="text-votes"><?php printf(_n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
+				</div>
+			<?php endif; ?>
+
+			<h3><?php _e('Settings', HUMANSTXT_DOMAIN) ?></h3>
+			<table class="form-table">
+				<tr valign="top">
+					<th scope="row"><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></th>
+					<td>
+						<fieldset>
+							<legend class="screen-reader-text"><span><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></span></legend>
+							<label for="humanstxt_enable">
+								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?> />
+								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">'.__('humans.txt', HUMANSTXT_DOMAIN).'</a>' ?>
+								<?php printf(__("Activate %s file", HUMANSTXT_DOMAIN), $humanstxt_link) ?>
+							</label>
+						</fieldset>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></th>
+					<td>
+						<fieldset>
+							<legend class="screen-reader-text"><span><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></span></legend>
+							<label for="humanstxt_authortag">
+								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?> />
+								<?php printf(__('Add an author link tag to the site, linked to the %s', HUMANSTXT_DOMAIN), '<em>'.__('humans.txt', HUMANSTXT_DOMAIN).'</em>') ?>
+							</label>
+						</fieldset>
+					</td>
+				</tr>
+			
+				<tr valign="top">
+					<th scope="row"><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></th>
+					<td>
+						<fieldset>
+							<legend class="screen-reader-text"><span><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></span></legend>
+							<?php _e('Roles that can edit the content of the humans.txt file:', HUMANSTXT_DOMAIN) ?><br/>
+							<?php $humanstxt_roles = humanstxt_option('roles'); ?>
+							<?php foreach (get_editable_roles() as $role => $details) : ?>
+<?php // TODO: can this role access the tools menu? does it have to? also do this check when adding the menu? ?>
+								<?php $checked = ($role == 'administrator' || in_array($role, $humanstxt_roles)) ? 'checked="checked" ' : ''; ?>
+								<?php $disabled = ($role == 'administrator') ? 'disabled="disabled" ' : ''; ?>
+								<label for="humanstxt_role_<?=$role?>">
+									<input name="humanstxt_roles[<?=$role?>]" type="checkbox" id="humanstxt_role_<?=$role?>" value="1" <?=$checked?><?=$disabled?>/>
+									<?php echo translate_user_role($details['name']); ?>
+								</label>
+								<br />
+							<?php endforeach; ?>
+						</fieldset>
+					</td>
+				</tr>	
+			</table>
 		
-		<p class="submit">
-			<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
-		</p>
+			<p class="submit">
+				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
+			</p>
+
+		<?php endif; ?>
 
 		<h3><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></h3>
 		<table id="humanstxt_table_content" class="form-table">
@@ -352,7 +389,7 @@ function humanstxt_options() {
 						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview:', HUMANSTXT_DOMAIN) ?> <?=esc_attr($callback_result)?>"<?php endif; ?>>
 							<code>$<?=$variable[0]?>$</code>
 							<?php if (isset($variable[2]) && !empty($variable[2])) : ?>
-								<small> &mdash; <?=$variable[2]?></small>
+								&mdash; <?=$variable[2]?>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>

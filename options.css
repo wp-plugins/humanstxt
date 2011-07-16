@@ -10,13 +10,16 @@
 #humanstxt-vars { float: left; padding: 40px 0 0 20px; }
 	#humanstxt-vars h4 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }
 	#humanstxt-vars li.has-result { cursor: help; }
+	#humanstxt-vars li code { font-size: 13px; }
+	
 
 p.submit { clear: both; }
 
-/* rather than trying to fix the display of our rating box...
-   ...we just hide it from hide to ie 6 & 7... */
+
+/* why fix if you can hide? MSIE 6-7 */
 * html #humanstxt-metabox { display: none !important; }
 *+html #humanstxt-metabox { display: none !important; }
+
 
 /* taken from /wp-admin/css/theme-install.dev.css */
 div.star-holder {
