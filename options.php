@@ -347,7 +347,6 @@ function humanstxt_options() {
 						</fieldset>
 					</td>
 				</tr>
-			
 				<tr valign="top">
 					<th scope="row"><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></th>
 					<td>
@@ -356,7 +355,6 @@ function humanstxt_options() {
 							<?php _e('Roles that can edit the content of the humans.txt file:', HUMANSTXT_DOMAIN) ?><br/>
 							<?php $humanstxt_roles = humanstxt_option('roles'); ?>
 							<?php foreach (get_editable_roles() as $role => $details) : ?>
-<?php // TODO: can this role access the tools menu? does it have to? also do this check when adding the menu? ?>
 								<?php $checked = ($role == 'administrator' || in_array($role, $humanstxt_roles)) ? 'checked="checked" ' : ''; ?>
 								<?php $disabled = ($role == 'administrator') ? 'disabled="disabled" ' : ''; ?>
 								<label for="humanstxt_role_<?=$role?>">
@@ -370,24 +368,30 @@ function humanstxt_options() {
 				</tr>	
 			</table>
 		
-			<p class="submit">
+			<p class="submit clear">
 				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
 			</p>
 
 		<?php endif; ?>
 
 		<h3><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></h3>
-		<table id="humanstxt_table_content" class="form-table">
-			<tr valign="top">
-				<td>
-					<fieldset>
-						<legend class="screen-reader-text"><span><?php _e('Humans.txt file contents', HUMANSTXT_DOMAIN) ?></span></legend>
-						<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button in the top right corner of this page.', HUMANSTXT_DOMAIN) ?></label></span>
-						<textarea name="humanstxt_content" rows="25" cols="80" id="humanstxt_content" class="large-text code"><?=esc_textarea(humanstxt_content())?></textarea>
-					</fieldset>
-				</td>
-			</tr>
-		</table>
+
+		<div id="humanstxt-editor-wrap">			
+			<table class="form-table">
+				<tr valign="top">
+					<td>
+						<fieldset>
+							<legend class="screen-reader-text"><span><?php _e('Humans.txt file contents', HUMANSTXT_DOMAIN) ?></span></legend>
+							<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button in the top right corner of this page.', HUMANSTXT_DOMAIN) ?></label></span>
+							<textarea name="humanstxt_content" rows="25" cols="80" id="humanstxt_content" class="large-text code"><?=esc_textarea(humanstxt_content())?></textarea>
+						</fieldset>
+					</td>
+				</tr>
+			</table>
+			<p class="submit">
+				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
+			</p>
+		</div>
 
 		<?php $humanstxt_variables = humanstxt_valid_variables() ?>
 		<?php if (!empty($humanstxt_variables)) : ?>
@@ -407,10 +411,6 @@ function humanstxt_options() {
 				<p><a href="http://wordpress.org/tags/humanstxt" rel="external"><?php _e('Suggest another variable...', HUMANSTXT_DOMAIN) ?></a></p>
 			</div>
 		<?php endif; ?>
-
-		<p class="submit">
-			<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
-		</p>
 
 	</form>
 </div>
