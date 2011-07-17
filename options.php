@@ -87,8 +87,8 @@ function humanstxt_uninstall() {
 /**
  * Callback function for 'admin_notices' action.
  * Prints warning message if WordPress version is to old.
- * The required version in the readme.txt file might differ
- * to ensure a prettier styled GUI.
+ * The required version in the readme.txt file might be higher
+ * to ensure a prettier UI.
  * 
  * @since 1.0.1
  */
@@ -102,9 +102,9 @@ function humanstxt_version_warning() {
 }
 
 /**
- * Callback function for 'admin_menu' action. Registers our options
- * page and tells WordPress to print our CSS and JavaScript file
- * in the corresponding actions.
+ * Callback function for 'admin_menu' action. Registers options page
+ * if the current user has access and tells WordPress to print our CSS
+ * and JavaScript file in the corresponding actions.
  * 
  * @global $humanstxt_screen_id
  */
@@ -112,13 +112,23 @@ function humanstxt_admin_menu() {
 
 	global $humanstxt_screen_id;
 
-// TODO: can this role really access that menu? or is that nessaray?
+	$roles = humanstxt_option('roles');
+	array_unshift($roles, 'administrator'); // admins can always edit
 
-	$humanstxt_screen_id = add_options_page(__('Humans TXT', HUMANSTXT_DOMAIN), __('Humans TXT', HUMANSTXT_DOMAIN), 'manage_options', HUMANSTXT_DOMAIN, 'humanstxt_options');
+	// loop through all roles that can edit the humans.txt and
+	// add options page if the current user has one of the required roles
+	foreach ($roles as $role) {
+		if (current_user_can($role)) {
+			$humanstxt_screen_id = add_options_page(__('Humans TXT', HUMANSTXT_DOMAIN), __('Humans TXT', HUMANSTXT_DOMAIN), $role, HUMANSTXT_DOMAIN, 'humanstxt_options');
+			break;
+		}
+	}
 
 	// make WP print our CSS and JavaScript file
-	add_action('admin_print_styles-'.$humanstxt_screen_id, create_function(null, "wp_enqueue_style('humanstxt-options');"));
-	add_action('admin_print_scripts-'.$humanstxt_screen_id, create_function(null, "wp_enqueue_script('humanstxt-options');"));
+	if ($humanstxt_screen_id) {
+		add_action('admin_print_styles-'.$humanstxt_screen_id, create_function(null, "wp_enqueue_style('humanstxt-options');"));
+		add_action('admin_print_scripts-'.$humanstxt_screen_id, create_function(null, "wp_enqueue_script('humanstxt-options');"));
+	}
 
 }
 
@@ -149,7 +159,7 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 
 	global $humanstxt_screen_id;
 
-	if ($screen_id == $humanstxt_screen_id) {
+	if ($humanstxt_screen_id && $humanstxt_screen_id == $screen_id) {
 
 		$contextual_help = sprintf(
 			'<p><strong>%s</strong> &mdash; %s</p>',
