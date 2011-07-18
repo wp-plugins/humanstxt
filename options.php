@@ -181,7 +181,7 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 
 		$contextual_help .= '
 			<ul>
-				<li><a href="http://humanstxt.org/" rel="external">'.__('Official Humans TXT website', HUMANSTXT_DOMAIN).'</li>
+				<li><a href="http://humanstxt.org/" rel="external">'.__('Official Humans TXT website', HUMANSTXT_DOMAIN).'</a></li>
 				<li><a href="http://wordpress.org/extend/plugins/humanstxt/" rel="external">'.__('Plugin Homepage', HUMANSTXT_DOMAIN).'</a></li>
 				<li><a href="http://wordpress.org/tags/humanstxt" rel="external">'.__('Plugin Support Forum', HUMANSTXT_DOMAIN).'</a></li>
 			</ul>

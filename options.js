@@ -1,5 +1,11 @@
 jQuery(document).ready(function($) {
 
+	// adjust row count if content is higher than default height
+	var $humanstxtEditor = $('#humanstxt_content');
+
+	// enable auto-grow on humans.txt textarea
+	$humanstxtEditor.humansAutoGrow();
+
 	// open external links in new tab
 	$('#wpbody-content a[rel*="external"]').attr('target', '_tab');
 
@@ -14,17 +20,7 @@ jQuery(document).ready(function($) {
 		});
 	}
 
-	// humans.txt textarea auto-grow and tab key support
-	var $humanstxtEditor = $('#humanstxt_content');
-	var humanstxtEditorHeight = $humanstxtEditor.val().split("\n").length + 2;
-	var humanstxtEditorMinHeight = $humanstxtEditor.attr('rows');
-
-	if (humanstxtEditorHeight > humanstxtEditorMinHeight) {
-		$humanstxtEditor.attr('rows', humanstxtEditorHeight);
-	}
-
-	$humanstxtEditor.humansAutoGrow();
-
+	// enable tab key support on humans.txt textarea
 	// taken from /wp-admin/js/common.dev.js
 	$humanstxtEditor.keydown(function(e) {
 		if ( e.keyCode != 9 )
@@ -105,7 +101,7 @@ jQuery(document).ready(function($) {
 	}
 
 	/**
-	 * Autogrow Textarea Plugin Version v2.0
+	 * MODIFIED Autogrow Textarea Plugin Version v2.0
 	 * http://www.technoreply.com/autogrow-textarea-plugin-version-2-0
 	 *
 	 * Copyright 2011, Jevin O. Sewaruth
@@ -115,15 +111,16 @@ jQuery(document).ready(function($) {
 	$.fn.humansAutoGrow = function() {
 		return this.each(function() {
 
+			var rowsAdjustment = $.browser.msie ? 5 : 0;
 			var colsDefault = this.cols;
-			var rowsDefault = this.rows;
+			var rowsDefault = this.rows + rowsAdjustment;
 
 			var grow = function() {
 				growByRef(this);
 			}
 
 			var growByRef = function(obj) {
-				var linesCount = 0;
+				var linesCount = 0 + rowsAdjustment;
 				var lines = obj.value.split('\n');
 
 				for (var i=lines.length-1; i>=0; --i) {
@@ -136,26 +133,9 @@ jQuery(document).ready(function($) {
 					obj.rows = rowsDefault;
 			}
 
-			var characterWidth = function (obj) {
-				var characterWidth = 0;
-				var temp1 = 0;
-				var temp2 = 0;
-				var tempCols = obj.cols;
-
-				obj.cols = 1;
-				temp1 = obj.offsetWidth;
-				obj.cols = 2;
-				temp2 = obj.offsetWidth;
-				characterWidth = temp2 - temp1;
-				obj.cols = tempCols;
-
-				return characterWidth;
-			}
-
 			this.style.width = "auto";
 			this.style.height = "auto";
 			this.style.overflow = "hidden";
-			this.style.width = ((characterWidth(this) * this.cols) + 6) + "px";
 			this.onkeyup = grow;
 			this.onkeypress = grow;
 			this.onfocus = grow;

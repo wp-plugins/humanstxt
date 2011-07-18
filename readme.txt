@@ -13,9 +13,10 @@ Credit the people behind your website in your humans.txt file. Easy to edit, dir
 Credit the people behind your website in your **humans.txt** file. Easy to edit, directly within WordPress.
 
 * Use **variables** like a _last-updated_ date, active plugins and [many others...](http://wordpress.org/extend/plugins/humanstxt/other_notes/#Variables)
-* Add an author link tag to your site's `<head>` tag
 * Use the `[humanstxt]` shortcode to display your _humans.txt_ on your site
-* Extend or modify this plugin with custom [filters and actions...](http://wordpress.org/extend/plugins/humanstxt/other_notes/#Plugin-Actions-and-Filters)
+* Add an author link tag to your site's `<head>` tag
+* Allow non-admins to edit the _humans.txt_ content
+* Customize this plugin with custom [filters and actions...](http://wordpress.org/extend/plugins/humanstxt/other_notes/#Plugin-Actions-and-Filters)
 
 More information on the Humans TXT can be found on the [official Humans TXT website](http://humanstxt.org/).
 
@@ -66,8 +67,9 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 = 1.0.5 =
 
 * Added new variables for the site/blog title, description and encoding
-* Added option to enable other roles than administrators to edit the humans.txt content
+* Added option to allow non-admins to edit the humans.txt content
 * Added shortcode usage to options page and improved options page styling
+* Improved editor auto-grow in Internet Explorer
 * Improved loading of plugin options
 
 = 1.0.4 =
