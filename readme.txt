@@ -63,10 +63,17 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 == Changelog ==
 
+= 1.0.5 =
+
+* Added new variables for the site/blog title, description and encoding
+* Added option to enable other roles than administrators to edit the humans.txt content
+* Added shortcode usage to options page and improved options page styling
+* Improved loading of plugin options
+
 = 1.0.4 =
 
 * Added `[humanstxt]` shortcode with several attributes
-* Added new variables for the number of published posts and pages: `$wp-posts$`; `$wp-pages$`
+* Added new variables for the number of published posts and pages
 * Minor changes to admin interface text, layout and scripts 
 * Added few shortcut functions like: `humanstxt()` and `humanstxt_authortag()`
 * Added filter for result of `$wp-language$` variable callback function 
@@ -98,6 +105,10 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 
 == Upgrade Notice ==
+
+= 1.0.5 =
+
+This version introduces user-role support, new variables and other minor improvements.
 
 = 1.0.4 =
 
