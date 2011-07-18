@@ -458,18 +458,22 @@ function humanstxt_variables() {
 	humanstxt_load_textdomain();
 
 	$variables = array();
-	$variables[] = array(__('wp-lastupdate', HUMANSTXT_DOMAIN), 'humanstxt_callback_lastupdate', __('Time of last modified post/page', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpversion', __('Installed WordPress version', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('php-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_phpversion', __('Running PHP version', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-language', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('Active WordPress language', HUMANSTXT_DOMAIN));
+	
+	$variables[] = array(__('wp-title', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpblogname', __('Name of site/blog', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-tagline', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptagline', __('Tagline (description) of site/blog', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('wp-posts', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpposts', __('Number of published posts', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('wp-pages', HUMANSTXT_DOMAIN), 'humanstxt_callback_wppages', __('Number of published pages', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('List of activated WordPress plugins', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-lastupdate', HUMANSTXT_DOMAIN), 'humanstxt_callback_lastupdate', __('Time of last modified post or page', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-language', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('Active WordPress language(s)', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('Activated WordPress plugins', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-charset', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpcharset', __('Encoding used for pages and feeds', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpversion', __('Installed WordPress version', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('php-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_phpversion', __('Currently running PHP parser version', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('wp-theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme', __('Summary of the active WP theme', HUMANSTXT_DOMAIN));
 	$variables[] = array(__('wp-theme-name', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_name', __('Name of active WordPress theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-theme-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_version', __('Version of active WP theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-theme-author', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author', __('Author name of active WP theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-theme-author-link', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author URL of active WP theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-theme-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_version', __('Version of active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-theme-author', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author', __('Author name of active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(__('wp-theme-author-link', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author URL of active theme', HUMANSTXT_DOMAIN));
 
 	return apply_filters('humanstxt_variables', $variables);
 
@@ -561,6 +565,39 @@ function humanstxt_callback_phpversion() {
  */
 function humanstxt_callback_wpversion() {
 	return get_bloginfo('version');
+}
+
+/**
+ * Returns the site/blog title.
+ * 
+ * @since 1.0.5
+ *
+ * @return string Site/blog name.
+ */
+function humanstxt_callback_wpblogname() {
+	return get_bloginfo('name');
+}
+
+/**
+ * Returns the site/blog description (tagline).
+ * 
+ * @since 1.0.5
+ *
+ * @return string Site/blog description.
+ */
+function humanstxt_callback_wptagline() {
+	return get_bloginfo('description');
+}
+
+/**
+ * Returns the encoding used for pages and feeds.
+ * 
+ * @since 1.0.5
+ *
+ * @return string Site/blog encoding.
+ */
+function humanstxt_callback_wpcharset() {
+	return get_bloginfo('charset');
 }
 
 /**

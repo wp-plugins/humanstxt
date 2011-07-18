@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
 
 	// open external links in new tab
-	$('#humanstxt a[rel*="external"], #humanstxt-metabox .text-rateit a, #contextual-help-wrap a').attr('target', '_tab');
+	$('#wpbody-content a[rel*="external"]').attr('target', '_tab');
 
 	// register custom tooltips for variable previews
 	$('#humanstxt-vars li.has-result').humansTooltip();

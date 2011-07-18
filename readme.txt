@@ -12,10 +12,10 @@ Credit the people behind your website in your humans.txt file. Easy to edit, dir
 
 Credit the people behind your website in your **humans.txt** file. Easy to edit, directly within WordPress.
 
-* Use **variables** like a _last-updated_ date, active plugins and [many others...](http://wordpress.org/extend/plugins/humanstxt/other_notes/)
+* Use **variables** like a _last-updated_ date, active plugins and [many others...](http://wordpress.org/extend/plugins/humanstxt/other_notes/#Variables)
 * Add an author link tag to your site's `<head>` tag
 * Use the `[humanstxt]` shortcode to display your _humans.txt_ on your site
-* Extend or modify this plugin with custom [filters and actions...](http://wordpress.org/extend/plugins/humanstxt/other_notes/)
+* Extend or modify this plugin with custom [filters and actions...](http://wordpress.org/extend/plugins/humanstxt/other_notes/#Plugin-Actions-and-Filters)
 
 More information on the Humans TXT can be found on the [official Humans TXT website](http://humanstxt.org/).
 
@@ -118,18 +118,21 @@ This version contains several fixes and improvements.
 
 == Variables ==
 
-* `$wp-lastupdate$` - Time of last modified post/page
-* `$wp-version$` - Installed WordPress version
-* `$php-version$` - Running PHP version
-* `$wp-language$` - Active WordPress language
+* `$wp-title$` - Name of site/blog
+* `$wp-tagline$` - Tagline (description) of site/blog
 * `$wp-posts$` - Number of published posts
 * `$wp-pages$` - Number of published pages
-* `$wp-plugins$` - List of activated WordPress plugins
+* `$wp-lastupdate$` - Time of last modified post or page
+* `$wp-language$` - Active WordPress language(s)
+* `$wp-plugins$` - Activated WordPress plugins
+* `$wp-charset$` - Encoding used for pages and feeds
+* `$wp-version$` - Installed WordPress version
+* `$php-version$` - Currently running PHP parser version
 * `$wp-theme$` - Summary of the active WP theme
 * `$wp-theme-name$` - Name of active WordPress theme
-* `$wp-theme-version$` - Version of active WP theme
-* `$wp-theme-author$` - Author name of active WP theme
-* `$wp-theme-author-link$` - Author URL of active WP theme
+* `$wp-theme-version$` - Version of active theme
+* `$wp-theme-author$` - Author name of active theme
+* `$wp-theme-author-link$` - Author URL of active theme
 
 
 == Shortcode Usage ==
@@ -163,7 +166,7 @@ Determines if the current request is for the virtual humans.txt file.
 Echos a XHTML-conform author link tag linked to the humans.txt file. Use `get_humanstxt_authortag()` to get the tag as a _string_.
 
 
-== Plugin Actions & Filters ==
+== Plugin Actions and Filters ==
 
 = Actions =
 

@@ -176,14 +176,14 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 		$contextual_help .= sprintf(
 			'<p><strong>%s</strong> &mdash; %s</p>',
 			__('How should I format it?', HUMANSTXT_DOMAIN),
-			__('However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href="http://humanstxt.org/humans.txt">humanstxt.org</a> or <a href="http://html5boilerplate.com/humans.txt">html5boilerplate.com</a>.', HUMANSTXT_DOMAIN)
+			__('However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href="http://humanstxt.org/humans.txt" rel="external">humanstxt.org</a> or <a href="http://html5boilerplate.com/humans.txt" rel="external">html5boilerplate.com</a>.', HUMANSTXT_DOMAIN)
 		);
 
 		$contextual_help .= '
 			<ul>
-				<li>'.sprintf('<a href="%s">%s</a>', __('http://humanstxt.org/', HUMANSTXT_DOMAIN), __('Official Humans TXT website', HUMANSTXT_DOMAIN)).'</li>
-				<li><a href="http://wordpress.org/extend/plugins/humanstxt/">'.__('Plugin Homepage', HUMANSTXT_DOMAIN).'</a></li>
-				<li><a href="http://wordpress.org/tags/humanstxt">'.__('Plugin Support Forum', HUMANSTXT_DOMAIN).'</a></li>
+				<li><a href="http://humanstxt.org/" rel="external">'.__('Official Humans TXT website', HUMANSTXT_DOMAIN).'</li>
+				<li><a href="http://wordpress.org/extend/plugins/humanstxt/" rel="external">'.__('Plugin Homepage', HUMANSTXT_DOMAIN).'</a></li>
+				<li><a href="http://wordpress.org/tags/humanstxt" rel="external">'.__('Plugin Support Forum', HUMANSTXT_DOMAIN).'</a></li>
 			</ul>
 		';
 
@@ -307,7 +307,7 @@ function humanstxt_options() {
 
 			<?php if (($rating = humanstxt_rating()) !== false) : ?>
 				<div id="humanstxt-metabox" class="postbox">
-					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
+					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
 					<div class="star-holder">
 						<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
 						<div class="star star5"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('5 stars') ?>" /></div>
@@ -352,7 +352,7 @@ function humanstxt_options() {
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></span></legend>
-							<?php _e('Roles that can edit the content of the humans.txt file:', HUMANSTXT_DOMAIN) ?><br/>
+							<?php _e('Roles that can edit the content of the <em>humans.txt</em> file:', HUMANSTXT_DOMAIN) ?><br/>
 							<?php $humanstxt_roles = humanstxt_option('roles'); ?>
 							<?php foreach (get_editable_roles() as $role => $details) : ?>
 								<?php $checked = ($role == 'administrator' || in_array($role, $humanstxt_roles)) ? 'checked="checked" ' : ''; ?>
@@ -411,6 +411,11 @@ function humanstxt_options() {
 				<p><a href="http://wordpress.org/tags/humanstxt" rel="external"><?php _e('Suggest another variable...', HUMANSTXT_DOMAIN) ?></a></p>
 			</div>
 		<?php endif; ?>
+
+		<div class="clear"></div>
+
+		<h3><?php _e('Shortcode Usage', HUMANSTXT_DOMAIN) ?></h3>
+		<p><?php printf(__('You can use the <code>[humanstxt]</code> shortcode to display the <em>humans.txt</em> file on a page or in a post. By default, all links, email addresses and Twitter account names will be converted into clickable links and email addresses will be encoded to block spam bots. <a href="%s" rel="external">Of course you can customize it...</a>', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/other_notes/#Shortcode-Usage') ?></p>
 
 	</form>
 </div>
