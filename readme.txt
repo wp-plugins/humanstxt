@@ -142,9 +142,9 @@ This version contains several fixes and improvements.
 * `$wp-charset$` - Encoding used for pages and feeds
 * `$wp-version$` - Installed WordPress version
 * `$php-version$` - Running PHP parser version
-* `$wp-theme$` - Summary of the active WP theme
+* `$wp-theme$` - Summary of the active WordPress theme
 * `$wp-theme-name$` - Name of the active theme
-* `$wp-theme-version$` - Version of the active theme
+* `$wp-theme-version$` - Version number of the active theme
 * `$wp-theme-author$` - Author name of the active theme
 * `$wp-theme-author-link$` - Author URL of the active theme
 
