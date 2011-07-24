@@ -3,8 +3,8 @@ Contributors: tillkruess
 Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.2
-Tested up to: 3.2.1
-Stable tag: 1.0.4
+Tested up to: 3.3
+Stable tag: 1.0.5
 
 Credit the people behind your website in your humans.txt file. Easy to edit, directly within WordPress.
 
@@ -67,10 +67,11 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 = 1.0.5 =
 
 * Added new variables for the site/blog title, description and encoding
-* Added option to allow non-admins to edit the humans.txt content
-* Added shortcode usage to options page and improved options page styling
-* Improved editor auto-grow in Internet Explorer
+* Added option to allow non-admins to edit the humans.txt file
+* Added shortcode usage to options page
+* Improved variable preview tooltip and options page styling
 * Improved loading of plugin options
+* Improved editor auto-grow in Internet Explorer
 
 = 1.0.4 =
 
