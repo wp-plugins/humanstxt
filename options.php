@@ -96,7 +96,7 @@ function humanstxt_version_warning() {
 
 	if (version_compare($GLOBALS['wp_version'], HUMANSTXT_REQUIRED_VERSION, '<')) {
 		$updatelink = ' <a href="'.admin_url('update-core.php').'">'.sprintf(__('Please update your WordPress installation.', HUMANSTXT_DOMAIN)).'</a>';
-		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT requires WordPress %s or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_REQUIRED_VERSION).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
+		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %1$s requires WordPress %2$s or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION, HUMANSTXT_REQUIRED_VERSION).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
 	}
 
 }
@@ -292,11 +292,11 @@ function humanstxt_options() {
 	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Read FAQ...', HUMANSTXT_DOMAIN)) ?>
 
 	<?php if (!humanstxt_is_rootinstall()) : ?>
-		<div class="error"><p><strong><?php _e('WordPress is not installed in the site root.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
+		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the site root.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
 	<?php elseif (humanstxt_exists()) : ?>
-		<div class="error"><p><strong><?php _e('The site root contains physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
+		<div class="error"><p><strong><?php _e('Error: The site root contains a physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
 	<?php elseif (get_option('permalink_structure') == '') : ?>
-		<div class="error"><p><strong><?php printf(__('Please <a href="%s">update your permalink structure</a> to something other than the default.', HUMANSTXT_DOMAIN), admin_url('options-permalink.php')) ?></strong> <?=$faqlink?></p></div>
+		<div class="error"><p><strong><?php printf(__('Error: Please <a href="%s">update your permalink structure</a> to something other than the default.', HUMANSTXT_DOMAIN), admin_url('options-permalink.php')) ?></strong> <?=$faqlink?></p></div>
 	<?php endif; ?>
 
 	<form method="post" action="<?=HUMANSTXT_OPTIONS_URL?>">
@@ -331,8 +331,8 @@ function humanstxt_options() {
 							<legend class="screen-reader-text"><span><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_enable">
 								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?> />
-								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">humans.txt</a>' ?>
-								<?php printf(__("Activate %s file", HUMANSTXT_DOMAIN), $humanstxt_link) ?>
+								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">'._x('humans.txt', "Used in 'Activate the %s file' in options screen, linked to the site's humans.txt file", HUMANSTXT_DOMAIN).'</a>' ?>
+								<?php printf(__("Activate the %s file", HUMANSTXT_DOMAIN), $humanstxt_link) ?>
 							</label>
 						</fieldset>
 					</td>
@@ -344,7 +344,7 @@ function humanstxt_options() {
 							<legend class="screen-reader-text"><span><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_authortag">
 								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?> />
-								<?php printf(__('Add an author link tag to the site, linked to the %s', HUMANSTXT_DOMAIN), '<em>humans.txt</em>') ?>
+								<?php _e("Add an author link tag to the site's head tag, linked to the <em>humans.txt</em>", HUMANSTXT_DOMAIN) ?>
 							</label>
 						</fieldset>
 					</td>
@@ -354,7 +354,7 @@ function humanstxt_options() {
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></span></legend>
-							<?php printf(__('Roles that can edit the content of the %s file:', HUMANSTXT_DOMAIN), '<em>humans.txt</em>') ?><br/>
+							<?php _e('Roles that can edit the content of the <em>humans.txt</em> file:', HUMANSTXT_DOMAIN) ?><br/>
 							<?php $humanstxt_roles = humanstxt_option('roles'); ?>
 							<?php foreach (get_editable_roles() as $role => $details) : ?>
 								<?php $checked = ($role == 'administrator' || in_array($role, $humanstxt_roles)) ? 'checked="checked" ' : ''; ?>
@@ -402,7 +402,7 @@ function humanstxt_options() {
 				<ul>
 					<?php foreach ($humanstxt_variables as $variable) : ?>
 						<?php $callback_result = call_user_func($variable[1]) ?>
-						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview:', HUMANSTXT_DOMAIN) ?> <?=esc_attr($callback_result)?>"<?php endif; ?>>
+						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview', HUMANSTXT_DOMAIN) ?>: <?=esc_attr($callback_result)?>"<?php endif; ?>>
 							<code>$<?=$variable[0]?>$</code>
 							<?php if (isset($variable[2]) && !empty($variable[2])) : ?>
 								&mdash; <?=$variable[2]?>

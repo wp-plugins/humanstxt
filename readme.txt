@@ -38,7 +38,7 @@ For detailed installation instructions, please read the [standard installation p
 
 This plugin can only work if WordPress is installed in the root of your domain.
 
-= Error: The site root contains physical humans.txt file =
+= Error: The site root contains a physical humans.txt file =
 
 If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the plugin can not work.
 
@@ -132,21 +132,21 @@ This version contains several fixes and improvements.
 
 == Variables ==
 
-* `$wp-title$` - Name of site/blog
+* `$wp-title$` - Name (title) of site/blog
 * `$wp-tagline$` - Tagline (description) of site/blog
 * `$wp-posts$` - Number of published posts
 * `$wp-pages$` - Number of published pages
-* `$wp-lastupdate$` - Time of last modified post or page
-* `$wp-language$` - Active WordPress language(s)
+* `$wp-lastupdate$` - Date of last modified post or page
+* `$wp-language$` - WordPress language(s)
 * `$wp-plugins$` - Activated WordPress plugins
 * `$wp-charset$` - Encoding used for pages and feeds
 * `$wp-version$` - Installed WordPress version
-* `$php-version$` - Currently running PHP parser version
+* `$php-version$` - Running PHP parser version
 * `$wp-theme$` - Summary of the active WP theme
-* `$wp-theme-name$` - Name of active WordPress theme
-* `$wp-theme-version$` - Version of active theme
-* `$wp-theme-author$` - Author name of active theme
-* `$wp-theme-author-link$` - Author URL of active theme
+* `$wp-theme-name$` - Name of the active theme
+* `$wp-theme-version$` - Version of the active theme
+* `$wp-theme-author$` - Author name of the active theme
+* `$wp-theme-author-link$` - Author URL of the active theme
 
 
 == Shortcode Usage ==
