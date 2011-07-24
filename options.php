@@ -96,7 +96,7 @@ function humanstxt_version_warning() {
 
 	if (version_compare($GLOBALS['wp_version'], '3.1', '<')) {
 		$updatelink = ' <a href="'.admin_url('update-core.php').'">'.sprintf(__('Please update your WordPress installation.', HUMANSTXT_DOMAIN)).'</a>';
-		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %1$s requires WordPress 3.1 or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
+		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %s requires WordPress 3.1 or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
 	}
 
 }
@@ -305,7 +305,9 @@ function humanstxt_options() {
 
 		<?php if (current_user_can('administrator')) : ?>
 
-			<?php if (($rating = humanstxt_rating()) !== false) : ?>
+			<?php if (!defined('HUMANSTXT_METABOX')) define('HUMANSTXT_METABOX', true); ?>
+
+			<?php if (HUMANSTXT_METABOX && ($rating = humanstxt_rating()) !== false) : ?>
 				<div id="humanstxt-metabox" class="postbox">
 					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
 					<div class="star-holder">
@@ -352,7 +354,7 @@ function humanstxt_options() {
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></span></legend>
-							<?php _e('Roles that can edit the content of the <em>humans.txt</em> file:', HUMANSTXT_DOMAIN) ?><br/>
+							<?php printf(__('Roles that can edit the content of the %s file:', HUMANSTXT_DOMAIN), '<em>humans.txt</em>') ?><br/>
 							<?php $humanstxt_roles = humanstxt_option('roles'); ?>
 							<?php foreach (get_editable_roles() as $role => $details) : ?>
 								<?php $checked = ($role == 'administrator' || in_array($role, $humanstxt_roles)) ? 'checked="checked" ' : ''; ?>

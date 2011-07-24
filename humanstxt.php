@@ -261,7 +261,7 @@ function humanstxt_shortcode($attributes) {
 
 	if (!$plain) {
 
-		if (!$pre) $content = nl2br($content); // convert line breaks
+		if (!$pre) $content = nl2br(trim($content)); // convert line breaks
 
 		if ($filter) {
 			if (!$pre) $content = wptexturize($content); // format common entities
@@ -459,21 +459,21 @@ function humanstxt_variables() {
 
 	$variables = array();
 	
-	$variables[] = array(__('wp-title', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpblogname', __('Name of site/blog', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-tagline', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptagline', __('Tagline (description) of site/blog', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-posts', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpposts', __('Number of published posts', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-pages', HUMANSTXT_DOMAIN), 'humanstxt_callback_wppages', __('Number of published pages', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-lastupdate', HUMANSTXT_DOMAIN), 'humanstxt_callback_lastupdate', __('Time of last modified post or page', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-language', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('Active WordPress language(s)', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('Activated WordPress plugins', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-charset', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpcharset', __('Encoding used for pages and feeds', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpversion', __('Installed WordPress version', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('php-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_phpversion', __('Currently running PHP parser version', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme', __('Summary of the active WP theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-theme-name', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_name', __('Name of active WordPress theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-theme-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_version', __('Version of active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-theme-author', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author', __('Author name of active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(__('wp-theme-author-link', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author URL of active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-title', 'Name of variable for the site/blog name', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpblogname', __('Name of site/blog', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-tagline', 'Name of variable for the site/blog tagline (description)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptagline', __('Tagline (description) of site/blog', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-posts', 'Name of variable for the number of published posts', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpposts', __('Number of published posts', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-pages', 'Name of variable for the number of published pages', HUMANSTXT_DOMAIN), 'humanstxt_callback_wppages', __('Number of published pages', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-lastupdate', 'Name of variable for the last modified timestamp', HUMANSTXT_DOMAIN), 'humanstxt_callback_lastupdate', __('Time of last modified post or page', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-language', 'Name of variable for the active WordPress languages(s)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('Active WordPress language(s)', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-plugins', 'Name of variable for the activated WordPress plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('Activated WordPress plugins', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-charset', 'Name of variable for the encoding (charset)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpcharset', __('Encoding used for pages and feeds', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-version', 'Name of variable for the installed WordPress version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpversion', __('Installed WordPress version', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('php-version', 'Name of variable for the running PHP version', HUMANSTXT_DOMAIN), 'humanstxt_callback_phpversion', __('Currently running PHP parser version', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-theme', 'Name of variable for the summary of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme', __('Summary of the active WP theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-theme-name', 'Name of variable for the name of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_name', __('Name of active WordPress theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-theme-version', 'Name of variable for the version of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_version', __('Version of active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-theme-author', 'Name of variable for author name of the active WordPress theme ', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author', __('Author name of active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-theme-author-link', 'Name of variable for author URL of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author URL of active theme', HUMANSTXT_DOMAIN));
 
 	return apply_filters('humanstxt_variables', $variables);
 
@@ -521,7 +521,7 @@ function humanstxt_default_content() {
 
 	humanstxt_load_textdomain();
 
-	return __(
+	return _x(
 '/* the humans responsible & colophon */
 /* humanstxt.org */
 
@@ -545,7 +545,7 @@ function humanstxt_default_content() {
 	Language: <English, Klingon, ...>
 	Components: <jQuery, Typekit, Modernizr, ...>
 	IDE: <Coda, Zend Studio, Photoshop, Terminal, ...>
-', HUMANSTXT_DOMAIN);
+', 'Default content of the humans.txt file', HUMANSTXT_DOMAIN);
 
 }
 
