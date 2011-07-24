@@ -1,18 +1,19 @@
-# Copyright (C) 2010 Humans TXT
+# Copyright (C) 2011 Humans TXT
 # This file is distributed under the same license as the Humans TXT package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Humans TXT 1.0.5\n"
+"Project-Id-Version: Humans TXT 1.0.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
-"POT-Creation-Date: 2011-07-24 01:31:33+00:00\n"
+"POT-Creation-Date: 2011-07-24 12:40:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2011-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
 #: humanstxt.php:462
+msgctxt "Name of variable for the site/blog name"
 msgid "wp-title"
 msgstr ""
 
@@ -21,6 +22,7 @@ msgid "Name of site/blog"
 msgstr ""
 
 #: humanstxt.php:463
+msgctxt "Name of variable for the site/blog tagline (description)"
 msgid "wp-tagline"
 msgstr ""
 
@@ -29,6 +31,7 @@ msgid "Tagline (description) of site/blog"
 msgstr ""
 
 #: humanstxt.php:464
+msgctxt "Name of variable for the number of published posts"
 msgid "wp-posts"
 msgstr ""
 
@@ -37,6 +40,7 @@ msgid "Number of published posts"
 msgstr ""
 
 #: humanstxt.php:465
+msgctxt "Name of variable for the number of published pages"
 msgid "wp-pages"
 msgstr ""
 
@@ -45,6 +49,7 @@ msgid "Number of published pages"
 msgstr ""
 
 #: humanstxt.php:466
+msgctxt "Name of variable for the last modified timestamp"
 msgid "wp-lastupdate"
 msgstr ""
 
@@ -53,6 +58,7 @@ msgid "Time of last modified post or page"
 msgstr ""
 
 #: humanstxt.php:467
+msgctxt "Name of variable for the active WordPress languages(s)"
 msgid "wp-language"
 msgstr ""
 
@@ -61,6 +67,7 @@ msgid "Active WordPress language(s)"
 msgstr ""
 
 #: humanstxt.php:468
+msgctxt "Name of variable for the activated WordPress plugins"
 msgid "wp-plugins"
 msgstr ""
 
@@ -69,6 +76,7 @@ msgid "Activated WordPress plugins"
 msgstr ""
 
 #: humanstxt.php:469
+msgctxt "Name of variable for the encoding (charset)"
 msgid "wp-charset"
 msgstr ""
 
@@ -77,6 +85,7 @@ msgid "Encoding used for pages and feeds"
 msgstr ""
 
 #: humanstxt.php:470
+msgctxt "Name of variable for the installed WordPress version"
 msgid "wp-version"
 msgstr ""
 
@@ -85,6 +94,7 @@ msgid "Installed WordPress version"
 msgstr ""
 
 #: humanstxt.php:471
+msgctxt "Name of variable for the running PHP version"
 msgid "php-version"
 msgstr ""
 
@@ -93,6 +103,7 @@ msgid "Currently running PHP parser version"
 msgstr ""
 
 #: humanstxt.php:472
+msgctxt "Name of variable for the summary of the active WordPress theme"
 msgid "wp-theme"
 msgstr ""
 
@@ -101,6 +112,7 @@ msgid "Summary of the active WP theme"
 msgstr ""
 
 #: humanstxt.php:473
+msgctxt "Name of variable for the name of the active WordPress theme"
 msgid "wp-theme-name"
 msgstr ""
 
@@ -109,6 +121,7 @@ msgid "Name of active WordPress theme"
 msgstr ""
 
 #: humanstxt.php:474
+msgctxt "Name of variable for the version of the active WordPress theme"
 msgid "wp-theme-version"
 msgstr ""
 
@@ -117,6 +130,7 @@ msgid "Version of active theme"
 msgstr ""
 
 #: humanstxt.php:475
+msgctxt "Name of variable for author name of the active WordPress theme "
 msgid "wp-theme-author"
 msgstr ""
 
@@ -125,6 +139,7 @@ msgid "Author name of active theme"
 msgstr ""
 
 #: humanstxt.php:476
+msgctxt "Name of variable for author URL of the active WordPress theme"
 msgid "wp-theme-author-link"
 msgstr ""
 
@@ -133,6 +148,7 @@ msgid "Author URL of active theme"
 msgstr ""
 
 #: humanstxt.php:524
+msgctxt "Default content of the humans.txt file"
 msgid ""
 "/* the humans responsible & colophon */\n"
 "/* humanstxt.org */\n"
@@ -164,10 +180,9 @@ msgid "Please update your WordPress installation."
 msgstr ""
 
 #: options.php:99
-msgid "Humans TXT %1$s requires WordPress 3.1 or higher."
+msgid "Humans TXT %s requires WordPress 3.1 or higher."
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (Humans TXT 1.0.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: options.php:122 options.php:286
 msgid "Humans TXT"
@@ -237,77 +252,71 @@ msgid ""
 "than the default."
 msgstr ""
 
-#: options.php:310
+#: options.php:312
 msgid ""
 "If you like this plugin, why not <br /><a href=\"%s\" title=\"%s\" rel="
 "\"external\">recommend it to others</a> by rating it?"
 msgstr ""
 
-#: options.php:310
+#: options.php:312
 msgid "Rate this plugin on WordPress.org"
 msgstr ""
 
-#: options.php:319
-msgid "(based on %s rating)"
-msgid_plural "(based on %s ratings)"
-msgstr[0] ""
-msgstr[1] ""
-
-#: options.php:326 options.php:329
+#: options.php:328 options.php:331
 msgid "Enable Plugin"
 msgstr ""
 
-#: options.php:332
+#: options.php:334
 msgid "View this site's humans.txt file"
 msgstr ""
 
-#: options.php:333
+#: options.php:335
 msgid "Activate %s file"
 msgstr ""
 
-#: options.php:339 options.php:342
+#: options.php:341 options.php:344
 msgid "Author Link Tag"
 msgstr ""
 
-#: options.php:345
+#: options.php:347
 msgid "Add an author link tag to the site, linked to the %s"
 msgstr ""
 
-#: options.php:351 options.php:354
+#: options.php:353 options.php:356
 msgid "Editing Permission"
 msgstr ""
 
-#: options.php:355
-msgid "Roles that can edit the content of the <em>humans.txt</em> file:"
+#: options.php:357
+msgid "Roles that can edit the content of the %s file:"
 msgstr ""
 
-#: options.php:377 options.php:384
+#: options.php:379 options.php:386
 msgid "Humans TXT File"
 msgstr ""
 
-#: options.php:385
+#: options.php:387
 msgid ""
 "If you need a little help with your humans.txt, try the \"Help\" button in "
 "the top right corner of this page."
 msgstr ""
 
-#: options.php:399
+#: options.php:401
 msgid "Variables"
 msgstr ""
 
-#: options.php:403
+#: options.php:405
 msgid "Preview:"
 msgstr ""
 
-#: options.php:411
+#: options.php:413
 msgid "Suggest another variable..."
 msgstr ""
 
-#: options.php:417
+#: options.php:419
 msgid "Shortcode Usage"
 msgstr ""
 
-#: options.php:418
+#: options.php:420
 msgid ""
 "You can use the <code>[humanstxt]</code> shortcode to display the <em>humans."
 "txt</em> file on a page or in a post. By default, all links, email addresses "
