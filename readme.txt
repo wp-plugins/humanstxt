@@ -27,9 +27,9 @@ For detailed installation instructions, please read the [standard installation p
 
 1. Upload the `/humanstxt/` directory and its contents to `/wp-content/plugins/`.
 2. Login to your WordPress installation and activate the plugin through the _Plugins_ menu.
-3. Activate the and edit your humans.txt file in the _Settings_ menu under _Humans TXT_.
+3. Activate the plugin and edit your humans.txt file in the _Settings_ menu under _Humans TXT_.
 
-**Please note:** This plugin does not modify or create a physical `humans.txt` file on your server, it generates it on the fly. If your site root contains a `humans.txt` file, this file physical will be shown to the visitor. In order to use this plugin, please delete your physical `humans.txt`. Don't forget to migrate or backup its contents.
+**Please note:** This plugin does not modify or create a physical `humans.txt` file on your server, it generates it on the fly. If your site root contains a `humans.txt` file, this physical file will be shown to the visitor. In order to use this plugin, please delete your physical `humans.txt`. Don't forget to migrate or backup it's contents.
 
 
 == Frequently Asked Questions ==
@@ -164,7 +164,7 @@ You can omit the wrapping with the `<p>` tag: `[humanstxt wrap="0"]`
 
 You can set a CSS id for the wrapping `<p>` tag: `[humanstxt id="my-humans-txt"]`
 
-And you can turn off the entity conversion for plain email addresses and common text entities: `[humanstxt filter="0"]` 
+You can turn off the encoding of email addresses and common text entities: `[humanstxt filter="0"]` 
 
 
 == Plugin Functions ==
@@ -197,7 +197,7 @@ Applied to the final content of the virtual humans.txt file.
 **humans_authortag**  
 Applied to the author link tag.
 
-**humanstxt_content**
+**humanstxt_content**  
 Applied to the humans.txt content. Applied prior to the `humans_txt` filter.
 
 **humanstxt_variables**  
@@ -237,4 +237,4 @@ Applied to current WordPress language(s): `$wp-language$`.
 Applied to returned date of the `$wp-lastupdate$` variable.
 
 **humanstxt_lastupdate_format**  
-Applied to the used date-format of the `$wp-lastupdate$` variable. See Codex: [Formatting Date and Time](http://codex.wordpress.org/Formatting_Date_and_Time)
+Applied to the used date-format of the `$wp-lastupdate$` variable. Read more about [date and time formatting](http://codex.wordpress.org/Formatting_Date_and_Time).

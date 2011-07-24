@@ -381,7 +381,7 @@ function humanstxt_options() {
 				<tr valign="top">
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e('Humans.txt file contents', HUMANSTXT_DOMAIN) ?></span></legend>
+							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
 							<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button in the top right corner of this page.', HUMANSTXT_DOMAIN) ?></label></span>
 							<textarea name="humanstxt_content" rows="25" cols="80" id="humanstxt_content" class="large-text code"><?=esc_textarea(humanstxt_content())?></textarea>
 						</fieldset>
