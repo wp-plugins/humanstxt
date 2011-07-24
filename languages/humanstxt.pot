@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Humans TXT 1.0.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
-"POT-Creation-Date: 2011-07-24 12:40:05+00:00\n"
+"POT-Creation-Date: 2011-07-24 13:31:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,142 +12,142 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: humanstxt.php:462
+#: humanstxt.php:468
 msgctxt "Name of variable for the site/blog name"
 msgid "wp-title"
 msgstr ""
 
-#: humanstxt.php:462
+#: humanstxt.php:468
 msgid "Name of site/blog"
 msgstr ""
 
-#: humanstxt.php:463
+#: humanstxt.php:469
 msgctxt "Name of variable for the site/blog tagline (description)"
 msgid "wp-tagline"
 msgstr ""
 
-#: humanstxt.php:463
+#: humanstxt.php:469
 msgid "Tagline (description) of site/blog"
 msgstr ""
 
-#: humanstxt.php:464
+#: humanstxt.php:470
 msgctxt "Name of variable for the number of published posts"
 msgid "wp-posts"
 msgstr ""
 
-#: humanstxt.php:464
+#: humanstxt.php:470
 msgid "Number of published posts"
 msgstr ""
 
-#: humanstxt.php:465
+#: humanstxt.php:471
 msgctxt "Name of variable for the number of published pages"
 msgid "wp-pages"
 msgstr ""
 
-#: humanstxt.php:465
+#: humanstxt.php:471
 msgid "Number of published pages"
 msgstr ""
 
-#: humanstxt.php:466
+#: humanstxt.php:472
 msgctxt "Name of variable for the last modified timestamp"
 msgid "wp-lastupdate"
 msgstr ""
 
-#: humanstxt.php:466
+#: humanstxt.php:472
 msgid "Time of last modified post or page"
 msgstr ""
 
-#: humanstxt.php:467
+#: humanstxt.php:473
 msgctxt "Name of variable for the active WordPress languages(s)"
 msgid "wp-language"
 msgstr ""
 
-#: humanstxt.php:467
+#: humanstxt.php:473
 msgid "Active WordPress language(s)"
 msgstr ""
 
-#: humanstxt.php:468
+#: humanstxt.php:474
 msgctxt "Name of variable for the activated WordPress plugins"
 msgid "wp-plugins"
 msgstr ""
 
-#: humanstxt.php:468
+#: humanstxt.php:474
 msgid "Activated WordPress plugins"
 msgstr ""
 
-#: humanstxt.php:469
+#: humanstxt.php:475
 msgctxt "Name of variable for the encoding (charset)"
 msgid "wp-charset"
 msgstr ""
 
-#: humanstxt.php:469
+#: humanstxt.php:475
 msgid "Encoding used for pages and feeds"
 msgstr ""
 
-#: humanstxt.php:470
+#: humanstxt.php:476
 msgctxt "Name of variable for the installed WordPress version"
 msgid "wp-version"
 msgstr ""
 
-#: humanstxt.php:470
+#: humanstxt.php:476
 msgid "Installed WordPress version"
 msgstr ""
 
-#: humanstxt.php:471
+#: humanstxt.php:477
 msgctxt "Name of variable for the running PHP version"
 msgid "php-version"
 msgstr ""
 
-#: humanstxt.php:471
+#: humanstxt.php:477
 msgid "Currently running PHP parser version"
 msgstr ""
 
-#: humanstxt.php:472
+#: humanstxt.php:478
 msgctxt "Name of variable for the summary of the active WordPress theme"
 msgid "wp-theme"
 msgstr ""
 
-#: humanstxt.php:472
+#: humanstxt.php:478
 msgid "Summary of the active WP theme"
 msgstr ""
 
-#: humanstxt.php:473
+#: humanstxt.php:479
 msgctxt "Name of variable for the name of the active WordPress theme"
 msgid "wp-theme-name"
 msgstr ""
 
-#: humanstxt.php:473
+#: humanstxt.php:479
 msgid "Name of active WordPress theme"
 msgstr ""
 
-#: humanstxt.php:474
+#: humanstxt.php:480
 msgctxt "Name of variable for the version of the active WordPress theme"
 msgid "wp-theme-version"
 msgstr ""
 
-#: humanstxt.php:474
+#: humanstxt.php:480
 msgid "Version of active theme"
 msgstr ""
 
-#: humanstxt.php:475
+#: humanstxt.php:481
 msgctxt "Name of variable for author name of the active WordPress theme "
 msgid "wp-theme-author"
 msgstr ""
 
-#: humanstxt.php:475
+#: humanstxt.php:481
 msgid "Author name of active theme"
 msgstr ""
 
-#: humanstxt.php:476
+#: humanstxt.php:482
 msgctxt "Name of variable for author URL of the active WordPress theme"
 msgid "wp-theme-author-link"
 msgstr ""
 
-#: humanstxt.php:476
+#: humanstxt.php:482
 msgid "Author URL of active theme"
 msgstr ""
 
-#: humanstxt.php:524
+#: humanstxt.php:530
 msgctxt "Default content of the humans.txt file"
 msgid ""
 "/* the humans responsible & colophon */\n"
@@ -180,7 +180,7 @@ msgid "Please update your WordPress installation."
 msgstr ""
 
 #: options.php:99
-msgid "Humans TXT %s requires WordPress 3.1 or higher."
+msgid "Humans TXT requires WordPress %s or higher."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
