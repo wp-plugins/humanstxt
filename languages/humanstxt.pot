@@ -159,10 +159,6 @@ msgid ""
 "\tIDE: <Coda, Zend Studio, Photoshop, Terminal, ...>\n"
 msgstr ""
 
-#: options.php:69
-msgid "You do not have sufficient permissions to access this page."
-msgstr ""
-
 #: options.php:98
 msgid "Please update your WordPress installation."
 msgstr ""
@@ -175,10 +171,6 @@ msgstr ""
 #. Plugin Name of the plugin/theme
 #: options.php:122 options.php:286
 msgid "Humans TXT"
-msgstr ""
-
-#: options.php:144 options.php:323
-msgid "Settings"
 msgstr ""
 
 #: options.php:166
@@ -227,10 +219,6 @@ msgstr ""
 msgid "Plugin Support Forum"
 msgstr ""
 
-#: options.php:289
-msgid "Settings saved."
-msgstr ""
-
 #: options.php:292
 msgid "Read FAQ..."
 msgstr ""
@@ -259,26 +247,6 @@ msgstr ""
 msgid "Rate this plugin on WordPress.org"
 msgstr ""
 
-#: options.php:313
-msgid "5 stars"
-msgstr ""
-
-#: options.php:314
-msgid "4 stars"
-msgstr ""
-
-#: options.php:315
-msgid "3 stars"
-msgstr ""
-
-#: options.php:316
-msgid "2 stars"
-msgstr ""
-
-#: options.php:317
-msgid "1 star"
-msgstr ""
-
 #: options.php:319
 msgid "(based on %s rating)"
 msgid_plural "(based on %s ratings)"
@@ -291,10 +259,6 @@ msgstr ""
 
 #: options.php:332
 msgid "View this site's humans.txt file"
-msgstr ""
-
-#: options.php:332 options.php:345
-msgid "humans.txt"
 msgstr ""
 
 #: options.php:333
@@ -315,10 +279,6 @@ msgstr ""
 
 #: options.php:355
 msgid "Roles that can edit the content of the <em>humans.txt</em> file:"
-msgstr ""
-
-#: options.php:372 options.php:392
-msgid "Save Changes"
 msgstr ""
 
 #: options.php:377 options.php:384

@@ -329,7 +329,7 @@ function humanstxt_options() {
 							<legend class="screen-reader-text"><span><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_enable">
 								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?> />
-								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">'.__('humans.txt', HUMANSTXT_DOMAIN).'</a>' ?>
+								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">humans.txt</a>' ?>
 								<?php printf(__("Activate %s file", HUMANSTXT_DOMAIN), $humanstxt_link) ?>
 							</label>
 						</fieldset>
@@ -342,7 +342,7 @@ function humanstxt_options() {
 							<legend class="screen-reader-text"><span><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_authortag">
 								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?> />
-								<?php printf(__('Add an author link tag to the site, linked to the %s', HUMANSTXT_DOMAIN), '<em>'.__('humans.txt', HUMANSTXT_DOMAIN).'</em>') ?>
+								<?php printf(__('Add an author link tag to the site, linked to the %s', HUMANSTXT_DOMAIN), '<em>humans.txt</em>') ?>
 							</label>
 						</fieldset>
 					</td>
