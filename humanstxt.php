@@ -38,6 +38,12 @@ License: GPLv3
 define('HUMANSTXT_VERSION', '1.0.6');
 
 /**
+ * Required WordPress version.
+ * @since 1.0.6
+ */
+define('HUMANSTXT_REQUIRED_VERSION', '3.2');
+
+/**
  * Absolute path to the main Humans TXT plugin file.
  */
 define('HUMANSTXT_PLUGIN_FILE', __FILE__);

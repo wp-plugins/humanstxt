@@ -94,9 +94,9 @@ function humanstxt_uninstall() {
  */
 function humanstxt_version_warning() {
 
-	if (version_compare($GLOBALS['wp_version'], '3.1', '<')) {
+	if (version_compare($GLOBALS['wp_version'], HUMANSTXT_REQUIRED_VERSION, '<')) {
 		$updatelink = ' <a href="'.admin_url('update-core.php').'">'.sprintf(__('Please update your WordPress installation.', HUMANSTXT_DOMAIN)).'</a>';
-		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %s requires WordPress 3.1 or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
+		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT requires WordPress %s or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_REQUIRED_VERSION).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
 	}
 
 }
