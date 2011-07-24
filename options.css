@@ -1,0 +1,88 @@
+
+#humanstxt-metabox { float: right; width: auto; min-width: 0; padding: 10px 20px; text-align: center; border-color: #dfdfdf; background-color: #f9f9f9; background-image: none; }
+	#humanstxt .text-rateit { margin-top: 0; }
+	#humanstxt .star-holder { margin: 0 auto; }
+
+#humanstxt .form-table { clear: left; float: left; width: auto; margin-top: 0; }
+	#humanstxt-editor-wrap { float: left; padding-right: 10px; }
+		#humanstxt-editor-wrap .form-table { float: none; }
+			#humanstxt-editor-wrap .form-table td { padding-top: 0; }
+				#humanstxt_content { display: block; resize: none; }
+		#humanstxt-editor-wrap .submit { margin-top: 0; padding-top: 1em; }
+
+#humanstxt-vars { float: left; padding: 15px 0 1em 0; }
+	#humanstxt-vars h4 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }
+	#humanstxt-vars ul, #humanstxt-vars p { padding-left: 10px; }
+		#humanstxt-vars li code { font-size: 13px; }
+
+#humansTooltip {
+	display: none;
+	position: absolute;
+	z-index: 100;
+	width: auto;
+	max-width: 250px;
+	overflow: hidden;
+	word-wrap: break-word;
+	padding: 5px 8px 4px 8px;
+	border: 1px solid #888;
+	background-color: #f1f1f1;
+	background-image: -ms-linear-gradient(top, #f9f9f9, #ececec);
+	background-image: -moz-linear-gradient(top, #f9f9f9, #ececec);
+	background-image: -o-linear-gradient(top, #f9f9f9, #ececec);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#ececec));
+	background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec);
+	background-image: linear-gradient(top, #f9f9f9, #ececec);
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;	
+	-moz-box-shadow: 0 0 2px #555;
+	-khtml-box-shadow: 0 0 2px #555;
+	-webkit-box-shadow: 0 0 2px #555;
+	box-shadow: 0 0 2px #555;
+}
+
+
+/* taken from /wp-admin/css/theme-install.dev.css */
+div.star-holder {
+	position: relative;
+	height: 19px;
+	width: 100px;
+	font-size: 19px;
+}
+
+div.star {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	letter-spacing: 1ex;
+	border: none;
+}
+
+.star1 { width: 20%; }
+.star2 { width: 40%; }
+.star3 { width: 60%; }
+.star4 { width: 80%; }
+.star5 { width: 100%; }
+
+.star img, div.star a, div.star a:hover, div.star a:visited {
+	display: block;
+	position: absolute;
+	right: 0;
+	border: none;
+	text-decoration: none;
+}
+
+div.star img {
+	width: 19px;
+	height: 19px;
+	border-left: 1px solid #f9f9f9;
+	border-right: 1px solid #f9f9f9;
+}
+
+
+/* why fix if you can hide? MSIE 6-7 */
+* html #humanstxt-metabox { display: none !important; }
+*+html #humanstxt-metabox { display: none !important; }
