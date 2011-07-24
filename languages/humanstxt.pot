@@ -1,10 +1,10 @@
 # Copyright (C) 2011 Humans TXT
-# This file is distributed under the same license as the Humans TXT package.
+# This file is distributed under the same license as the Humans TXT plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Humans TXT 1.0.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
-"POT-Creation-Date: 2011-07-24 13:31:25+00:00\n"
+"POT-Creation-Date: 2011-07-24 16:10:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,12 +13,12 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
 #: humanstxt.php:468
-msgctxt "Name of variable for the site/blog name"
+msgctxt "Name of variable for the site/blog name (title)"
 msgid "wp-title"
 msgstr ""
 
 #: humanstxt.php:468
-msgid "Name of site/blog"
+msgid "Name (title) of site/blog"
 msgstr ""
 
 #: humanstxt.php:469
@@ -54,20 +54,20 @@ msgid "wp-lastupdate"
 msgstr ""
 
 #: humanstxt.php:472
-msgid "Time of last modified post or page"
+msgid "Date of last modified post/page"
 msgstr ""
 
 #: humanstxt.php:473
-msgctxt "Name of variable for the active WordPress languages(s)"
+msgctxt "Name of variable for WordPress languages(s)"
 msgid "wp-language"
 msgstr ""
 
 #: humanstxt.php:473
-msgid "Active WordPress language(s)"
+msgid "WordPress language(s)"
 msgstr ""
 
 #: humanstxt.php:474
-msgctxt "Name of variable for the activated WordPress plugins"
+msgctxt "Name of variable for activated WordPress plugins"
 msgid "wp-plugins"
 msgstr ""
 
@@ -99,7 +99,7 @@ msgid "php-version"
 msgstr ""
 
 #: humanstxt.php:477
-msgid "Currently running PHP parser version"
+msgid "Running PHP parser version"
 msgstr ""
 
 #: humanstxt.php:478
@@ -108,7 +108,7 @@ msgid "wp-theme"
 msgstr ""
 
 #: humanstxt.php:478
-msgid "Summary of the active WP theme"
+msgid "Summary of the active WordPress theme"
 msgstr ""
 
 #: humanstxt.php:479
@@ -117,7 +117,7 @@ msgid "wp-theme-name"
 msgstr ""
 
 #: humanstxt.php:479
-msgid "Name of active WordPress theme"
+msgid "Name of the active theme"
 msgstr ""
 
 #: humanstxt.php:480
@@ -126,7 +126,7 @@ msgid "wp-theme-version"
 msgstr ""
 
 #: humanstxt.php:480
-msgid "Version of active theme"
+msgid "Version of the active theme"
 msgstr ""
 
 #: humanstxt.php:481
@@ -135,7 +135,7 @@ msgid "wp-theme-author"
 msgstr ""
 
 #: humanstxt.php:481
-msgid "Author name of active theme"
+msgid "Author name of the active theme"
 msgstr ""
 
 #: humanstxt.php:482
@@ -144,7 +144,7 @@ msgid "wp-theme-author-link"
 msgstr ""
 
 #: humanstxt.php:482
-msgid "Author URL of active theme"
+msgid "Author URL of the active theme"
 msgstr ""
 
 #: humanstxt.php:530
@@ -180,7 +180,7 @@ msgid "Please update your WordPress installation."
 msgstr ""
 
 #: options.php:99
-msgid "Humans TXT requires WordPress %s or higher."
+msgid "Humans TXT %1$s requires WordPress %2$s or higher."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -239,17 +239,17 @@ msgid "Read FAQ..."
 msgstr ""
 
 #: options.php:295
-msgid "WordPress is not installed in the site root."
+msgid "Error: WordPress is not installed in the site root."
 msgstr ""
 
 #: options.php:297
-msgid "The site root contains physical humans.txt file."
+msgid "Error: The site root contains a physical humans.txt file."
 msgstr ""
 
 #: options.php:299
 msgid ""
-"Please <a href=\"%s\">update your permalink structure</a> to something other "
-"than the default."
+"Error: Please <a href=\"%s\">update your permalink structure</a> to "
+"something other than the default."
 msgstr ""
 
 #: options.php:312
@@ -270,8 +270,15 @@ msgstr ""
 msgid "View this site's humans.txt file"
 msgstr ""
 
+#: options.php:334
+msgctxt ""
+"Used in 'Activate the %s file' in options screen, linked to the site's "
+"humans.txt file"
+msgid "humans.txt"
+msgstr ""
+
 #: options.php:335
-msgid "Activate %s file"
+msgid "Activate the %s file"
 msgstr ""
 
 #: options.php:341 options.php:344
@@ -279,7 +286,9 @@ msgid "Author Link Tag"
 msgstr ""
 
 #: options.php:347
-msgid "Add an author link tag to the site, linked to the %s"
+msgid ""
+"Add an author link tag to the site's head tag, linked to the <em>humans.txt</"
+"em>"
 msgstr ""
 
 #: options.php:353 options.php:356
@@ -287,7 +296,7 @@ msgid "Editing Permission"
 msgstr ""
 
 #: options.php:357
-msgid "Roles that can edit the content of the %s file:"
+msgid "Roles that can edit the content of the <em>humans.txt</em> file:"
 msgstr ""
 
 #: options.php:379 options.php:386
@@ -305,7 +314,7 @@ msgid "Variables"
 msgstr ""
 
 #: options.php:405
-msgid "Preview:"
+msgid "Preview"
 msgstr ""
 
 #: options.php:413
