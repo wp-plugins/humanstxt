@@ -15,10 +15,15 @@ Credit the people behind your website in your **humans.txt** file. Easy to edit,
 * Use **variables** like a _last-updated_ date, active plugins and [many others...](http://wordpress.org/extend/plugins/humanstxt/other_notes/#Variables)
 * Use the `[humanstxt]` shortcode to display your _humans.txt_ on your site
 * Add an author link tag to your site's `<head>` tag
-* Allow non-admins to edit the _humans.txt_ content
-* Customize this plugin with custom [filters and actions...](http://wordpress.org/extend/plugins/humanstxt/other_notes/#Plugin-Actions-and-Filters)
+* Allow non-admins to edit the _humans.txt_
+* Customize everything with custom [filters, actions and pluggable functions](http://wordpress.org/extend/plugins/humanstxt/other_notes/)
+* Restore previously saved revisions of your _humans.txt_
 
 More information on the Humans TXT can be found on the [official Humans TXT website](http://humanstxt.org/).
+
+= Translators =
+
+* German (de_DE) - [Till Krüss](http://tillkruess.com/)
 
 
 == Installation ==
@@ -137,6 +142,7 @@ This version contains several fixes and improvements.
 * `$wp-posts$` - Number of published posts
 * `$wp-pages$` - Number of published pages
 * `$wp-lastupdate$` - Date of last modified post or page
+* `$wp-authors$` - Active authors and their contact details
 * `$wp-language$` - WordPress language(s)
 * `$wp-plugins$` - Activated WordPress plugins
 * `$wp-charset$` - Encoding used for pages and feeds
@@ -168,7 +174,7 @@ You can set a CSS id for the wrapping `<p>` tag: `[humanstxt id="my-humans-txt"]
 You can turn off the encoding of email addresses and common text entities: `[humanstxt filter="0"]` 
 
 
-== Plugin Functions ==
+== Useful Functions ==
 
 **humanstxt()**  
 Echos the content of the virtual humans.txt file. Use `get_humanstxt()` to get the contents as a _string_. 
@@ -176,8 +182,10 @@ Echos the content of the virtual humans.txt file. Use `get_humanstxt()` to get t
 **is_humans()**  
 Determines if the current request is for the virtual humans.txt file.
 
-**humanstxt_authortag()**  
-Echos a XHTML-conform author link tag linked to the humans.txt file. Use `get_humanstxt_authortag()` to get the tag as a _string_.
+
+== Pluggable Functions ==
+
+All callback functions of the default variables can be overridden. The callback functions are located in `[callbacks.php](http://plugins.trac.wordpress.org/browser/humanstxt/trunk/callbacks.php)`
 
 
 == Plugin Actions and Filters ==

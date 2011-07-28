@@ -23,6 +23,7 @@
  * @copyright 2011 Till Krüss
  */
 
+if (!function_exists('humanstxt_callback_phpversion')) :
 /**
  * Returns the server's PHP version.
  * 
@@ -31,7 +32,9 @@
 function humanstxt_callback_phpversion() {
 	return phpversion();
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wpversion')) :
 /**
  * Returns the WordPress version.
  * 
@@ -40,7 +43,9 @@ function humanstxt_callback_phpversion() {
 function humanstxt_callback_wpversion() {
 	return get_bloginfo('version');
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wpblogname')) :
 /**
  * Returns the site/blog title.
  * 
@@ -51,7 +56,9 @@ function humanstxt_callback_wpversion() {
 function humanstxt_callback_wpblogname() {
 	return get_bloginfo('name');
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wptagline')) :
 /**
  * Returns the site/blog description (tagline).
  * 
@@ -62,7 +69,9 @@ function humanstxt_callback_wpblogname() {
 function humanstxt_callback_wptagline() {
 	return get_bloginfo('description');
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wpcharset')) :
 /**
  * Returns the encoding used for pages and feeds.
  * 
@@ -73,7 +82,9 @@ function humanstxt_callback_wptagline() {
 function humanstxt_callback_wpcharset() {
 	return get_bloginfo('charset');
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wpposts')) :
 /**
  * Returns count of posts that are published. Can be
  * modified using the 'humanstxt_postcount' filter.
@@ -86,7 +97,9 @@ function humanstxt_callback_wpposts() {
 	$postcounts = wp_count_posts();
 	return apply_filters('humanstxt_postcount', $postcounts->publish);
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wppages')) :
 /**
  * Returns count of pages that are published. Can be
  * modified using the 'humanstxt_pagecount' filter.
@@ -99,7 +112,9 @@ function humanstxt_callback_wppages() {
 	$pagecounts = wp_count_posts('page');
 	return apply_filters('humanstxt_pagecount', $pagecounts->publish);
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wplanguage')) :
 /**
  * Returns user-friendly language of WordPress.
  * Supports WPML, qTranslate and xili-language.
@@ -157,7 +172,9 @@ function humanstxt_callback_wplanguage() {
 	return apply_filters('humanstxt_languages', $active_languages);
 
 }
+endif;
 
+if (!function_exists('humanstxt_callback_lastupdate')) :
 /**
  * Returns YYYY/MM/DD timestamp of the latest modified post/page which is published.
  * The date format can be modified with the 'humanstxt_lastupdate_format' filter.
@@ -174,7 +191,37 @@ function humanstxt_callback_lastupdate() {
 	}
 	return apply_filters('humanstxt_lastupdate', $last_edit);
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wpauthors')) :
+/**
+ * Returns all authors with a least 1 post. The format can be adjusted
+ * with the 'humanstxt_authors_format' filter and the returned list
+ * can be modified with the 'humanstxt_authors' filter.
+ *
+ * @since 1.0.6
+ *
+ * @return string|null A list of active authors
+ */
+function humanstxt_callback_wpauthors() {
+	$authors = null;
+	$users = get_users(array('who' => 'author', 'orderby' => 'display_name', 'fields' => array('ID', 'display_name', 'user_email', 'user_url')));
+	if (!empty($users)) {
+		foreach ($users as $user) $author_ids[] = $user->ID;
+		$authors_posts = count_many_users_posts($author_ids);
+		$format = apply_filters('humanstxt_authors_format', "\t".'%1$s: %2$s'."\n\n");
+		foreach ($users as $user) {
+			if ($authors_posts[$user->ID] > 0 && !empty($user->display_name)) {
+				$contact = empty($user->user_url) ? $user->user_email : $user->user_url;
+				$authors .= sprintf($format, $user->display_name, $contact);
+			}
+		}
+	}
+	return apply_filters('humanstxt_authors', ltrim($authors));
+}
+endif;
+
+if (!function_exists('humanstxt_callback_wpplugins')) :
 /**
  * Returns a comma separated list of all active WordPress plugins.
  * Uses the 'humanstxt_separator' filter which is ', ' (comma + space) by
@@ -198,7 +245,9 @@ function humanstxt_callback_wpplugins() {
 	}
 	return null;
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wptheme')) :
 /**
  * Returns a summary of the active WordPress theme:
  * "Theme-Name (Version) by Author (Author-Link)"
@@ -217,7 +266,9 @@ function humanstxt_callback_wptheme() {
 	}
 	return apply_filters('humanstxt_wptheme', $theme);
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wptheme_name')) :
 /**
  * Returns the theme name or NULL if n/a.
  *  
@@ -227,7 +278,9 @@ function humanstxt_callback_wptheme_name() {
 	$theme_data = get_theme(get_current_theme());
 	return empty($theme_data['Name']) ? null : $theme_data['Name'];
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wptheme_version')) :
 /**
  * Returns the theme's version or NULL if n/a.
  *  
@@ -237,7 +290,9 @@ function humanstxt_callback_wptheme_version() {
 	$theme_data = get_theme(get_current_theme());
 	return empty($theme_data['Version']) ? null : $theme_data['Version'];
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wptheme_author')) :
 /**
  * Returns the theme's author name or NULL if n/a.
  *  
@@ -247,7 +302,9 @@ function humanstxt_callback_wptheme_author() {
 	$theme_data = get_theme(get_current_theme());
 	return empty($theme_data['Author Name']) ? null : $theme_data['Author Name'];
 }
+endif;
 
+if (!function_exists('humanstxt_callback_wptheme_author_link')) :
 /**
  * Returns the theme's author link or NULL if n/a.
  *  
@@ -257,5 +314,6 @@ function humanstxt_callback_wptheme_author_link() {
 	$theme_data = get_theme(get_current_theme());
 	return empty($theme_data['Author URI']) ? null : $theme_data['Author URI'];
 }
+endif;
 
 ?>

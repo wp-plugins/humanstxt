@@ -500,7 +500,7 @@ function humanstxt_replace_variables($string) {
  * applying the 'humanstxt_variables' filter to it.
  * 
  * Each array value represents a content-variable:
- * array(string $varname, callback $function, string $description);
+ * array(string $varname, callback $function, string $description [, bool $preview = true]);
  * 
  * @return array $variables Default content-variables.
  */
@@ -515,6 +515,7 @@ function humanstxt_variables() {
 	$variables[] = array(_x('wp-posts', 'Name of variable for the number of published posts', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpposts', __('Number of published posts', HUMANSTXT_DOMAIN));
 	$variables[] = array(_x('wp-pages', 'Name of variable for the number of published pages', HUMANSTXT_DOMAIN), 'humanstxt_callback_wppages', __('Number of published pages', HUMANSTXT_DOMAIN));
 	$variables[] = array(_x('wp-lastupdate', 'Name of variable for the last modified timestamp', HUMANSTXT_DOMAIN), 'humanstxt_callback_lastupdate', __('Date of last modified post/page', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-authors', 'Name of variable for the author list', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpauthors', __('Active authors and their contact details', HUMANSTXT_DOMAIN), false);
 	$variables[] = array(_x('wp-language', 'Name of variable for WordPress languages(s)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('WordPress language(s)', HUMANSTXT_DOMAIN));
 	$variables[] = array(_x('wp-plugins', 'Name of variable for activated WordPress plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('Activated WordPress plugins', HUMANSTXT_DOMAIN));
 	$variables[] = array(_x('wp-charset', 'Name of variable for the encoding (charset)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpcharset', __('Encoding used for pages and feeds', HUMANSTXT_DOMAIN));
