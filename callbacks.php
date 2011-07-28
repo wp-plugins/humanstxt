@@ -79,7 +79,6 @@ function humanstxt_callback_wpcharset() {
  * modified using the 'humanstxt_postcount' filter.
  * 
  * @since 1.0.4
- * @uses wp_count_posts()
  * 
  * @return string Number of published posts
  */
@@ -93,7 +92,6 @@ function humanstxt_callback_wpposts() {
  * modified using the 'humanstxt_pagecount' filter.
  * 
  * @since 1.0.4
- * @uses wp_count_posts()
  * 
  * @return string Number of published pages
  */
@@ -106,7 +104,6 @@ function humanstxt_callback_wppages() {
  * Returns user-friendly language of WordPress.
  * Supports WPML, qTranslate and xili-language.
  * 
- * @uses format_code_lang()
  * @global $sitepress
  * @global $q_config
  * @global $xili_language
@@ -184,8 +181,7 @@ function humanstxt_callback_lastupdate() {
  * which is rewritable with the 'humanstxt_plugins_separator' filter.
  * Final function result can be modified with the 'humanstxt_plugins' filter.
  * 
- * @uses get_plugin_data()
- * @return string $active_plugins List of active WP plugins.
+ * @return string|null $active_plugins List of active WP plugins.
  */
 function humanstxt_callback_wpplugins() {
 	$active_plugins = get_option('active_plugins', array());
@@ -208,7 +204,7 @@ function humanstxt_callback_wpplugins() {
  * "Theme-Name (Version) by Author (Author-Link)"
  * Function result can be modified with the 'humanstxt_wptheme' filter.
  * 
- * @return string The theme's author name.
+ * @return string|null The theme's author name.
  */
 function humanstxt_callback_wptheme() {
 	$theme_data = get_theme(get_current_theme());
@@ -225,7 +221,7 @@ function humanstxt_callback_wptheme() {
 /**
  * Returns the theme name or NULL if n/a.
  *  
- * @return string The theme name.
+ * @return string|null The theme name.
  */
 function humanstxt_callback_wptheme_name() {
 	$theme_data = get_theme(get_current_theme());
@@ -235,7 +231,7 @@ function humanstxt_callback_wptheme_name() {
 /**
  * Returns the theme's version or NULL if n/a.
  *  
- * @return string The theme's version name.
+ * @return string|null The theme's version name.
  */
 function humanstxt_callback_wptheme_version() {
 	$theme_data = get_theme(get_current_theme());
@@ -245,7 +241,7 @@ function humanstxt_callback_wptheme_version() {
 /**
  * Returns the theme's author name or NULL if n/a.
  *  
- * @return string The theme's author name.
+ * @return string|null The theme's author name.
  */
 function humanstxt_callback_wptheme_author() {
 	$theme_data = get_theme(get_current_theme());
@@ -255,7 +251,7 @@ function humanstxt_callback_wptheme_author() {
 /**
  * Returns the theme's author link or NULL if n/a.
  *  
- * @return string The theme's author URI.
+ * @return string|null The theme's author URI.
  */
 function humanstxt_callback_wptheme_author_link() {
 	$theme_data = get_theme(get_current_theme());

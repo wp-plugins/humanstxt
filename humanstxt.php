@@ -10,7 +10,7 @@ License: GPLv3
 */
 
 /**
- * This file contains all non-admin code of the Humans TXT plugin.
+ * This file contains the commonly used code of the Humans TXT plugin.
  *
  * Copyright 2011 Till Krüss  (www.tillkruess.com)
  *
@@ -60,6 +60,7 @@ define('HUMANSTXT_DOMAIN', basename(HUMANSTXT_PLUGIN_PATH));
 
 /**
  * Default amount of stored revisions.
+ * Use the 'humanstxt_max_revisions' filter to change it.
  * @since 1.0.6
  */
 define('HUMANSTXT_MAX_REVISIONS', '50');
@@ -113,8 +114,6 @@ function get_humanstxt() {
 
 /**
  * Echos a XHTML-conform author link tag.
- *
- * @uses get_humanstxt_authortag()
  */
 function humanstxt_authortag() {
 	echo get_humanstxt_authortag();
@@ -152,8 +151,8 @@ function humanstxt_exists() {
 }
 
 /**
- * Determines if WordPress is installed the site root. Returned
- * value can be overridden with the HUMANSTXT_IS_ROOTINSTALL constant. 
+ * Determines if WordPress is installed the site root.
+ * Use the HUMANSTXT_IS_ROOTINSTALL constant to override.
  * 
  * @return bool
  */
@@ -173,10 +172,9 @@ function humanstxt_is_rootinstall() {
 
 /**
  * Callback function for 'init' action.
- * Registers humans.txt rewrite rules, flushes rules if necessary.
+ * Registers humans.txt rewrite rules and calls flush_rewrite_rules()
+ * if necessary (performance friendly of course).
  * 
- * @uses humanstxt_load_options()
- * @uses humanstxt_is_rootinstall()
  * @global $wp_rewrite
  */
 function humanstxt_init() {
@@ -219,8 +217,6 @@ function humanstxt_init() {
 /**
  * Callback function for 'template_redirect' action.
  * Calls 'do_humans' action if is_humans() is positive.
- * 
- * @uses is_humans()
  */
 function humanstxt_template_redirect() {
 	if (is_humans()) {
@@ -232,8 +228,6 @@ function humanstxt_template_redirect() {
 /**
  * Callback function for 'do_humans' action.
  * Calls 'do_humanstxt' action and echos get_humanstxt().
- * 
- * @uses get_humanstxt()
  */
 function humanstxt_do_humans() {
 
@@ -346,9 +340,7 @@ function humanstxt_shortcode($attributes) {
 }
 
 /**
- * Loads plugin text-domain if not loaded.
- * 
- * @uses is_textdomain_loaded
+ * Loads the plugin text-domain, if not already loaded.
  */
 function humanstxt_load_textdomain() {
 	if (!is_textdomain_loaded(HUMANSTXT_DOMAIN)) {
@@ -392,23 +384,21 @@ function humanstxt_load_options() {
  * @global $humanstxt_options
  * 
  * @param string $option Name of the option.
- * @return mixed Plugin option value
+ * @return mixed|null Plugin option value
  */
 function humanstxt_option($option) {
 
 	global $humanstxt_options;
 
 	humanstxt_load_options();
-
 	return isset($humanstxt_options[$option]) ? $humanstxt_options[$option] : null;
 
 }
 
 /**
  * Returns stored humans.txt file content.
- * Stores and returns default humans.txt content, if not set yet.
+ * Stores and returns default humans.txt content, if not stored yet.
  * 
- * @uses humanstxt_default_content()
  * @return string $content
  */
 function humanstxt_content() {
@@ -425,7 +415,15 @@ function humanstxt_content() {
 
 }
 
-// TODO: write func comment
+/**
+ * Returns an array with all stored revisions, containing each
+ * revions's content, author-id and it's time of creation.
+ * Returns FALSE if revisions are disabled.
+ * 
+ * @since 1.0.6
+ * 
+ * @return array|false Revisions of the humans.txt file
+ */
 function humanstxt_revisions() {
 
 	// are revisions disabled?
@@ -444,7 +442,15 @@ function humanstxt_revisions() {
 
 }
 
-// TODO: write func comment
+/**
+ * Stores a new revision with the given $content.
+ * Ensures that only the last 50 revisons are stored.
+ * Limit can be changed with the 'humanstxt_max_revisions' filter.
+ * 
+ * @since 1.0.6
+ * 
+ * @param string $content Revisions content
+ */
 function humanstxt_add_revision($content) {
 
 	$current_user = wp_get_current_user();
@@ -459,9 +465,7 @@ function humanstxt_add_revision($content) {
 }
 
 /**
- * Replaces all valid content-variables in given string and return it.
- * 
- * @uses humanstxt_valid_variables()
+ * Replaces all valid content-variables in given string and returns it.
  * 
  * @param string $string String in which content-variables should be replaced.
  * @return string $string Given string with replaced content-variables.
@@ -498,7 +502,6 @@ function humanstxt_replace_variables($string) {
  * Each array value represents a content-variable:
  * array(string $varname, callback $function, string $description);
  * 
- * @uses humanstxt_load_textdomain()
  * @return array $variables Default content-variables.
  */
 function humanstxt_variables() {
@@ -530,7 +533,6 @@ function humanstxt_variables() {
 /**
  * Returns an array all valid content-variables.
  * 
- * @uses humanstxt_variables()
  * @return array $variables Valid content-variables.
  */
 function humanstxt_valid_variables() {
@@ -562,7 +564,6 @@ function humanstxt_valid_variables() {
  * but fast, since we have a translated string *without* having to
  * load the plugin text-domain on every request.
  * 
- * @uses humanstxt_load_textdomain()
  * @return string Default humans.txt file content.
  */
 function humanstxt_default_content() {

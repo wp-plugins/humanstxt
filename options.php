@@ -59,8 +59,10 @@ register_uninstall_hook(__FILE__, 'humanstxt_uninstall');
 humanstxt_load_textdomain();
 
 /**
- * Callback function for 'admin_init' action. Registers our CSS
- * and JavaScript file and calls humanstxt_update_options() if necessary.
+ * Callback function for 'admin_init' action.
+ * Registers the CSS and JavaScript file.
+ * Calls humanstxt_update_options() if necessary.
+ * Calls humanstxt_restore_revision() if necessary.
  */
 function humanstxt_admin_init() {
 
@@ -89,8 +91,8 @@ function humanstxt_admin_init() {
 }
 
 /**
- * Callback function if plugin is uninstalled. Deletes 
- * plugin settings in database.
+ * Callback function if plugin is uninstalled.
+ * Deletes all plugin options from the database.
  */
 function humanstxt_uninstall() {
 	delete_option('humanstxt_options');
@@ -100,9 +102,7 @@ function humanstxt_uninstall() {
 
 /**
  * Callback function for 'admin_notices' action.
- * Prints warning message if WordPress version is to old.
- * The required version in the readme.txt file might be higher
- * to ensure a prettier UI.
+ * Prints warning message if the current WP version is too old.
  * 
  * @since 1.0.1
  */
@@ -116,9 +116,8 @@ function humanstxt_version_warning() {
 }
 
 /**
- * Callback function for 'admin_menu' action. Registers options page
- * if the current user has access and tells WordPress to print our CSS
- * and JavaScript file in the corresponding actions.
+ * Callback function for 'admin_menu' action.
+ * Registers the options page if the current user has access.
  * 
  * @global $humanstxt_screen_id
  */
@@ -202,10 +201,8 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 }
 
 /**
- * Updates plugin options and redirects to
- * plugin options page if successful.
+ * Updates the plugin options and redirects to plugin options page.
  * 
- * @uses HUMANSTXT_OPTIONS_URL
  * @global $humanstxt_options
  */
 function humanstxt_update_options() {
@@ -245,7 +242,15 @@ function humanstxt_update_options() {
 
 }
 
-// TODO: function comment
+/**
+ * Replaces the 'humanstxt_content' with the content of the
+ * given $revision if revisions aren't disabled. Redirects to
+ * the plugin options page.
+ * 
+ * @since 1.0.6
+ * 
+ * @param int $revision Revisons number (key)
+ */
 function humanstxt_restore_revision($revision) {
 
 	$revisions = humanstxt_revisions();
@@ -264,11 +269,7 @@ function humanstxt_restore_revision($revision) {
 /**
  * Returns an array with plugin rating and total votes from WordPress.org.
  * 
- * @uses plugins_api()
- * @uses get_transient()
- * @uses set_transient()
- * 
- * @return array Plugin rating and total votes. 
+ * @return array|false Plugin rating and total votes. 
  */
 function humanstxt_rating() {
 
@@ -296,10 +297,12 @@ function humanstxt_rating() {
 }
 
 /**
- * Prints plugin options page content.
+ * Callback function registered with add_options_page().
+ * Prints the requested page (options or revisions).
  */
 function humanstxt_options() {
 
+	// show revisions page and are they activated?
 	if (isset($_GET['subpage']) && $_GET['subpage'] == 'revisions' && humanstxt_revisions() !== false) {
 		humanstxt_revisions_page();
 	} else {
@@ -308,7 +311,10 @@ function humanstxt_options() {
 
 }
 
-// TODO: func comment
+/**
+ * Prints the plugin options page.
+ * @since 1.0.6
+ */
 function humanstxt_options_page() {
 ?>
 <div class="wrap" id="humanstxt">
@@ -463,7 +469,10 @@ function humanstxt_options_page() {
 <?php
 }
 
-// TODO func comments
+/**
+ * Prints the plugin options revisions page.
+ * @since 1.0.6
+ */
 function humanstxt_revisions_page() {
 ?>
 <div class="wrap" id="humanstxt-revisions">
