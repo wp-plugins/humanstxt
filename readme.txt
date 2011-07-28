@@ -16,7 +16,7 @@ Credit the people behind your website in your **humans.txt** file. Easy to edit,
 * Use the `[humanstxt]` shortcode to display your _humans.txt_ on your site
 * Add an author link tag to your site's `<head>` tag
 * Allow non-admins to edit the _humans.txt_
-* Customize everything with custom [filters, actions and pluggable functions](http://wordpress.org/extend/plugins/humanstxt/other_notes/)
+* Customize everything with custom [filters, actions and pluggable functions](http://wordpress.org/extend/plugins/humanstxt/other_notes/#Plugin-Actions-and-Filters)
 * Restore previously saved revisions of your _humans.txt_
 
 More information on the Humans TXT can be found on the [official Humans TXT website](http://humanstxt.org/).
@@ -25,6 +25,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
 
+If you'd like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
 
 == Installation ==
 
@@ -185,7 +186,16 @@ Determines if the current request is for the virtual humans.txt file.
 
 == Pluggable Functions ==
 
-All callback functions of the default variables can be overridden. The callback functions are located in `[callbacks.php](http://plugins.trac.wordpress.org/browser/humanstxt/trunk/callbacks.php)`
+All callback functions of the default variables can be overridden. The callback functions are located in [callbacks.php](http://plugins.trac.wordpress.org/browser/humanstxt/trunk/callbacks.php).
+
+
+== Plugin Constants ==
+
+**HUMANSTXT_METABOX**  
+Define as `false` to disable the "rate this plugin" box on the options page.
+
+**HUMANSTXT_IS_ROOTINSTALL**  
+Overrides the result of `humanstxt_is_rootinstall()`. Define as `true`, if your WordPress installation is installed in the root of the domain, but `humanstxt_is_rootinstall()` returns `false`.
 
 
 == Plugin Actions and Filters ==
@@ -212,6 +222,9 @@ Applied to the humans.txt content. Applied prior to the `humans_txt` filter.
 **humanstxt_variables**  
 Applied to the array of content-variables. See `humanstxt_variables()` for details.
 
+**humanstxt_max_revisions**  
+Applied to the maximum number of stored revisions. If set to `0`, revisions will be disabled. Default is `50`.
+
 **humanstxt_shortcode_output**  
 Applied to the final `[humanstxt]` shortcode output.
 
@@ -233,6 +246,12 @@ Use to override the global text separator (see `humanstxt_separator` filter) for
 **humanstxt_languages_separator**  
 Use to override the global text separator (see `humanstxt_separator` filter), for the current WordPress language(s).
 
+**humanstxt_postcount**  
+Applied to the number of published post: `$wp-posts$`.
+
+**humanstxt_pagecount**  
+Applied to the number of published pages: `$wp-pages$`.
+
 **humanstxt_wptheme**  
 Applied to the summary of the active WordPress theme: `$wp-theme$`.
 
@@ -246,4 +265,10 @@ Applied to current WordPress language(s): `$wp-language$`.
 Applied to returned date of the `$wp-lastupdate$` variable.
 
 **humanstxt_lastupdate_format**  
-Applied to the used date-format of the `$wp-lastupdate$` variable. Read more about [date and time formatting](http://codex.wordpress.org/Formatting_Date_and_Time).
+Applied to the used date-format of the `$wp-lastupdate$` variable. Default is `Y/m/d`. Read more about [date and time formatting](http://codex.wordpress.org/Formatting_Date_and_Time).
+
+**humanstxt_authors**  
+Applied to the list of active authors: `$wp-authors$`.
+
+**humanstxt_authors_format**
+Applied to the format used for the author list `$wp-authors$` variable. Please see `humanstxt_callback_wpauthors()` in [callbacks.php](http://plugins.trac.wordpress.org/browser/humanstxt/trunk/callbacks.php) for details.
