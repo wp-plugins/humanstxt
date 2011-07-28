@@ -38,6 +38,12 @@ define('HUMANSTXT_PLUGIN_BASENAME', plugin_basename(HUMANSTXT_PLUGIN_FILE));
 define('HUMANSTXT_OPTIONS_URL', admin_url('options-general.php?page=humanstxt'));
 
 /**
+ * URL to Humans TXT options page.
+ * @since 1.0.6
+ */
+define('HUMANSTXT_REVISIONS_URL', add_query_arg(array('subpage' => 'revisions'), HUMANSTXT_OPTIONS_URL));
+
+/**
  * Register plugin admin actions, filters and hooks.
  */
 add_action('admin_init', 'humanstxt_admin_init');
@@ -58,18 +64,25 @@ humanstxt_load_textdomain();
  */
 function humanstxt_admin_init() {
 
-	wp_register_style('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.css');
-	wp_register_script('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.js');
+	if (isset($_GET['page']) && $_GET['page'] == HUMANSTXT_DOMAIN) {
 
-	// are we coming from our options page?
-	if (isset($_POST['option_page']) && $_POST['option_page'] == 'humanstxt') {
+		// register css/js files
+		wp_register_style('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.css');
+		wp_register_script('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.js');
+		add_action('admin_print_styles', create_function(null, "wp_enqueue_style('humanstxt-options');"));
+		add_action('admin_print_scripts', create_function(null, "wp_enqueue_script('humanstxt-options');"));
 
-		// die if user has insufficient rights
-		if (!current_user_can('manage_options')) {
-			wp_die(__('You do not have sufficient permissions to access this page.'));
+		// update plugin options?
+		if (isset($_POST['action']) && $_POST['action'] == 'update') {
+			check_admin_referer('humanstxt-options');
+			humanstxt_update_options();
 		}
 
-		humanstxt_update_options();
+		// restoring a revision?
+		if (isset($_GET['action'], $_GET['revision']) && $_GET['action'] == 'restore') {
+			check_admin_referer('restore-humanstxt_'.$_GET['revision']);
+			humanstxt_restore_revision($_GET['revision']);
+		}
 
 	}
 
@@ -82,6 +95,7 @@ function humanstxt_admin_init() {
 function humanstxt_uninstall() {
 	delete_option('humanstxt_options');
 	delete_option('humanstxt_content');
+	delete_option('humanstxt_revisions');
 }
 
 /**
@@ -94,9 +108,9 @@ function humanstxt_uninstall() {
  */
 function humanstxt_version_warning() {
 
-	if (version_compare($GLOBALS['wp_version'], HUMANSTXT_REQUIRED_VERSION, '<')) {
+	if (version_compare($GLOBALS['wp_version'], HUMANSTXT_VERSION_REQUIRED, '<')) {
 		$updatelink = ' <a href="'.admin_url('update-core.php').'">'.sprintf(__('Please update your WordPress installation.', HUMANSTXT_DOMAIN)).'</a>';
-		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %1$s requires WordPress %2$s or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION, HUMANSTXT_REQUIRED_VERSION).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
+		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %1$s requires WordPress %2$s or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION, HUMANSTXT_VERSION_REQUIRED).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
 	}
 
 }
@@ -122,12 +136,6 @@ function humanstxt_admin_menu() {
 			$humanstxt_screen_id = add_options_page(__('Humans TXT', HUMANSTXT_DOMAIN), __('Humans TXT', HUMANSTXT_DOMAIN), $role, HUMANSTXT_DOMAIN, 'humanstxt_options');
 			break;
 		}
-	}
-
-	// make WP print our CSS and JavaScript file
-	if ($humanstxt_screen_id) {
-		add_action('admin_print_styles-'.$humanstxt_screen_id, create_function(null, "wp_enqueue_style('humanstxt-options');"));
-		add_action('admin_print_scripts-'.$humanstxt_screen_id, create_function(null, "wp_enqueue_script('humanstxt-options');"));
 	}
 
 }
@@ -204,32 +212,52 @@ function humanstxt_update_options() {
 
 	global $humanstxt_options;
 
-	if (isset($_POST['action']) && $_POST['action'] == 'update') {
+	// only update the admin-only options if current user is an admin
+	if (current_user_can('administrator')) {
 
-		// only update the admin-only options if current user is an admin
-		if (current_user_can('administrator')) {
+		$humanstxt_options['enabled'] = isset($_POST['humanstxt_enable']);
+		$humanstxt_options['authortag'] = isset($_POST['humanstxt_authortag']);
 
-			$humanstxt_options['enabled'] = isset($_POST['humanstxt_enable']);
-			$humanstxt_options['authortag'] = isset($_POST['humanstxt_authortag']);
-
-			$humanstxt_options['roles'] = array();
-			if (isset($_POST['humanstxt_roles']) && is_array($_POST['humanstxt_roles'])) {
-				$humanstxt_options['roles'] = array_keys($_POST['humanstxt_roles']);
-			}
-
-			update_option('humanstxt_options', $humanstxt_options);
-
+		$humanstxt_options['roles'] = array();
+		if (isset($_POST['humanstxt_roles']) && is_array($_POST['humanstxt_roles'])) {
+			$humanstxt_options['roles'] = array_keys($_POST['humanstxt_roles']);
 		}
 
-		if (isset($_POST['humanstxt_content'])) {
-			$humanstxt_content = stripslashes($_POST['humanstxt_content']);
-			update_option('humanstxt_content', $humanstxt_content);
-		}
-
-		wp_redirect(HUMANSTXT_OPTIONS_URL.'&settings-updated=true');
-		exit;
+		update_option('humanstxt_options', $humanstxt_options);
 
 	}
+
+	if (isset($_POST['humanstxt_content'])) {
+
+		$humanstxt_content_old = humanstxt_content();
+		$humanstxt_content_new = stripslashes($_POST['humanstxt_content']);
+
+		// has the content changed?
+		if ($humanstxt_content_new != $humanstxt_content_old) {
+			humanstxt_add_revision($humanstxt_content_new);
+			update_option('humanstxt_content', $humanstxt_content_new);
+		}
+
+	}
+
+	wp_redirect(add_query_arg(array('settings-updated' => '1'), HUMANSTXT_OPTIONS_URL));
+	exit;
+
+}
+
+// TODO: function comment
+function humanstxt_restore_revision($revision) {
+
+	$revisions = humanstxt_revisions();
+
+	if (!isset($revisions[$revision]))
+		return;
+
+	update_option('humanstxt_content', $revisions[$revision]['content']);
+	humanstxt_add_revision($revisions[$revision]['content']);
+
+	wp_redirect(add_query_arg(array('revision-restored' => '1'), HUMANSTXT_OPTIONS_URL));
+	exit;
 
 }
 
@@ -269,15 +297,19 @@ function humanstxt_rating() {
 
 /**
  * Prints plugin options page content.
- * 
- * @uses humanstxt_is_rootinstall()
- * @uses humanstxt_exists()
- * @uses humanstxt_rating()
- * @uses humanstxt_option()
- * @uses humanstxt_content()
- * @uses humanstxt_valid_variables()
  */
 function humanstxt_options() {
+
+	if (isset($_GET['subpage']) && $_GET['subpage'] == 'revisions' && humanstxt_revisions() !== false) {
+		humanstxt_revisions_page();
+	} else {
+		humanstxt_options_page();
+	}
+
+}
+
+// TODO: func comment
+function humanstxt_options_page() {
 ?>
 <div class="wrap" id="humanstxt">
 
@@ -287,15 +319,17 @@ function humanstxt_options() {
 
 	<?php if (isset($_GET['settings-updated'])) : ?>
 		<div class="updated"><p><strong><?php _e('Settings saved.') ?></strong></p></div>
+	<?php elseif (isset($_GET['revision-restored'])) : ?>
+		<div class="updated"><p><strong><?php _e('Revision restored.', HUMANSTXT_DOMAIN) ?></strong></p></div>
 	<?php endif; ?>
 
 	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Read FAQ...', HUMANSTXT_DOMAIN)) ?>
 
 	<?php if (!humanstxt_is_rootinstall()) : ?>
-		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the site root.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
+		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the root of the domain.', HUMANSTXT_DOMAIN); ?></strong> <?=$faqlink?></p></div>
 	<?php elseif (humanstxt_exists()) : ?>
-		<div class="error"><p><strong><?php _e('Error: The site root contains a physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
-	<?php elseif (get_option('permalink_structure') == '') : ?>
+		<div class="error"><p><strong><?php _e('Error: The site root already contains a physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
+	<?php elseif (get_option('permalink_structure') == '' && current_user_can('manage_options')) : ?>
 		<div class="error"><p><strong><?php printf(__('Error: Please <a href="%s">update your permalink structure</a> to something other than the default.', HUMANSTXT_DOMAIN), admin_url('options-permalink.php')) ?></strong> <?=$faqlink?></p></div>
 	<?php endif; ?>
 
@@ -305,8 +339,7 @@ function humanstxt_options() {
 
 		<?php if (current_user_can('administrator')) : ?>
 
-			<?php if (!defined('HUMANSTXT_METABOX')) define('HUMANSTXT_METABOX', true); ?>
-
+			<?php if (!defined('HUMANSTXT_METABOX')) define('HUMANSTXT_METABOX', true) ?>
 			<?php if (HUMANSTXT_METABOX && ($rating = humanstxt_rating()) !== false) : ?>
 				<div id="humanstxt-metabox" class="postbox">
 					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
@@ -355,8 +388,12 @@ function humanstxt_options() {
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></span></legend>
 							<?php _e('Roles that can edit the content of the <em>humans.txt</em> file:', HUMANSTXT_DOMAIN) ?><br/>
-							<?php $humanstxt_roles = humanstxt_option('roles'); ?>
-							<?php foreach (get_editable_roles() as $role => $details) : ?>
+							<?php
+								$humanstxt_roles = humanstxt_option('roles');
+								$wordpress_roles = get_editable_roles();
+								unset($wordpress_roles['subscriber']);
+							?>
+							<?php foreach ($wordpress_roles as $role => $details) : ?>
 								<?php $checked = ($role == 'administrator' || in_array($role, $humanstxt_roles)) ? 'checked="checked" ' : ''; ?>
 								<?php $disabled = ($role == 'administrator') ? 'disabled="disabled" ' : ''; ?>
 								<label for="humanstxt_role_<?=$role?>">
@@ -369,7 +406,7 @@ function humanstxt_options() {
 					</td>
 				</tr>	
 			</table>
-		
+
 			<p class="submit clear">
 				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
 			</p>
@@ -392,6 +429,8 @@ function humanstxt_options() {
 			</table>
 			<p class="submit">
 				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
+				<?php $revisions = humanstxt_revisions() ?>
+				<?php if (count($revisions) > 1) : ?><a href="<?=HUMANSTXT_REVISIONS_URL?>" class="button"><?php _e('View Revisions', HUMANSTXT_DOMAIN) ?></a><?php endif; ?>
 			</p>
 		</div>
 
@@ -420,6 +459,70 @@ function humanstxt_options() {
 		<p><?php printf(__('You can use the <code>[humanstxt]</code> shortcode to display the <em>humans.txt</em> file on a page or in a post. By default, all links, email addresses and Twitter account names will be converted into clickable links and email addresses will be encoded to block spam bots. <a href="%s" rel="external">Of course you can customize it...</a>', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/other_notes/#Shortcode-Usage') ?></p>
 
 	</form>
+</div>
+<?php
+}
+
+// TODO func comments
+function humanstxt_revisions_page() {
+?>
+<div class="wrap" id="humanstxt-revisions">
+
+	<?php screen_icon() ?>
+
+	<h2><?php _e('Humans TXT', HUMANSTXT_DOMAIN) ?>: <?php _e('Revisions') ?></h2>
+
+	<?php
+		$revisions = humanstxt_revisions(); krsort($revisions);
+		$live_revision = max(array_keys($revisions));
+		$current_revision = isset($_GET['revision']) && isset($revisions[$_GET['revision']]) ? (int) $_GET['revision'] : false;
+	?>
+
+	<?php if ($current_revision !== false) : ?>
+
+		<h3><?php printf(__('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n(_x( 'j F, Y @ G:i', 'revision date format'), $revisions[$current_revision]['date'])) ?></h3>
+		<pre id="revision-preview"><?php echo esc_html(trim($revisions[$current_revision]['content'])) ?></pre>
+		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $current_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$current_revision) ?>" class="button-primary"><?php _e('Restore Revision') ?></a></p>
+
+	<?php endif; ?>
+
+	<h3><?php _e('Revisions') ?></h3>
+
+	<table class="widefat humanstxt-revisions" cellspacing="0" id="humanstxt-revisions">
+		<col style="width: 33%" />
+		<col style="width: 33%" />
+		<col style="width: 33%" />
+		<thead>
+			<tr>
+				<th scope="col"><?php _ex('Date Created', 'revisions column name') ?></th>
+				<th scope="col"><?php _e('Author') ?></th>
+				<th scope="col" class="action-links"><?php _e('Actions') ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($revisions as $key => $revision) : ?>
+				<tr<?php echo ($key === $current_revision) ? ' class="current-revision"' : '' ?>>
+					<td>
+						<?php $date = '<a href="'.HUMANSTXT_REVISIONS_URL.'&revision='.$key.'">'.date_i18n(_x( 'j F, Y @ G:i', 'revision date format'), $revision['date']).'</a>'?>
+						<?php printf($key == $live_revision ? __('%1$s [Current Revision]') : '%s', $date) ?>
+					</td>
+					<td>
+						<?php if ($revision['user'] > 0) : ?>
+							<?php echo get_the_author_meta('display_name', $revision['user']); ?>
+						<?php endif; ?>
+					</td>
+					<td class="action-links">
+						<?php if ($key != $live_revision) : ?>
+							<a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $key, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$key) ?>"><?php _e('Restore') ?></a>
+						<?php endif; ?>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+		</tbody>
+	</table>
+
+	<p><?php printf(__('WordPress is storing the last %s revisions of your <em>humans.txt</em> file.', HUMANSTXT_DOMAIN), (int) apply_filters('humanstxt_max_revisions', HUMANSTXT_MAX_REVISIONS)) ?></p>
+
 </div>
 <?php
 }

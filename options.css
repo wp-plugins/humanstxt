@@ -1,19 +1,26 @@
 
-#humanstxt-metabox { float: right; width: auto; min-width: 0; padding: 10px 20px; text-align: center; border-color: #dfdfdf; background-color: #f9f9f9; background-image: none; }
+#humanstxt-metabox { float: right; width: auto; min-width: 0; max-width: 210px; padding: 10px 20px; text-align: center; border-color: #dfdfdf; background-color: #f9f9f9; background-image: none; }
 	#humanstxt .text-rateit { margin-top: 0; }
 	#humanstxt .star-holder { margin: 0 auto; }
+	@media (max-width: 1100px) {
+		#humanstxt-metabox { display: none; }
+	}
 
 #humanstxt .form-table { clear: left; float: left; width: auto; margin-top: 0; }
 	#humanstxt-editor-wrap { float: left; padding-right: 10px; }
 		#humanstxt-editor-wrap .form-table { float: none; }
 			#humanstxt-editor-wrap .form-table td { padding-top: 0; }
-				#humanstxt_content { display: block; resize: none; }
+				#humanstxt-editor-wrap .form-table fieldset { max-width: 570px; }
+				#humanstxt_content { resize: none; }
 		#humanstxt-editor-wrap .submit { margin-top: 0; padding-top: 1em; }
 
 #humanstxt-vars { float: left; padding: 15px 0 1em 0; }
 	#humanstxt-vars h4 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }
 	#humanstxt-vars ul, #humanstxt-vars p { padding-left: 10px; }
 		#humanstxt-vars li code { font-size: 13px; }
+
+#humanstxt-revisions tr.current-revision { font-weight: bold; }
+#revision-preview { margin-left: 10px; }
 
 #humansTooltip {
 	display: none;
@@ -35,7 +42,7 @@
 	-moz-border-radius: 4px;
 	-khtml-border-radius: 4px;
 	-webkit-border-radius: 4px;
-	border-radius: 4px;	
+	border-radius: 4px;	Plugin
 	-moz-box-shadow: 0 0 2px #555;
 	-khtml-box-shadow: 0 0 2px #555;
 	-webkit-box-shadow: 0 0 2px #555;

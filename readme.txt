@@ -29,26 +29,26 @@ For detailed installation instructions, please read the [standard installation p
 2. Login to your WordPress installation and activate the plugin through the _Plugins_ menu.
 3. Activate the plugin and edit your humans.txt file in the _Settings_ menu under _Humans TXT_.
 
-**Please note:** This plugin does not modify or create a physical `humans.txt` file on your server, it generates it on the fly. If your site root contains a `humans.txt` file, this physical file will be shown to the visitor. In order to use this plugin, please delete your physical `humans.txt`. Don't forget to migrate or backup it's contents.
+**Please note:** This plugin does not modify or create a physical `humans.txt` file on your server, it serves it dynamically. If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete your physical `humans.txt`, but don't forget to migrate/backup it's contents.
 
 
 == Frequently Asked Questions ==
 
-= Error: WordPress is not installed in the site root =
+= Error: WordPress is not installed in the root of the domain. =
 
-This plugin can only work if WordPress is installed in the root of your domain.
+This plugin will only work if WordPress is installed in the root of the domain.
 
-= Error: The site root contains a physical humans.txt file =
+= Error: The site root already contains a physical humans.txt file. =
 
-If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the plugin can not work.
+If your site root contains a physical `humans.txt` file, this physical file will be shown to the visitor and the one from this plugin will be ignored.
 
-= Error: Please update your permalink structure... =
+= Error: Please update your permalink structure to something other than the default. =
 
-The plugin can only work, if WordPress is using "Pretty Permalinks". You can activate them in WordPress in the _Settings_ menu under _Permalinks_. Read more about [using permalinks](http://codex.wordpress.org/Using_Permalinks).
+The plugin will only work, if WordPress is using "Pretty Permalinks". You can activate them in WordPress in the _Settings_ menu under _Permalinks_. Read more about [using permalinks](http://codex.wordpress.org/Using_Permalinks).
 
 = Why isn't my humans.txt file modified? =
 
-This plugin does not modify or create a physical `humans.txt` file on your server, it generates it on the fly. If your site root contains a `humans.txt` file, this file physical will be shown to the visitor. In order to use this plugin, please delete your physical `humans.txt`. Don't forget to migrate or backup its contents. 
+This plugin does not modify or create a physical `humans.txt` file on your server, it serves it dynamically. If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete your physical `humans.txt`, but don't forget to migrate/backup it's contents.
 
 = Where is the humans.txt file located? =
 
