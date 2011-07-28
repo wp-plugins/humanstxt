@@ -525,7 +525,7 @@ function humanstxt_variables() {
 	$variables[] = array(_x('wp-theme-name', 'Name of variable for the name of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_name', __('Name of the active theme', HUMANSTXT_DOMAIN));
 	$variables[] = array(_x('wp-theme-version', 'Name of variable for the version of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_version', __('Version of the active theme', HUMANSTXT_DOMAIN));
 	$variables[] = array(_x('wp-theme-author', 'Name of variable for author name of the active WordPress theme ', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author', __('Author name of the active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-theme-author-link', 'Name of variable for author URL of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author URL of the active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array(_x('wp-theme-author-link', 'Name of variable for author link of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author link of the active theme', HUMANSTXT_DOMAIN));
 
 	return (array) apply_filters('humanstxt_variables', $variables);
 

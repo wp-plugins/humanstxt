@@ -25,7 +25,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
 
-If you'd like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
+If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
 
 == Installation ==
 
@@ -153,7 +153,7 @@ This version contains several fixes and improvements.
 * `$wp-theme-name$` - Name of the active theme
 * `$wp-theme-version$` - Version number of the active theme
 * `$wp-theme-author$` - Author name of the active theme
-* `$wp-theme-author-link$` - Author URL of the active theme
+* `$wp-theme-author-link$` - Author link of the active theme
 
 
 == Shortcode Usage ==
@@ -186,7 +186,7 @@ Determines if the current request is for the virtual humans.txt file.
 
 == Pluggable Functions ==
 
-All callback functions of the default variables can be overridden. The callback functions are located in [callbacks.php](http://plugins.trac.wordpress.org/browser/humanstxt/trunk/callbacks.php).
+All callback functions of the default variables can be overridden. The callback functions are located in [humanstxt/callbacks.php](http://plugins.trac.wordpress.org/browser/humanstxt/trunk/callbacks.php).
 
 
 == Plugin Constants ==
@@ -247,7 +247,7 @@ Use to override the global text separator (see `humanstxt_separator` filter) for
 Use to override the global text separator (see `humanstxt_separator` filter), for the current WordPress language(s).
 
 **humanstxt_postcount**  
-Applied to the number of published post: `$wp-posts$`.
+Applied to the number of published posts: `$wp-posts$`.
 
 **humanstxt_pagecount**  
 Applied to the number of published pages: `$wp-pages$`.
@@ -271,4 +271,4 @@ Applied to the used date-format of the `$wp-lastupdate$` variable. Default is `Y
 Applied to the list of active authors: `$wp-authors$`.
 
 **humanstxt_authors_format**
-Applied to the format used for the author list `$wp-authors$` variable. Please see `humanstxt_callback_wpauthors()` in [callbacks.php](http://plugins.trac.wordpress.org/browser/humanstxt/trunk/callbacks.php) for details.
+Applied to the format used for the author list `$wp-authors$` variable. Please see `humanstxt_callback_wpauthors()` in [humanstxt/callbacks.php](http://plugins.trac.wordpress.org/browser/humanstxt/trunk/callbacks.php) for details.

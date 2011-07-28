@@ -370,7 +370,7 @@ function humanstxt_options_page() {
 							<legend class="screen-reader-text"><span><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_enable">
 								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?> />
-								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">'._x('humans.txt', "Used in 'Activate the %s file' in options screen, linked to the site's humans.txt file", HUMANSTXT_DOMAIN).'</a>' ?>
+								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">humans.txt</a>' ?>
 								<?php printf(__("Activate the %s file", HUMANSTXT_DOMAIN), $humanstxt_link) ?>
 							</label>
 						</fieldset>
@@ -383,7 +383,7 @@ function humanstxt_options_page() {
 							<legend class="screen-reader-text"><span><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_authortag">
 								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?> />
-								<?php _e("Add an author link tag to the site's head tag, linked to the <em>humans.txt</em>", HUMANSTXT_DOMAIN) ?>
+								<?php _e("Add a link to the <em>humans.txt</em> in the site's head tag, ", HUMANSTXT_DOMAIN) ?>
 							</label>
 						</fieldset>
 					</td>
@@ -489,9 +489,9 @@ function humanstxt_revisions_page() {
 
 	<?php if ($current_revision !== false) : ?>
 
-		<h3><?php printf(__('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n(_x( 'j F, Y @ G:i', 'revision date format'), $revisions[$current_revision]['date'])) ?></h3>
+		<h3><?php printf(__('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n(_x('j F, Y @ G:i', 'revision date format'), $revisions[$current_revision]['date'])) ?></h3>
 		<pre id="revision-preview"><?php echo esc_html(trim($revisions[$current_revision]['content'])) ?></pre>
-		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $current_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$current_revision) ?>" class="button-primary"><?php _e('Restore Revision') ?></a></p>
+		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $current_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$current_revision) ?>" class="button-primary"><?php _e('Restore Revision', HUMANSTXT_DOMAIN) ?></a></p>
 
 	<?php endif; ?>
 
