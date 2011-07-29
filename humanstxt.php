@@ -510,22 +510,22 @@ function humanstxt_variables() {
 	require_once HUMANSTXT_PLUGIN_PATH.'/callbacks.php';
 
 	$variables = array();	
-	$variables[] = array(_x('wp-title', 'Name of variable for the site/blog name (title)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpblogname', __('Name (title) of site/blog', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-tagline', 'Name of variable for the site/blog tagline (description)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptagline', __('Tagline (description) of site/blog', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-posts', 'Name of variable for the number of published posts', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpposts', __('Number of published posts', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-pages', 'Name of variable for the number of published pages', HUMANSTXT_DOMAIN), 'humanstxt_callback_wppages', __('Number of published pages', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-lastupdate', 'Name of variable for the last modified timestamp', HUMANSTXT_DOMAIN), 'humanstxt_callback_lastupdate', __('Date of last modified post/page', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-authors', 'Name of variable for the author list', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpauthors', __('Active authors and their contact details', HUMANSTXT_DOMAIN), false);
-	$variables[] = array(_x('wp-language', 'Name of variable for WordPress languages(s)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('WordPress language(s)', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-plugins', 'Name of variable for activated WordPress plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('Activated WordPress plugins', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-charset', 'Name of variable for the encoding (charset)', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpcharset', __('Encoding used for pages and feeds', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-version', 'Name of variable for the installed WordPress version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpversion', __('Installed WordPress version', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('php-version', 'Name of variable for the running PHP version', HUMANSTXT_DOMAIN), 'humanstxt_callback_phpversion', __('Running PHP parser version', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-theme', 'Name of variable for the summary of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme', __('Summary of the active WordPress theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-theme-name', 'Name of variable for the name of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_name', __('Name of the active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-theme-version', 'Name of variable for the version of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_version', __('Version of the active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-theme-author', 'Name of variable for author name of the active WordPress theme ', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author', __('Author name of the active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array(_x('wp-theme-author-link', 'Name of variable for author link of the active WordPress theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author link of the active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the site/blog name (title) */ __('wp-title', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpblogname', __('Name (title) of site/blog', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the site/blog tagline (description) */ __('wp-tagline', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptagline', __('Tagline (description) of site/blog', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the number of published posts */ __('wp-posts', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpposts', __('Number of published posts', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the number of published pages */ __('wp-pages', HUMANSTXT_DOMAIN), 'humanstxt_callback_wppages', __('Number of published pages', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the "last modified" timestamp */ __('wp-lastupdate', HUMANSTXT_DOMAIN), 'humanstxt_callback_lastupdate', __('Date of last modified post/page', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the author list */ __('wp-authors', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpauthors', __('Active authors and their contact details', HUMANSTXT_DOMAIN), false);
+	$variables[] = array( /* translators: variable name for WordPress languages(s) */ __('wp-language', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('WordPress language(s)', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for activated WordPress plugins */ __('wp-plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('Activated WordPress plugins', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the encoding (charset) used by WordPress */ __('wp-charset', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpcharset', __('Encoding used for pages and feeds', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the installed WordPress version */ __('wp-version',  HUMANSTXT_DOMAIN), 'humanstxt_callback_wpversion', __('Installed WordPress version', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the running PHP parser version */ __('php-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_phpversion', __('Running PHP parser version', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the summary of the active WordPress theme */ __('wp-theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme', __('Summary of the active WordPress theme', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the name of the active WordPress theme */ __('wp-theme-name', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_name', __('Name of the active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the version of the active WordPress theme */ __('wp-theme-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_version', __('Version of the active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the author name of the active WordPress theme */ __('wp-theme-author', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author', __('Author name of the active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array( /* translators: variable name for the author link of the active WordPress theme */ __('wp-theme-author-link', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author link of the active theme', HUMANSTXT_DOMAIN));
 
 	return (array) apply_filters('humanstxt_variables', $variables);
 

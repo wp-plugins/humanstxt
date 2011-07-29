@@ -361,20 +361,20 @@ function humanstxt_options_page() {
 				</div>
 			<?php endif; ?>
 
-			<h3><?php _e('Settings', HUMANSTXT_DOMAIN) ?></h3>
+			<h3><?php _e('Settings') ?></h3>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><?php /* translators: test #1 */ _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></th>
+					<th scope="row"><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></th>
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_enable">
 								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?> />
 								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">humans.txt</a>' ?>
-								<?php /* %s: test #2 */ printf(__('Activate %s file', HUMANSTXT_DOMAIN), $humanstxt_link) ?>
+								<?php printf( /* translators: %s: humans.txt (linked to the site's humans.txt file) */ __('Activate %s file', HUMANSTXT_DOMAIN), $humanstxt_link) ?>
 							</label>
 							<br />
-							<label for="humanstxt_authortag">
+							<label for="humanstxt_authortag" title="<?php esc_attr_e('Adds an <link rel="author"> tag to the site\'s <head> tag pointing to the humans.txt file.', HUMANSTXT_DOMAIN) ?>">
 								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?> />
 								<?php _e('Add an author link tag to the site', HUMANSTXT_DOMAIN) ?>
 							</label>
@@ -382,11 +382,11 @@ function humanstxt_options_page() {
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></th>
+					<th scope="row"><?php _e('Editing Permissions', HUMANSTXT_DOMAIN) ?></th>
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></span></legend>
-							<?php _e('Roles that can edit the content of the humans.txt file:', HUMANSTXT_DOMAIN) ?><br/>
+							<legend class="screen-reader-text"><span><?php _e('Editing Permissions', HUMANSTXT_DOMAIN) ?></span></legend>
+							<?php _e('Roles that can edit the content of the humans.txt file', HUMANSTXT_DOMAIN) ?>:<br/>
 							<?php
 								$humanstxt_roles = humanstxt_option('roles');
 								$wordpress_roles = get_editable_roles();
@@ -482,7 +482,7 @@ function humanstxt_revisions_page() {
 
 	<?php if ($current_revision !== false) : ?>
 
-		<h3><?php printf(__('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n(_x('j F, Y @ G:i', 'revision date format'), $revisions[$current_revision]['date'])) ?></h3>
+		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n(_x('j F, Y @ G:i', 'revision date format'), $revisions[$current_revision]['date'])) ?></h3>
 		<pre id="revision-preview"><?php echo esc_html(trim($revisions[$current_revision]['content'])) ?></pre>
 		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $current_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$current_revision) ?>" class="button-primary"><?php _e('Restore Revision', HUMANSTXT_DOMAIN) ?></a></p>
 
