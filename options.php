@@ -523,7 +523,7 @@ function humanstxt_revisions_page() {
 		</tbody>
 	</table>
 
-	<p><?php printf(__('WordPress is storing the last %s revisions of your <em>humans.txt</em> file.', HUMANSTXT_DOMAIN), (int) apply_filters('humanstxt_max_revisions', HUMANSTXT_MAX_REVISIONS)) ?></p>
+	<p><?php printf( /* translators: %s: number of stored revisions */ __('WordPress is storing the last %s revisions of your <em>humans.txt</em> file.', HUMANSTXT_DOMAIN), (int) apply_filters('humanstxt_max_revisions', HUMANSTXT_MAX_REVISIONS)) ?></p>
 
 </div>
 <?php
