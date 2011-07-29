@@ -571,7 +571,7 @@ function humanstxt_default_content() {
 
 	humanstxt_load_textdomain();
 
-	return _x(
+	return __(
 '/* the humans responsible & colophon */
 /* humanstxt.org */
 
@@ -595,7 +595,7 @@ function humanstxt_default_content() {
 	Language: <English, Klingon, ...>
 	Components: <jQuery, Typekit, Modernizr, ...>
 	IDE: <Coda, Zend Studio, Photoshop, Terminal, ...>
-', 'Default content of the humans.txt file', HUMANSTXT_DOMAIN);
+', HUMANSTXT_DOMAIN);
 
 }
 

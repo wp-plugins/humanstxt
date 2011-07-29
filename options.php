@@ -364,26 +364,19 @@ function humanstxt_options_page() {
 			<h3><?php _e('Settings', HUMANSTXT_DOMAIN) ?></h3>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></th>
+					<th scope="row"><?php /* translators: test #1 */ _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></th>
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e('Enable Plugin', HUMANSTXT_DOMAIN) ?></span></legend>
+							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_enable">
 								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?> />
 								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">humans.txt</a>' ?>
-								<?php printf(__("Activate the %s file", HUMANSTXT_DOMAIN), $humanstxt_link) ?>
+								<?php /* %s: test #2 */ printf(__('Activate %s file', HUMANSTXT_DOMAIN), $humanstxt_link) ?>
 							</label>
-						</fieldset>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></th>
-					<td>
-						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e('Author Link Tag', HUMANSTXT_DOMAIN) ?></span></legend>
+							<br />
 							<label for="humanstxt_authortag">
 								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?> />
-								<?php _e("Add a link to the <em>humans.txt</em> in the site's head tag, ", HUMANSTXT_DOMAIN) ?>
+								<?php _e('Add an author link tag to the site', HUMANSTXT_DOMAIN) ?>
 							</label>
 						</fieldset>
 					</td>
@@ -393,7 +386,7 @@ function humanstxt_options_page() {
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Editing Permission', HUMANSTXT_DOMAIN) ?></span></legend>
-							<?php _e('Roles that can edit the content of the <em>humans.txt</em> file:', HUMANSTXT_DOMAIN) ?><br/>
+							<?php _e('Roles that can edit the content of the humans.txt file:', HUMANSTXT_DOMAIN) ?><br/>
 							<?php
 								$humanstxt_roles = humanstxt_option('roles');
 								$wordpress_roles = get_editable_roles();
