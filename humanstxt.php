@@ -238,6 +238,7 @@ function humanstxt_do_humans() {
 
 }
 
+if (!function_exists('humanstxt_shortcode')) :
 /**
  * Callback function for [humanstxt] shortcode. Processes
  * shortcode call and returns result as string. The un-wrapped
@@ -338,6 +339,7 @@ function humanstxt_shortcode($attributes) {
 	return apply_filters('humanstxt_shortcode_output', $content, $attributes);
 
 }
+endif;
 
 /**
  * Loads the plugin text-domain, if not already loaded.

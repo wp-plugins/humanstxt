@@ -50,6 +50,8 @@ add_action('admin_init', 'humanstxt_admin_init');
 add_action('admin_menu', 'humanstxt_admin_menu');
 add_action('admin_notices', 'humanstxt_version_warning'); 
 add_action('contextual_help', 'humanstxt_contextual_help', 10, 2);
+add_action('after_plugin_row_humans-txt/plugin.php', 'humanstxt_plugin_notice', 10, 3);
+add_action('after_plugin_row_humans-dot-txt/humans-dot-txt.php', 'humanstxt_plugin_notice', 10, 3);
 add_filter('plugin_action_links_'.HUMANSTXT_PLUGIN_BASENAME, 'humanstxt_actionlinks');
 register_uninstall_hook(__FILE__, 'humanstxt_uninstall');
 
@@ -264,6 +266,21 @@ function humanstxt_restore_revision($revision) {
 	wp_redirect(add_query_arg(array('revision-restored' => '1'), HUMANSTXT_OPTIONS_URL));
 	exit;
 
+}
+
+/**
+ * Callback function for 'after_plugin_row_{$plugin_file}' action.
+ * Prints a warning message which suggests to deactivate other
+ * humans.txt plugins to avoid conflicts.
+ *
+ * @param string $plugin_file WordPress plugin path
+ * @param string $plugin_data Plugin informations
+ * @param string $status Plugin context: mustuse, dropins, etc.
+ */
+function humanstxt_plugin_notice($plugin_file, $plugin_data, $status) {
+	if (is_plugin_active($plugin_file)) {
+		echo '<tr class="plugin-update-tr"><td colspan="3" class="plugin-update colspanchange"><div class="update-message">'.sprintf(__('Humans TXT includes the functionality of %1$s. Please deactivate %1$s to avoid plugin conflicts.', HUMANSTXT_DOMAIN), '<em>'.$plugin_data['Name'].'</em>').'</div></td></tr>';
+	}
 }
 
 /**
