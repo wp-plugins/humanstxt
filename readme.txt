@@ -27,6 +27,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
 
+
 == Installation ==
 
 For detailed installation instructions, please read the [standard installation procedure for WordPress plugins](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
@@ -64,8 +65,9 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 == Screenshots ==
 
 1. Plugin options page.
-2. Default shortcode result. (Theme: Twenty Eleven)
-2. Shortcode result using `pre` attribute. (Theme: Twenty Eleven)
+2. Plugin revisions page.
+3. Shortcode result using `pre` attribute. (Theme: Twenty Eleven)
+4. Default shortcode result. (Theme: Twenty Eleven)
 
 
 == Changelog ==
