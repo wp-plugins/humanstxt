@@ -24,7 +24,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 = Translators =
 
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
-* Italian (it_IT) - Gianni Diurno
+* Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
 
 If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
 
