@@ -39,7 +39,7 @@ define('HUMANSTXT_OPTIONS_URL', admin_url('options-general.php?page=humanstxt'))
 
 /**
  * URL to Humans TXT options page.
- * @since 1.0.6
+ * @since 1.1
  */
 define('HUMANSTXT_REVISIONS_URL', add_query_arg(array('subpage' => 'revisions'), HUMANSTXT_OPTIONS_URL));
 
@@ -249,7 +249,7 @@ function humanstxt_update_options() {
  * given $revision if revisions aren't disabled. Redirects to
  * the plugin options page.
  * 
- * @since 1.0.6
+ * @since 1.1
  * 
  * @param int $revision Revisons number (key)
  */
@@ -330,7 +330,7 @@ function humanstxt_options() {
 
 /**
  * Prints the plugin options page.
- * @since 1.0.6
+ * @since 1.1
  */
 function humanstxt_options_page() {
 ?>
@@ -481,7 +481,7 @@ function humanstxt_options_page() {
 
 /**
  * Prints the plugin options revisions page.
- * @since 1.0.6
+ * @since 1.1
  */
 function humanstxt_revisions_page() {
 ?>

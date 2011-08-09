@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Humans TXT plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Humans TXT 1.0.6\n"
+"Project-Id-Version: Humans TXT 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
 "POT-Creation-Date: 2011-08-02 12:27:43+00:00\n"
 "MIME-Version: 1.0\n"

@@ -199,7 +199,7 @@ if (!function_exists('humanstxt_callback_wpauthors')) :
  * with the 'humanstxt_authors_format' filter and the returned list
  * can be modified with the 'humanstxt_authors' filter.
  *
- * @since 1.0.6
+ * @since 1.1
  *
  * @return string|null A list of active authors
  */

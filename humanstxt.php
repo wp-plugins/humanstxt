@@ -4,7 +4,7 @@ Plugin Name: Humans TXT
 Plugin URI: http://tillkruess.com/projects/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
-Version: 1.0.6
+Version: 1.1
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
@@ -36,11 +36,11 @@ License: GPLv3
  * Humans TXT plugin version.
  * @since 1.0.1
  */
-define('HUMANSTXT_VERSION', '1.0.6');
+define('HUMANSTXT_VERSION', '1.1');
 
 /**
  * Required WordPress version.
- * @since 1.0.6
+ * @since 1.1
  */
 define('HUMANSTXT_VERSION_REQUIRED', '3.2');
 
@@ -62,7 +62,7 @@ define('HUMANSTXT_DOMAIN', basename(HUMANSTXT_PLUGIN_PATH));
 /**
  * Default amount of stored revisions.
  * Use the 'humanstxt_max_revisions' filter to change it.
- * @since 1.0.6
+ * @since 1.1
  */
 define('HUMANSTXT_MAX_REVISIONS', '50');
 
@@ -423,7 +423,7 @@ function humanstxt_content() {
  * revions's content, author-id and it's time of creation.
  * Returns FALSE if revisions are disabled.
  * 
- * @since 1.0.6
+ * @since 1.1
  * 
  * @return array|false Revisions of the humans.txt file
  */
@@ -450,7 +450,7 @@ function humanstxt_revisions() {
  * Ensures that only the last 50 revisons are stored.
  * Limit can be changed with the 'humanstxt_max_revisions' filter.
  * 
- * @since 1.0.6
+ * @since 1.1
  * 
  * @param string $content Revisions content
  */
