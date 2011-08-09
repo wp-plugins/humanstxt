@@ -3,6 +3,7 @@
 Plugin Name: Humans TXT
 Plugin URI: http://tillkruess.com/projects/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
+Text Domain: humanstxt
 Version: 1.0.6
 Author: Till Krüss
 Author URI: http://tillkruess.com/
