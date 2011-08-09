@@ -7,12 +7,12 @@
 	}
 
 #humanstxt .form-table { clear: left; float: left; width: auto; margin-top: 0; }
-	#humanstxt-editor-wrap { float: left; padding-right: 10px; }
-		#humanstxt-editor-wrap .form-table { float: none; }
-			#humanstxt-editor-wrap .form-table td { padding-top: 0; }
-				#humanstxt-editor-wrap .form-table fieldset { max-width: 570px; }
+#humanstxt-editor-wrap { float: left; padding-right: 10px; }
+	#humanstxt-editor-wrap .form-table { float: none; }
+		#humanstxt-editor-wrap .form-table td { padding-top: 0; }
+			#humanstxt-editor-wrap .form-table fieldset { max-width: 570px; }
 				#humanstxt_content { resize: none; }
-		#humanstxt-editor-wrap .submit { margin-top: 0; padding-top: 1em; }
+	#humanstxt-editor-wrap .submit { margin-top: 0; padding-top: 1em; }
 
 #humanstxt-vars { float: left; padding: 15px 0 1em 0; }
 	#humanstxt-vars h4 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }

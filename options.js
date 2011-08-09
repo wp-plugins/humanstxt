@@ -111,7 +111,7 @@ jQuery(document).ready(function($) {
 	$.fn.humansAutoGrow = function() {
 		return this.each(function() {
 
-			var rowsAdjustment = $.browser.msie ? 5 : 0;
+			var rowsAdjustment = $.browser.msie ? ($.browser.version < 9 ? 3 : 5) : 0;
 			var colsDefault = this.cols;
 			var rowsDefault = this.rows + rowsAdjustment;
 
@@ -133,7 +133,6 @@ jQuery(document).ready(function($) {
 					obj.rows = rowsDefault;
 			}
 
-			this.style.width = "auto";
 			this.style.height = "auto";
 			this.style.overflow = "hidden";
 			this.onkeyup = grow;
