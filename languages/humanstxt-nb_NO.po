@@ -1,19 +1,18 @@
 # Norwegian Bokmal translation of the Humans TXT WordPress plugin
-# Copyright (C) 2011 Humans TXT
 # This file is distributed under the same license as the Humans TXT plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Humans TXT 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
 "POT-Creation-Date: 2011-08-02 12:27+0000\n"
-"PO-Revision-Date: 2011-08-09 23:46+0000\n"
+"PO-Revision-Date: 2011-08-10 12:07+0000\n"
 "Last-Translator: Petter Nordby <petter@neppe.no>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-08-09 23:56+0000\n"
-"X-Generator: Launchpad (build 13628)\n"
+"X-Launchpad-Export-Date: 2011-08-10 12:12+0000\n"
+"X-Generator: Launchpad (build 13636)\n"
 
 #. translators: variable name for the site/blog name (title)
 #: humanstxt.php:515
@@ -204,7 +203,7 @@ msgstr ""
 "/* SITE */\n"
 "\tLast update: $wp-siste-oppdatering$\n"
 "\tStandards: <HTML5, CSS3, ...>\n"
-"\tCMS: WordPress $wp-versjon$ (running PHP $php-versjon$)\n"
+"\tCMS: WordPress $wp-versjon$ (PHP $php-versjon$)\n"
 "\tLanguage: <English, Klingon, ...>\n"
 "\tComponents: <jQuery, Typekit, Modernizr, ...>\n"
 "\tIDE: <Coda, Zend Studio, Photoshop, Terminal, ...>\n"

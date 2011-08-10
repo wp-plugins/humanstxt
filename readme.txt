@@ -23,10 +23,11 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 = Translators =
 
-* Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
 * French (fr_FR) - [Maître Mô](http://maitremo.fr/)
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
-* Norwegian (nb_NO) - Petter Nordby
+* Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
+* Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
+* Norwegian (nb_NO) - [Petter Nordby](http://neppe.no/)
 * Indonesian (id_ID) - [Dedy Sofyan](http://sys-talk.com/)
 
 If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
