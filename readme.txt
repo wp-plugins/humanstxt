@@ -76,6 +76,20 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 == Changelog ==
 
+= 1.1 =
+
+* Now requires WordPress version 3.2
+* Added revisions functionality for the `humans.txt`
+* Added French, German, Italian, Norwegian and Indonesian translation
+* Added variable for active authors and their contact details
+* Replacing the translated and the english variable name in the `humans.txt`
+* Moved variable callback functions into `callbacks.php`
+* Removed Subscriber from the roles list
+* `HUMANSTXT_IS_ROOTINSTALL` constant overrides the result of `humanstxt_is_rootinstall()`
+* `HUMANSTXT_METABOX` constant can be used to hide the plugin rating box
+* `humanstxt_shortcode()` is now pluggable (primarily to prevent plugin conflicts)  
+* Several other code and interface improvements...
+
 = 1.0.5 =
 
 * Added new variables for the site/blog title, description and encoding
@@ -120,6 +134,10 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 
 == Upgrade Notice ==
+
+= 1.1 =
+
+Requires WordPress version 3.2 or higher! Contains a number of major changes and improvements like revisions support.  
 
 = 1.0.5 =
 
