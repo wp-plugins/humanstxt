@@ -456,11 +456,11 @@ function humanstxt_options_page() {
 				<h4><?php _e('Variables', HUMANSTXT_DOMAIN) ?></h4>
 				<ul>
 					<?php foreach ($humanstxt_variables as $variable) : ?>
-						<?php $callback_result = !isset($variable[3]) || $variable[3] ? call_user_func($variable[1]) : null ?>
+						<?php $callback_result = !isset($variable[4]) || $variable[4] ? call_user_func($variable[2]) : null ?>
 						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview', HUMANSTXT_DOMAIN) ?>: <?=esc_attr($callback_result)?>"<?php endif; ?>>
-							<code>$<?=$variable[0]?>$</code>
-							<?php if (isset($variable[2]) && !empty($variable[2])) : ?>
-								&mdash; <?=$variable[2]?>
+							<code>$<?=$variable[1]?>$</code>
+							<?php if (isset($variable[3]) && !empty($variable[3])) : ?>
+								&mdash; <?=$variable[3]?>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
