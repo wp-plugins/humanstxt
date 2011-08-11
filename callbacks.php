@@ -199,13 +199,17 @@ if (!function_exists('humanstxt_callback_wpauthors')) :
  * with the 'humanstxt_authors_format' filter and the returned list
  * can be modified with the 'humanstxt_authors' filter.
  *
- * @since 1.1
+ * @since 1.1.0
  *
  * @return string|null A list of active authors
  */
 function humanstxt_callback_wpauthors() {
 	$authors = null;
-	$users = get_users(array('who' => 'author', 'orderby' => 'display_name', 'fields' => array('ID', 'display_name', 'user_email', 'user_url')));
+	if (function_exists('get_users')) {
+		$users = get_users(array('who' => 'author', 'orderby' => 'display_name', 'fields' => array('ID', 'display_name', 'user_email', 'user_url')));
+	} else {
+		$users = humanstxt_legacy_get_users();
+	}
 	if (!empty($users)) {
 		foreach ($users as $user) $author_ids[] = $user->ID;
 		$authors_posts = count_many_users_posts($author_ids);

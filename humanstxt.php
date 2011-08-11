@@ -40,9 +40,9 @@ define('HUMANSTXT_VERSION', '1.1');
 
 /**
  * Required WordPress version.
- * @since 1.1
+ * @since 1.1.0
  */
-define('HUMANSTXT_VERSION_REQUIRED', '3.2');
+define('HUMANSTXT_VERSION_REQUIRED', '3.0');
 
 /**
  * Absolute path to the main Humans TXT plugin file.
@@ -62,9 +62,9 @@ define('HUMANSTXT_DOMAIN', basename(HUMANSTXT_PLUGIN_PATH));
 /**
  * Default amount of stored revisions.
  * Use the 'humanstxt_max_revisions' filter to change it.
- * @since 1.1
+ * @since 1.1.0
  */
-define('HUMANSTXT_MAX_REVISIONS', '50');
+define('HUMANSTXT_MAX_REVISIONS', 50);
 
 /**
  * Default Humans TXT plugin settings.
@@ -84,6 +84,13 @@ add_action('template_redirect', 'humanstxt_template_redirect', 8);
 add_action('do_humans', 'humanstxt_do_humans');
 add_filter('humans_txt', 'humanstxt_replace_variables');
 add_shortcode('humanstxt', 'humanstxt_shortcode');
+
+/**
+ * Load legacy code, if necessary. 
+ */
+if (version_compare($wp_version, '3.2', '<')) {
+	require_once HUMANSTXT_PLUGIN_PATH.'/legacy.php';
+}
 
 /**
  * Load plugin code for WordPress backend, if needed.
@@ -423,7 +430,7 @@ function humanstxt_content() {
  * revions's content, author-id and it's time of creation.
  * Returns FALSE if revisions are disabled.
  * 
- * @since 1.1
+ * @since 1.1.0
  * 
  * @return array|false Revisions of the humans.txt file
  */
@@ -450,7 +457,7 @@ function humanstxt_revisions() {
  * Ensures that only the last 50 revisons are stored.
  * Limit can be changed with the 'humanstxt_max_revisions' filter.
  * 
- * @since 1.1
+ * @since 1.1.0
  * 
  * @param string $content Revisions content
  */
@@ -460,10 +467,14 @@ function humanstxt_add_revision($content) {
 	$revisions = humanstxt_revisions();
 	$revisions[] = array('date' => current_time('timestamp'), 'user' => $current_user->ID, 'content' => $content);
 
-	// limit amount of revisions
-	$revisions = array_slice($revisions, -abs((int) apply_filters('humanstxt_max_revisions', HUMANSTXT_MAX_REVISIONS)), count($revisions), true);
+	// limit amount of revisions (with PHP4 compatibility)
+	$keys = array_slice(array_keys($revisions), -abs((int) apply_filters('humanstxt_max_revisions', HUMANSTXT_MAX_REVISIONS)), count($revisions));
+	$_revisions = array();
+	foreach ($keys as $key) {
+		$_revisions[$key] = $revisions[$key];
+	}
 
-	update_option('humanstxt_revisions', $revisions);
+	update_option('humanstxt_revisions', $_revisions);
 
 }
 
