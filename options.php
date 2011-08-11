@@ -486,7 +486,7 @@ function humanstxt_options_page() {
  */
 function humanstxt_revisions_page() {
 ?>
-<div class="wrap" id="humanstxt-revisions">
+<div id="humanstxt-revisions" class="wrap <?php echo ($wp32 = version_compare(get_bloginfo('version'), '3.1.4', '>')) ? '' : 'not-wp32' ?>">
 
 	<?php screen_icon() ?>
 
