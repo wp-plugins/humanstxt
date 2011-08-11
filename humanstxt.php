@@ -163,7 +163,7 @@ function humanstxt_is_rootinstall() {
 		return HUMANSTXT_IS_ROOTINSTALL;
 
 	$homeurl = parse_url(home_url());
-	if (!isset($homeurl['path']) || empty($homeurl['path']) || $homeul['path'] == '/') {
+	if (!isset($homeurl['path']) || empty($homeurl['path']) || $homeurl['path'] == '/') {
 		return true;
 	}
 

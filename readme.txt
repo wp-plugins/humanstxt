@@ -2,7 +2,7 @@
 Contributors: tillkruess
 Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
-Requires at least: 3.2
+Requires at least: 3.0
 Tested up to: 3.3
 Stable tag: 1.0.5
 
@@ -27,7 +27,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
 * Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
 * Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
-* Norwegian (nb_NO) - [Petter Nordby](http://neppe.no/)
+* Norwegian (nb_NO) - [Petter](http://neppe.no/)
 * Indonesian (id_ID) - [Dedy Sofyan](http://sys-talk.com/)
 
 If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
