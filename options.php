@@ -229,7 +229,7 @@ function humanstxt_update_options() {
 	if (isset($_POST['humanstxt_content'])) {
 
 		$humanstxt_content_old = humanstxt_content();
-		$humanstxt_content_new = stripslashes($_POST['humanstxt_content']);
+		$humanstxt_content_new = humanstxt_content_normalize(stripslashes($_POST['humanstxt_content']));
 
 		// has the content changed?
 		if ($humanstxt_content_new != $humanstxt_content_old) {

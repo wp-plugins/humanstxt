@@ -83,6 +83,7 @@ add_action('init', 'humanstxt_init');
 add_action('template_redirect', 'humanstxt_template_redirect', 8);
 add_action('do_humans', 'humanstxt_do_humans');
 add_filter('humans_txt', 'humanstxt_replace_variables');
+add_filter('humanstxt_content', 'humanstxt_content_normalize');
 add_shortcode('humanstxt', 'humanstxt_shortcode');
 
 /**
@@ -426,6 +427,20 @@ function humanstxt_content() {
 }
 
 /**
+ * Normalizes the line endings of the given $string.
+ *
+ * @since 1.1.0
+ *
+ * @param string $string String to be normalized
+ * @return string Normalized string 
+ */
+function humanstxt_content_normalize($string) {
+	$string = str_replace("\r\n", "\n", $string);
+	$string = str_replace("\r", "\n", $string);
+	return $string;
+}
+
+/**
  * Returns an array with all stored revisions, containing each
  * revions's content, author-id and it's time of creation.
  * Returns FALSE if revisions are disabled.
@@ -586,7 +601,7 @@ function humanstxt_default_content() {
 
 	humanstxt_load_textdomain();
 
-	return __(
+	return humanstxt_content_normalize(__(
 '/* the humans responsible & colophon */
 /* humanstxt.org */
 
@@ -610,7 +625,7 @@ function humanstxt_default_content() {
 	Language: <English, Klingon, ...>
 	Components: <jQuery, Typekit, Modernizr, ...>
 	IDE: <Coda, Zend Studio, Photoshop, Terminal, ...>
-', HUMANSTXT_DOMAIN);
+', HUMANSTXT_DOMAIN));
 
 }
 
