@@ -74,16 +74,4 @@ function str_ireplace($search, $replace, $subject) {
 }
 endif;
 
-if (!function_exists('get_users')) :
-/**
- * Humans TXT's own legacy function of WP 3.1's get_users().
- * http://codex.wordpress.org/Function_Reference/get_users
- */
-function humanstxt_legacy_get_users($args = array()) {
-	global $wpdb;
-	$results = $wpdb->get_results('SELECT `ID`, `display_name`, `user_email`, `user_url` FROM '.$wpdb->users.' ORDER BY `display_name` ASC');
-	return (array) $results;
-}
-endif;
-
 ?>

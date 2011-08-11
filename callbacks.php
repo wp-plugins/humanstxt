@@ -201,15 +201,15 @@ if (!function_exists('humanstxt_callback_wpauthors')) :
  *
  * @since 1.1.0
  *
+ * @global $wpdb
+ *
  * @return string|null A list of active authors
  */
 function humanstxt_callback_wpauthors() {
+	global $wpdb;
 	$authors = null;
-	if (function_exists('get_users')) {
-		$users = get_users(array('who' => 'author', 'orderby' => 'display_name', 'fields' => array('ID', 'display_name', 'user_email', 'user_url')));
-	} else {
-		$users = humanstxt_legacy_get_users();
-	}
+	// 3.1's get_users() is neat, but let's keep it downwards compatible...
+	$users = (array) $wpdb->get_results('SELECT ID, display_name, user_email, user_url FROM '.$wpdb->users.' INNER JOIN '._get_meta_table('user').' ON ID = user_id WHERE meta_key = "'.$wpdb->get_blog_prefix().'user_level" AND CAST(meta_value AS CHAR) != 0 ORDER BY display_name ASC');
 	if (!empty($users)) {
 		foreach ($users as $user) $author_ids[] = $user->ID;
 		$authors_posts = count_many_users_posts($author_ids);
