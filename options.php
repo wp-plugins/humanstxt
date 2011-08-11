@@ -334,7 +334,7 @@ function humanstxt_options() {
  */
 function humanstxt_options_page() {
 ?>
-<div class="wrap" id="humanstxt">
+<div id="humanstxt" class="wrap <?php echo ($wp32 = version_compare(get_bloginfo('version'), '3.1.4', '>')) ? '' : 'not-wp32' ?>">
 
 	<?php screen_icon() ?>
 
@@ -364,15 +364,16 @@ function humanstxt_options_page() {
 
 			<?php if (!defined('HUMANSTXT_METABOX')) define('HUMANSTXT_METABOX', true) ?>
 			<?php if (HUMANSTXT_METABOX && ($rating = humanstxt_rating()) !== false) : ?>
-				<div id="humanstxt-metabox" class="postbox">
+				<div id="humanstxt-metabox" class="postbox humanstxt-box">
 					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <br /><a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
 					<div class="star-holder">
+						<?php $starimg = $wp32 ? admin_url('images/gray-star.png?v=20110615') : admin_url('images/star.gif') ?>
 						<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
-						<div class="star star5"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('5 stars') ?>" /></div>
-						<div class="star star4"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('4 stars') ?>" /></div>
-						<div class="star star3"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('3 stars') ?>" /></div>
-						<div class="star star2"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('2 stars') ?>" /></div>
-						<div class="star star1"><img src="<?php echo admin_url('images/gray-star.png?v=20110615'); ?>" alt="<?php _e('1 star') ?>" /></div>
+						<div class="star star5"><img src="<?=$starimg?>" alt="<?php _e('5 stars') ?>" /></div>
+						<div class="star star4"><img src="<?=$starimg?>" alt="<?php _e('4 stars') ?>" /></div>
+						<div class="star star3"><img src="<?=$starimg?>" alt="<?php _e('3 stars') ?>" /></div>
+						<div class="star star2"><img src="<?=$starimg?>" alt="<?php _e('2 stars') ?>" /></div>
+						<div class="star star1"><img src="<?=$starimg?>" alt="<?php _e('1 star') ?>" /></div>
 					</div>
 					<small class="text-votes"><?php printf(_n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
 				</div>
@@ -500,7 +501,7 @@ function humanstxt_revisions_page() {
 	<?php if ($current_revision !== false) : ?>
 
 		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n(_x('j F, Y @ G:i', 'revision date format'), $revisions[$current_revision]['date'])) ?></h3>
-		<pre id="revision-preview"><?php echo esc_html(trim($revisions[$current_revision]['content'])) ?></pre>
+		<pre id="revision-preview" class="postbox"><?php echo esc_html(trim($revisions[$current_revision]['content'])) ?></pre>
 		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $current_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$current_revision) ?>" class="button-primary"><?php _e('Restore Revision', HUMANSTXT_DOMAIN) ?></a></p>
 
 	<?php endif; ?>
