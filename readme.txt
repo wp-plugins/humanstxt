@@ -23,12 +23,16 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 = Translators =
 
+* Brazilian Portuguese (pt_BR) - [Caciano Gabriel](http://ciano.co/)
+* Dutch (nl_NL)
 * French (fr_FR) - [Maître Mô](http://maitremo.fr/)
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
-* Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
-* Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
-* Norwegian (nb_NO) - [Petter](http://neppe.no/)
+* Hungarian (hu_HU)
 * Indonesian (id_ID) - [Dedy Sofyan](http://sys-talk.com/)
+* Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
+* Latvian (lv) - [Sandis Veinbergs](http://www.kleofass.lv)
+* Norwegian (nb_NO) - [Petter](http://neppe.no/)
+* Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
 
 If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
 
