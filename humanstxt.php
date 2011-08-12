@@ -601,6 +601,7 @@ function humanstxt_default_content() {
 
 	humanstxt_load_textdomain();
 
+	/* translators: only translate the text inside angle brackets < > to keep the humans.txt international. if the variable names are translated, you may translate them here too. */
 	return humanstxt_content_normalize(__(
 '/* the humans responsible & colophon */
 /* humanstxt.org */
