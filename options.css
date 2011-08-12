@@ -97,10 +97,10 @@ div.star img {
 }
 
 
-/* why fix if you can hide? MSIE 6-7 */
+/* gross IE 6-7 adjustments */
 * html #humanstxt-metabox { display: none !important; }
 *+html #humanstxt-metabox { display: none !important; }
-
-/* gross ie7 adjustments */
+* html #humanstxt-editor-wrap fieldset { width: 570px; }
 *+html #humanstxt-editor-wrap fieldset { width: 570px; }
+* html .submit { padding-top: 0; }
 *+html .submit { padding-top: 0; }
