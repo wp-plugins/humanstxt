@@ -111,9 +111,18 @@ jQuery(document).ready(function($) {
 	$.fn.humansAutoGrow = function() {
 		return this.each(function() {
 
-			var rowsAdjustment = $.browser.msie ? ($.browser.version < 9 ? 3 : 5) : 0;
 			var colsDefault = this.cols;
-			var rowsDefault = this.rows + rowsAdjustment;
+			var rowsDefault = this.rows;
+			var rowsAdjustment = 0;
+
+			if ($.browser.msie) {
+				if ($.browser.version < 9) {
+					rowsAdjustment = $('#humanstxt').hasClass('not-wp32') ? 9 : 3;
+				} else {
+					rowsAdjustment = 5;
+				}
+				rowsDefault += rowsAdjustment;
+			}
 
 			var grow = function() {
 				growByRef(this);

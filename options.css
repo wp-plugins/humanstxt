@@ -52,6 +52,8 @@
 	box-shadow: 0 0 2px #555;
 }
 
+
+/* WordPress < 3.2 */
 .not-wp32 #humanstxt-metabox, .not-wp32 #revision-preview { background-color: #fff; }
 
 
@@ -98,3 +100,7 @@ div.star img {
 /* why fix if you can hide? MSIE 6-7 */
 * html #humanstxt-metabox { display: none !important; }
 *+html #humanstxt-metabox { display: none !important; }
+
+/* gross ie7 adjustments */
+*+html #humanstxt-editor-wrap fieldset { width: 570px; }
+*+html .submit { padding-top: 0; }
