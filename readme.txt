@@ -27,11 +27,12 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Dutch (nl_NL)
 * French (fr_FR) - [Maître Mô](http://maitremo.fr/)
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
-* Hungarian (hu_HU)
+* Hungarian (hu_HU) - [Győző Farkas](http://www.wordpress2you.com/)
 * Indonesian (id_ID) - [Dedy Sofyan](http://sys-talk.com/)
 * Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
 * Latvian (lv) - [Sandis Veinbergs](http://www.kleofass.lv)
 * Norwegian (nb_NO) - [Petter](http://neppe.no/)
+* Persian (fa_IR) - [Alireza Ch](http://1freeman.net/)
 * Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
 
 If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
@@ -85,7 +86,7 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 * Now requires WordPress version 3.2
 * Added revisions functionality for the `humans.txt`
-* Added French, German, Italian, Norwegian and Indonesian translation
+* Added translation for several languages
 * Added variable for active authors and their contact details
 * Replacing the translated and the english variable name in the `humans.txt`
 * Moved variable callback functions into `callbacks.php`
@@ -142,7 +143,7 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 = 1.1 =
 
-Requires WordPress version 3.2 or higher! Contains a number of major changes and improvements like revisions support.  
+This version introduces revisions support, several translations and other major improvements.  
 
 = 1.0.5 =
 
