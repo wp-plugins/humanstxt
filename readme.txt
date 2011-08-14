@@ -24,7 +24,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 = Translators =
 
 * Brazilian Portuguese (pt_BR) - [Caciano Gabriel](http://ciano.co/)
-* Dutch (nl_NL)
+* Dutch (nl_NL) - [Anonymous](https://launchpad.net/~forkless)
 * French (fr_FR) - [Maître Mô](http://maitremo.fr/)
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
 * Hungarian (hu_HU) - [Győző Farkas](http://www.wordpress2you.com/)
@@ -34,6 +34,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Norwegian (nb_NO) - [Petter](http://neppe.no/)
 * Persian (fa_IR) - [Alireza Ch](http://1freeman.net/)
 * Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
+* Ukrainian (uk) -[Vitaly Mylo](http://web-profile.com.ua/wordpress/) 
 
 If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
 
