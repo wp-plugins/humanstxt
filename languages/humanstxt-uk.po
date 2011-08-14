@@ -1,4 +1,4 @@
-# Russian translation of the Humans TXT WordPress plugin
+# Ukrainian translation of the Humans TXT WordPress plugin
 # This file is distributed under the same license as the Humans TXT plugin.
 msgid ""
 msgstr ""
@@ -7,7 +7,7 @@ msgstr ""
 "POT-Creation-Date: 2011-08-12 13:13+0000\n"
 "PO-Revision-Date: 2011-08-14 09:47+0000\n"
 "Last-Translator: Vitaly <vitaly.mylo@gmail.com>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +21,7 @@ msgstr "wp-title"
 
 #: humanstxt.php:543
 msgid "Name (title) of site/blog"
-msgstr "Название сайта или блога"
+msgstr "Назва сайту або блогу"
 
 #. translators: variable name for the site/blog tagline (description)
 #: humanstxt.php:544
@@ -30,7 +30,7 @@ msgstr "wp-tagline"
 
 #: humanstxt.php:544
 msgid "Tagline (description) of site/blog"
-msgstr "Описание сайта или блога"
+msgstr "Опис сайту або блогу"
 
 #. translators: variable name for the number of published posts
 #: humanstxt.php:545
@@ -39,7 +39,7 @@ msgstr "wp-posts"
 
 #: humanstxt.php:545
 msgid "Number of published posts"
-msgstr "Число опубликованных записей"
+msgstr "Кількість опублікованих публікацій"
 
 #. translators: variable name for the number of published pages
 #: humanstxt.php:546
@@ -48,7 +48,7 @@ msgstr "wp-pages"
 
 #: humanstxt.php:546
 msgid "Number of published pages"
-msgstr "Число опубликованных страниц"
+msgstr "Кількість опублікованих сторінок"
 
 #. translators: variable name for the "last modified" timestamp
 #: humanstxt.php:547
@@ -57,16 +57,16 @@ msgstr "wp-lastupdate"
 
 #: humanstxt.php:547
 msgid "Date of last modified post/page"
-msgstr "Дата последней изменной записи или страницы"
+msgstr "Дата останньої зміни публікації/сторінки"
 
 #. translators: variable name for the author list
 #: humanstxt.php:548
 msgid "wp-authors"
-msgstr "wp-author"
+msgstr "wp-authors"
 
 #: humanstxt.php:548
 msgid "Active authors and their contact details"
-msgstr "Активные авторы и их контактные данные"
+msgstr "Активні автори та їхні контактні дані"
 
 #. translators: variable name for WordPress languages(s)
 #: humanstxt.php:549
@@ -75,7 +75,7 @@ msgstr "wp-language"
 
 #: humanstxt.php:549
 msgid "WordPress language(s)"
-msgstr "Язык(и) WordPress"
+msgstr "Мова(и) WordPress"
 
 #. translators: variable name for activated WordPress plugins
 #: humanstxt.php:550
@@ -84,7 +84,7 @@ msgstr "wp-plugins"
 
 #: humanstxt.php:550
 msgid "Activated WordPress plugins"
-msgstr "Активированные плагины WordPress"
+msgstr "Активовані WordPress плагіни"
 
 #. translators: variable name for the encoding (charset) used by WordPress
 #: humanstxt.php:551
@@ -93,7 +93,7 @@ msgstr "wp-charset"
 
 #: humanstxt.php:551
 msgid "Encoding used for pages and feeds"
-msgstr "Кодировка страниц и rss-потоков"
+msgstr "Кодування сторінок та rss-каналів"
 
 #. translators: variable name for the installed WordPress version
 #: humanstxt.php:552
@@ -102,7 +102,7 @@ msgstr "wp-version"
 
 #: humanstxt.php:552
 msgid "Installed WordPress version"
-msgstr "Версия установленного WordPress"
+msgstr "Версія встановленого ​​WordPress"
 
 #. translators: variable name for the running PHP parser version
 #: humanstxt.php:553
@@ -111,7 +111,7 @@ msgstr "php-version"
 
 #: humanstxt.php:553
 msgid "Running PHP parser version"
-msgstr "Версия запущенного парсера PHP"
+msgstr "Версія запущеного парсера PHP"
 
 #. translators: variable name for the summary of the active WordPress theme
 #: humanstxt.php:554
@@ -120,7 +120,7 @@ msgstr "wp-theme"
 
 #: humanstxt.php:554
 msgid "Summary of the active WordPress theme"
-msgstr "Сводка активной темы WordPress"
+msgstr "Резюме активної теми WordPress"
 
 #. translators: variable name for the name of the active WordPress theme
 #: humanstxt.php:555
@@ -129,7 +129,7 @@ msgstr "wp-theme-name"
 
 #: humanstxt.php:555
 msgid "Name of the active theme"
-msgstr "Название активной темы"
+msgstr "Назва активної теми"
 
 #. translators: variable name for the version of the active WordPress theme
 #: humanstxt.php:556
@@ -138,7 +138,7 @@ msgstr "wp-theme-version"
 
 #: humanstxt.php:556
 msgid "Version of the active theme"
-msgstr "Версия активной темы"
+msgstr "Версія активної теми"
 
 #. translators: variable name for the author name of the active WordPress theme
 #: humanstxt.php:557
@@ -147,7 +147,7 @@ msgstr "wp-theme-author"
 
 #: humanstxt.php:557
 msgid "Author name of the active theme"
-msgstr "Автор активной темы"
+msgstr "Автор активної теми"
 
 #. translators: variable name for the author link of the active WordPress theme
 #: humanstxt.php:558
@@ -156,7 +156,7 @@ msgstr "wp-theme-author-link"
 
 #: humanstxt.php:558
 msgid "Author link of the active theme"
-msgstr "Ссылка на автора активной темы"
+msgstr "Посилання на автора активної теми"
 
 #. translators: only translate the text inside angle brackets < > to keep the
 #. humans.txt international. if the variable names are translated, you may
@@ -191,15 +191,15 @@ msgstr ""
 "/* humanstxt.org */\n"
 "\n"
 "/* TEAM */\n"
-"\t<ваше название>: <ваше имя>\n"
+"\t<ваша назва>: <ваше ім'я>\n"
 "\tSite: <сайт>\n"
-"\tTwitter: <@имя_пользователя>\n"
-"\tLocation: <город, страна>\n"
+"\tTwitter: <@ім'я_користувача>\n"
+"\tLocation: <місто, країна>\n"
 "\n"
 "\t\t[...]\n"
 "\n"
 "/* THANKS */\n"
-"\t<имя>: <ссылка, email, @twitter_имя, ...>\n"
+"\t<имя>: <посилання, email, @twitter_ім'я, ...>\n"
 "\n"
 "\t\t[...]\n"
 "\n"
@@ -213,11 +213,11 @@ msgstr ""
 
 #: options.php:114
 msgid "Please update your WordPress installation."
-msgstr "Пожалуйста, обновите ваш WordPress"
+msgstr "Будь ласка, оновіть встановлений WordPress."
 
 #: options.php:115
 msgid "Humans TXT %1$s requires WordPress %2$s or higher."
-msgstr "Humans TXT %1$s требует WordPress %2$s или выше."
+msgstr "Humans TXT %1$s вимагає WordPress %2$s або вище."
 
 #. Plugin Name of the plugin/theme
 #: options.php:137 options.php:341 options.php:493
@@ -226,7 +226,7 @@ msgstr "Humans TXT"
 
 #: options.php:175
 msgid "What is the humans.txt?"
-msgstr "Что такое humans.txt?"
+msgstr "Що таке humans.txt?"
 
 #: options.php:176
 msgid ""
@@ -234,12 +234,12 @@ msgid ""
 "in the site root that contains information about the humans who have "
 "contributed to the website."
 msgstr ""
-"Это инициатива знакомства с людьми по ту сторону сайта. Это текстовый файл, "
-"который содержит информацию о людях, участвовавших в создании сайта."
+"Це ініціатива знайомства з людьми по той бік сайту. Це текстовий файл, який "
+"містить інформацію про людей, які брали участь у створенні сайту."
 
 #: options.php:181
 msgid "Who should I mention?"
-msgstr "Кого вписать?"
+msgstr "Кого я повинен відзначити?"
 
 #: options.php:182
 msgid ""
@@ -247,12 +247,13 @@ msgid ""
 "developer, the designer, the copywriter, the webmaster, the editor, ... "
 "anyone who contributed to the website."
 msgstr ""
-"Кого угодно, кто согласится на это. Вы можете упомянуть разработчика, "
-"дизайнера, копирайтера, вебмастера, редактора… любого, кто внёс вклад в сайт."
+"Кого завгодно, хто погодиться на це. Ви можете згадати розробника, "
+"дизайнера, копірайтера, вебмастера, редактора ... будь-кого, хто зробив "
+"внесок у сайт."
 
 #: options.php:187
 msgid "How should I format it?"
-msgstr "Как я должен его оформить?"
+msgstr "Як я повинен його оформити?"
 
 #: options.php:188
 msgid ""
@@ -262,67 +263,67 @@ msgid ""
 "or <a href=\"http://html5boilerplate.com/humans.txt\" "
 "rel=\"external\">html5boilerplate.com</a>."
 msgstr ""
-"Как угодно, но убедитесь, что люди могут легко его прочесть. Для вдохновения "
-"посмотрите humans.txt на <a href=\"http://humanstxt.org/humans.txt\" "
-"rel=\"external\">humanstxt.org</a> или <a "
-"href=\"http://html5boilerplate.com/humans.txt\" "
+"Як завгодно, але переконайтеся, що люди можуть легко його прочитати. Для "
+"натхнення перегляньте humans.txt на сайті <a "
+"href=\"http://humanstxt.org/humans.txt\" rel=\"external\">humanstxt.org</a> "
+"або <a href=\"http://html5boilerplate.com/humans.txt\" "
 "rel=\"external\">html5boilerplate.com</a>."
 
 #: options.php:193
 msgid "Official Humans TXT website"
-msgstr "Официальный сайт Humans TXT"
+msgstr "Офіційний сайт Humans TXT"
 
 #: options.php:194
 msgid "Plugin Homepage"
-msgstr "Домашняя страница плагина"
+msgstr "Домашня сторінка плагіну"
 
 #: options.php:195
 msgid "Plugin Support Forum"
-msgstr "Форум поддержки плагина"
+msgstr "Форум підтримки плагіну"
 
 #: options.php:282
 msgid ""
 "Humans TXT includes the functionality of %1$s. Please deactivate %1$s to "
 "avoid plugin conflicts."
 msgstr ""
-"Humans TXT включает функциональность %1$s. Пожалуйста, отключите %1$s, чтобы "
-"избежать конфликтов."
+"Humans TXT включає в себе функціональність %1$s. Будь ласка, вимкніть %1$s, "
+"щоб уникнути конфліктів."
 
 #: options.php:346
 msgid "Revision restored."
-msgstr "Восстановленная ревизия"
+msgstr "Відновлена ​​ревізія"
 
 #: options.php:349
 msgid "Read FAQ..."
-msgstr "Прочтите FAQ…"
+msgstr "Прочитайте FAQ..."
 
 #: options.php:352
 msgid "Error: WordPress is not installed in the root of the domain."
-msgstr "Ошибка: WordPress не установлен в корне домена"
+msgstr "Помилка: WordPress не встановлений у корені домену"
 
 #: options.php:354
 msgid "Error: The site root already contains a physical humans.txt file."
-msgstr "Ошибка: физический файл humans.txt уже существует в корне сайта"
+msgstr "Помилка: фізичний файл humans.txt вже існує у корені сайту"
 
 #: options.php:356
 msgid ""
 "Error: Please <a href=\"%s\">update your permalink structure</a> to "
 "something other than the default."
 msgstr ""
-"Ошибка: пожалуйста, <a href=\"%s\">измените структуру ваших постоянных "
-"ссылок</a>, потому что сейчас у вас выбрана структура по умолчанию."
+"Помилка: будь ласка, <a href=\"%s\">змініть структуру ваших постійних "
+"посилань</a>, тому що зараз у вас обрана структура за замовчуванням."
 
 #: options.php:368
 msgid ""
 "If you like this plugin, why not <a href=\"%s\" title=\"%s\" "
 "rel=\"external\">recommend it to others</a> by rating it?"
 msgstr ""
-"Если вам нравится этот плагин, почему бы не <a href=\"%s\" \"title=\"%s\" "
-"rel=\"external\">порекомендовать его остальным</a>, оценив его?"
+"Якщо вам подобається цей плагін, чому б не <a href=\"%s\" \"title=\"%s\" "
+"rel=\"external\">порекомендувати його іншим</a>, оцінивши його?"
 
 #: options.php:368
 msgid "Rate this plugin on WordPress.org"
-msgstr "Оцените этот плагин на WordPress.org"
+msgstr "Оцініть цей плагін на WordPress.org"
 
 #: options.php:385 options.php:388 options.php:433 options.php:440
 msgid "Humans TXT File"
@@ -330,60 +331,60 @@ msgstr "Файл Humans TXT"
 
 #: options.php:391
 msgid "View this site's humans.txt file"
-msgstr "Посмотреть файл humans.txt этого сайта"
+msgstr "Переглянути файл humans.txt цього сайту"
 
 #. translators: %s: humans.txt (linked to the site's humans.txt file)
 #: options.php:392
 msgid "Activate %s file"
-msgstr "Активировать файл %s"
+msgstr "Активувати файл %s"
 
 #: options.php:395
 msgid ""
 "Adds an <link rel=\"author\"> tag to the site's <head> tag pointing to the "
 "humans.txt file."
 msgstr ""
-"Добавить указывающий на humans.txt тег <link rel=\"author\">в тег <head> "
-"этого сайта."
+"Додати тег <link rel=\"author\"> у тег <head> цього сайту, що вказує на "
+"humans.txt."
 
 #: options.php:397
 msgid "Add an author link tag to the site"
-msgstr "Добавить тег ссылку автора на сайт"
+msgstr "Додати тег авторського посилання на сайт"
 
 #: options.php:403 options.php:406
 msgid "Editing Permissions"
-msgstr "Права на редактирование"
+msgstr "Права на редагування"
 
 #: options.php:407
 msgid "Roles that can edit the content of the humans.txt file"
-msgstr "Роли, которые могут редактировать содержимое файла humans.txt"
+msgstr "Ролі, які можуть редагувати вміст файлу humans.txt"
 
 #: options.php:441
 msgid ""
 "If you need a little help with your humans.txt, try the \"Help\" button in "
 "the top right corner of this page."
 msgstr ""
-"Если вам нужна небольшая помощь с вашим humans.txt, попробуйте нажать кнопку "
-"«Помощь» («Help») в верхнем правом углу этой страницы."
+"Якщо вам потрібна невелика допомога з вашим humans.txt, спробуйте натиснути "
+"кнопку «Допомога» («Help») у верхньому правому кутку цієї сторінки."
 
 #: options.php:450
 msgid "View Revisions"
-msgstr "Посмотреть ревизии"
+msgstr "Переглянути ревізії"
 
 #: options.php:457
 msgid "Variables"
-msgstr "Переменные"
+msgstr "Змінні"
 
 #: options.php:461
 msgid "Preview"
-msgstr "Предпросмотр"
+msgstr "Попередній перегляд"
 
 #: options.php:469
 msgid "Suggest another variable..."
-msgstr "Предложить другую переменную."
+msgstr "Запропонувати іншу змінну..."
 
 #: options.php:475
 msgid "Shortcode Usage"
-msgstr "Использование шорткода"
+msgstr "Використання шорткоду"
 
 #: options.php:476
 msgid ""
@@ -393,40 +394,33 @@ msgid ""
 "links and email addresses will be encoded to block spam bots. <a href=\"%s\" "
 "rel=\"external\">Of course you can customize it...</a>"
 msgstr ""
-"Вы можете использовать шорткод <code>[humanstxt]</code> для отображения "
-"файла <em>humans.txt</em> на странице или в записи. По умолчанию, все "
-"ссылки, адреса электронной почты и имена учётных записей Twitter будут "
-"сконвертированы в кликабельные ссылки и адреса электронной почты будут "
-"закодированы для блокировки спамботов. <a href=\"%s\" "
-"rel=\"external\">Конечно вы можете это настроить…</a>"
+"Ви можете використовувати шорткод <code>[humanstxt]</code> для відображення "
+"файлу <em>humans.txt</em> на сторінці або у публікації. За умовчанням, усі "
+"посилання, адреси електронної пошти та імена облікових записів Twitter "
+"будуть сконвертовані в клікабельні посилання та адреси електронної пошти "
+"будуть закодовані для блокування спам-ботів. <a href=\"%s\" "
+"rel=\"external\">Звичайно ви можете це налаштувати…</a>"
 
 #. translators: %s: revision date
 #: options.php:503
 msgid "Revision created on %s"
-msgstr "Ревизия создана %s"
+msgstr "Ревізію створено %s"
 
 #: options.php:505
 msgid "Restore Revision"
-msgstr "Восстановить ревизию"
+msgstr "Відновити ревізію"
 
 #. translators: %s: number of stored revisions
 #: options.php:544
 msgid ""
 "WordPress is storing the last %s revisions of your <em>humans.txt</em> file."
 msgstr ""
-"WordPress хранит %s последних ревизий вашего файла <em>humans.txt</em>"
+"WordPress зберігає %s останніх ревізій вашого файлу <em>humans.txt</em>"
 
 #. Description of the plugin/theme
 msgid ""
 "Credit the people behind your website in your <strong>humans.txt</strong> "
 "file. Easy to edit, directly within WordPress."
 msgstr ""
-"Упомяните людей, стоящих за вашим сайтом в вашем файле "
-"<strong>humans.txt</strong>. Легко редактировать, прямо внутри WordPress."
-
-#~ msgid ""
-#~ "If you like this plugin, why not <br /><a href=\"%s\" title=\"%s\" "
-#~ "rel=\"external\">recommend it to others</a> by rating it?"
-#~ msgstr ""
-#~ "Если вам нравится этот плагин, почему бы не <br /><a href=\"%s\" "
-#~ "title=\"%s\" rel=\"external\">порекомендовать его остальным</a>, оценив его?"
+"Згадайте людей, що стоять за вашим сайтом у вашому файлі "
+"<strong>humans.txt</strong>. Легко редагувати, прямо всередині WordPress."
