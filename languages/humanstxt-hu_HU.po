@@ -1,163 +1,170 @@
+# Hungarian translation of the Humans TXT WordPress plugin
+# This file is distributed under the same license as the Humans TXT plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: humanstxt-HU v1.1\n"
+"Project-Id-Version: Humans TXT 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
-"POT-Creation-Date: 2011-08-02 12:27:43+00:00\n"
-"PO-Revision-Date: \n"
-"Last-Translator: FYGureout <webmester@wordpress2you.com>\n"
+"POT-Creation-Date: 2011-08-12 13:13+0000\n"
+"PO-Revision-Date: 2011-08-14 00:57+0000\n"
+"Last-Translator: Till Krüss <Unknown>\n"
 "Language-Team: FYGureout <webmester@wordpress2you.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Hungarian\n"
+"X-Launchpad-Export-Date: 2011-08-14 01:08+0000\n"
+"X-Generator: Launchpad (build 13674)\n"
 "X-Poedit-Country: HUNGARY\n"
+"X-Poedit-Language: Hungarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. translators: variable name for the site/blog name (title)
-#: humanstxt.php:515
+#: humanstxt.php:543
 msgid "wp-title"
 msgstr "wp-title"
 
-#: humanstxt.php:515
+#: humanstxt.php:543
 msgid "Name (title) of site/blog"
 msgstr "Honlap/Blog neve"
 
 #. translators: variable name for the site/blog tagline (description)
-#: humanstxt.php:516
+#: humanstxt.php:544
 msgid "wp-tagline"
 msgstr "wp-tagline"
 
-#: humanstxt.php:516
+#: humanstxt.php:544
 msgid "Tagline (description) of site/blog"
 msgstr "Honlap/Blog címsor (leírás)"
 
 #. translators: variable name for the number of published posts
-#: humanstxt.php:517
+#: humanstxt.php:545
 msgid "wp-posts"
 msgstr "wp-posts"
 
-#: humanstxt.php:517
+#: humanstxt.php:545
 msgid "Number of published posts"
 msgstr "Közzétett bejegyzések száma"
 
 #. translators: variable name for the number of published pages
-#: humanstxt.php:518
+#: humanstxt.php:546
 msgid "wp-pages"
 msgstr "wp-pages"
 
-#: humanstxt.php:518
+#: humanstxt.php:546
 msgid "Number of published pages"
 msgstr "Közzétett oldalak száma"
 
 #. translators: variable name for the "last modified" timestamp
-#: humanstxt.php:519
+#: humanstxt.php:547
 msgid "wp-lastupdate"
 msgstr "wp-lastupdate"
 
-#: humanstxt.php:519
+#: humanstxt.php:547
 msgid "Date of last modified post/page"
 msgstr "Honlap/oldal legutóbbi módosítás dátuma"
 
 #. translators: variable name for the author list
-#: humanstxt.php:520
+#: humanstxt.php:548
 msgid "wp-authors"
 msgstr "wp-authors"
 
-#: humanstxt.php:520
+#: humanstxt.php:548
 msgid "Active authors and their contact details"
 msgstr "Aktív szerzők és kapcsolati adataik"
 
 #. translators: variable name for WordPress languages(s)
-#: humanstxt.php:521
+#: humanstxt.php:549
 msgid "wp-language"
 msgstr "wp-language"
 
-#: humanstxt.php:521
+#: humanstxt.php:549
 msgid "WordPress language(s)"
 msgstr "WordPress nyelve(i)"
 
 #. translators: variable name for activated WordPress plugins
-#: humanstxt.php:522
+#: humanstxt.php:550
 msgid "wp-plugins"
 msgstr "wp-plugins"
 
-#: humanstxt.php:522
+#: humanstxt.php:550
 msgid "Activated WordPress plugins"
 msgstr "Bekapcsolt WordPress-bővítmények"
 
 #. translators: variable name for the encoding (charset) used by WordPress
-#: humanstxt.php:523
+#: humanstxt.php:551
 msgid "wp-charset"
 msgstr "wp-charset"
 
-#: humanstxt.php:523
+#: humanstxt.php:551
 msgid "Encoding used for pages and feeds"
 msgstr "Oldalak és hírforrások karakterkódolása"
 
 #. translators: variable name for the installed WordPress version
-#: humanstxt.php:524
+#: humanstxt.php:552
 msgid "wp-version"
 msgstr "wp-version"
 
-#: humanstxt.php:524
+#: humanstxt.php:552
 msgid "Installed WordPress version"
 msgstr "WordPress verzió"
 
 #. translators: variable name for the running PHP parser version
-#: humanstxt.php:525
+#: humanstxt.php:553
 msgid "php-version"
 msgstr "php-version"
 
-#: humanstxt.php:525
+#: humanstxt.php:553
 msgid "Running PHP parser version"
 msgstr "PHP verzió"
 
 #. translators: variable name for the summary of the active WordPress theme
-#: humanstxt.php:526
+#: humanstxt.php:554
 msgid "wp-theme"
 msgstr "wp-theme"
 
-#: humanstxt.php:526
+#: humanstxt.php:554
 msgid "Summary of the active WordPress theme"
 msgstr "WordPress sablon összefoglaló"
 
 #. translators: variable name for the name of the active WordPress theme
-#: humanstxt.php:527
+#: humanstxt.php:555
 msgid "wp-theme-name"
 msgstr "wp-theme-name"
 
-#: humanstxt.php:527
+#: humanstxt.php:555
 msgid "Name of the active theme"
 msgstr "WordPress sablon neve"
 
 #. translators: variable name for the version of the active WordPress theme
-#: humanstxt.php:528
+#: humanstxt.php:556
 msgid "wp-theme-version"
 msgstr "wp-theme-version"
 
-#: humanstxt.php:528
+#: humanstxt.php:556
 msgid "Version of the active theme"
 msgstr "Sablon verziója"
 
 #. translators: variable name for the author name of the active WordPress theme
-#: humanstxt.php:529
+#: humanstxt.php:557
 msgid "wp-theme-author"
 msgstr "wp-theme-author"
 
-#: humanstxt.php:529
+#: humanstxt.php:557
 msgid "Author name of the active theme"
 msgstr "Sablon szerzője"
 
 #. translators: variable name for the author link of the active WordPress theme
-#: humanstxt.php:530
+#: humanstxt.php:558
 msgid "wp-theme-author-link"
 msgstr "wp-theme-author-link"
 
-#: humanstxt.php:530
+#: humanstxt.php:558
 msgid "Author link of the active theme"
 msgstr "Link a sablon szerzőjéhez"
 
-#: humanstxt.php:576
+#. translators: only translate the text inside angle brackets < > to keep the
+#. humans.txt international. if the variable names are translated, you may
+#. translate them here too.
+#: humanstxt.php:605
 msgid ""
 "/* the humans responsible & colophon */\n"
 "/* humanstxt.org */\n"
@@ -213,12 +220,11 @@ msgstr "A WordPress jelenleg használt verziójának frissítése szükséges!"
 
 #: options.php:115
 msgid "Humans TXT %1$s requires WordPress %2$s or higher."
-msgstr "A Humans TXT %1$s bővítmény a WordPress %2$s vagy magasabb verzióját igényli."
+msgstr ""
+"A Humans TXT %1$s bővítmény a WordPress %2$s vagy magasabb verzióját igényli."
 
 #. Plugin Name of the plugin/theme
-#: options.php:137
-#: options.php:341
-#: options.php:492
+#: options.php:137 options.php:341 options.php:493
 msgid "Humans TXT"
 msgstr "Humans TXT"
 
@@ -227,24 +233,47 @@ msgid "What is the humans.txt?"
 msgstr "Mi a human.txt?"
 
 #: options.php:176
-msgid "It's an initiative for knowing the people behind a website. It's a TXT file in the site root that contains information about the humans who have contributed to the website."
-msgstr "Kezdeményezés a weboldal mögött álló ügyes emberek elismeréséért. Ez egy TXT fájl a gyökérkönyvtárban, amely információkat tartalmaz a weboldal létrehozásában közreműködőkről."
+msgid ""
+"It's an initiative for knowing the people behind a website. It's a TXT file "
+"in the site root that contains information about the humans who have "
+"contributed to the website."
+msgstr ""
+"Kezdeményezés a weboldal mögött álló ügyes emberek elismeréséért. Ez egy TXT "
+"fájl a gyökérkönyvtárban, amely információkat tartalmaz a weboldal "
+"létrehozásában közreműködőkről."
 
 #: options.php:181
 msgid "Who should I mention?"
 msgstr "Kit említsek meg?"
 
 #: options.php:182
-msgid "Whoever you want to, provided they wish you to do so. You can mention the developer, the designer, the copywriter, the webmaster, the editor, ... anyone who contributed to the website."
-msgstr "Akit csak akarunk, feltéve, ha ők is ezt szeretnék. Megemlíthetjük a fejlesztőt, a sablontervezőt, a jogtulajdonost, a webmestert, a szerkesztőt... -  mindenkit, akinek szerepe van a honlap létrehozásában, üzemeltetésében."
+msgid ""
+"Whoever you want to, provided they wish you to do so. You can mention the "
+"developer, the designer, the copywriter, the webmaster, the editor, ... "
+"anyone who contributed to the website."
+msgstr ""
+"Akit csak akarunk, feltéve, ha ők is ezt szeretnék. Megemlíthetjük a "
+"fejlesztőt, a sablontervezőt, a jogtulajdonost, a webmestert, a "
+"szerkesztőt... -  mindenkit, akinek szerepe van a honlap létrehozásában, "
+"üzemeltetésében."
 
 #: options.php:187
 msgid "How should I format it?"
 msgstr "Milyen formában?"
 
 #: options.php:188
-msgid "However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href=\"http://humanstxt.org/humans.txt\" rel=\"external\">humanstxt.org</a> or <a href=\"http://html5boilerplate.com/humans.txt\" rel=\"external\">html5boilerplate.com</a>."
-msgstr "Ahogyan csak akarjuk, csak abban legyünk biztosak, hogy az emberek könnyen elolvashatják. Néhány ötlet meríthető a <a href=\"http://humanstxt.org/humans.txt\" rel=\"external\">humanstxt.org</a>, vagy a <a href=\"http://html5boilerplate.com/humans.txt\" rel=\"external\">html5boilerplate.com</a> oldalakról."
+msgid ""
+"However you want, just make sure humans can easily read it. For some "
+"inspiration check the humans.txt of <a "
+"href=\"http://humanstxt.org/humans.txt\" rel=\"external\">humanstxt.org</a> "
+"or <a href=\"http://html5boilerplate.com/humans.txt\" "
+"rel=\"external\">html5boilerplate.com</a>."
+msgstr ""
+"Ahogyan csak akarjuk, csak abban legyünk biztosak, hogy az emberek könnyen "
+"elolvashatják. Néhány ötlet meríthető a <a "
+"href=\"http://humanstxt.org/humans.txt\" rel=\"external\">humanstxt.org</a>, "
+"vagy a <a href=\"http://html5boilerplate.com/humans.txt\" "
+"rel=\"external\">html5boilerplate.com</a> oldalakról."
 
 #: options.php:193
 msgid "Official Humans TXT website"
@@ -259,8 +288,12 @@ msgid "Plugin Support Forum"
 msgstr "Bővítmény fóruma (angol)"
 
 #: options.php:282
-msgid "Humans TXT includes the functionality of %1$s. Please deactivate %1$s to avoid plugin conflicts."
-msgstr "Humans TXT %1$s funkcióval. Kapcsoljuk ki a %1$s-t a bővítmény-ütközések elkerülése céljából."
+msgid ""
+"Humans TXT includes the functionality of %1$s. Please deactivate %1$s to "
+"avoid plugin conflicts."
+msgstr ""
+"Humans TXT %1$s funkcióval. Kapcsoljuk ki a %1$s-t a bővítmény-ütközések "
+"elkerülése céljából."
 
 #: options.php:346
 msgid "Revision restored."
@@ -276,96 +309,133 @@ msgstr "Hiba: A domain gyökérkönyvtárában nincs WordPress telepítve"
 
 #: options.php:354
 msgid "Error: The site root already contains a physical humans.txt file."
-msgstr "Hiba: A honlap gyökérkönyvtárában fizikailag már létezik egy humans.txt fájl"
+msgstr ""
+"Hiba: A honlap gyökérkönyvtárában fizikailag már létezik egy humans.txt fájl"
 
 #: options.php:356
-msgid "Error: Please <a href=\"%s\">update your permalink structure</a> to something other than the default."
-msgstr "Hiba: Módosítani kell a <a href=\"%s\">közvetlen link struktúrát</a>, ami más, mint az alapállapot."
+msgid ""
+"Error: Please <a href=\"%s\">update your permalink structure</a> to "
+"something other than the default."
+msgstr ""
+"Hiba: Módosítani kell a <a href=\"%s\">közvetlen link struktúrát</a>, ami "
+"más, mint az alapállapot."
 
 #: options.php:368
-msgid "If you like this plugin, why not <br /><a href=\"%s\" title=\"%s\" rel=\"external\">recommend it to others</a> by rating it?"
-msgstr "Amennyiben a bővítmény elnyerte tetszésünket <br /><a href=\"%s\" title=\"%s\" rel=\"external\">ajánljuk másoknak is</a>, hogy ők is értékelhessék!"
+msgid ""
+"If you like this plugin, why not <a href=\"%s\" title=\"%s\" "
+"rel=\"external\">recommend it to others</a> by rating it?"
+msgstr ""
+"Amennyiben a bővítmény elnyerte tetszésünket <a href=\"%s\" title=\"%s\" "
+"rel=\"external\">ajánljuk másoknak is</a>, hogy ők is értékelhessék!"
 
 #: options.php:368
 msgid "Rate this plugin on WordPress.org"
 msgstr "A bővítmény értékelése a wordpress.org oldalon"
 
-#: options.php:384
-#: options.php:387
-#: options.php:432
-#: options.php:439
+#: options.php:385 options.php:388 options.php:433 options.php:440
 msgid "Humans TXT File"
 msgstr "Humans TXT fájl"
 
-#: options.php:390
+#: options.php:391
 msgid "View this site's humans.txt file"
 msgstr "Mutassa az oldal humans.txt fájlját"
 
 #. translators: %s: humans.txt (linked to the site's humans.txt file)
-#: options.php:391
+#: options.php:392
 msgid "Activate %s file"
 msgstr "%s fájl aktiválása"
 
-#: options.php:394
-msgid "Adds an <link rel=\"author\"> tag to the site's <head> tag pointing to the humans.txt file."
-msgstr "<link rel=\"author\"> Tag hozzáadása a honlaphoz<head>, amely tag a humans.txt fájlra mutat."
+#: options.php:395
+msgid ""
+"Adds an <link rel=\"author\"> tag to the site's <head> tag pointing to the "
+"humans.txt file."
+msgstr ""
+"<link rel=\"author\"> Tag hozzáadása a honlaphoz<head>, amely tag a "
+"humans.txt fájlra mutat."
 
-#: options.php:396
+#: options.php:397
 msgid "Add an author link tag to the site"
 msgstr "Szerő link tag hozzáadása a honlaphoz"
 
-#: options.php:402
-#: options.php:405
+#: options.php:403 options.php:406
 msgid "Editing Permissions"
 msgstr "Szerkesztési jogosultságok"
 
-#: options.php:406
+#: options.php:407
 msgid "Roles that can edit the content of the humans.txt file"
 msgstr "A humans.txt fájl szerkesztési jogosultjai"
 
-#: options.php:440
-msgid "If you need a little help with your humans.txt, try the \"Help\" button in the top right corner of this page."
-msgstr "Amennyiben egy kis segítségre lenne szükség, az oldal jobb felső részén található a \"Súgó\"..."
+#: options.php:441
+msgid ""
+"If you need a little help with your humans.txt, try the \"Help\" button in "
+"the top right corner of this page."
+msgstr ""
+"Amennyiben egy kis segítségre lenne szükség, az oldal jobb felső részén "
+"található a \"Súgó\"..."
 
-#: options.php:449
+#: options.php:450
 msgid "View Revisions"
 msgstr "Előző változatok megtekintése"
 
-#: options.php:456
+#: options.php:457
 msgid "Variables"
 msgstr "Lehetőségek"
 
-#: options.php:460
+#: options.php:461
 msgid "Preview"
 msgstr "Előnézet"
 
-#: options.php:468
+#: options.php:469
 msgid "Suggest another variable..."
 msgstr "Egyéb variációs lehetőségek..."
 
-#: options.php:474
+#: options.php:475
 msgid "Shortcode Usage"
 msgstr "Rövidkódok használata"
 
-#: options.php:475
-msgid "You can use the <code>[humanstxt]</code> shortcode to display the <em>humans.txt</em> file on a page or in a post. By default, all links, email addresses and Twitter account names will be converted into clickable links and email addresses will be encoded to block spam bots. <a href=\"%s\" rel=\"external\">Of course you can customize it...</a>"
-msgstr "A <code>[humanstxt]</code> rövidkód használatával a <em>humans.txt</em> fájl megjeleníthető egy oldalon, vagy egy bejegyzésben. Alaphelyzetben valamennyi link, email cím és Twitter felhasználói név kattintható linkké kerül átalakításra, és az email címeket a spam robotok számára blokkoljuk. <a href=\"%s\" rel=\"external\">Természetesen, mód van a teljes egyéni módok használatára is...</a>"
+#: options.php:476
+msgid ""
+"You can use the <code>[humanstxt]</code> shortcode to display the "
+"<em>humans.txt</em> file on a page or in a post. By default, all links, "
+"email addresses and Twitter account names will be converted into clickable "
+"links and email addresses will be encoded to block spam bots. <a href=\"%s\" "
+"rel=\"external\">Of course you can customize it...</a>"
+msgstr ""
+"A <code>[humanstxt]</code> rövidkód használatával a <em>humans.txt</em> fájl "
+"megjeleníthető egy oldalon, vagy egy bejegyzésben. Alaphelyzetben valamennyi "
+"link, email cím és Twitter felhasználói név kattintható linkké kerül "
+"átalakításra, és az email címeket a spam robotok számára blokkoljuk. <a "
+"href=\"%s\" rel=\"external\">Természetesen, mód van a teljes egyéni módok "
+"használatára is...</a>"
 
 #. translators: %s: revision date
-#: options.php:502
+#: options.php:503
 msgid "Revision created on %s"
 msgstr "% - a módosítás létrehozásának időpontja"
 
-#: options.php:504
+#: options.php:505
 msgid "Restore Revision"
 msgstr "Módoítás visszaállítása"
 
 #. translators: %s: number of stored revisions
-#: options.php:543
-msgid "WordPress is storing the last %s revisions of your <em>humans.txt</em> file."
-msgstr "A WordPress tárolja a <em>humans.txt</em> fájl legutóbbi %s módosítását."
+#: options.php:544
+msgid ""
+"WordPress is storing the last %s revisions of your <em>humans.txt</em> file."
+msgstr ""
+"A WordPress tárolja a <em>humans.txt</em> fájl legutóbbi %s módosítását."
 
 #. Description of the plugin/theme
-msgid "Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress."
-msgstr "Mondjunk köszönetet a <strong>humans.txt</strong> fájlban a weboldalunk háttér-munkásainak! Könnyű szerkeszteni, közvetlenül, a WordPress-en belül."
+msgid ""
+"Credit the people behind your website in your <strong>humans.txt</strong> "
+"file. Easy to edit, directly within WordPress."
+msgstr ""
+"Mondjunk köszönetet a <strong>humans.txt</strong> fájlban a weboldalunk "
+"háttér-munkásainak! Könnyű szerkeszteni, közvetlenül, a WordPress-en belül."
 
+#~ msgid ""
+#~ "If you like this plugin, why not <br /><a href=\"%s\" title=\"%s\" "
+#~ "rel=\"external\">recommend it to others</a> by rating it?"
+#~ msgstr ""
+#~ "Amennyiben a bővítmény elnyerte tetszésünket <br /><a href=\"%s\" "
+#~ "title=\"%s\" rel=\"external\">ajánljuk másoknak is</a>, hogy ők is "
+#~ "értékelhessék!"
