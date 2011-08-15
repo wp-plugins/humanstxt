@@ -34,7 +34,8 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Norwegian (nb_NO) - [Petter](http://neppe.no/)
 * Persian (fa_IR) - [Alireza Ch](http://1freeman.net/)
 * Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
-* Ukrainian (uk) -[Vitaly Mylo](http://web-profile.com.ua/wordpress/) 
+* Turkish (tr_TR) - [Barış Ünver](http://beyn.org/)
+* Ukrainian (uk) -[Vitaly](http://web-profile.com.ua/wordpress/) 
 
 If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
 
