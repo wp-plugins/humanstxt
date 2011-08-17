@@ -23,6 +23,48 @@
  * @copyright 2011 Till Krüss
  */
 
+if (!function_exists('humanstxt_callback_ip')) :
+/**
+ * Returns the IP address of the server under which
+ * the current script is executing.
+ * 
+ * @since 1.1.1
+ * 
+ * @return string Value of $_SERVER['SERVER_ADDR']
+ */
+function humanstxt_callback_ip() {
+	return isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : null;
+}
+endif;
+
+if (!function_exists('humanstxt_callback_os')) :
+/**
+ * Returns the server operating system name.
+ * 
+ * @since 1.1.1
+ * 
+ * @return string Value of php_uname('s')
+ */
+function humanstxt_callback_os() {
+	return php_uname('s'); // PHP_OS
+}
+endif;
+
+if (!function_exists('humanstxt_callback_server')) :
+/**
+ * Returns the server identification string,
+ * given in the headers when responding to requests.
+ * E.g.: Apache/2.2.17 (Unix) mod_ssl/2.2.17 DAV/2 PHP/5.3.6
+ * 
+ * @since 1.1.1
+ * 
+ * @return string Value of $_SERVER['SERVER_SOFTWARE']
+ */
+function humanstxt_callback_server() {
+	return isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : null;
+}
+endif;
+
 if (!function_exists('humanstxt_callback_phpversion')) :
 /**
  * Returns the server's PHP version.
@@ -31,6 +73,51 @@ if (!function_exists('humanstxt_callback_phpversion')) :
  */
 function humanstxt_callback_phpversion() {
 	return phpversion();
+}
+endif;
+
+if (!function_exists('humanstxt_callback_zendversion')) :
+/**
+ * Returns the PHP's Zend engine version.
+ * 
+ * @since 1.1.1
+ * 
+ * @return string Value of zend_version()
+ */
+function humanstxt_callback_zendversion() {
+	return zend_version();
+}
+endif;
+
+if (!function_exists('humanstxt_callback_mysqlversion')) :
+/**
+ * Returns the server's MySQL version.
+ * 
+ * @since 1.1.1
+ * 
+ * @return string MySQL version.
+ */
+function humanstxt_callback_mysqlversion() {
+	global $wpdb;
+	return $wpdb->db_version();
+}
+endif;
+
+if (!function_exists('humanstxt_callback_timezone')) :
+/**
+ * Returns the server's timezone, as user-friendly as possible.
+ * Something like: "US/Central (-05:00)", "Asia/Bangkok (+07:00)"
+ * or "+01:00".
+ * 
+ * @since 1.1.1
+ * 
+ * @return string Server timezone.
+ */
+function humanstxt_callback_timezone() {
+	$offset = date('Z');
+	$offset = sprintf('%s%02d:%02d', ($offset < 0 ? '-' : '+'), abs($offset / 3600), abs(($offset) % 3600) / 60);
+	$timezone = function_exists('date_default_timezone_get') ? date_default_timezone_get() : null;
+	return empty($timezone) || $timezone == 'UTC' ? $offset : $timezone.' ('.$offset.')';    
 }
 endif;
 
@@ -81,6 +168,24 @@ if (!function_exists('humanstxt_callback_wpcharset')) :
  */
 function humanstxt_callback_wpcharset() {
 	return get_bloginfo('charset');
+}
+endif;
+
+if (!function_exists('humanstxt_callback_wptimezone')) :
+/**
+ * Returns the timezone WordPress uses, as user-friendly as possible.
+ * Something like: "US/Central (-05:00)", "Asia/Singapore (+08:00)"
+ * or "+02:00".
+ * 
+ * @since 1.1.1
+ * 
+ * @return string WordPress timezone.
+ */
+function humanstxt_callback_wptimezone() {
+	$offset = get_option('gmt_offset');
+	$offset = sprintf('%s%02d:%02d', ($offset < 0 ? '-' : '+'), abs($offset), abs(($offset * 3600) % 3600) / 60);
+	$timezone = get_option('timezone_string');
+	return empty($timezone) ? $offset : $timezone.' ('.$offset.')';
 }
 endif;
 
