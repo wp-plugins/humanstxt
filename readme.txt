@@ -85,10 +85,10 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 = 1.1 =
 
-* Now requires WordPress version 3.2
 * Added revisions functionality for the `humans.txt`
 * Added translation for several languages
 * Added variable for active authors and their contact details
+* Plugin is now compatible with WordPress 3.0 and higher
 * Replacing the translated and the english variable name in the `humans.txt`
 * Moved variable callback functions into `callbacks.php`
 * Removed Subscriber from the roles list
