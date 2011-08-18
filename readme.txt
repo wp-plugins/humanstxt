@@ -23,6 +23,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 = Translators =
 
+* Arabic (ar) - [Yaser Maadan](http://www.englize.com/)
 * Brazilian Portuguese (pt_BR) - [Caciano Gabriel](http://ciano.co/)
 * Dutch (nl_NL) - [Anonymous](https://launchpad.net/~forkless)
 * French (fr_FR) - [Maître Mô](http://maitremo.fr/)
