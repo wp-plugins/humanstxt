@@ -60,6 +60,8 @@ jQuery(document).ready(function($) {
 
 	$.fn.humansTooltip = function() {
 
+		var isRTL = $('body').hasClass('rtl');
+
 		// add tooltip div
 		$humanstxtTooltip = $('#humansTooltip');		
 		if ($humanstxtTooltip.length < 1) {
@@ -89,10 +91,10 @@ jQuery(document).ready(function($) {
 			var showTooltip = function() {
 				$humanstxtTooltip.html(elementTitle); // set tooltip to original title attribute
 				var elementOffset = $element.offset();
-				var tooltipHeight = $humanstxtTooltip.height();				
+				var horizontalAdjustment = isRTL ? $element.width() - $humanstxtTooltip.width() - 5 : -15;
 				$humanstxtTooltip.css({
-					top: (elementOffset.top - tooltipHeight - 15) + 'px',
-					left: (elementOffset.left - 15) + 'px'
+					top: (elementOffset.top - $humanstxtTooltip.height() - 15) + 'px',
+					left: (elementOffset.left + horizontalAdjustment) + 'px'
 				}).fadeIn(200);
 			}			
 
