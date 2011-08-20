@@ -33,6 +33,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
 * Latvian (lv) - [Sandis Veinbergs](http://www.kleofass.lv)
 * Norwegian (nb_NO) - [Petter](http://neppe.no/)
+* Persian (fa_IR) - [Alireza Ch](http://1freeman.net/)
 * Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
 * Spanish (es_ES) - Juanjo Bernabeu, Sergio Gómez
 * Turkish (tr_TR) - [Barış Ünver](http://beyn.org/)
