@@ -88,6 +88,11 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 == Changelog ==
 
+= 1.1.1 =
+
+* Added Arabic, Japanese, Korean, Persian and Spanish translations 
+* Made admin interface compatible with right-to-left (RTL) languages
+
 = 1.1 =
 
 * Added revisions functionality for the `humans.txt`
@@ -146,6 +151,10 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+
+This version ensures right-to-left language support and contains several new translations.
 
 = 1.1 =
 
