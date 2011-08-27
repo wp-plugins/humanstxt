@@ -349,14 +349,14 @@ function humanstxt_options_page() {
 	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Read FAQ...', HUMANSTXT_DOMAIN)) ?>
 
 	<?php if (!humanstxt_is_rootinstall()) : ?>
-		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the root of the domain.', HUMANSTXT_DOMAIN); ?></strong> <?=$faqlink?></p></div>
+		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the root of the domain.', HUMANSTXT_DOMAIN); ?></strong> <?php echo $faqlink ?></p></div>
 	<?php elseif (humanstxt_exists()) : ?>
-		<div class="error"><p><strong><?php _e('Error: The site root already contains a physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <?=$faqlink?></p></div>
+		<div class="error"><p><strong><?php _e('Error: The site root already contains a physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <?php echo $faqlink ?></p></div>
 	<?php elseif (get_option('permalink_structure') == '' && current_user_can('manage_options')) : ?>
-		<div class="error"><p><strong><?php printf(__('Error: Please <a href="%s">update your permalink structure</a> to something other than the default.', HUMANSTXT_DOMAIN), admin_url('options-permalink.php')) ?></strong> <?=$faqlink?></p></div>
+		<div class="error"><p><strong><?php printf(__('Error: Please <a href="%s">update your permalink structure</a> to something other than the default.', HUMANSTXT_DOMAIN), admin_url('options-permalink.php')) ?></strong> <?php echo $faqlink ?></p></div>
 	<?php endif; ?>
 
-	<form method="post" action="<?=HUMANSTXT_OPTIONS_URL?>">
+	<form method="post" action="<?php echo HUMANSTXT_OPTIONS_URL ?>">
 
 		<?php settings_fields('humanstxt') ?>
 
@@ -369,11 +369,11 @@ function humanstxt_options_page() {
 					<div class="star-holder">
 						<?php $starimg = $wp32 ? admin_url('images/gray-star.png?v=20110615') : admin_url('images/star.gif') ?>
 						<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
-						<div class="star star5"><img src="<?=$starimg?>" alt="<?php _e('5 stars') ?>" /></div>
-						<div class="star star4"><img src="<?=$starimg?>" alt="<?php _e('4 stars') ?>" /></div>
-						<div class="star star3"><img src="<?=$starimg?>" alt="<?php _e('3 stars') ?>" /></div>
-						<div class="star star2"><img src="<?=$starimg?>" alt="<?php _e('2 stars') ?>" /></div>
-						<div class="star star1"><img src="<?=$starimg?>" alt="<?php _e('1 star') ?>" /></div>
+						<div class="star star5"><img src="<?php echo $starimg?>" alt="<?php _e('5 stars') ?>" /></div>
+						<div class="star star4"><img src="<?php echo $starimg?>" alt="<?php _e('4 stars') ?>" /></div>
+						<div class="star star3"><img src="<?php echo $starimg?>" alt="<?php _e('3 stars') ?>" /></div>
+						<div class="star star2"><img src="<?php echo $starimg?>" alt="<?php _e('2 stars') ?>" /></div>
+						<div class="star star1"><img src="<?php echo $starimg?>" alt="<?php _e('1 star') ?>" /></div>
 					</div>
 					<small class="text-votes"><?php printf(_n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
 				</div>
@@ -413,8 +413,8 @@ function humanstxt_options_page() {
 							<?php foreach ($wordpress_roles as $role => $details) : ?>
 								<?php $checked = ($role == 'administrator' || in_array($role, $humanstxt_roles)) ? 'checked="checked" ' : ''; ?>
 								<?php $disabled = ($role == 'administrator') ? 'disabled="disabled" ' : ''; ?>
-								<label for="humanstxt_role_<?=$role?>">
-									<input name="humanstxt_roles[<?=$role?>]" type="checkbox" id="humanstxt_role_<?=$role?>" value="1" <?=$checked?><?=$disabled?>/>
+								<label for="humanstxt_role_<?php echo $role ?>">
+									<input name="humanstxt_roles[<?php echo $role ?>]" type="checkbox" id="humanstxt_role_<?php echo $role ?>" value="1" <?php echo $checked ?><?php echo $disabled ?>/>
 									<?php echo translate_user_role($details['name']); ?>
 								</label>
 								<br />
@@ -439,7 +439,7 @@ function humanstxt_options_page() {
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
 							<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button in the top right corner of this page.', HUMANSTXT_DOMAIN) ?></label></span>
-							<textarea name="humanstxt_content" rows="25" cols="80" id="humanstxt_content" class="large-text code"><?=esc_textarea(humanstxt_content())?></textarea>
+							<textarea name="humanstxt_content" rows="25" cols="80" id="humanstxt_content" class="large-text code"><?php echo esc_textarea(humanstxt_content()) ?></textarea>
 						</fieldset>
 					</td>
 				</tr>
@@ -447,7 +447,7 @@ function humanstxt_options_page() {
 			<p class="submit">
 				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
 				<?php $revisions = humanstxt_revisions() ?>
-				<?php if (count($revisions) > 1) : ?><a href="<?=HUMANSTXT_REVISIONS_URL?>" class="button"><?php _e('View Revisions', HUMANSTXT_DOMAIN) ?></a><?php endif; ?>
+				<?php if (count($revisions) > 1) : ?><a href="<?php echo HUMANSTXT_REVISIONS_URL?>" class="button"><?php _e('View Revisions', HUMANSTXT_DOMAIN) ?></a><?php endif; ?>
 			</p>
 		</div>
 
@@ -458,10 +458,10 @@ function humanstxt_options_page() {
 				<ul>
 					<?php foreach ($humanstxt_variables as $variable) : ?>
 						<?php $callback_result = !isset($variable[4]) || $variable[4] ? call_user_func($variable[2]) : null ?>
-						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview', HUMANSTXT_DOMAIN) ?>: <?=esc_attr($callback_result)?>"<?php endif; ?>>
-							<code>$<?=$variable[1]?>$</code>
+						<li<?php if (!empty($callback_result)) : ?> class="has-result" title="<?php _e('Preview', HUMANSTXT_DOMAIN) ?>: <?php echo esc_attr($callback_result)?>"<?php endif; ?>>
+							<code>$<?php echo $variable[1]?>$</code>
 							<?php if (isset($variable[3]) && !empty($variable[3])) : ?>
-								&mdash; <?=$variable[3]?>
+								&mdash; <?php echo $variable[3] ?>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
