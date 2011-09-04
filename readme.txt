@@ -4,7 +4,7 @@ Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 
 Credit the people behind your website in your humans.txt file. Easy to edit, directly within WordPress.
 
@@ -89,6 +89,11 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 == Changelog ==
 
+= 1.1.2 =
+
+* Added Romanian translation
+* Removed all PHP shorthand tags to increase system compatibility 
+
 = 1.1.1 =
 
 * Added Arabic, Japanese, Korean, Persian and Spanish translations 
@@ -152,6 +157,10 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+
+This version resolves some compatibility issues with IIS and nginx.
 
 = 1.1.1 =
 
