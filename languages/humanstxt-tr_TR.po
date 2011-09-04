@@ -1,0 +1,445 @@
+# Turkish translation of the Humans TXT WordPress plugin
+# This file is distributed under the same license as the Humans TXT plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Humans TXT 1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
+"POT-Creation-Date: 2011-08-12 13:13+0000\n"
+"PO-Revision-Date: 2011-08-16 23:01+0000\n"
+"Last-Translator: Till Krüss <Unknown>\n"
+"Language-Team: Baris Unver <baris.unver@beyn.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-08-16 23:04+0000\n"
+"X-Generator: Launchpad (build 13697)\n"
+"X-Poedit-Country: TURKEY\n"
+"X-Poedit-Language: Turkish\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. translators: variable name for the site/blog name (title)
+#: humanstxt.php:543
+msgid "wp-title"
+msgstr "wp-baslik"
+
+#: humanstxt.php:543
+msgid "Name (title) of site/blog"
+msgstr "Sitenizin/blogunuzun ismi (başlığı)"
+
+#. translators: variable name for the site/blog tagline (description)
+#: humanstxt.php:544
+msgid "wp-tagline"
+msgstr "wp-slogan"
+
+#: humanstxt.php:544
+msgid "Tagline (description) of site/blog"
+msgstr "Sitenizin/blogunuzun açıklaması (sloganı)"
+
+#. translators: variable name for the number of published posts
+#: humanstxt.php:545
+msgid "wp-posts"
+msgstr "wp-yazilar"
+
+#: humanstxt.php:545
+msgid "Number of published posts"
+msgstr "Yayındaki yazıların sayısı"
+
+#. translators: variable name for the number of published pages
+#: humanstxt.php:546
+msgid "wp-pages"
+msgstr "wp-sayfalar"
+
+#: humanstxt.php:546
+msgid "Number of published pages"
+msgstr "Yayındaki sayfaların sayısı"
+
+#. translators: variable name for the "last modified" timestamp
+#: humanstxt.php:547
+msgid "wp-lastupdate"
+msgstr "wp-songuncelleme"
+
+#: humanstxt.php:547
+msgid "Date of last modified post/page"
+msgstr "Son düzenlenen yazının/sayfanın tarihi"
+
+#. translators: variable name for the author list
+#: humanstxt.php:548
+msgid "wp-authors"
+msgstr "wp-yazarlar"
+
+#: humanstxt.php:548
+msgid "Active authors and their contact details"
+msgstr "Etkin yazarlar ve bu yazarların iletişim bilgileri"
+
+#. translators: variable name for WordPress languages(s)
+#: humanstxt.php:549
+msgid "wp-language"
+msgstr "wp-dil"
+
+#: humanstxt.php:549
+msgid "WordPress language(s)"
+msgstr "WordPress dil(ler)i"
+
+#. translators: variable name for activated WordPress plugins
+#: humanstxt.php:550
+msgid "wp-plugins"
+msgstr "wp-eklentiler"
+
+#: humanstxt.php:550
+msgid "Activated WordPress plugins"
+msgstr "Etkin WordPress eklentileri"
+
+#. translators: variable name for the encoding (charset) used by WordPress
+#: humanstxt.php:551
+msgid "wp-charset"
+msgstr "wp-karakterkodlamasi"
+
+#: humanstxt.php:551
+msgid "Encoding used for pages and feeds"
+msgstr ""
+"Sitedeki yazılar ve besleme (feed) kaynağı için kullanılan karakter "
+"kodlaması (örn. UTF-8)"
+
+#. translators: variable name for the installed WordPress version
+#: humanstxt.php:552
+msgid "wp-version"
+msgstr "wp-surum"
+
+#: humanstxt.php:552
+msgid "Installed WordPress version"
+msgstr "Kurulu WordPress sürümü"
+
+#. translators: variable name for the running PHP parser version
+#: humanstxt.php:553
+msgid "php-version"
+msgstr "php-surum"
+
+#: humanstxt.php:553
+msgid "Running PHP parser version"
+msgstr "Çalışan PHP işleyicinin sürümü"
+
+#. translators: variable name for the summary of the active WordPress theme
+#: humanstxt.php:554
+msgid "wp-theme"
+msgstr "wp-tema"
+
+#: humanstxt.php:554
+msgid "Summary of the active WordPress theme"
+msgstr "Etkin WordPress temasının bilgilerinin özeti"
+
+#. translators: variable name for the name of the active WordPress theme
+#: humanstxt.php:555
+msgid "wp-theme-name"
+msgstr "wp-tema-adi"
+
+#: humanstxt.php:555
+msgid "Name of the active theme"
+msgstr "Etkin WordPress temasının adı"
+
+#. translators: variable name for the version of the active WordPress theme
+#: humanstxt.php:556
+msgid "wp-theme-version"
+msgstr "wp-tema-surum"
+
+#: humanstxt.php:556
+msgid "Version of the active theme"
+msgstr "Etkin WordPress temasının sürümü"
+
+#. translators: variable name for the author name of the active WordPress theme
+#: humanstxt.php:557
+msgid "wp-theme-author"
+msgstr "wp-tema-yazari"
+
+#: humanstxt.php:557
+msgid "Author name of the active theme"
+msgstr "Etkin WordPress temasının yazarının adı"
+
+#. translators: variable name for the author link of the active WordPress theme
+#: humanstxt.php:558
+msgid "wp-theme-author-link"
+msgstr "wp-tema-yazari-baglanti"
+
+#: humanstxt.php:558
+msgid "Author link of the active theme"
+msgstr "Etkin WordPress temasının yazarının sitesinin bağlantısı"
+
+#. translators: only translate the text inside angle brackets < > to keep the
+#. humans.txt international. if the variable names are translated, you may
+#. translate them here too.
+#: humanstxt.php:605
+msgid ""
+"/* the humans responsible & colophon */\n"
+"/* humanstxt.org */\n"
+"\n"
+"/* TEAM */\n"
+"\t<your title>: <your name>\n"
+"\tSite: <website url>\n"
+"\tTwitter: <@username>\n"
+"\tLocation: <city, country>\n"
+"\n"
+"\t\t[...]\n"
+"\n"
+"/* THANKS */\n"
+"\t<name>: <link, email, @twittername, ...>\n"
+"\n"
+"\t\t[...]\n"
+"\n"
+"/* SITE */\n"
+"\tLast update: $wp-lastupdate$\n"
+"\tStandards: <HTML5, CSS3, ...>\n"
+"\tCMS: WordPress $wp-version$ (running PHP $php-version$)\n"
+"\tLanguage: <English, Klingon, ...>\n"
+"\tComponents: <jQuery, Typekit, Modernizr, ...>\n"
+"\tIDE: <Coda, Zend Studio, Photoshop, Terminal, ...>\n"
+msgstr ""
+"/* the humans responsible & colophon */\n"
+"/* humanstxt.org */\n"
+"\n"
+"/* TEAM */\n"
+"\t<sitenizin başlığı>: <adınız>\n"
+"\tSite: <sitenizin adresi>\n"
+"\tTwitter: <@twitter-rumuzunuz>\n"
+"\tLocation: <şehriniz, ülkeniz>\n"
+"\n"
+"\t\t[...]\n"
+"\n"
+"/* THANKS */\n"
+"\t<isim>: <baglantisi, e-posta adresi, @twitter-rumuzu...>\n"
+"\n"
+"\t\t[...]\n"
+"\n"
+"/* SİTE */\n"
+"\tLast update: $wp-songuncelleme$\n"
+"\tStandards: <HTML5, CSS3...>\n"
+"\tCMS: WordPress $wp-surum$ (PHP $php-surum$)\n"
+"\tLanguage: <Turkish, English, Klingon...>\n"
+"\tComponents: <jQuery, Typekit, Modernizr...>\n"
+"\tIDE: <Coda, Zend Studio, Photoshop, Terminal...>\n"
+
+#: options.php:114
+msgid "Please update your WordPress installation."
+msgstr "Lütfen WordPress'inizi güncelleyin."
+
+#: options.php:115
+msgid "Humans TXT %1$s requires WordPress %2$s or higher."
+msgstr ""
+"Humans TXT %1$s kullanabilmeniz için WordPress %2$s veya daha yüksek bir "
+"sürüme sahip olmanız gerekir."
+
+#. Plugin Name of the plugin/theme
+#: options.php:137 options.php:341 options.php:493
+msgid "Humans TXT"
+msgstr "Humans TXT"
+
+#: options.php:175
+msgid "What is the humans.txt?"
+msgstr "humans.txt nedir?"
+
+#: options.php:176
+msgid ""
+"It's an initiative for knowing the people behind a website. It's a TXT file "
+"in the site root that contains information about the humans who have "
+"contributed to the website."
+msgstr ""
+"Bir internet sitesinin ardında kimin olduğunu bilmek ve bildirmek için "
+"başlatılan bir projedir. Sitenin kök dizininde bulunan bir metin belgesiyle "
+"(.TXT), sitenin oluşturulmasında emeği geçen insanlar hakkında bilgi verilir."
+
+#: options.php:181
+msgid "Who should I mention?"
+msgstr "Kimlerden bahsetmeliyim?"
+
+#: options.php:182
+msgid ""
+"Whoever you want to, provided they wish you to do so. You can mention the "
+"developer, the designer, the copywriter, the webmaster, the editor, ... "
+"anyone who contributed to the website."
+msgstr ""
+"Sizden talep ettiği sürece istediğiniz kişilerden bahsedebilirsiniz. "
+"Bahsedebileceğiniz kişiler arasında geliştirici, arayüz tasarımcısı, metin "
+"yazarı, web tasarımcısı, editör vb. gibi, sitenize katkı sağlamış herkesi "
+"tanıtabilirsiniz."
+
+#: options.php:187
+msgid "How should I format it?"
+msgstr "Nasıl biçimlendirmeliyim?"
+
+#: options.php:188
+msgid ""
+"However you want, just make sure humans can easily read it. For some "
+"inspiration check the humans.txt of <a "
+"href=\"http://humanstxt.org/humans.txt\" rel=\"external\">humanstxt.org</a> "
+"or <a href=\"http://html5boilerplate.com/humans.txt\" "
+"rel=\"external\">html5boilerplate.com</a>."
+msgstr ""
+"İnsanlar tarafından kolayca okunabildiği sürece istediğiniz gibi "
+"biçimlendirebilirsiniz. Eğer örnek humans.txt dosyalarına bakmak isterseniz "
+"<a href=\"http://humanstxt.org/humans.txt\" "
+"rel=\"external\">humanstxt.org</a> veya <a "
+"href=\"http://html5boilerplate.com/humans.txt\" "
+"rel=\"external\">html5boilerplate.com</a> sitelerinin humans.txt dosyalarını "
+"inceleyebilirsiniz."
+
+#: options.php:193
+msgid "Official Humans TXT website"
+msgstr "Resmi Humans TXT internet sitesi"
+
+#: options.php:194
+msgid "Plugin Homepage"
+msgstr "Eklenti Anasayfası"
+
+#: options.php:195
+msgid "Plugin Support Forum"
+msgstr "Eklenti Destek Forumu"
+
+#: options.php:282
+msgid ""
+"Humans TXT includes the functionality of %1$s. Please deactivate %1$s to "
+"avoid plugin conflicts."
+msgstr ""
+"Humans TXT eklentisi, %1$s işlevini de barındırır. Eklenti çakışmalarını "
+"önlemek için lütfen %1$s eklentisini devre dışı bırakın."
+
+#: options.php:346
+msgid "Revision restored."
+msgstr "Revizyon geri yüklendi."
+
+#: options.php:349
+msgid "Read FAQ..."
+msgstr "SSS'yi okuyun..."
+
+#: options.php:352
+msgid "Error: WordPress is not installed in the root of the domain."
+msgstr "Hata: WordPress, sitenin kök dizininde kurulu değil."
+
+#: options.php:354
+msgid "Error: The site root already contains a physical humans.txt file."
+msgstr "Hata: Sitede zaten gerçek bir humans.txt dosyası var."
+
+#: options.php:356
+msgid ""
+"Error: Please <a href=\"%s\">update your permalink structure</a> to "
+"something other than the default."
+msgstr ""
+"Hata: Lütfen <a href=\"%s\">kalıcı bağlantı ayarlarınızı</a> varsayılan "
+"düzenden başka bir şekilde kaydedin."
+
+#: options.php:368
+msgid ""
+"If you like this plugin, why not <a href=\"%s\" title=\"%s\" "
+"rel=\"external\">recommend it to others</a> by rating it?"
+msgstr ""
+"Eklenti hoşunuza gittiyse, ona puan vererek <a href=\"%s\" title=\"%s\" "
+"rel=\"external\">eklentiyi başkalarına tavsiye etmek</a> ister misiniz?"
+
+#: options.php:368
+msgid "Rate this plugin on WordPress.org"
+msgstr "WordPress.org'da bu eklentiye puan verin"
+
+#: options.php:385 options.php:388 options.php:433 options.php:440
+msgid "Humans TXT File"
+msgstr "Humans TXT dosyası"
+
+#: options.php:391
+msgid "View this site's humans.txt file"
+msgstr "Bu sitenin humans.txt dosyasını görüntüleyin"
+
+#. translators: %s: humans.txt (linked to the site's humans.txt file)
+#: options.php:392
+msgid "Activate %s file"
+msgstr "%s dosyasını etkinleştirin"
+
+#: options.php:395
+msgid ""
+"Adds an <link rel=\"author\"> tag to the site's <head> tag pointing to the "
+"humans.txt file."
+msgstr ""
+"Sitenizin &lt;head&gt; bölümüne &lt;link rel=\"author\"&gt; etiketini "
+"ekleyip humans.txt dosyasını tanıtır."
+
+#: options.php:397
+msgid "Add an author link tag to the site"
+msgstr "Siteye, sitenin yazarı için bir &lt;link&gt; etiketi ekle"
+
+#: options.php:403 options.php:406
+msgid "Editing Permissions"
+msgstr "Düzenleme İzinleri"
+
+#: options.php:407
+msgid "Roles that can edit the content of the humans.txt file"
+msgstr "humans.txt dosyasını düzenleyecek kullanıcı kıdemleri"
+
+#: options.php:441
+msgid ""
+"If you need a little help with your humans.txt, try the \"Help\" button in "
+"the top right corner of this page."
+msgstr ""
+"humans.txt dosyanızla ilgili yardıma ihtiyacınız varsa, bu sayfanın sağ üst "
+"köşesindeki \"Yardım\" düğmesine tıklayın."
+
+#: options.php:450
+msgid "View Revisions"
+msgstr "Revizyonları Görüntüle"
+
+#: options.php:457
+msgid "Variables"
+msgstr "Değişkenler"
+
+#: options.php:461
+msgid "Preview"
+msgstr "Önizleme"
+
+#: options.php:469
+msgid "Suggest another variable..."
+msgstr "Başka bir değişken öner..."
+
+#: options.php:475
+msgid "Shortcode Usage"
+msgstr "Shortcode Kullanımı"
+
+#: options.php:476
+msgid ""
+"You can use the <code>[humanstxt]</code> shortcode to display the "
+"<em>humans.txt</em> file on a page or in a post. By default, all links, "
+"email addresses and Twitter account names will be converted into clickable "
+"links and email addresses will be encoded to block spam bots. <a href=\"%s\" "
+"rel=\"external\">Of course you can customize it...</a>"
+msgstr ""
+"<code>[humanstxt]</code> shortcode'unu kullanarak <em>humans.txt</em> "
+"dosyanızın içeriğini bir yazınızda veya bir sayfanızda kullanabilirsiniz. "
+"Varsayılan olarak tüm site adresleri, e-posta adresleri ve Twitter hesapları "
+"tıklanabilir bağlantılara dönüştürülecektir ve spam robotları "
+"görüntüleyemesin diye arkaplanda özel olarak kodlanacaktır. <a href=\"%s\" "
+"rel=\"external\">Tabii bütün bunları özelleştirebilirsiniz...</a>"
+
+#. translators: %s: revision date
+#: options.php:503
+msgid "Revision created on %s"
+msgstr "Revizyon oluşturulma tarihi: %s"
+
+#: options.php:505
+msgid "Restore Revision"
+msgstr "Revizyonu Geri Yükle"
+
+#. translators: %s: number of stored revisions
+#: options.php:544
+msgid ""
+"WordPress is storing the last %s revisions of your <em>humans.txt</em> file."
+msgstr ""
+"WordPress, <em>humans.txt</em> dosyanızın %s adet revizyonunu tutuyor."
+
+#. Description of the plugin/theme
+msgid ""
+"Credit the people behind your website in your <strong>humans.txt</strong> "
+"file. Easy to edit, directly within WordPress."
+msgstr ""
+"<strong>humans.txt</strong> dosyanızda, internet sitenizin ardındaki "
+"kişilere atıfta bulunun. Düzenlemesi kolaydır ve direkt olarak WordPress "
+"bünyesinde düzenlenebilir."
+
+#~ msgid ""
+#~ "If you like this plugin, why not <br /><a href=\"%s\" title=\"%s\" "
+#~ "rel=\"external\">recommend it to others</a> by rating it?"
+#~ msgstr ""
+#~ "Eklenti hoşunuza gittiyse,<br />ona puan vererek <a href=\"%s\" title=\"%s\" "
+#~ "rel=\"external\">eklentiyi başkalarına tavsiye etmek</a> ister misiniz?"
