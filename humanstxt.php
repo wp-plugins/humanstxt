@@ -4,7 +4,7 @@ Plugin Name: Humans TXT
 Plugin URI: http://tillkruess.com/projects/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
-Version: 1.1
+Version: 1.1.1
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
@@ -36,7 +36,7 @@ License: GPLv3
  * Humans TXT plugin version.
  * @since 1.0.1
  */
-define('HUMANSTXT_VERSION', '1.1');
+define('HUMANSTXT_VERSION', '1.1.1');
 
 /**
  * Required WordPress version.
