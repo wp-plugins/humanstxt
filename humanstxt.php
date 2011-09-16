@@ -4,7 +4,8 @@ Plugin Name: Humans TXT
 Plugin URI: http://tillkruess.com/projects/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
-Version: 1.1.2
+Domain Path: /languages
+Version: 1.1.3
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
@@ -36,7 +37,7 @@ License: GPLv3
  * Humans TXT plugin version.
  * @since 1.0.1
  */
-define('HUMANSTXT_VERSION', '1.1.2');
+define('HUMANSTXT_VERSION', '1.1.3');
 
 /**
  * Required WordPress version.
@@ -84,12 +85,13 @@ add_action('template_redirect', 'humanstxt_template_redirect', 8);
 add_action('do_humans', 'humanstxt_do_humans');
 add_filter('humans_txt', 'humanstxt_replace_variables');
 add_filter('humanstxt_content', 'humanstxt_content_normalize');
-add_shortcode('humanstxt', 'humanstxt_shortcode');
+add_shortcode('humanstxt', '_humanstxt_shortcode');
 
 /**
  * Load legacy code, if necessary. 
  */
-if (version_compare($wp_version, '3.2', '<')) {
+
+if (version_compare(get_bloginfo('version'), '3.2', '<')) {
 	require_once HUMANSTXT_PLUGIN_PATH.'/legacy.php';
 }
 
@@ -249,18 +251,37 @@ function humanstxt_do_humans() {
 
 if (!function_exists('humanstxt_shortcode')) :
 /**
+ * Former callback function for [humanstxt] shortcode.
+ * Now passing through calls to _humanstxt_shortcode() for
+ * backwards compatiblity and to prevent plugin conflicts.
+ *
+ * @since 1.0.4
+ * @see _humanstxt_shortcode()
+ *
+ * @param array $attributes
+ * @return string
+ */
+function humanstxt_shortcode($attributes) {
+	return _humanstxt_shortcode($attributes);
+}
+endif;
+
+/**
  * Callback function for [humanstxt] shortcode. Processes
  * shortcode call and returns result as string. The un-wrapped
  * output can be filtered with the 'humanstxt_shortcode_content'
  * filter and the final output can be filtered with the
  * 'humanstxt_shortcode_output' filter.
  *
- * @since 1.0.4
+ * Renamed in 1.1.3 to prevent plugin conflicts. 
+ *
+ * @since 1.1.3
+ * @see humanstxt_shortcode()
  *
  * @param array $attributes
  * @return string
  */
-function humanstxt_shortcode($attributes) {
+function _humanstxt_shortcode($attributes) {
 
 	extract(shortcode_atts(array(
 		'id' => '', // id-attribute of wrapping HTML element, if $wrap isn't false
@@ -348,7 +369,6 @@ function humanstxt_shortcode($attributes) {
 	return apply_filters('humanstxt_shortcode_output', $content, $attributes);
 
 }
-endif;
 
 /**
  * Loads the plugin text-domain, if not already loaded.

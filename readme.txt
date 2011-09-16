@@ -89,6 +89,12 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 == Changelog ==
 
+= 1.1.3 =
+
+* Prevented PHP notice during plugin activation
+* Prevented browser caching issue with CSS/JavaScript file
+* Renamed `humanstxt_shortcode()` to `_humanstxt_shortcode()` to prevent plugin conflicts
+
 = 1.1.2 =
 
 * Added Romanian translation
@@ -157,6 +163,10 @@ Usually in the root of your site, **however** this plugin doesn't create a physi
 
 
 == Upgrade Notice ==
+
+= 1.1.3 =
+
+PHP error, browser caching and plugin conflict preventions.
 
 = 1.1.2 =
 

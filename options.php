@@ -71,8 +71,8 @@ function humanstxt_admin_init() {
 	if (isset($_GET['page']) && $_GET['page'] == HUMANSTXT_DOMAIN) {
 
 		// register css/js files
-		wp_register_style('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.css');
-		wp_register_script('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.js');
+		wp_register_style('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.css', array(), HUMANSTXT_VERSION);
+		wp_register_script('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.js', array(), HUMANSTXT_VERSION);
 		add_action('admin_print_styles', create_function(null, "wp_enqueue_style('humanstxt-options');"));
 		add_action('admin_print_scripts', create_function(null, "wp_enqueue_script('humanstxt-options');"));
 
