@@ -64,7 +64,7 @@ This plugin will only work if WordPress is installed in the root of the domain.
 
 = Error: The site root already contains a physical humans.txt file. =
 
-If your site root contains a physical `humans.txt` file, this physical file will be shown to the visitor and the one from this plugin will be ignored.
+If your site root contains a physical `humans.txt` file, this physical file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete the physical `humans.txt` file on your server, but don't forget to migrate/backup it's contents.
 
 = Error: Please update your permalink structure to something other than the default. =
 
@@ -72,7 +72,7 @@ The plugin will only work, if WordPress is using "Pretty Permalinks". You can ac
 
 = Why isn't my humans.txt file modified? =
 
-This plugin does not modify or create a physical `humans.txt` file on your server, it serves it dynamically. If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete your physical `humans.txt`, but don't forget to migrate/backup it's contents.
+This plugin does not modify or create a physical `humans.txt` file on your server, it serves it dynamically. If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete the physical `humans.txt` file on your server, but don't forget to migrate/backup it's contents.
 
 = Where is the humans.txt file located? =
 

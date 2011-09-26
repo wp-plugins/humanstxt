@@ -21,7 +21,7 @@
 	#humanstxt-vars ul, #humanstxt-vars p { padding-left: 10px; }
 		#humanstxt-vars li code { font-size: 13px; }
 
-#humanstxt-revisions tr.current-revision { font-weight: bold; }
+#humanstxt-revisions tr.displayed-revision { font-weight: bold; }
 #revision-preview { float: left; margin: 0 0 0 10px; padding: 10px; line-height: inherit; }
 #humanstxt-revisions .submit { clear: both; }
 

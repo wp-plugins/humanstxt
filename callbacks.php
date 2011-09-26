@@ -28,7 +28,7 @@ if (!function_exists('humanstxt_callback_ip')) :
  * Returns the IP address of the server under which
  * the current script is executing.
  * 
- * @since 1.1.1
+ * @since 1.2
  * 
  * @return string Value of $_SERVER['SERVER_ADDR']
  */
@@ -41,7 +41,7 @@ if (!function_exists('humanstxt_callback_os')) :
 /**
  * Returns the server operating system name.
  * 
- * @since 1.1.1
+ * @since 1.2
  * 
  * @return string Value of php_uname('s')
  */
@@ -56,7 +56,7 @@ if (!function_exists('humanstxt_callback_server')) :
  * given in the headers when responding to requests.
  * E.g.: Apache/2.2.17 (Unix) mod_ssl/2.2.17 DAV/2 PHP/5.3.6
  * 
- * @since 1.1.1
+ * @since 1.2
  * 
  * @return string Value of $_SERVER['SERVER_SOFTWARE']
  */
@@ -80,7 +80,7 @@ if (!function_exists('humanstxt_callback_zendversion')) :
 /**
  * Returns the PHP's Zend engine version.
  * 
- * @since 1.1.1
+ * @since 1.2
  * 
  * @return string Value of zend_version()
  */
@@ -93,7 +93,7 @@ if (!function_exists('humanstxt_callback_mysqlversion')) :
 /**
  * Returns the server's MySQL version.
  * 
- * @since 1.1.1
+ * @since 1.2
  * 
  * @return string MySQL version.
  */
@@ -109,7 +109,7 @@ if (!function_exists('humanstxt_callback_timezone')) :
  * Something like: "US/Central (-05:00)", "Asia/Bangkok (+07:00)"
  * or "+01:00".
  * 
- * @since 1.1.1
+ * @since 1.2
  * 
  * @return string Server timezone.
  */
@@ -177,7 +177,7 @@ if (!function_exists('humanstxt_callback_wptimezone')) :
  * Something like: "US/Central (-05:00)", "Asia/Singapore (+08:00)"
  * or "+02:00".
  * 
- * @since 1.1.1
+ * @since 1.2
  * 
  * @return string WordPress timezone.
  */
@@ -248,7 +248,7 @@ function humanstxt_callback_wplanguage() {
 
 		$active_languages = implode($separator, $languages);
 
-	} elseif (function_exists('qtrans_getSortedLanguages')) { // is qTranslate active?
+	} else if (function_exists('qtrans_getSortedLanguages')) { // is qTranslate active?
 
 		$languages = qtrans_getSortedLanguages();
 		foreach ($languages as $key => $language) {
@@ -258,7 +258,7 @@ function humanstxt_callback_wplanguage() {
 
 		$active_languages = implode($separator, $languages);
 
-	} elseif (defined('XILILANGUAGE_VER')) { // is xili-language active?
+	} else if (defined('XILILANGUAGE_VER')) { // is xili-language active?
 
 		$languages = $xili_language->get_listlanguages();
 		foreach ($languages as $key => $language) {

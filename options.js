@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
 	// enable tab key support on humans.txt textarea
 	// taken from /wp-admin/js/common.dev.js
 	$humanstxtEditor.keydown(function(e) {
-		if ( e.keyCode != 9 )
+		if (e.keyCode != 9)
 			return true;
 
 		var el = e.target, selStart = el.selectionStart, selEnd = el.selectionEnd, val = el.value, scroll, sel;
@@ -32,27 +32,45 @@ jQuery(document).ready(function($) {
 			this.lastKey = 9;
 		} catch(err) {}
 
-		if ( document.selection ) {
+		if (document.selection) {
 			el.focus();
 			sel = document.selection.createRange();
 			sel.text = '\t';
-		} else if ( selStart >= 0 ) {
+		} else if (selStart >= 0) {
 			scroll = this.scrollTop;
-			el.value = val.substring(0, selStart).concat('\t', val.substring(selEnd) );
+			el.value = val.substring(0, selStart).concat('\t', val.substring(selEnd));
 			el.selectionStart = el.selectionEnd = selStart + 1;
 			this.scrollTop = scroll;
 		}
 
-		if ( e.stopPropagation )
+		if (e.stopPropagation)
 			e.stopPropagation();
-		if ( e.preventDefault )
+		if (e.preventDefault)
 			e.preventDefault();
 	});
 
 	$humanstxtEditor.blur(function(e) {
-		if ( this.lastKey && 9 == this.lastKey )
+		if (this.lastKey && 9 == this.lastKey)
 			this.focus();
 	});
+
+	// hide unnecessary revision compare radio buttons
+	// jQuery adaptation of /wp-includes/js/wp-list-revisions.dev.js
+	var $humanstxtRevisions = $('#humanstxt-revisions');
+	var $humanstxtRevisionsInputs = $humanstxtRevisions.find('input');
+	if ($humanstxtRevisions.length) {
+		$humanstxtRevisions.click(function() {
+			var i, checkCount = 0, side;
+			for (i = 0; i < $humanstxtRevisionsInputs.length; i++) {
+				checkCount += $humanstxtRevisionsInputs[i].checked ? 1 : 0;
+				side = $humanstxtRevisionsInputs[i].getAttribute('name');
+				if (!$humanstxtRevisionsInputs[i].checked && ('left' == side && 1 > checkCount || 'right' == side && 1 < checkCount && (!$humanstxtRevisionsInputs[i-1] || !$humanstxtRevisionsInputs[i-1].checked)) && !($humanstxtRevisionsInputs[i+1] && $humanstxtRevisionsInputs[i+1].checked && 'right' == $humanstxtRevisionsInputs[i+1].getAttribute('name')))
+					$humanstxtRevisionsInputs[i].style.visibility = 'hidden';
+				else if ('left' == side || 'right' == side)
+					$humanstxtRevisionsInputs[i].style.visibility = 'visible';
+			}
+		}).click();
+	}
 
 });
 

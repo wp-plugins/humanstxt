@@ -82,10 +82,16 @@ function humanstxt_admin_init() {
 			humanstxt_update_options();
 		}
 
-		// restoring a revision?
+		// restore a revision?
 		if (isset($_GET['action'], $_GET['revision']) && $_GET['action'] == 'restore') {
 			check_admin_referer('restore-humanstxt_'.$_GET['revision']);
 			humanstxt_restore_revision($_GET['revision']);
+		}
+
+		// import & rename physical humans.txt file?
+		if (isset($_GET['action']) && $_GET['action'] == 'import-file') {
+			check_admin_referer('import-humanstxt-file');
+			humanstxt_import_file();			
 		}
 
 	}
@@ -203,6 +209,24 @@ function humanstxt_contextual_help($contextual_help, $screen_id) {
 }
 
 /**
+ * Updates the current content of the humans.txt file and
+ * adds it as a new revision, if the current content doesn't
+ * equal the given $content.
+ * 
+ * @since 1.2.0
+ *
+ * @param string $content New content of the humans.txt file
+ */
+function humanstxt_update_content($content) {
+
+	if ($content != humanstxt_content()) {
+		humanstxt_add_revision($content);
+		update_option('humanstxt_content', $content);
+	}
+
+}
+
+/**
  * Updates the plugin options and redirects to plugin options page.
  * 
  * @global $humanstxt_options
@@ -227,16 +251,7 @@ function humanstxt_update_options() {
 	}
 
 	if (isset($_POST['humanstxt_content'])) {
-
-		$humanstxt_content_old = humanstxt_content();
-		$humanstxt_content_new = humanstxt_content_normalize(stripslashes($_POST['humanstxt_content']));
-
-		// has the content changed?
-		if ($humanstxt_content_new != $humanstxt_content_old) {
-			humanstxt_add_revision($humanstxt_content_new);
-			update_option('humanstxt_content', $humanstxt_content_new);
-		}
-
+		humanstxt_update_content(humanstxt_content_normalize(stripslashes($_POST['humanstxt_content'])));
 	}
 
 	wp_redirect(add_query_arg(array('settings-updated' => '1'), HUMANSTXT_OPTIONS_URL));
@@ -245,9 +260,8 @@ function humanstxt_update_options() {
 }
 
 /**
- * Replaces the 'humanstxt_content' with the content of the
- * given $revision if revisions aren't disabled. Redirects to
- * the plugin options page.
+ * Restores the given $revision of the humans.txt, if revisions
+ * aren't disabled. Redirects to the plugin options page afterwards.
  * 
  * @since 1.1.0
  * 
@@ -260,10 +274,61 @@ function humanstxt_restore_revision($revision) {
 	if (!isset($revisions[$revision]))
 		return;
 
-	update_option('humanstxt_content', $revisions[$revision]['content']);
-	humanstxt_add_revision($revisions[$revision]['content']);
+	humanstxt_update_content($revisions[$revision]['content']);
 
 	wp_redirect(add_query_arg(array('revision-restored' => '1'), HUMANSTXT_OPTIONS_URL));
+	exit;
+
+}
+
+/**
+ * This function tries to import the contents of the physical
+ * humans.txt file and if successful rename it to humans.txt.bak,
+ * so this plugin can work properly. Redirects to the plugin
+ * options page afterwards.
+ *
+ * Nothing serious happens, but maybe I should use WP_Filesystem anyway?
+ * 
+ * @since 1.2.0
+ */
+function humanstxt_import_file() {
+
+	$import = true;
+
+	if (!current_user_can('administrator'))
+		wp_die(__('Cheatin&#8217; uh?'));
+
+	if (!humanstxt_exists())
+		$import = false;
+
+	if (!is_readable(ABSPATH.'humans.txt'))
+		$import = false;
+
+	if (($contents = file_get_contents(ABSPATH.'humans.txt')) == false)
+		$import = false;
+
+	if (!preg_match('~\S~', $contents)) // does it contain anything else, than white-space?
+		$import = false;
+
+	if ($import) {
+
+		// import content
+		humanstxt_update_content(humanstxt_content_normalize($contents));
+
+		// rename file
+		if (is_writable(ABSPATH.'humans.txt'))
+			@rename(ABSPATH.'humans.txt', ABSPATH.'humans.txt.bak');
+
+		if (humanstxt_exists())
+			wp_redirect(add_query_arg(array('rename-failed' => '1'), HUMANSTXT_OPTIONS_URL));
+		else
+			wp_redirect(add_query_arg(array('file-imported' => '1'), HUMANSTXT_OPTIONS_URL));
+
+		exit;
+
+	}
+
+	wp_redirect(add_query_arg(array('import-failed' => '1'), HUMANSTXT_OPTIONS_URL));
 	exit;
 
 }
@@ -340,18 +405,30 @@ function humanstxt_options_page() {
 
 	<h2><?php _e('Humans TXT', HUMANSTXT_DOMAIN) ?></h2>
 
+	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Please read the FAQ...', HUMANSTXT_DOMAIN)) ?>
+
 	<?php if (isset($_GET['settings-updated'])) : ?>
 		<div class="updated"><p><strong><?php _e('Settings saved.') ?></strong></p></div>
 	<?php elseif (isset($_GET['revision-restored'])) : ?>
 		<div class="updated"><p><strong><?php _e('Revision restored.', HUMANSTXT_DOMAIN) ?></strong></p></div>
+	<?php elseif (isset($_GET['file-imported'])) : ?>
+		<div class="updated"><p><strong><?php _e('Import successful. The original file has been renamed to humans.txt.bak.', HUMANSTXT_DOMAIN) ?></strong></p></div>
+	<?php elseif (isset($_GET['rename-failed'])) : ?>
+		<div class="error"><p><strong><?php _e('Sorry, the content has been imported, but the original file could not be renamed.', HUMANSTXT_DOMAIN) ?></strong> <?php echo $faqlink ?></p></div>
+	<?php elseif (isset($_GET['import-failed'])) : ?>
+		<div class="error"><p><strong><?php _e('Import failed.', HUMANSTXT_DOMAIN) ?></strong> <?php echo $faqlink ?></p></div>
 	<?php endif; ?>
-
-	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Read FAQ...', HUMANSTXT_DOMAIN)) ?>
 
 	<?php if (!humanstxt_is_rootinstall()) : ?>
 		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the root of the domain.', HUMANSTXT_DOMAIN); ?></strong> <?php echo $faqlink ?></p></div>
-	<?php elseif (humanstxt_exists()) : ?>
-		<div class="error"><p><strong><?php _e('Error: The site root already contains a physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong> <?php echo $faqlink ?></p></div>
+	<?php elseif (humanstxt_exists() && !isset($_GET['rename-failed'], $_GET['import-failed'])) : ?>
+		<div class="error">
+			<p>
+				<strong><?php _e('Error: The site root already contains a physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong>
+				<?php echo $faqlink ?>
+				<?php if (current_user_can('administrator')) printf(__('or try to <a href="%s">import and rename</a> the physical humans.txt file.', HUMANSTXT_DOMAIN), wp_nonce_url(add_query_arg(array('action' => 'import-file'), HUMANSTXT_OPTIONS_URL), 'import-humanstxt-file')) ?>
+			</p>
+		</div>
 	<?php elseif (get_option('permalink_structure') == '' && current_user_can('manage_options')) : ?>
 		<div class="error"><p><strong><?php printf(__('Error: Please <a href="%s">update your permalink structure</a> to something other than the default.', HUMANSTXT_DOMAIN), admin_url('options-permalink.php')) ?></strong> <?php echo $faqlink ?></p></div>
 	<?php endif; ?>
@@ -387,13 +464,13 @@ function humanstxt_options_page() {
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_enable">
-								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked('1', humanstxt_option('enabled')) ?> />
+								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked(humanstxt_option('enabled')) ?> />
 								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">humans.txt</a>' ?>
 								<?php printf( /* translators: %s: humans.txt (linked to the site's humans.txt file) */ __('Activate %s file', HUMANSTXT_DOMAIN), $humanstxt_link) ?>
 							</label>
 							<br />
 							<label for="humanstxt_authortag" title="<?php esc_attr_e('Adds an <link rel="author"> tag to the site\'s <head> tag pointing to the humans.txt file.', HUMANSTXT_DOMAIN) ?>">
-								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked('1', humanstxt_option('authortag')) ?> />
+								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked(humanstxt_option('authortag')) ?> />
 								<?php _e('Add an author link tag to the site', HUMANSTXT_DOMAIN) ?>
 							</label>
 						</fieldset>
@@ -438,7 +515,7 @@ function humanstxt_options_page() {
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
-							<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button in the top right corner of this page.', HUMANSTXT_DOMAIN) ?></label></span>
+							<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button on top of this page.', HUMANSTXT_DOMAIN) ?></label></span>
 							<textarea name="humanstxt_content" rows="25" cols="80" id="humanstxt_content" class="large-text code"><?php echo esc_textarea(humanstxt_content()) ?></textarea>
 						</fieldset>
 					</td>
@@ -495,51 +572,100 @@ function humanstxt_revisions_page() {
 	<?php
 		$revisions = humanstxt_revisions(); krsort($revisions);
 		$live_revision = max(array_keys($revisions));
-		$current_revision = isset($_GET['revision']) && isset($revisions[$_GET['revision']]) ? (int) $_GET['revision'] : false;
+		$show_revision = isset($_GET['revision']) && isset($revisions[$_GET['revision']]) ? intval($_GET['revision']) : false;
 	?>
 
-	<?php if ($current_revision !== false) : ?>
+	<?php if ($show_revision !== false) : ?>
 
-		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n(_x('j F, Y @ G:i', 'revision date format'), $revisions[$current_revision]['date'])) ?></h3>
-		<pre id="revision-preview" class="postbox"><?php echo esc_html(trim($revisions[$current_revision]['content'])) ?></pre>
-		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $current_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$current_revision) ?>" class="button-primary"><?php _e('Restore Revision', HUMANSTXT_DOMAIN) ?></a></p>
+		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n(_x('j F, Y @ G:i', 'revision date format'), $revisions[$show_revision]['date'])) ?></h3>
+		<pre id="revision-preview" class="postbox"><?php echo esc_html(trim($revisions[$show_revision]['content'])) ?></pre>
+		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $show_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$show_revision) ?>" class="button-primary"><?php _e('Restore Revision', HUMANSTXT_DOMAIN) ?></a></p>
+
+	<?php elseif (isset($_GET['action'], $_GET['left'], $_GET['right']) && $_GET['action'] == 'compare' && isset($revisions[$_GET['left']], $revisions[$_GET['right']])) : ?>
+
+		<?php if ($_GET['left'] == $_GET['right']) : ?>
+			<div class="error"><p><?php _e('You cannot compare a revision to itself.', HUMANSTXT_DOMAIN) ?></p></div>
+		<?php elseif (!($diff = wp_text_diff($revisions[$_GET['left']]['content'], $revisions[$_GET['right']]['content']))) : ?>
+			<div class="error"><p><?php _e('These revisions are identical.') ?></p></div>
+		<?php else : ?>
+
+			<table class="form-table ie-fixed">
+				<tr>
+					<th class="th-full">
+						<span class="alignleft"><?php printf(__('Older: %s'), date_i18n(_x( 'j F, Y @ G:i', 'revision date format'), $revisions[$_GET['left']]['date'])) ?></span>
+						<span class="alignright"><?php printf(__('Newer: %s'), date_i18n(_x( 'j F, Y @ G:i', 'revision date format'), $revisions[$_GET['right']]['date'])) ?></span>
+					</th>
+				</tr>
+				<tr>
+					<td><div class="pre"><?php echo $diff; ?></div></td>
+				</tr>
+			</table>
+
+			<br class="clear" />
+
+		<?php endif; ?>
 
 	<?php endif; ?>
 
 	<h3><?php _e('Revisions') ?></h3>
 
-	<table class="widefat humanstxt-revisions" cellspacing="0" id="humanstxt-revisions">
-		<col style="width: 33%" />
-		<col style="width: 33%" />
-		<col style="width: 33%" />
-		<thead>
-			<tr>
-				<th scope="col"><?php _ex('Date Created', 'revisions column name') ?></th>
-				<th scope="col"><?php _e('Author') ?></th>
-				<th scope="col" class="action-links"><?php _e('Actions') ?></th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($revisions as $key => $revision) : ?>
-				<tr<?php echo ($key === $current_revision) ? ' class="current-revision"' : '' ?>>
-					<td>
-						<?php $date = '<a href="'.HUMANSTXT_REVISIONS_URL.'&revision='.$key.'">'.date_i18n(_x( 'j F, Y @ G:i', 'revision date format'), $revision['date']).'</a>'?>
-						<?php printf($key == $live_revision ? __('%1$s [Current Revision]') : '%s', $date) ?>
-					</td>
-					<td>
-						<?php if ($revision['user'] > 0) : ?>
-							<?php echo get_the_author_meta('display_name', $revision['user']); ?>
-						<?php endif; ?>
-					</td>
-					<td class="action-links">
-						<?php if ($key != $live_revision) : ?>
-							<a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $key, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$key) ?>"><?php _e('Restore') ?></a>
-						<?php endif; ?>
-					</td>
+	<form action="<?php echo admin_url('options-general.php') ?>" method="get">
+
+		<div class="tablenav">
+			<div class="alignleft">
+				<input type="submit" class="button-secondary" value="<?php esc_attr_e('Compare Revisions') ?>" />
+				<input type="hidden" name="page" value="humanstxt" />
+				<input type="hidden" name="subpage" value="revisions" />
+				<input type="hidden" name="action" value="compare" />
+			</div>
+		</div>
+
+		<br class="clear" />
+
+		<table class="widefat" cellspacing="0" id="humanstxt-revisions">
+			<col />
+			<col />
+			<col style="width: 33%" />
+			<col style="width: 33%" />
+			<col style="width: 33%" />
+			<thead>
+				<tr>
+					<th scope="col"><?php _ex( 'Old', 'revisions column name' ); ?></th>
+					<th scope="col"><?php _ex( 'New', 'revisions column name' ); ?></th>
+					<th scope="col"><?php _ex('Date Created', 'revisions column name') ?></th>
+					<th scope="col"><?php _e('Author') ?></th>
+					<th scope="col" class="action-links"><?php _e('Actions') ?></th>
 				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($revisions as $key => $revision) : ?>
+					<?php
+						$left = isset($_GET['left']) && isset($revisions[$_GET['left']]) ? intval($_GET['left']) : (($show_revision === false) ? $live_revision - 1 : $show_revision);
+						$right = isset($_GET['right']) && isset($revisions[$_GET['right']]) ? intval($_GET['right']) : $live_revision;
+					?>
+					<tr<?php echo ($key === $show_revision) ? ' class="displayed-revision"' : '' ?>>
+						<th scope="row"><input type="radio" name="left" value="<?php echo $key ?>"<?php checked($key == $left) ?> /></th>
+						<th scope="row"><input type="radio" name="right" value="<?php echo $key ?>"<?php checked($key == $right) ?> /></th>
+						<td>
+							<?php $date = '<a href="'.HUMANSTXT_REVISIONS_URL.'&revision='.$key.'">'.date_i18n(_x( 'j F, Y @ G:i', 'revision date format'), $revision['date']).'</a>'?>
+							<?php printf($key == $live_revision ? __('%1$s [Current Revision]') : '%s', $date) ?>
+						</td>
+						<td>
+							<?php if ($revision['user'] > 0) : ?>
+								<?php echo get_the_author_meta('display_name', $revision['user']); ?>
+							<?php endif; ?>
+						</td>
+						<td class="action-links">
+							<?php if ($key != $live_revision) : ?>
+								<a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $key, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$key) ?>"><?php _e('Restore') ?></a>
+							<?php endif; ?>
+						</td>
+					</tr>
 				<?php endforeach; ?>
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+
+	</form>
 
 	<p><?php printf( /* translators: %s: number of stored revisions */ __('WordPress is storing the last %s revisions of your <em>humans.txt</em> file.', HUMANSTXT_DOMAIN), (int) apply_filters('humanstxt_max_revisions', HUMANSTXT_MAX_REVISIONS)) ?></p>
 
