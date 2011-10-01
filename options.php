@@ -157,7 +157,7 @@ function humanstxt_admin_menu() {
  */
 function humanstxt_actionlinks($actions) {
 	return array_merge(
-		array('settings' => sprintf('<a href="%s">%s</a>', HUMANSTXT_OPTIONS_URL, /* translators: DO NOT TRANSLATE - will be translated by WordPress */ __('Settings'))),
+		array('settings' => sprintf('<a href="%s">%s</a>', HUMANSTXT_OPTIONS_URL, /* translators: DO NOT TRANSLATE! */ __('Settings'))),
 		$actions
 	);
 }
@@ -303,7 +303,7 @@ function humanstxt_import_file() {
 	$import = true;
 
 	if (!current_user_can('administrator'))
-		wp_die( /* translators: DO NOT TRANSLATE - will be translated by WordPress */ __('Cheatin&#8217; uh?'));
+		wp_die( /* translators: DO NOT TRANSLATE!! */ __('Cheatin&#8217; uh?'));
 
 	if (!humanstxt_exists())
 		$import = false;
@@ -395,7 +395,7 @@ function humanstxt_ajax_preview() {
 	if (isset($_GET['content']) && !empty($_GET['content'])) {
 		echo '<pre>'.esc_html(apply_filters('humans_txt', $_GET['content'])).'</pre>';
 	} else {
-		echo /* translators: DO NOT TRANSLATE - will be translated by WordPress */ __('An unknown error occurred.');
+		echo /* translators: DO NOT TRANSLATE! */ __('An unknown error occurred.');
 	}
 	exit;
 }
@@ -430,7 +430,7 @@ function humanstxt_options_page() {
 	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Please read the FAQ...', HUMANSTXT_DOMAIN)) ?>
 
 	<?php if (isset($_GET['settings-updated'])) : ?>
-		<div class="updated"><p><strong><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('Settings saved.') ?></strong></p></div>
+		<div class="updated"><p><strong><?php /* translators: DO NOT TRANSLATE! */ _e('Settings saved.') ?></strong></p></div>
 	<?php elseif (isset($_GET['revision-restored'])) : ?>
 		<div class="updated"><p><strong><?php _e('Revision restored.', HUMANSTXT_DOMAIN) ?></strong></p></div>
 	<?php elseif (isset($_GET['file-imported'])) : ?>
@@ -468,17 +468,17 @@ function humanstxt_options_page() {
 					<div class="star-holder">
 						<?php $starimg = $wp32 ? admin_url('images/gray-star.png?v=20110615') : admin_url('images/star.gif') ?>
 						<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
-						<div class="star star5"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('5 stars') ?>" /></div>
-						<div class="star star4"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('4 stars') ?>" /></div>
-						<div class="star star3"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('3 stars') ?>" /></div>
-						<div class="star star2"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('2 stars') ?>" /></div>
-						<div class="star star1"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('1 star') ?>" /></div>
+						<div class="star star5"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('5 stars') ?>" /></div>
+						<div class="star star4"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('4 stars') ?>" /></div>
+						<div class="star star3"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('3 stars') ?>" /></div>
+						<div class="star star2"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('2 stars') ?>" /></div>
+						<div class="star star1"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('1 star') ?>" /></div>
 					</div>
-					<small class="text-votes"><?php printf( /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
+					<small class="text-votes"><?php printf( /* translators: DO NOT TRANSLATE! */ _n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
 				</div>
 			<?php endif; ?>
 
-			<h3><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('Settings') ?></h3>
+			<h3><?php /* translators: DO NOT TRANSLATE! */ _e('Settings') ?></h3>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></th>
@@ -524,7 +524,7 @@ function humanstxt_options_page() {
 			</table>
 
 			<p class="submit clear">
-				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ esc_attr_e('Save Changes') ?>" />
+				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save Changes') ?>" />
 			</p>
 
 		<?php endif; ?>
@@ -544,8 +544,8 @@ function humanstxt_options_page() {
 				</tr>
 			</table>
 			<p class="submit">
-				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ esc_attr_e('Save') ?>" />
-				<a href="<?php echo esc_url(admin_url('admin-ajax.php?action=humanstxt-preview')) ?>" class="button button-preview hide-if-no-js" title="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('Preview') ?>"><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('Preview') ?></a>
+				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save') ?>" />
+				<a href="<?php echo esc_url(admin_url('admin-ajax.php?action=humanstxt-preview')) ?>" class="button button-preview hide-if-no-js" title="<?php /* translators: DO NOT TRANSLATE! */ _e('Preview') ?>"><?php /* translators: DO NOT TRANSLATE! */ _e('Preview') ?></a>
 				<?php $revisions = humanstxt_revisions() ?>
 				<?php if (count($revisions) > 1) : ?><a href="<?php echo esc_url(HUMANSTXT_REVISIONS_URL) ?>" class="button"><?php _e('View Revisions', HUMANSTXT_DOMAIN) ?></a><?php endif; ?>
 			</p>
@@ -600,7 +600,7 @@ function humanstxt_revisions_page() {
 
 	<?php if ($show_revision !== false) : ?>
 
-		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n( /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$show_revision]['date'])) ?></h3>
+		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$show_revision]['date'])) ?></h3>
 		<pre id="revision-preview" class="postbox"><?php echo esc_html($revisions[$show_revision]['content']) ?></pre>
 		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $show_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$show_revision) ?>" class="button-primary"><?php _e('Restore Revision', HUMANSTXT_DOMAIN) ?></a></p>
 
@@ -609,14 +609,14 @@ function humanstxt_revisions_page() {
 		<?php if ($_GET['left'] == $_GET['right']) : ?>
 			<div class="error"><p><?php _e('You cannot compare a revision to itself.', HUMANSTXT_DOMAIN) ?></p></div>
 		<?php elseif (!($diff = wp_text_diff($revisions[$_GET['left']]['content'], $revisions[$_GET['right']]['content']))) : ?>
-			<div class="error"><p><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('These revisions are identical.') ?></p></div>
+			<div class="error"><p><?php /* translators: DO NOT TRANSLATE! */ _e('These revisions are identical.') ?></p></div>
 		<?php else : ?>
 
 			<table class="form-table ie-fixed">
 				<tr>
 					<th class="th-full">
-						<span class="alignleft"><?php printf( /* translators: DO NOT TRANSLATE - will be translated by WordPress */ __('Older: %s'), date_i18n( /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['left']]['date'])) ?></span>
-						<span class="alignright"><?php printf( /* translators: DO NOT TRANSLATE - will be translated by WordPress */ __('Newer: %s'), date_i18n( /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['right']]['date'])) ?></span>
+						<span class="alignleft"><?php printf( /* translators: DO NOT TRANSLATE! */ __('Older: %s'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['left']]['date'])) ?></span>
+						<span class="alignright"><?php printf( /* translators: DO NOT TRANSLATE! */ __('Newer: %s'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['right']]['date'])) ?></span>
 					</th>
 				</tr>
 				<tr>
@@ -630,13 +630,13 @@ function humanstxt_revisions_page() {
 
 	<?php endif; ?>
 
-	<h3><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('Revisions') ?></h3>
+	<h3><?php /* translators: DO NOT TRANSLATE! */ _e('Revisions') ?></h3>
 
 	<form action="<?php echo admin_url('options-general.php') ?>" method="get">
 
 		<div class="tablenav">
 			<div class="alignleft">
-				<input type="submit" class="button-secondary" value="<?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ esc_attr_e('Compare Revisions') ?>" />
+				<input type="submit" class="button-secondary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Compare Revisions') ?>" />
 				<input type="hidden" name="page" value="humanstxt" />
 				<input type="hidden" name="subpage" value="revisions" />
 				<input type="hidden" name="action" value="compare" />
@@ -653,11 +653,11 @@ function humanstxt_revisions_page() {
 			<col style="width: 33%" />
 			<thead>
 				<tr>
-					<th scope="col"><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _ex('Old', 'revisions column name'); ?></th>
-					<th scope="col"><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _ex('New', 'revisions column name'); ?></th>
-					<th scope="col"><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _ex('Date Created', 'revisions column name') ?></th>
-					<th scope="col"><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('Author') ?></th>
-					<th scope="col" class="action-links"><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('Actions') ?></th>
+					<th scope="col"><?php /* translators: DO NOT TRANSLATE! */ _ex('Old', 'revisions column name'); ?></th>
+					<th scope="col"><?php /* translators: DO NOT TRANSLATE! */ _ex('New', 'revisions column name'); ?></th>
+					<th scope="col"><?php /* translators: DO NOT TRANSLATE! */ _ex('Date Created', 'revisions column name') ?></th>
+					<th scope="col"><?php /* translators: DO NOT TRANSLATE! */ _e('Author') ?></th>
+					<th scope="col" class="action-links"><?php /* translators: DO NOT TRANSLATE! */ _e('Actions') ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -671,7 +671,7 @@ function humanstxt_revisions_page() {
 						<th scope="row"><input type="radio" name="right" value="<?php echo $key ?>"<?php checked($key == $right) ?> /></th>
 						<td>
 							<?php $date = '<a href="'.esc_url(add_query_arg(array('revision' => $key), HUMANSTXT_REVISIONS_URL)).'">'.date_i18n(_x('j F, Y @ G:i', 'revision date format'), $revision['date']).'</a>'?>
-							<?php printf($key == $live_revision ? /* translators: DO NOT TRANSLATE - will be translated by WordPress */ __('%1$s [Current Revision]') : '%s', $date) ?>
+							<?php printf($key == $live_revision ? /* translators: DO NOT TRANSLATE! */ __('%1$s [Current Revision]') : '%s', $date) ?>
 						</td>
 						<td>
 							<?php if ($revision['user'] > 0) : ?>
@@ -680,7 +680,7 @@ function humanstxt_revisions_page() {
 						</td>
 						<td class="action-links">
 							<?php if ($key != $live_revision) : ?>
-								<a href="<?php echo esc_url(wp_nonce_url(add_query_arg(array('revision' => $key, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$key)) ?>"><?php /* translators: DO NOT TRANSLATE - will be translated by WordPress */ _e('Restore') ?></a>
+								<a href="<?php echo esc_url(wp_nonce_url(add_query_arg(array('revision' => $key, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$key)) ?>"><?php /* translators: DO NOT TRANSLATE! */ _e('Restore') ?></a>
 							<?php endif; ?>
 						</td>
 					</tr>
