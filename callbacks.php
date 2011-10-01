@@ -424,5 +424,3 @@ function humanstxt_callback_wptheme_author_link() {
 	return empty($theme_data['Author URI']) ? null : $theme_data['Author URI'];
 }
 endif;
-
-?>

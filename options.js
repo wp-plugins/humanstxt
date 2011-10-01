@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 	$('#wpbody-content a[rel*="external"]').attr('target', '_tab');
 
 	// register custom tooltips for variable previews
-	$('#humanstxt-vars li.has-result').humansTooltip();
+	$('#humanstxt-vars li').humansTooltip();
 
 	// make star rating clickable if the metabox is displayed
 	var $humanstxtRateIt = $('#humanstxt-metabox .text-rateit a');
@@ -19,6 +19,16 @@ jQuery(document).ready(function($) {
 			window.location.href = $humanstxtRateIt.attr('href');
 		});
 	}
+
+	// register preview button
+	$('#humanstxt-editor-wrap .button-preview').each(function() {
+		$(this).data('ajax-url', $(this).attr('href')).click(function() {
+			var params = '&content=' + encodeURIComponent($('#humanstxt_content').val()) + '&TB_iframe=1';
+			tb_show($(this).attr('title'), $(this).data('ajax-url') + params, false);
+			$(this).blur();
+			return false;
+		});
+	});
 
 	// enable tab key support on humans.txt textarea
 	// taken from /wp-admin/js/common.dev.js

@@ -301,7 +301,7 @@ function _humanstxt_shortcode($attributes) {
 
 	if (!$plain) {
 
-		if (!$pre) $content = nl2br(trim($content)); // convert line breaks
+		if (!$pre) $content = nl2br($content); // convert line breaks
 
 		if ($filter) {
 			if (!$pre) $content = wptexturize($content); // format common entities
@@ -649,5 +649,3 @@ function humanstxt_default_content() {
 ', HUMANSTXT_DOMAIN));
 
 }
-
-?>
