@@ -14,6 +14,7 @@ $strings = array(
 	'2 stars',
 	'1 star',
 	'Save Changes',
+	'For more information:',
 	'An unknown error occurred.',
 	'Save',
 	'These revisions are identical.',
