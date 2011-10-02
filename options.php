@@ -51,8 +51,8 @@ add_action('admin_menu', 'humanstxt_admin_menu');
 add_action('admin_notices', 'humanstxt_version_warning'); 
 add_action('admin_print_styles', create_function(null, "wp_enqueue_style('thickbox'); wp_enqueue_style('humanstxt-options');"));
 add_action('admin_print_scripts', create_function(null, "wp_enqueue_script('thickbox'); wp_enqueue_script('humanstxt-options');"));
+add_action('load-settings_page_humanstxt', 'humanstxt_contextual_help');
 add_action('wp_ajax_humanstxt-preview', 'humanstxt_ajax_preview');
-add_action('contextual_help', 'humanstxt_contextual_help', 10, 2);
 add_action('after_plugin_row_humans-txt/plugin.php', 'humanstxt_plugin_notice', 10, 3);
 add_action('after_plugin_row_humans-dot-txt/humans-dot-txt.php', 'humanstxt_plugin_notice', 10, 3);
 add_filter('plugin_action_links_'.HUMANSTXT_PLUGIN_BASENAME, 'humanstxt_actionlinks');
@@ -68,6 +68,7 @@ humanstxt_load_textdomain();
  * Registers the CSS and JavaScript file.
  * Calls humanstxt_update_options() if necessary.
  * Calls humanstxt_restore_revision() if necessary.
+ * Calls humanstxt_import_file() if necessary.
  */
 function humanstxt_admin_init() {
 
@@ -117,7 +118,7 @@ function humanstxt_uninstall() {
  */
 function humanstxt_version_warning() {
 
-	if (version_compare($GLOBALS['wp_version'], HUMANSTXT_VERSION_REQUIRED, '<')) {
+	if (!humanstxt_is_wp(HUMANSTXT_VERSION_REQUIRED)) {
 		$updatelink = ' <a href="'.admin_url('update-core.php').'">'.sprintf(__('Please update your WordPress installation.', HUMANSTXT_DOMAIN)).'</a>';
 		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %1$s requires WordPress %2$s or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION, HUMANSTXT_VERSION_REQUIRED).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
 	}
@@ -125,14 +126,21 @@ function humanstxt_version_warning() {
 }
 
 /**
+ * Return TRUE if given $version is higher or equals the running
+ * WordPress version. This function consideres pre-release versions,
+ * such as 3.0.0-dev, as high as their final release counterparts (like 4.0.0).
+ * 
+ * @since 1.2.0
+ */
+function humanstxt_is_wp($version) {
+	return version_compare(preg_replace('~[^0-9.]~', '', get_bloginfo('version')), $version, '>=');
+}
+
+/**
  * Callback function for 'admin_menu' action.
  * Registers the options page if the current user has access.
- * 
- * @global $humanstxt_screen_id
  */
 function humanstxt_admin_menu() {
-
-	global $humanstxt_screen_id;
 
 	$roles = humanstxt_option('roles');
 	array_unshift($roles, 'administrator'); // admins can always edit
@@ -141,7 +149,7 @@ function humanstxt_admin_menu() {
 	// add options page if the current user has one of the required roles
 	foreach ($roles as $role) {
 		if (current_user_can($role)) {
-			$humanstxt_screen_id = add_options_page(__('Humans TXT', HUMANSTXT_DOMAIN), __('Humans TXT', HUMANSTXT_DOMAIN), $role, HUMANSTXT_DOMAIN, 'humanstxt_options');
+			add_options_page(__('Humans TXT', HUMANSTXT_DOMAIN), __('Humans TXT', HUMANSTXT_DOMAIN), $role, HUMANSTXT_DOMAIN, 'humanstxt_options');
 			break;
 		}
 	}
@@ -163,55 +171,46 @@ function humanstxt_actionlinks($actions) {
 }
 
 /**
- * Returns the content of our custom help menu.
- * 
- * @global $humanstxt_screen_id
- * 
- * @param string $contextual_help
- * @param string $screen_id
- * @return string $contextual_help Custom help menu content.
+ * Callback function for 'load-{$page_hook}' action.
+ * Registers the contextual help menu.
  */
-function humanstxt_contextual_help($contextual_help, $screen_id) {
+function humanstxt_contextual_help() {
 
-	global $humanstxt_screen_id;
+	global $current_screen;
 
-	if ($humanstxt_screen_id && $humanstxt_screen_id == $screen_id) {
+	$humanstxt = sprintf(
+		'<p><strong>%s</strong> &mdash; %s</p>',
+		__('What is the humans.txt?', HUMANSTXT_DOMAIN),
+		__("It's an initiative for knowing the people behind a website. It's a TXT file in the site root that contains information about the humans who have contributed to the website.", HUMANSTXT_DOMAIN)
+	);
+	$humanstxt .= sprintf(
+		'<p><strong>%s</strong> &mdash; %s</p>',
+		__('Who should I mention?', HUMANSTXT_DOMAIN),
+		__('Whoever you want to, provided they wish you to do so. You can mention the developer, the designer, the copywriter, the webmaster, the editor, ... anyone who contributed to the website.', HUMANSTXT_DOMAIN)
+	);
+	$humanstxt .= sprintf(
+		'<p><strong>%s</strong> &mdash; %s</p>',
+		__('How should I format it?', HUMANSTXT_DOMAIN),
+		__('However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href="http://humanstxt.org/humans.txt" rel="external">humanstxt.org</a> or <a href="http://html5boilerplate.com/humans.txt" rel="external">html5boilerplate.com</a>.', HUMANSTXT_DOMAIN)
+	);
 
-		$contextual_help = sprintf(
-			'<p><strong>%s</strong> &mdash; %s</p>',
-			__('What is the humans.txt?', HUMANSTXT_DOMAIN),
-			__("It's an initiative for knowing the people behind a website. It's a TXT file in the site root that contains information about the humans who have contributed to the website.", HUMANSTXT_DOMAIN)
-		);
+	$variables = __('The variables will be replaced with their value when someone views the humans.txt file. Hover them with your cursor to see their value.', HUMANSTXT_DOMAIN);
 
-		$contextual_help .= sprintf(
-			'<p><strong>%s</strong> &mdash; %s</p>',
-			__('Who should I mention?', HUMANSTXT_DOMAIN),
-			__('Whoever you want to, provided they wish you to do so. You can mention the developer, the designer, the copywriter, the webmaster, the editor, ... anyone who contributed to the website.', HUMANSTXT_DOMAIN)
-		);
+	$more = '<p><strong>'.__('For more information:').'</strong></p>
+		<p><a href="http://humanstxt.org/" rel="external">'.__('Humans TXT Website', HUMANSTXT_DOMAIN).'</a></p>
+		<p><a href="http://wordpress.org/extend/plugins/humanstxt/" rel="external">'.__('Plugin Homepage', HUMANSTXT_DOMAIN).'</a></p>
+		<p><a href="http://wordpress.org/tags/humanstxt" rel="external">'.__('Plugin Support Forum', HUMANSTXT_DOMAIN).'</a></p>
+	';
 
-		$contextual_help .= sprintf(
-			'<p><strong>%s</strong> &mdash; %s</p>',
-			__('How should I format it?', HUMANSTXT_DOMAIN),
-			__('However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href="http://humanstxt.org/humans.txt" rel="external">humanstxt.org</a> or <a href="http://html5boilerplate.com/humans.txt" rel="external">html5boilerplate.com</a>.', HUMANSTXT_DOMAIN)
-		);
-
-		$contextual_help .= sprintf(
-			'<p><strong>%s</strong> &mdash; %s</p>',
-			__('What are these variables?', HUMANSTXT_DOMAIN),
-			__('The variables will be replaced with their value when someone views the humans.txt file. Hover them with your cursor to see their value.', HUMANSTXT_DOMAIN)
-		);
-
-		$contextual_help .= '
-			<ul>
-				<li><a href="http://humanstxt.org/" rel="external">'.__('Official Humans TXT website', HUMANSTXT_DOMAIN).'</a></li>
-				<li><a href="http://wordpress.org/extend/plugins/humanstxt/" rel="external">'.__('Plugin Homepage', HUMANSTXT_DOMAIN).'</a></li>
-				<li><a href="http://wordpress.org/tags/humanstxt" rel="external">'.__('Plugin Support Forum', HUMANSTXT_DOMAIN).'</a></li>
-			</ul>
-		';
-
+	if (humanstxt_is_wp('3.3')) {
+		$variables = '<p>'.$variables.'</p>';
+		$current_screen->add_help_tab(array('title' => __('Humans TXT File', HUMANSTXT_DOMAIN), 'content' => $humanstxt));
+		$current_screen->add_help_tab(array('title' => __('Variables', HUMANSTXT_DOMAIN), 'content' => $variables));
+		$current_screen->add_help_sidebar($more);
+	} else {
+		$variables = sprintf('<p><strong>%s</strong> &mdash; %s</p>', __('Variables', HUMANSTXT_DOMAIN), $variables);
+		add_contextual_help($current_screen->id, $humanstxt.$variables.$more);
 	}
-
-	return $contextual_help;
 
 }
 
@@ -392,12 +391,15 @@ function humanstxt_rating() {
  * @since 1.2.0
  */
 function humanstxt_ajax_preview() {
+
 	if (isset($_GET['content']) && !empty($_GET['content'])) {
 		echo '<pre>'.esc_html(apply_filters('humans_txt', $_GET['content'])).'</pre>';
 	} else {
 		echo /* translators: DO NOT TRANSLATE! */ __('An unknown error occurred.');
 	}
+
 	exit;
+
 }
 
 /**
@@ -421,7 +423,7 @@ function humanstxt_options() {
  */
 function humanstxt_options_page() {
 ?>
-<div id="humanstxt" class="wrap<?php echo ($wp32 = version_compare(get_bloginfo('version'), '3.1.4', '>')) ? '' : ' not-wp32' ?>">
+<div id="humanstxt" class="wrap<?php if (!humanstxt_is_wp('3.2')) : ?> not-wp32<?php endif; ?>">
 
 	<?php screen_icon() ?>
 
@@ -466,13 +468,13 @@ function humanstxt_options_page() {
 				<div id="humanstxt-metabox" class="postbox humanstxt-box">
 					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
 					<div class="star-holder">
-						<?php $starimg = $wp32 ? admin_url('images/gray-star.png?v=20110615') : admin_url('images/star.gif') ?>
+						<?php $starimg = humanstxt_is_wp('3.2') ? admin_url('images/gray-star.png?v=20110615') : admin_url('images/star.gif') ?>
 						<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
-						<div class="star star5"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('5 stars') ?>" /></div>
-						<div class="star star4"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('4 stars') ?>" /></div>
-						<div class="star star3"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('3 stars') ?>" /></div>
-						<div class="star star2"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('2 stars') ?>" /></div>
-						<div class="star star1"><img src="<?php echo $starimg?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('1 star') ?>" /></div>
+						<div class="star star5"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('5 stars') ?>" /></div>
+						<div class="star star4"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('4 stars') ?>" /></div>
+						<div class="star star3"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('3 stars') ?>" /></div>
+						<div class="star star2"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('2 stars') ?>" /></div>
+						<div class="star star1"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('1 star') ?>" /></div>
 					</div>
 					<small class="text-votes"><?php printf( /* translators: DO NOT TRANSLATE! */ _n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
 				</div>
@@ -586,7 +588,7 @@ function humanstxt_options_page() {
  */
 function humanstxt_revisions_page() {
 ?>
-<div id="humanstxt-revisions" class="wrap<?php echo ($wp32 = version_compare(get_bloginfo('version'), '3.1.4', '>')) ? '' : ' not-wp32' ?>">
+<div id="humanstxt-revisions" class="wrap<?php if (!humanstxt_is_wp('3.2')) : ?> not-wp32<?php endif; ?>">
 
 	<?php screen_icon() ?>
 
