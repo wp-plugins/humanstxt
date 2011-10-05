@@ -13,6 +13,7 @@ $strings = array(
 	'3 stars',
 	'2 stars',
 	'1 star',
+	'WordPress',
 	'Save Changes',
 	'For more information:',
 	'An unknown error occurred.',
