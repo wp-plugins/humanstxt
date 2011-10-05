@@ -1,16 +1,20 @@
 jQuery(document).ready(function($) {
 
-	// adjust row count if content is higher than default height
-	var $humanstxtEditor = $('#humanstxt_content');
-
 	// enable auto-grow on humans.txt textarea
+	var $humanstxtEditor = $('#humanstxt_content');
 	$humanstxtEditor.humansAutoGrow();
 
 	// open external links in new tab
 	$('#wpbody-content a[rel*="external"]').attr('target', '_tab');
 
+	// register slider for variable groups
+	$('#humanstxt-vars ul h5').click(function() {
+		$(this).parent().siblings().children('ul').slideUp();
+		$(this).siblings('ul').slideToggle();
+	});
+
 	// register custom tooltips for variable previews
-	$('#humanstxt-vars li').humansTooltip();
+	$('#humanstxt-vars ul ul li').humansTooltip();
 
 	// make star rating clickable if the metabox is displayed
 	var $humanstxtRateIt = $('#humanstxt-metabox .text-rateit a');

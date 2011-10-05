@@ -194,7 +194,7 @@ function humanstxt_contextual_help() {
 		__('However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href="http://humanstxt.org/humans.txt" rel="external">humanstxt.org</a> or <a href="http://html5boilerplate.com/humans.txt" rel="external">html5boilerplate.com</a>.', HUMANSTXT_DOMAIN)
 	);
 
-	$variables = __('The variables will be replaced with their value when someone views the humans.txt file. Hover them with your cursor to see their value.', HUMANSTXT_DOMAIN);
+	$variables = __('Variables can be used to show dynamic content in your humans.txt file. You can show your visitors for example the amount of published posts, a list of activated plugins, the name of the current theme or the installed WordPress version. Hover your cursor over a variable to see a preview of it.', HUMANSTXT_DOMAIN);
 
 	$more = '<p><strong>'.__('For more information:').'</strong></p>
 		<p><a href="http://humanstxt.org/" rel="external">'.__('Humans TXT Website', HUMANSTXT_DOMAIN).'</a></p>
@@ -489,8 +489,7 @@ function humanstxt_options_page() {
 							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
 							<label for="humanstxt_enable">
 								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked(humanstxt_option('enabled')) ?> />
-								<?php $humanstxt_link = '<a href="'.home_url('humans.txt').'" title="'.__("View this site's humans.txt file", HUMANSTXT_DOMAIN).'" rel="external">humans.txt</a>' ?>
-								<?php printf( /* translators: %s: humans.txt (linked to the site's humans.txt file) */ __('Activate %s file', HUMANSTXT_DOMAIN), $humanstxt_link) ?>
+								<?php _e('Activate humans.txt file', HUMANSTXT_DOMAIN) ?>
 							</label>
 							<br />
 							<label for="humanstxt_authortag" title="<?php esc_attr_e('Adds an <link rel="author"> tag to the site\'s <head> tag pointing to the humans.txt file.', HUMANSTXT_DOMAIN) ?>">
@@ -526,7 +525,10 @@ function humanstxt_options_page() {
 			</table>
 
 			<p class="submit clear">
-				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save Changes') ?>" />
+				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save Changes') ?>" />				
+				<?php if (humanstxt_option('enabled')) : ?>
+					<a href="<?php echo home_url('humans.txt') ?>" rel="external" class="button"><?php _e('View Humans TXT', HUMANSTXT_DOMAIN) ?></a>
+				<?php endif; ?>
 			</p>
 
 		<?php endif; ?>
@@ -549,26 +551,50 @@ function humanstxt_options_page() {
 				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save') ?>" />
 				<a href="<?php echo esc_url(admin_url('admin-ajax.php?action=humanstxt-preview')) ?>" class="button button-preview hide-if-no-js" title="<?php /* translators: DO NOT TRANSLATE! */ _e('Preview') ?>"><?php /* translators: DO NOT TRANSLATE! */ _e('Preview') ?></a>
 				<?php $revisions = humanstxt_revisions() ?>
-				<?php if (count($revisions) > 1) : ?><a href="<?php echo esc_url(HUMANSTXT_REVISIONS_URL) ?>" class="button"><?php _e('View Revisions', HUMANSTXT_DOMAIN) ?></a><?php endif; ?>
+				<?php if (count($revisions) > 1) : ?>
+					<a href="<?php echo esc_url(HUMANSTXT_REVISIONS_URL) ?>" class="button"><?php _e('View Revisions', HUMANSTXT_DOMAIN) ?></a>
+				<?php endif; ?>
 			</p>
 		</div>
 
-		<?php $humanstxt_variables = humanstxt_valid_variables() ?>
-		<?php if (!empty($humanstxt_variables)) : ?>
+		<?php
+			$group_names = array(
+				'wordpress' => /* translators: DO NOT TRANSLATE! */ __('WordPress'),
+				'server' => __('Server', HUMANSTXT_DOMAIN),
+				'addons' => __('Themes & Plugins', HUMANSTXT_DOMAIN),
+				'misc' => __('Miscellaneous', HUMANSTXT_DOMAIN)
+			);
+			$valid_variables = humanstxt_valid_variables();
+			foreach ($valid_variables as $variable) {
+				if (isset($group_names[$variable[0]])) {
+					$variable_groups[$variable[0]][] = $variable;
+				}
+			}
+		?>
+		<?php if (!empty($variable_groups)) : ?>
 			<div id="humanstxt-vars">
 				<h4><?php _e('Variables', HUMANSTXT_DOMAIN) ?></h4>
 				<ul>
-					<?php foreach ($humanstxt_variables as $variable) : ?>
-						<?php $preview = !isset($variable[4]) || $variable[4] ? call_user_func($variable[2]) : __('Not available...', HUMANSTXT_DOMAIN) ?>
-						<li title="<?php printf( /* translators: %s: output preview of variable */ __('Preview: %s', HUMANSTXT_DOMAIN), esc_attr($preview)) ?>">
-							<code>$<?php echo $variable[1]?>$</code>
-							<?php if (isset($variable[3]) && !empty($variable[3])) : ?>
-								&mdash; <?php echo $variable[3] ?>
-							<?php endif; ?>
+					<?php foreach ($variable_groups as $group => $variables) : ?>
+						<li>
+							<h5><?php echo $group_names[$group] ?></h5>
+							<ul class="hidden">
+								<?php foreach ($variables as $variable) : ?>
+									<?php $preview = !isset($variable[5]) || $variable[5] ? call_user_func($variable[3]) : __('Not available...', HUMANSTXT_DOMAIN) ?>
+									<li title="<?php echo esc_attr(sprintf( /* translators: %s: output preview of variable */ __('Preview: %s', HUMANSTXT_DOMAIN), $preview)) ?>">
+										<code>$<?php echo $variable[2]?>$</code>
+										<?php if (isset($variable[4]) && !empty($variable[4])) : ?>
+											&mdash; <?php echo $variable[4] ?>
+										<?php endif; ?>
+									</li>
+								<?php endforeach; ?>
+							</ul>
 						</li>
 					<?php endforeach; ?>
 				</ul>
-				<p><a href="http://wordpress.org/tags/humanstxt" rel="external"><?php _e('Suggest another variable...', HUMANSTXT_DOMAIN) ?></a></p>
+				<p class="submit">
+					<a href="http://wordpress.org/tags/humanstxt" rel="external" class="button"><?php _e('Suggest another variable...', HUMANSTXT_DOMAIN) ?></a>
+				</p>
 			</div>
 		<?php endif; ?>
 
