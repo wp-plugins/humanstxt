@@ -561,31 +561,31 @@ function humanstxt_variables() {
 	require_once HUMANSTXT_PLUGIN_PATH.'/callbacks.php';
 
 	$variables = array();	
-	$variables[] = array('wordpress', 'wp-title', /* translators: variable name for the site/blog name (title) */ __('wp-title', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpblogname', __('Name (title) of site/blog', HUMANSTXT_DOMAIN));
-	$variables[] = array('wordpress', 'wp-tagline', /* translators: variable name for the site/blog tagline (description) */ __('wp-tagline', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptagline', __('Tagline (description) of site/blog', HUMANSTXT_DOMAIN));
-	$variables[] = array('wordpress', 'wp-posts', /* translators: variable name for the number of published posts */ __('wp-posts', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpposts', __('Number of published posts', HUMANSTXT_DOMAIN));
-	$variables[] = array('wordpress', 'wp-pages', /* translators: variable name for the number of published pages */ __('wp-pages', HUMANSTXT_DOMAIN), 'humanstxt_callback_wppages', __('Number of published pages', HUMANSTXT_DOMAIN));
-	$variables[] = array('wordpress', 'wp-authors', /* translators: variable name for the author list */ __('wp-authors', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpauthors', __('Active authors and their contact details', HUMANSTXT_DOMAIN), false);
-	$variables[] = array('wordpress', 'wp-lastupdate', /* translators: variable name for the "last modified" timestamp */ __('wp-lastupdate', HUMANSTXT_DOMAIN), 'humanstxt_callback_lastupdate', __('Date of last modified post/page', HUMANSTXT_DOMAIN));
-	$variables[] = array('wordpress', 'wp-language', /* translators: variable name for WordPress languages(s) */ __('wp-language', HUMANSTXT_DOMAIN), 'humanstxt_callback_wplanguage', __('WordPress language(s)', HUMANSTXT_DOMAIN));
-	$variables[] = array('wordpress', 'wp-timezone', /* translators: variable name for WordPress timezone */ __('wp-timezone', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptimezone', __('WordPress timezone', HUMANSTXT_DOMAIN));
-	$variables[] = array('wordpress', 'wp-version', /* translators: variable name for the installed WordPress version */ __('wp-version',  HUMANSTXT_DOMAIN), 'humanstxt_callback_wpversion', __('Installed WordPress version', HUMANSTXT_DOMAIN));
-	$variables[] = array('wordpress', 'wp-charset', /* translators: variable name for the encoding (charset) used by WordPress */ __('wp-charset', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpcharset', __('Encoding used for pages and feeds', HUMANSTXT_DOMAIN));
+	$variables[] = array('wordpress', 'wp-title', /* translators: variable name for the site/blog name (title) */ __('wp-title', 'humanstxt'), 'humanstxt_callback_wpblogname', __('Name (title) of site/blog', 'humanstxt'));
+	$variables[] = array('wordpress', 'wp-tagline', /* translators: variable name for the site/blog tagline (description) */ __('wp-tagline', 'humanstxt'), 'humanstxt_callback_wptagline', __('Tagline (description) of site/blog', 'humanstxt'));
+	$variables[] = array('wordpress', 'wp-posts', /* translators: variable name for the number of published posts */ __('wp-posts', 'humanstxt'), 'humanstxt_callback_wpposts', __('Number of published posts', 'humanstxt'));
+	$variables[] = array('wordpress', 'wp-pages', /* translators: variable name for the number of published pages */ __('wp-pages', 'humanstxt'), 'humanstxt_callback_wppages', __('Number of published pages', 'humanstxt'));
+	$variables[] = array('wordpress', 'wp-authors', /* translators: variable name for the author list */ __('wp-authors', 'humanstxt'), 'humanstxt_callback_wpauthors', __('Active authors and their contact details', 'humanstxt'), false);
+	$variables[] = array('wordpress', 'wp-lastupdate', /* translators: variable name for the "last modified" timestamp */ __('wp-lastupdate', 'humanstxt'), 'humanstxt_callback_lastupdate', __('Date of last modified post/page', 'humanstxt'));
+	$variables[] = array('wordpress', 'wp-language', /* translators: variable name for WordPress languages(s) */ __('wp-language', 'humanstxt'), 'humanstxt_callback_wplanguage', __('WordPress language(s)', 'humanstxt'));
+	$variables[] = array('wordpress', 'wp-timezone', /* translators: variable name for WordPress timezone */ __('wp-timezone', 'humanstxt'), 'humanstxt_callback_wptimezone', __('WordPress timezone', 'humanstxt'));
+	$variables[] = array('wordpress', 'wp-version', /* translators: variable name for the installed WordPress version */ __('wp-version', 'humanstxt'), 'humanstxt_callback_wpversion', __('Installed WordPress version', 'humanstxt'));
+	$variables[] = array('wordpress', 'wp-charset', /* translators: variable name for the encoding (charset) used by WordPress */ __('wp-charset', 'humanstxt'), 'humanstxt_callback_wpcharset', __('Encoding used for pages and feeds', 'humanstxt'));
 
-	$variables[] = array('server', 'server-timezone', /* translators: variable name for server timezone */ __('server-timezone', HUMANSTXT_DOMAIN), 'humanstxt_callback_timezone', __('Running PHP parser version', HUMANSTXT_DOMAIN));
-	$variables[] = array('server', 'server-os', /* translators: variable name TODO */ __('server-os', HUMANSTXT_DOMAIN), 'humanstxt_callback_os', __('Running PHP parser version', HUMANSTXT_DOMAIN));
-	$variables[] = array('server', 'server-ip', /* translators: variable name TODO */ __('server-ip', HUMANSTXT_DOMAIN), 'humanstxt_callback_ip', __('Running PHP parser version', HUMANSTXT_DOMAIN));
-	$variables[] = array('server', 'server-software', /* translators: variable name TODO */ __('server-software', HUMANSTXT_DOMAIN), 'humanstxt_callback_server', __('Running PHP parser version', HUMANSTXT_DOMAIN));
-	$variables[] = array('server', 'php-version', /* translators: variable name for TODO */ __('php-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_phpversion', __('Running PHP parser version', HUMANSTXT_DOMAIN));
-	$variables[] = array('server', 'zend-version', /* translators: variable name for TODO */ __('zend-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_zendversion', __('Running PHP parser version', HUMANSTXT_DOMAIN));
-	$variables[] = array('server', 'mysql-version', /* translators: variable name for TODO */ __('mysql-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_mysqlversion', __('Running PHP parser version', HUMANSTXT_DOMAIN));
+	$variables[] = array('server', 'server-timezone', /* translators: variable name for server timezone */ __('server-timezone', 'humanstxt'), 'humanstxt_callback_timezone', __('Server timezone', 'humanstxt'));
+	$variables[] = array('server', 'server-ip', /* translators: variable name for server ip address */ __('server-ip', 'humanstxt'), 'humanstxt_callback_ip', __('Server IP address', 'humanstxt'));
+	$variables[] = array('server', 'server-os', /* translators: variable name for operating system name */ __('server-os', 'humanstxt'), 'humanstxt_callback_os', __('Operating system name', 'humanstxt'));
+	$variables[] = array('server', 'server-identity', /* translators: variable name server identification string  */ __('server-identity', 'humanstxt'), 'humanstxt_callback_server', __('Server identification', 'humanstxt'));
+	$variables[] = array('server', 'php-version', /* translators: variable name for php parser version */ __('php-version', 'humanstxt'), 'humanstxt_callback_phpversion', __('PHP parser version', 'humanstxt'));
+	$variables[] = array('server', 'zend-version', /* translators: variable name for zend engine version */ __('zend-version', 'humanstxt'), 'humanstxt_callback_zendversion', __('Zend Engine version', 'humanstxt'));
+	$variables[] = array('server', 'mysql-version', /* translators: variable name for MySQL server version */ __('mysql-version', 'humanstxt'), 'humanstxt_callback_mysqlversion', __('MySQL server version', 'humanstxt'));
 
-	$variables[] = array('addons', 'wp-plugins', /* translators: variable name for activated WordPress plugins */ __('wp-plugins', HUMANSTXT_DOMAIN), 'humanstxt_callback_wpplugins', __('Activated WordPress plugins', HUMANSTXT_DOMAIN));
-	$variables[] = array('addons', 'wp-theme', /* translators: variable name for the summary of the active WordPress theme */ __('wp-theme', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme', __('Summary of the active WordPress theme', HUMANSTXT_DOMAIN));
-	$variables[] = array('addons', 'wp-theme-name', /* translators: variable name for the name of the active WordPress theme */ __('wp-theme-name', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_name', __('Name of the active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array('addons', 'wp-theme-version', /* translators: variable name for the version of the active WordPress theme */ __('wp-theme-version', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_version', __('Version of the active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array('addons', 'wp-theme-author', /* translators: variable name for the author name of the active WordPress theme */ __('wp-theme-author', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author', __('Author name of the active theme', HUMANSTXT_DOMAIN));
-	$variables[] = array('addons', 'wp-theme-author-link', /* translators: variable name for the author link of the active WordPress theme */ __('wp-theme-author-link', HUMANSTXT_DOMAIN), 'humanstxt_callback_wptheme_author_link', __('Author link of the active theme', HUMANSTXT_DOMAIN));
+	$variables[] = array('addons', 'wp-plugins', /* translators: variable name for activated WordPress plugins */ __('wp-plugins', 'humanstxt'), 'humanstxt_callback_wpplugins', __('Activated WordPress plugins', 'humanstxt'));
+	$variables[] = array('addons', 'wp-theme', /* translators: variable name for the summary of the active WordPress theme */ __('wp-theme', 'humanstxt'), 'humanstxt_callback_wptheme', __('Summary of the active WordPress theme', 'humanstxt'));
+	$variables[] = array('addons', 'wp-theme-name', /* translators: variable name for the name of the active WordPress theme */ __('wp-theme-name', 'humanstxt'), 'humanstxt_callback_wptheme_name', __('Name of the active theme', 'humanstxt'));
+	$variables[] = array('addons', 'wp-theme-version', /* translators: variable name for the version of the active WordPress theme */ __('wp-theme-version', 'humanstxt'), 'humanstxt_callback_wptheme_version', __('Version of the active theme', 'humanstxt'));
+	$variables[] = array('addons', 'wp-theme-author', /* translators: variable name for the author name of the active WordPress theme */ __('wp-theme-author', 'humanstxt'), 'humanstxt_callback_wptheme_author', __('Author name of the active theme', 'humanstxt'));
+	$variables[] = array('addons', 'wp-theme-author-link', /* translators: variable name for the author link of the active WordPress theme */ __('wp-theme-author-link', 'humanstxt'), 'humanstxt_callback_wptheme_author_link', __('Author link of the active theme', 'humanstxt'));
 
 	return (array) apply_filters('humanstxt_variables', $variables);
 
@@ -656,6 +656,6 @@ function humanstxt_default_content() {
 	Language: <English, Klingon, ...>
 	Components: <jQuery, Typekit, Modernizr, ...>
 	IDE: <Coda, Zend Studio, Photoshop, Terminal, ...>
-', HUMANSTXT_DOMAIN));
+', 'humanstxt'));
 
 }

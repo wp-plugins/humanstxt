@@ -30,7 +30,7 @@ if (!function_exists('humanstxt_callback_ip')) :
  * 
  * @since 1.2
  * 
- * @return string Value of $_SERVER['SERVER_ADDR']
+ * @return string Value of $_SERVER['SERVER_ADDR'], or NULL
  */
 function humanstxt_callback_ip() {
 	return isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : null;
@@ -39,7 +39,7 @@ endif;
 
 if (!function_exists('humanstxt_callback_os')) :
 /**
- * Returns the server operating system name.
+ * Returns the server's operating system name.
  * 
  * @since 1.2
  * 

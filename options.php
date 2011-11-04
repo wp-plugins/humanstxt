@@ -76,7 +76,7 @@ function humanstxt_admin_init() {
 
 		// register css/js files
 		wp_register_style('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.css', array(), HUMANSTXT_VERSION);
-		wp_register_script('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.js', array(), HUMANSTXT_VERSION);
+		wp_register_script('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.js', array('jquery', 'hoverIntent'), HUMANSTXT_VERSION);
 
 		// update plugin options?
 		if (isset($_POST['action']) && $_POST['action'] == 'update') {
@@ -119,8 +119,8 @@ function humanstxt_uninstall() {
 function humanstxt_version_warning() {
 
 	if (!humanstxt_is_wp(HUMANSTXT_VERSION_REQUIRED)) {
-		$updatelink = ' <a href="'.admin_url('update-core.php').'">'.sprintf(__('Please update your WordPress installation.', HUMANSTXT_DOMAIN)).'</a>';
-		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %1$s requires WordPress %2$s or higher.', HUMANSTXT_DOMAIN), HUMANSTXT_VERSION, HUMANSTXT_VERSION_REQUIRED).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
+		$updatelink = ' <a href="'.admin_url('update-core.php').'">'.sprintf(__('Please update your WordPress installation.', 'humanstxt')).'</a>';
+		echo '<div id="humanstxt-warning" class="updated fade"><p><strong>'.sprintf(__('Humans TXT %1$s requires WordPress %2$s or higher.', 'humanstxt'), HUMANSTXT_VERSION, HUMANSTXT_VERSION_REQUIRED).'</strong>'.(current_user_can('update_core') ? $updatelink : '').'</p></div>';
 	}
 
 }
@@ -149,7 +149,7 @@ function humanstxt_admin_menu() {
 	// add options page if the current user has one of the required roles
 	foreach ($roles as $role) {
 		if (current_user_can($role)) {
-			add_options_page(__('Humans TXT', HUMANSTXT_DOMAIN), __('Humans TXT', HUMANSTXT_DOMAIN), $role, HUMANSTXT_DOMAIN, 'humanstxt_options');
+			add_options_page(__('Humans TXT', 'humanstxt'), __('Humans TXT', 'humanstxt'), $role, HUMANSTXT_DOMAIN, 'humanstxt_options');
 			break;
 		}
 	}
@@ -180,35 +180,35 @@ function humanstxt_contextual_help() {
 
 	$humanstxt = sprintf(
 		'<p><strong>%s</strong> &mdash; %s</p>',
-		__('What is the humans.txt?', HUMANSTXT_DOMAIN),
-		__("It's an initiative for knowing the people behind a website. It's a TXT file in the site root that contains information about the humans who have contributed to the website.", HUMANSTXT_DOMAIN)
+		__('What is the humans.txt?', 'humanstxt'),
+		__("It's an initiative for knowing the people behind a website. It's a TXT file in the site root that contains information about the humans who have contributed to the website.", 'humanstxt')
 	);
 	$humanstxt .= sprintf(
 		'<p><strong>%s</strong> &mdash; %s</p>',
-		__('Who should I mention?', HUMANSTXT_DOMAIN),
-		__('Whoever you want to, provided they wish you to do so. You can mention the developer, the designer, the copywriter, the webmaster, the editor, ... anyone who contributed to the website.', HUMANSTXT_DOMAIN)
+		__('Who should I mention?', 'humanstxt'),
+		__('Whoever you want to, provided they wish you to do so. You can mention the developer, the designer, the copywriter, the webmaster, the editor, ... anyone who contributed to the website.', 'humanstxt')
 	);
 	$humanstxt .= sprintf(
 		'<p><strong>%s</strong> &mdash; %s</p>',
-		__('How should I format it?', HUMANSTXT_DOMAIN),
-		__('However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href="http://humanstxt.org/humans.txt" rel="external">humanstxt.org</a> or <a href="http://html5boilerplate.com/humans.txt" rel="external">html5boilerplate.com</a>.', HUMANSTXT_DOMAIN)
+		__('How should I format it?', 'humanstxt'),
+		__('However you want, just make sure humans can easily read it. For some inspiration check the humans.txt of <a href="http://humanstxt.org/humans.txt" rel="external">humanstxt.org</a> or <a href="http://html5boilerplate.com/humans.txt" rel="external">html5boilerplate.com</a>.', 'humanstxt')
 	);
 
-	$variables = __('Variables can be used to show dynamic content in your humans.txt file. You can show your visitors for example the amount of published posts, a list of activated plugins, the name of the current theme or the installed WordPress version. Hover your cursor over a variable to see a preview of it.', HUMANSTXT_DOMAIN);
+	$variables = __('Variables can be used to show dynamic content in your humans.txt file. You can show your visitors for example the amount of published posts, a list of activated plugins, the name of the current theme or the installed WordPress version. Hover your cursor over a variable to see a preview of it.', 'humanstxt');
 
 	$more = '<p><strong>'.__('For more information:').'</strong></p>
-		<p><a href="http://humanstxt.org/" rel="external">'.__('Humans TXT Website', HUMANSTXT_DOMAIN).'</a></p>
-		<p><a href="http://wordpress.org/extend/plugins/humanstxt/" rel="external">'.__('Plugin Homepage', HUMANSTXT_DOMAIN).'</a></p>
-		<p><a href="http://wordpress.org/tags/humanstxt" rel="external">'.__('Plugin Support Forum', HUMANSTXT_DOMAIN).'</a></p>
+		<p><a href="http://humanstxt.org/" rel="external">'.__('Humans TXT Website', 'humanstxt').'</a></p>
+		<p><a href="http://wordpress.org/extend/plugins/humanstxt/" rel="external">'.__('Plugin Homepage', 'humanstxt').'</a></p>
+		<p><a href="http://wordpress.org/tags/humanstxt" rel="external">'.__('Plugin Support Forum', 'humanstxt').'</a></p>
 	';
 
 	if (humanstxt_is_wp('3.3')) {
 		$variables = '<p>'.$variables.'</p>';
-		$current_screen->add_help_tab(array('title' => __('Humans TXT File', HUMANSTXT_DOMAIN), 'content' => $humanstxt));
-		$current_screen->add_help_tab(array('title' => __('Variables', HUMANSTXT_DOMAIN), 'content' => $variables));
-		$current_screen->add_help_sidebar($more);
+		$current_screen->add_help_tab(array('id' => 'help-humanstxt-file', 'title' => __('Humans TXT File', 'humanstxt'), 'content' => $humanstxt));
+		$current_screen->add_help_tab(array('id' => 'help-humanstxt-vars', 'title' => __('Variables', 'humanstxt'), 'content' => $variables));
+		$current_screen->set_help_sidebar($more);
 	} else {
-		$variables = sprintf('<p><strong>%s</strong> &mdash; %s</p>', __('Variables', HUMANSTXT_DOMAIN), $variables);
+		$variables = sprintf('<p><strong>%s</strong> &mdash; %s</p>', __('Variables', 'humanstxt'), $variables);
 		add_contextual_help($current_screen->id, $humanstxt.$variables.$more);
 	}
 
@@ -350,7 +350,7 @@ function humanstxt_import_file() {
  */
 function humanstxt_plugin_notice($plugin_file, $plugin_data, $status) {
 	if (is_plugin_active($plugin_file)) {
-		echo '<tr class="plugin-update-tr"><td colspan="3" class="plugin-update colspanchange"><div class="update-message">'.sprintf(__('Humans TXT includes the functionality of %1$s. Please deactivate %1$s to avoid plugin conflicts.', HUMANSTXT_DOMAIN), '<em>'.$plugin_data['Name'].'</em>').'</div></td></tr>';
+		echo '<tr class="plugin-update-tr"><td colspan="3" class="plugin-update colspanchange"><div class="update-message">'.sprintf(__('Humans TXT includes the functionality of %1$s. Please deactivate %1$s to avoid plugin conflicts.', 'humanstxt'), '<em>'.$plugin_data['Name'].'</em>').'</div></td></tr>';
 	}
 }
 
@@ -427,34 +427,34 @@ function humanstxt_options_page() {
 
 	<?php screen_icon() ?>
 
-	<h2><?php _e('Humans TXT', HUMANSTXT_DOMAIN) ?></h2>
+	<h2><?php _e('Humans TXT', 'humanstxt') ?></h2>
 
-	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Please read the FAQ...', HUMANSTXT_DOMAIN)) ?>
+	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Please read the FAQ...', 'humanstxt')) ?>
 
 	<?php if (isset($_GET['settings-updated'])) : ?>
 		<div class="updated"><p><strong><?php /* translators: DO NOT TRANSLATE! */ _e('Settings saved.') ?></strong></p></div>
 	<?php elseif (isset($_GET['revision-restored'])) : ?>
-		<div class="updated"><p><strong><?php _e('Revision restored.', HUMANSTXT_DOMAIN) ?></strong></p></div>
+		<div class="updated"><p><strong><?php _e('Revision restored.', 'humanstxt') ?></strong></p></div>
 	<?php elseif (isset($_GET['file-imported'])) : ?>
-		<div class="updated"><p><strong><?php _e('Import successful. The original file has been renamed to humans.txt.bak.', HUMANSTXT_DOMAIN) ?></strong></p></div>
+		<div class="updated"><p><strong><?php _e('Import successful. The original file has been renamed to humans.txt.bak.', 'humanstxt') ?></strong></p></div>
 	<?php elseif (isset($_GET['rename-failed'])) : ?>
-		<div class="error"><p><strong><?php _e('Sorry, the content has been imported, but the original file could not be renamed.', HUMANSTXT_DOMAIN) ?></strong> <?php echo $faqlink ?></p></div>
+		<div class="error"><p><strong><?php _e('Sorry, the content has been imported, but the original file could not be renamed.', 'humanstxt') ?></strong> <?php echo $faqlink ?></p></div>
 	<?php elseif (isset($_GET['import-failed'])) : ?>
-		<div class="error"><p><strong><?php _e('Import failed.', HUMANSTXT_DOMAIN) ?></strong> <?php echo $faqlink ?></p></div>
+		<div class="error"><p><strong><?php _e('Import failed.', 'humanstxt') ?></strong> <?php echo $faqlink ?></p></div>
 	<?php endif; ?>
 
 	<?php if (!humanstxt_is_rootinstall()) : ?>
-		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the root of the domain.', HUMANSTXT_DOMAIN); ?></strong> <?php echo $faqlink ?></p></div>
+		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the root of the domain.', 'humanstxt'); ?></strong> <?php echo $faqlink ?></p></div>
 	<?php elseif (humanstxt_exists() && !isset($_GET['rename-failed'], $_GET['import-failed'])) : ?>
 		<div class="error">
 			<p>
-				<strong><?php _e('Error: The site root already contains a physical humans.txt file.', HUMANSTXT_DOMAIN) ?></strong>
+				<strong><?php _e('Error: The site root already contains a physical humans.txt file.', 'humanstxt') ?></strong>
 				<?php echo $faqlink ?>
-				<?php if (current_user_can('administrator')) printf(__('or try to <a href="%s">import and rename</a> the physical humans.txt file.', HUMANSTXT_DOMAIN), wp_nonce_url(add_query_arg(array('action' => 'import-file'), HUMANSTXT_OPTIONS_URL), 'import-humanstxt-file')) ?>
+				<?php if (current_user_can('administrator')) printf(__('or try to <a href="%s">import and rename</a> the physical humans.txt file.', 'humanstxt'), wp_nonce_url(add_query_arg(array('action' => 'import-file'), HUMANSTXT_OPTIONS_URL), 'import-humanstxt-file')) ?>
 			</p>
 		</div>
 	<?php elseif (get_option('permalink_structure') == '' && current_user_can('manage_options')) : ?>
-		<div class="error"><p><strong><?php printf(__('Error: Please <a href="%s">update your permalink structure</a> to something other than the default.', HUMANSTXT_DOMAIN), admin_url('options-permalink.php')) ?></strong> <?php echo $faqlink ?></p></div>
+		<div class="error"><p><strong><?php printf(__('Error: Please <a href="%s">update your permalink structure</a> to something other than the default.', 'humanstxt'), admin_url('options-permalink.php')) ?></strong> <?php echo $faqlink ?></p></div>
 	<?php endif; ?>
 
 	<form method="post" action="<?php echo HUMANSTXT_OPTIONS_URL ?>">
@@ -466,7 +466,7 @@ function humanstxt_options_page() {
 			<?php if (!defined('HUMANSTXT_METABOX')) define('HUMANSTXT_METABOX', true) ?>
 			<?php if (HUMANSTXT_METABOX && ($rating = humanstxt_rating()) !== false) : ?>
 				<div id="humanstxt-metabox" class="postbox humanstxt-box">
-					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', HUMANSTXT_DOMAIN)) ?></p>
+					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', 'humanstxt'), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', 'humanstxt')) ?></p>
 					<div class="star-holder">
 						<?php $starimg = humanstxt_is_wp('3.2') ? admin_url('images/gray-star.png?v=20110615') : admin_url('images/star.gif') ?>
 						<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
@@ -483,28 +483,28 @@ function humanstxt_options_page() {
 			<h3><?php /* translators: DO NOT TRANSLATE! */ _e('Settings') ?></h3>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></th>
+					<th scope="row"><?php _e('Humans TXT File', 'humanstxt') ?></th>
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
+							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', 'humanstxt') ?></span></legend>
 							<label for="humanstxt_enable">
 								<input name="humanstxt_enable" type="checkbox" id="humanstxt_enable" value="1" <?php checked(humanstxt_option('enabled')) ?> />
-								<?php _e('Activate humans.txt file', HUMANSTXT_DOMAIN) ?>
+								<?php _e('Activate humans.txt file', 'humanstxt') ?>
 							</label>
 							<br />
-							<label for="humanstxt_authortag" title="<?php esc_attr_e('Adds an <link rel="author"> tag to the site\'s <head> tag pointing to the humans.txt file.', HUMANSTXT_DOMAIN) ?>">
+							<label for="humanstxt_authortag" title="<?php esc_attr_e('Adds an <link rel="author"> tag to the site\'s <head> tag pointing to the humans.txt file.', 'humanstxt') ?>">
 								<input name="humanstxt_authortag" type="checkbox" id="humanstxt_authortag" value="1" <?php checked(humanstxt_option('authortag')) ?> />
-								<?php _e('Add an author link tag to the site', HUMANSTXT_DOMAIN) ?>
+								<?php _e('Add an author link tag to the site', 'humanstxt') ?>
 							</label>
 						</fieldset>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><?php _e('Editing Permissions', HUMANSTXT_DOMAIN) ?></th>
+					<th scope="row"><?php _e('Editing Permissions', 'humanstxt') ?></th>
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e('Editing Permissions', HUMANSTXT_DOMAIN) ?></span></legend>
-							<?php _e('Roles that can edit the content of the humans.txt file', HUMANSTXT_DOMAIN) ?>:<br/>
+							<legend class="screen-reader-text"><span><?php _e('Editing Permissions', 'humanstxt') ?></span></legend>
+							<?php _e('Roles that can edit the content of the humans.txt file', 'humanstxt') ?>:<br/>
 							<?php
 								$humanstxt_roles = humanstxt_option('roles');
 								$wordpress_roles = get_editable_roles();
@@ -527,21 +527,21 @@ function humanstxt_options_page() {
 			<p class="submit clear">
 				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save Changes') ?>" />				
 				<?php if (humanstxt_option('enabled')) : ?>
-					<a href="<?php echo home_url('humans.txt') ?>" rel="external" class="button"><?php _e('View Humans TXT', HUMANSTXT_DOMAIN) ?></a>
+					<a href="<?php echo home_url('humans.txt') ?>" rel="external" class="button"><?php _e('View Humans TXT', 'humanstxt') ?></a>
 				<?php endif; ?>
 			</p>
 
 		<?php endif; ?>
 
-		<h3><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></h3>
+		<h3><?php _e('Humans TXT File', 'humanstxt') ?></h3>
 
 		<div id="humanstxt-editor-wrap">			
 			<table class="form-table">
 				<tr valign="top">
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', HUMANSTXT_DOMAIN) ?></span></legend>
-							<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button at the top of this page.', HUMANSTXT_DOMAIN) ?></label></span>
+							<legend class="screen-reader-text"><span><?php _e('Humans TXT File', 'humanstxt') ?></span></legend>
+							<span class="description"><label for="humanstxt_content"><?php _e('If you need a little help with your humans.txt, try the "Help" button at the top right of this page.', 'humanstxt') ?></label></span>
 							<textarea name="humanstxt_content" rows="25" cols="80" id="humanstxt_content" class="large-text code"><?php echo esc_textarea(humanstxt_content()) ?></textarea>
 						</fieldset>
 					</td>
@@ -552,7 +552,7 @@ function humanstxt_options_page() {
 				<a href="<?php echo esc_url(admin_url('admin-ajax.php?action=humanstxt-preview')) ?>" class="button button-preview hide-if-no-js" title="<?php /* translators: DO NOT TRANSLATE! */ _e('Preview') ?>"><?php /* translators: DO NOT TRANSLATE! */ _e('Preview') ?></a>
 				<?php $revisions = humanstxt_revisions() ?>
 				<?php if (count($revisions) > 1) : ?>
-					<a href="<?php echo esc_url(HUMANSTXT_REVISIONS_URL) ?>" class="button"><?php _e('View Revisions', HUMANSTXT_DOMAIN) ?></a>
+					<a href="<?php echo esc_url(HUMANSTXT_REVISIONS_URL) ?>" class="button"><?php _e('View Revisions', 'humanstxt') ?></a>
 				<?php endif; ?>
 			</p>
 		</div>
@@ -560,9 +560,9 @@ function humanstxt_options_page() {
 		<?php
 			$group_names = array(
 				'wordpress' => /* translators: DO NOT TRANSLATE! */ __('WordPress'),
-				'server' => __('Server', HUMANSTXT_DOMAIN),
-				'addons' => __('Themes & Plugins', HUMANSTXT_DOMAIN),
-				'misc' => __('Miscellaneous', HUMANSTXT_DOMAIN)
+				'server' => __('Server', 'humanstxt'),
+				'addons' => __('Themes & Plugins', 'humanstxt'),
+				'misc' => __('Miscellaneous', 'humanstxt')
 			);
 			$valid_variables = humanstxt_valid_variables();
 			foreach ($valid_variables as $variable) {
@@ -573,15 +573,15 @@ function humanstxt_options_page() {
 		?>
 		<?php if (!empty($variable_groups)) : ?>
 			<div id="humanstxt-vars">
-				<h4><?php _e('Variables', HUMANSTXT_DOMAIN) ?></h4>
+				<h4><?php _e('Variables', 'humanstxt') ?></h4>
 				<ul>
 					<?php foreach ($variable_groups as $group => $variables) : ?>
 						<li>
 							<h5><?php echo $group_names[$group] ?></h5>
 							<ul class="hidden">
 								<?php foreach ($variables as $variable) : ?>
-									<?php $preview = !isset($variable[5]) || $variable[5] ? call_user_func($variable[3]) : __('Not available...', HUMANSTXT_DOMAIN) ?>
-									<li title="<?php echo esc_attr(sprintf( /* translators: %s: output preview of variable */ __('Preview: %s', HUMANSTXT_DOMAIN), $preview)) ?>">
+									<?php $preview = !isset($variable[5]) || $variable[5] ? call_user_func($variable[3]) : __('Not available...', 'humanstxt') ?>
+									<li title="<?php echo esc_attr(sprintf( /* translators: %s: output preview of variable */ __('Preview: %s', 'humanstxt'), $preview)) ?>">
 										<code>$<?php echo $variable[2]?>$</code>
 										<?php if (isset($variable[4]) && !empty($variable[4])) : ?>
 											&mdash; <?php echo $variable[4] ?>
@@ -593,15 +593,15 @@ function humanstxt_options_page() {
 					<?php endforeach; ?>
 				</ul>
 				<p class="submit">
-					<a href="http://wordpress.org/tags/humanstxt" rel="external" class="button"><?php _e('Suggest another variable...', HUMANSTXT_DOMAIN) ?></a>
+					<a href="http://wordpress.org/tags/humanstxt" rel="external" class="button"><?php _e('Suggest another variable...', 'humanstxt') ?></a>
 				</p>
 			</div>
 		<?php endif; ?>
 
 		<div class="clear"></div>
 
-		<h3><?php _e('Shortcode Usage', HUMANSTXT_DOMAIN) ?></h3>
-		<p><?php printf(__('You can use the <code>[humanstxt]</code> shortcode to display the <em>humans.txt</em> file on a page or in a post. By default, all links, email addresses and Twitter account names will be converted into clickable links and email addresses will be encoded to block spam bots. <a href="%s" rel="external">Of course you can customize it...</a>', HUMANSTXT_DOMAIN), 'http://wordpress.org/extend/plugins/humanstxt/other_notes/#Shortcode-Usage') ?></p>
+		<h3><?php _e('Shortcode Usage', 'humanstxt') ?></h3>
+		<p><?php printf(__('You can use the <code>[humanstxt]</code> shortcode to display the <em>humans.txt</em> file on a page or in a post. By default, all links, email addresses and Twitter account names will be converted into clickable links and email addresses will be encoded to block spam bots. <a href="%s" rel="external">Of course you can customize it...</a>', 'humanstxt'), 'http://wordpress.org/extend/plugins/humanstxt/other_notes/#Shortcode-Usage') ?></p>
 
 	</form>
 </div>
@@ -618,7 +618,7 @@ function humanstxt_revisions_page() {
 
 	<?php screen_icon() ?>
 
-	<h2><?php _e('Humans TXT', HUMANSTXT_DOMAIN) ?>: <?php _e('Revisions') ?></h2>
+	<h2><?php _e('Humans TXT', 'humanstxt') ?>: <?php _e('Revisions') ?></h2>
 
 	<?php
 		$revisions = humanstxt_revisions(); krsort($revisions);
@@ -628,14 +628,14 @@ function humanstxt_revisions_page() {
 
 	<?php if ($show_revision !== false) : ?>
 
-		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', HUMANSTXT_DOMAIN), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$show_revision]['date'])) ?></h3>
+		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', 'humanstxt'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$show_revision]['date'])) ?></h3>
 		<pre id="revision-preview" class="postbox"><?php echo esc_html($revisions[$show_revision]['content']) ?></pre>
-		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $show_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$show_revision) ?>" class="button-primary"><?php _e('Restore Revision', HUMANSTXT_DOMAIN) ?></a></p>
+		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $show_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$show_revision) ?>" class="button-primary"><?php _e('Restore Revision', 'humanstxt') ?></a></p>
 
 	<?php elseif (isset($_GET['action'], $_GET['left'], $_GET['right']) && $_GET['action'] == 'compare' && isset($revisions[$_GET['left']], $revisions[$_GET['right']])) : ?>
 
 		<?php if ($_GET['left'] == $_GET['right']) : ?>
-			<div class="error"><p><?php _e('You cannot compare a revision to itself.', HUMANSTXT_DOMAIN) ?></p></div>
+			<div class="error"><p><?php _e('You cannot compare a revision to itself.', 'humanstxt') ?></p></div>
 		<?php elseif (!($diff = wp_text_diff($revisions[$_GET['left']]['content'], $revisions[$_GET['right']]['content']))) : ?>
 			<div class="error"><p><?php /* translators: DO NOT TRANSLATE! */ _e('These revisions are identical.') ?></p></div>
 		<?php else : ?>
@@ -718,7 +718,7 @@ function humanstxt_revisions_page() {
 
 	</form>
 
-	<p><?php printf( /* translators: %s: number of stored revisions */ __('WordPress is storing the last %s revisions of your <em>humans.txt</em> file.', HUMANSTXT_DOMAIN), (int) apply_filters('humanstxt_max_revisions', HUMANSTXT_MAX_REVISIONS)) ?></p>
+	<p><?php printf( /* translators: %s: number of stored revisions */ __('WordPress is storing the last %s revisions of your <em>humans.txt</em> file.', 'humanstxt'), (int) apply_filters('humanstxt_max_revisions', HUMANSTXT_MAX_REVISIONS)) ?></p>
 
 </div>
 <?php

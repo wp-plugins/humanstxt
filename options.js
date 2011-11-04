@@ -8,9 +8,12 @@ jQuery(document).ready(function($) {
 	$('#wpbody-content a[rel*="external"]').attr('target', '_tab');
 
 	// register slider for variable groups
-	$('#humanstxt-vars ul h5').click(function() {
-		$(this).parent().siblings().children('ul').slideUp();
-		$(this).siblings('ul').slideToggle();
+	$('#humanstxt-vars ul h5').hoverIntent({
+		out: function() {},
+		over: function() {
+			$(this).siblings('ul').slideDown();
+			$(this).parent().siblings().children('ul').slideUp();
+		}
 	});
 
 	// register custom tooltips for variable previews
