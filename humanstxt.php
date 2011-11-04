@@ -158,7 +158,7 @@ function is_humans() {
  * @return bool
  */
 function humanstxt_exists() {
-	return file_exists(ABSPATH.'humans.txt');
+	return @file_exists(ABSPATH.'humans.txt');
 }
 
 /**

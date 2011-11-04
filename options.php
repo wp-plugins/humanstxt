@@ -289,48 +289,59 @@ function humanstxt_restore_revision($revision) {
 
 /**
  * This function tries to import the contents of the physical
- * humans.txt file and if successful rename it to humans.txt.bak,
+ * humans.txt file and if successful rename it to humans.txt-{time}.bak,
  * so this plugin can work properly. Redirects to the plugin
  * options page afterwards.
- *
- * Nothing serious happens, but maybe I should use WP_Filesystem anyway?
  * 
  * @since 1.2.0
+ * 
+ * @global $wp_filesystem
  */
 function humanstxt_import_file() {
 
+	global $wp_filesystem;
+
 	$import = true;
+	$file = ABSPATH.'humans.txt';
 
 	if (!current_user_can('administrator'))
 		wp_die( /* translators: DO NOT TRANSLATE!! */ __('Cheatin&#8217; uh?'));
 
-	if (!humanstxt_exists())
-		$import = false;
+	// don't bother requesting filesystem credentials
+	if (get_filesystem_method() == 'direct') {
 
-	if (!is_readable(ABSPATH.'humans.txt'))
-		$import = false;
+		if (!WP_Filesystem())
+			$import = false;
 
-	if (($contents = file_get_contents(ABSPATH.'humans.txt')) == false)
-		$import = false;
+		if (!humanstxt_exists())
+			$import = false;
 
-	if (!preg_match('~\S~', $contents)) // does it contain anything else, than white-space?
-		$import = false;
+		if (!is_readable($file))
+			$import = false;
 
-	if ($import) {
+		if (($contents = $wp_filesystem->get_contents($file)) === false)
+			$import = false;
 
-		// import content
-		humanstxt_update_content(humanstxt_content_normalize($contents));
+		if (!preg_match('~\S~', $contents)) // only white-space?
+			$import = false;
 
-		// rename file
-		if (is_writable(ABSPATH.'humans.txt'))
-			@rename(ABSPATH.'humans.txt', ABSPATH.'humans.txt.bak');
+		if ($import) {
 
-		if (humanstxt_exists())
-			wp_redirect(add_query_arg(array('rename-failed' => '1'), HUMANSTXT_OPTIONS_URL));
-		else
-			wp_redirect(add_query_arg(array('file-imported' => '1'), HUMANSTXT_OPTIONS_URL));
+			// import content
+			humanstxt_update_content(humanstxt_content_normalize($contents));
 
-		exit;
+			// backup file, delete original
+			if ($wp_filesystem->is_writable($file))
+				$wp_filesystem->move($file, $file.'-'.time().'.bak', true);
+
+			if (humanstxt_exists())
+				wp_redirect(add_query_arg(array('rename-failed' => '1'), HUMANSTXT_OPTIONS_URL));
+			else
+				wp_redirect(add_query_arg(array('file-imported' => '1'), HUMANSTXT_OPTIONS_URL));
+
+			exit;
+
+		}
 
 	}
 
@@ -436,11 +447,11 @@ function humanstxt_options_page() {
 	<?php elseif (isset($_GET['revision-restored'])) : ?>
 		<div class="updated"><p><strong><?php _e('Revision restored.', 'humanstxt') ?></strong></p></div>
 	<?php elseif (isset($_GET['file-imported'])) : ?>
-		<div class="updated"><p><strong><?php _e('Import successful. The original file has been renamed to humans.txt.bak.', 'humanstxt') ?></strong></p></div>
+		<div class="updated"><p><strong><?php _e('Import successful. Import successful. A backup of the original file has been created.', 'humanstxt') ?></strong></p></div>
 	<?php elseif (isset($_GET['rename-failed'])) : ?>
-		<div class="error"><p><strong><?php _e('Sorry, the content has been imported, but the original file could not be renamed.', 'humanstxt') ?></strong> <?php echo $faqlink ?></p></div>
+		<div class="error"><p><strong><?php _e('Error: The content has been imported, but the original file could not be renamed.', 'humanstxt') ?></strong> <?php echo $faqlink ?></p></div>
 	<?php elseif (isset($_GET['import-failed'])) : ?>
-		<div class="error"><p><strong><?php _e('Import failed.', 'humanstxt') ?></strong> <?php echo $faqlink ?></p></div>
+		<div class="error"><p><strong><?php _e('Error: Import failed.', 'humanstxt') ?></strong> <?php echo $faqlink ?></p></div>
 	<?php endif; ?>
 
 	<?php if (!humanstxt_is_rootinstall()) : ?>

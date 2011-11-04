@@ -54,30 +54,38 @@ For detailed installation instructions, please read the [standard installation p
 2. Login to your WordPress installation and activate the plugin through the _Plugins_ menu.
 3. Activate the plugin and edit your humans.txt file in the _Settings_ menu under _Humans TXT_.
 
-**Please note:** This plugin does not modify or create a physical `humans.txt` file on your server, it serves it dynamically. If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete your physical `humans.txt`, but don't forget to migrate/backup it's contents.
+**Please note:** This plugin does not modify or create a physical `humans.txt` file on your server, it serves it dynamically. If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete your physical `humans.txt` (but don't forget to migrate/backup it's contents).
 
 
 == Frequently Asked Questions ==
 
 = Error: WordPress is not installed in the root of the domain. =
 
-This plugin will only work if WordPress is installed in the root of the domain.
+This plugin will only work if WordPress is installed in the root of the domain and not in a sub-directory.
 
 = Error: The site root already contains a physical humans.txt file. =
 
-If your site root contains a physical `humans.txt` file, this physical file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete the physical `humans.txt` file on your server, but don't forget to migrate/backup it's contents.
+If your site root contains a physical `humans.txt` file, this physical file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete the physical `humans.txt` file on your server (but don't forget to migrate/backup it's contents).
 
 = Error: Please update your permalink structure to something other than the default. =
 
 The plugin will only work, if WordPress is using "Pretty Permalinks". You can activate them in WordPress in the _Settings_ menu under _Permalinks_. Read more about [using permalinks](http://codex.wordpress.org/Using_Permalinks).
 
-= Why isn't my humans.txt file modified? =
+= Error: The content has been imported, but the original file could not be renamed. =
 
-This plugin does not modify or create a physical `humans.txt` file on your server, it serves it dynamically. If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete the physical `humans.txt` file on your server, but don't forget to migrate/backup it's contents.
+The content of the physical `humans.txt` file on your server has been imported, however the original file could not be renamed/moved. To use this plugin, please delete the physical `humans.txt` file on your server (but don't forget to migrate/backup it's contents).
+
+= Error: Import failed. =
+
+The physical `humans.txt` file on your server could not be imported and renamed. To use this plugin, please delete the physical `humans.txt` file on your server (but don't forget to migrate/backup it's contents).
+
+= Why isn't the humans.txt file on my server modified? =
+
+This plugin does not modify or create a physical `humans.txt` file on your server, it serves it dynamically. If your site root contains a physical `humans.txt` file, this file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete the physical `humans.txt` file on your server (but don't forget to migrate/backup it's contents).
 
 = Where is the humans.txt file located? =
 
-Usually in the root of your site, **however** this plugin doesn't create a physical `humans.txt` file on your server, it serves it dynamically.
+Theoretically in the root of your site, **however** this plugin doesn't create a physical `humans.txt` file on your server, it serves it on the fly.
 
 
 == Screenshots ==
