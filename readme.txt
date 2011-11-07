@@ -25,7 +25,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 * Arabic (ar) - [Yaser Maadan](http://www.englize.com/)
 * Brazilian Portuguese (pt_BR) - [Caciano Gabriel](http://ciano.co/)
-* Croatian (hr) - Vedran Tomic
+* Croatian (hr) - [Vedran Tomic](http://tomicinternetmarketing.com/)
 * Dutch (nl_NL) - [Anonymous](https://launchpad.net/~forkless)
 * French (fr_FR) - [Maître Mô](http://maitremo.fr/)
 * German (de_DE) - [Till Krüss](http://tillkruess.com/)
