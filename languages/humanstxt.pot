@@ -304,10 +304,6 @@ msgid ""
 "version. Hover your cursor over a variable to see a preview of it."
 msgstr ""
 
-#: options.php:199
-msgid "For more information:"
-msgstr ""
-
 #: options.php:200
 msgid "Humans TXT Website"
 msgstr ""
@@ -327,10 +323,6 @@ msgstr ""
 
 #: options.php:208 options.php:211 options.php:587
 msgid "Variables"
-msgstr ""
-
-#: options.php:308
-msgid "Cheatin&#8217; uh?"
 msgstr ""
 
 #: options.php:364

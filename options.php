@@ -196,7 +196,7 @@ function humanstxt_contextual_help() {
 
 	$variables = __('Variables can be used to show dynamic content in your humans.txt file. You can show your visitors for example the amount of published posts, a list of activated plugins, the name of the current theme or the installed WordPress version. Hover your cursor over a variable to see a preview of it.', 'humanstxt');
 
-	$more = '<p><strong>'.__('For more information:').'</strong></p>
+	$more = '<p><strong>'. /* translators: DO NOT TRANSLATE! */ __('For more information:').'</strong></p>
 		<p><a href="http://humanstxt.org/" rel="external">'.__('Humans TXT Website', 'humanstxt').'</a></p>
 		<p><a href="http://wordpress.org/extend/plugins/humanstxt/" rel="external">'.__('Plugin Homepage', 'humanstxt').'</a></p>
 		<p><a href="http://wordpress.org/tags/humanstxt" rel="external">'.__('Plugin Support Forum', 'humanstxt').'</a></p>
@@ -461,7 +461,7 @@ function humanstxt_options_page() {
 			<p>
 				<strong><?php _e('Error: The site root already contains a physical humans.txt file.', 'humanstxt') ?></strong>
 				<?php echo $faqlink ?>
-				<?php if (current_user_can('administrator')) printf(__('or try to <a href="%s">import and rename</a> the physical humans.txt file.', 'humanstxt'), wp_nonce_url(add_query_arg(array('action' => 'import-file'), HUMANSTXT_OPTIONS_URL), 'import-humanstxt-file')) ?>
+				<?php if (current_user_can('administrator')) printf( /* translators: Please read the FAQ... or try to ... */ __('or try to <a href="%s">import and rename</a> the physical humans.txt file.', 'humanstxt'), wp_nonce_url(add_query_arg(array('action' => 'import-file'), HUMANSTXT_OPTIONS_URL), 'import-humanstxt-file')) ?>
 			</p>
 		</div>
 	<?php elseif (get_option('permalink_structure') == '' && current_user_can('manage_options')) : ?>
@@ -591,7 +591,7 @@ function humanstxt_options_page() {
 							<h5><?php echo $group_names[$group] ?></h5>
 							<ul class="hidden">
 								<?php foreach ($variables as $variable) : ?>
-									<?php $preview = !isset($variable[5]) || $variable[5] ? call_user_func($variable[3]) : __('Not available...', 'humanstxt') ?>
+									<?php $preview = !isset($variable[5]) || $variable[5] ? call_user_func($variable[3]) : /* translators: Preview: Not available... */ __('Not available...', 'humanstxt') ?>
 									<li title="<?php echo esc_attr(sprintf( /* translators: %s: output preview of variable */ __('Preview: %s', 'humanstxt'), $preview)) ?>">
 										<code>$<?php echo $variable[2]?>$</code>
 										<?php if (isset($variable[4]) && !empty($variable[4])) : ?>
