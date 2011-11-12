@@ -447,7 +447,7 @@ function humanstxt_options_page() {
 	<?php elseif (isset($_GET['revision-restored'])) : ?>
 		<div class="updated"><p><strong><?php _e('Revision restored.', 'humanstxt') ?></strong></p></div>
 	<?php elseif (isset($_GET['file-imported'])) : ?>
-		<div class="updated"><p><strong><?php _e('Import successful. Import successful. A backup of the original file has been created.', 'humanstxt') ?></strong></p></div>
+		<div class="updated"><p><strong><?php _e('Import successful. A backup of the original file has been created.', 'humanstxt') ?></strong></p></div>
 	<?php elseif (isset($_GET['rename-failed'])) : ?>
 		<div class="error"><p><strong><?php _e('Error: The content has been imported, but the original file could not be renamed.', 'humanstxt') ?></strong> <?php echo $faqlink ?></p></div>
 	<?php elseif (isset($_GET['import-failed'])) : ?>

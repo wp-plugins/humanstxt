@@ -340,9 +340,7 @@ msgid "Revision restored."
 msgstr ""
 
 #: options.php:450
-msgid ""
-"Import successful. Import successful. A backup of the original file has been "
-"created."
+msgid "Import successful. A backup of the original file has been created."
 msgstr ""
 
 #: options.php:452
