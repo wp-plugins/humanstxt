@@ -56,11 +56,6 @@ define('HUMANSTXT_PLUGIN_FILE', __FILE__);
 define('HUMANSTXT_PLUGIN_PATH', dirname(HUMANSTXT_PLUGIN_FILE));
 
 /**
- * Humans TXT plugin basename and text domain.
- */
-define('HUMANSTXT_DOMAIN', basename(HUMANSTXT_PLUGIN_PATH));
-
-/**
  * Default amount of stored revisions.
  * Use the 'humanstxt_max_revisions' filter to change it.
  * @since 1.1.0
@@ -90,7 +85,6 @@ add_shortcode('humanstxt', '_humanstxt_shortcode');
 /**
  * Load legacy code, if necessary. 
  */
-
 if (version_compare(get_bloginfo('version'), '3.2', '<')) {
 	require_once HUMANSTXT_PLUGIN_PATH.'/legacy.php';
 }
@@ -374,8 +368,8 @@ function _humanstxt_shortcode($attributes) {
  * Loads the plugin text-domain, if not already loaded.
  */
 function humanstxt_load_textdomain() {
-	if (!is_textdomain_loaded(HUMANSTXT_DOMAIN)) {
-		load_plugin_textdomain(HUMANSTXT_DOMAIN, false, HUMANSTXT_DOMAIN.'/languages');
+	if (!is_textdomain_loaded('humanstxt')) {
+		load_plugin_textdomain('humanstxt', false, 'humanstxt/languages');
 	}
 }
 
@@ -532,7 +526,7 @@ function humanstxt_replace_variables($string) {
 		if (stripos($string, $varnames[0]) !== false || stripos($string, $varnames[1]) !== false) {
 
 			// do we have a valid callback result?
-			if (($result = call_user_func($variable[2])) !== false) {
+			if (($result = @call_user_func($variable[3])) !== false) {
 				// replace all occurrences of the variables with callback result
 				$string = str_ireplace($varnames, (string)$result, $string);
 			}
