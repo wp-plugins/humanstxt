@@ -98,6 +98,17 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 == Changelog ==
 
+= 1.2 =
+
+* Added preview button for humans.txt editor
+* Added simple import functionality if a physical humans.txt file exists
+* Added Croatian translation
+* Variables are now grouped into "WordPress", "Server" and "Themes & Plugins"
+* Revision can now be compared to each other
+* Improved contextual help menu
+* Several options page improvements
+* Several internal minor code improvements
+
 = 1.1.3 =
 
 * Prevented PHP notice during plugin activation
@@ -173,6 +184,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 == Upgrade Notice ==
 
+= 1.2 =
+
+This version introduces several new features and improvements.
+
 = 1.1.3 =
 
 PHP error, browser caching and plugin conflict preventions.
@@ -187,7 +202,7 @@ This version ensures right-to-left language support and contains several new tra
 
 = 1.1 =
 
-This version introduces revisions support, several translations and other major improvements.  
+This version introduces revisions support, several translations and other major improvements.
 
 = 1.0.5 =
 

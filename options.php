@@ -72,7 +72,7 @@ humanstxt_load_textdomain();
  */
 function humanstxt_admin_init() {
 
-	if (isset($_GET['page']) && $_GET['page'] == HUMANSTXT_DOMAIN) {
+	if (isset($_GET['page']) && $_GET['page'] == 'humanstxt') {
 
 		// register css/js files
 		wp_register_style('humanstxt-options', HUMANSTXT_PLUGIN_URL.'options.css', array(), HUMANSTXT_VERSION);
@@ -149,7 +149,7 @@ function humanstxt_admin_menu() {
 	// add options page if the current user has one of the required roles
 	foreach ($roles as $role) {
 		if (current_user_can($role)) {
-			add_options_page(__('Humans TXT', 'humanstxt'), __('Humans TXT', 'humanstxt'), $role, HUMANSTXT_DOMAIN, 'humanstxt_options');
+			add_options_page(__('Humans TXT', 'humanstxt'), __('Humans TXT', 'humanstxt'), $role, 'humanstxt', 'humanstxt_options');
 			break;
 		}
 	}
