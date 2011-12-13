@@ -21,7 +21,7 @@
 	#humanstxt-vars h4 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }
 	#humanstxt-vars .submit { padding-top: .7em; }
 	#humanstxt-vars ul, #humanstxt-vars p { padding-left: 10px; }
-		#humanstxt-vars h5 { font-size: 14px; font-weight: bold; margin: 0 0 1em 0; cursor: pointer; }
+		#humanstxt-vars h5 { font-size: 14px; font-weight: bold; margin: 0 0 1em 0; cursor: pointer; display: inline-block; }
 		#humanstxt-vars ul ul { margin-bottom: 1em; }
 			#humanstxt-vars li:first-child ul, .no-js #humanstxt-vars ul ul { display: block; }
 			#humanstxt-vars li code { font-size: 13px; }

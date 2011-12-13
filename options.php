@@ -51,7 +51,6 @@ add_action('admin_menu', 'humanstxt_admin_menu');
 add_action('admin_notices', 'humanstxt_version_warning'); 
 add_action('admin_print_styles', create_function(null, "wp_enqueue_style('thickbox'); wp_enqueue_style('humanstxt-options');"));
 add_action('admin_print_scripts', create_function(null, "wp_enqueue_script('thickbox'); wp_enqueue_script('humanstxt-options');"));
-add_action('load-settings_page_humanstxt', 'humanstxt_contextual_help');
 add_action('wp_ajax_humanstxt-preview', 'humanstxt_ajax_preview');
 add_action('after_plugin_row_humans-txt/plugin.php', 'humanstxt_plugin_notice', 10, 3);
 add_action('after_plugin_row_humans-dot-txt/humans-dot-txt.php', 'humanstxt_plugin_notice', 10, 3);
@@ -149,9 +148,14 @@ function humanstxt_admin_menu() {
 	// add options page if the current user has one of the required roles
 	foreach ($roles as $role) {
 		if (current_user_can($role)) {
-			add_options_page(__('Humans TXT', 'humanstxt'), __('Humans TXT', 'humanstxt'), $role, 'humanstxt', 'humanstxt_options');
+			$plugin_page = add_options_page(__('Humans TXT', 'humanstxt'), __('Humans TXT', 'humanstxt'), $role, 'humanstxt', 'humanstxt_options');
 			break;
 		}
+	}
+
+	// add contextual help menu
+	if ($plugin_page) {
+		add_action('load-'.$plugin_page, 'humanstxt_contextual_help');
 	}
 
 }
@@ -175,8 +179,6 @@ function humanstxt_actionlinks($actions) {
  * Registers the contextual help menu.
  */
 function humanstxt_contextual_help() {
-
-	global $current_screen;
 
 	$humanstxt = sprintf(
 		'<p><strong>%s</strong> &mdash; %s</p>',
@@ -202,14 +204,16 @@ function humanstxt_contextual_help() {
 		<p><a href="http://wordpress.org/tags/humanstxt" rel="external">'.__('Plugin Support Forum', 'humanstxt').'</a></p>
 	';
 
+	$screen = get_current_screen();
+
 	if (humanstxt_is_wp('3.3')) {
 		$variables = '<p>'.$variables.'</p>';
-		$current_screen->add_help_tab(array('id' => 'help-humanstxt-file', 'title' => __('Humans TXT File', 'humanstxt'), 'content' => $humanstxt));
-		$current_screen->add_help_tab(array('id' => 'help-humanstxt-vars', 'title' => __('Variables', 'humanstxt'), 'content' => $variables));
-		$current_screen->set_help_sidebar($more);
+		$screen->add_help_tab(array('id' => 'help-humanstxt-file', 'title' => __('Humans TXT File', 'humanstxt'), 'content' => $humanstxt));
+		$screen->add_help_tab(array('id' => 'help-humanstxt-vars', 'title' => __('Variables', 'humanstxt'), 'content' => $variables));
+		$screen->set_help_sidebar($more);
 	} else {
 		$variables = sprintf('<p><strong>%s</strong> &mdash; %s</p>', __('Variables', 'humanstxt'), $variables);
-		add_contextual_help($current_screen->id, $humanstxt.$variables.$more);
+		add_contextual_help($screen->id, $humanstxt.$variables.$more);
 	}
 
 }
