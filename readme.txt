@@ -38,6 +38,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Latvian (lv) - [Sandis Veinbergs](http://www.kleofass.lv)
 * Norwegian (nb_NO) - [Petter](http://neppe.no/)
 * Persian (fa_IR) - [Alireza Ch](http://1freeman.net/)
+* Portuguese (pt_PT) - [Zé Fontainhas](http://everywhereelse.wordpress.com/)
 * Romanian (ro_RO) - Ovidiu Bica ([Anunturi](http://www.jibo.ro/))
 * Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
 * Spanish (es_ES) - Juanjo Bernabeu, [Sergio Gómez](http://twitter.com/sgomez)
