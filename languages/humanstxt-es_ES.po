@@ -4,164 +4,227 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Humans TXT 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/humanstxt\n"
-"POT-Creation-Date: 2011-08-12 13:13+0000\n"
-"PO-Revision-Date: 2011-08-18 01:50+0000\n"
-"Last-Translator: Sergio Gómez <Unknown>\n"
+"POT-Creation-Date: 2011-11-11 09:01+0000\n"
+"PO-Revision-Date: 2012-04-15 13:40+0000\n"
+"Last-Translator: Jose Luis Tirado <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-08-18 12:44+0000\n"
-"X-Generator: Launchpad (build 13697)\n"
+"X-Launchpad-Export-Date: 2012-04-25 15:04+0000\n"
+"X-Generator: Launchpad (build 15139)\n"
 
 #. translators: variable name for the site/blog name (title)
-#: humanstxt.php:543
+#: humanstxt.php:564
 msgid "wp-title"
 msgstr "wp-title"
 
-#: humanstxt.php:543
+#: humanstxt.php:564
 msgid "Name (title) of site/blog"
 msgstr "Nombre de la web/blog"
 
 #. translators: variable name for the site/blog tagline (description)
-#: humanstxt.php:544
+#: humanstxt.php:565
 msgid "wp-tagline"
 msgstr "wp-tagline"
 
-#: humanstxt.php:544
+#: humanstxt.php:565
 msgid "Tagline (description) of site/blog"
 msgstr "Descripción de la web/blog"
 
 #. translators: variable name for the number of published posts
-#: humanstxt.php:545
+#: humanstxt.php:566
 msgid "wp-posts"
 msgstr "wp-posts"
 
-#: humanstxt.php:545
+#: humanstxt.php:566
 msgid "Number of published posts"
 msgstr "Número de artículos publicados"
 
 #. translators: variable name for the number of published pages
-#: humanstxt.php:546
+#: humanstxt.php:567
 msgid "wp-pages"
 msgstr "wp-pages"
 
-#: humanstxt.php:546
+#: humanstxt.php:567
 msgid "Number of published pages"
 msgstr "Número de páginas publicadas"
 
-#. translators: variable name for the "last modified" timestamp
-#: humanstxt.php:547
-msgid "wp-lastupdate"
-msgstr "wp-lastupdate"
-
-#: humanstxt.php:547
-msgid "Date of last modified post/page"
-msgstr "Fecha del último artículo o página modificada"
-
 #. translators: variable name for the author list
-#: humanstxt.php:548
+#: humanstxt.php:568
 msgid "wp-authors"
 msgstr "wp-authors"
 
-#: humanstxt.php:548
+#: humanstxt.php:568
 msgid "Active authors and their contact details"
 msgstr "Autores activos y datos de contacto"
 
+#. translators: variable name for the "last modified" timestamp
+#: humanstxt.php:569
+msgid "wp-lastupdate"
+msgstr "wp-lastupdate"
+
+#: humanstxt.php:569
+msgid "Date of last modified post/page"
+msgstr "Fecha del último artículo o página modificada"
+
 #. translators: variable name for WordPress languages(s)
-#: humanstxt.php:549
+#: humanstxt.php:570
 msgid "wp-language"
 msgstr "wp-language"
 
-#: humanstxt.php:549
+#: humanstxt.php:570
 msgid "WordPress language(s)"
 msgstr "Idioma/s de Wordpress"
 
-#. translators: variable name for activated WordPress plugins
-#: humanstxt.php:550
-msgid "wp-plugins"
-msgstr "wp-plugins"
+#. translators: variable name for WordPress timezone
+#: humanstxt.php:571
+msgid "wp-timezone"
+msgstr "wp-timezone"
 
-#: humanstxt.php:550
-msgid "Activated WordPress plugins"
-msgstr "Plugins de Wordpress activados"
-
-#. translators: variable name for the encoding (charset) used by WordPress
-#: humanstxt.php:551
-msgid "wp-charset"
-msgstr "wp-charset"
-
-#: humanstxt.php:551
-msgid "Encoding used for pages and feeds"
-msgstr "Codificación usadas para páginas y feeds"
+#: humanstxt.php:571
+msgid "WordPress timezone"
+msgstr "Zona horaria de WordPress"
 
 #. translators: variable name for the installed WordPress version
-#: humanstxt.php:552
+#: humanstxt.php:572
 msgid "wp-version"
 msgstr "wp-version"
 
-#: humanstxt.php:552
+#: humanstxt.php:572
 msgid "Installed WordPress version"
 msgstr "Versión de Wordpress instalada"
 
-#. translators: variable name for the running PHP parser version
-#: humanstxt.php:553
+#. translators: variable name for the encoding (charset) used by WordPress
+#: humanstxt.php:573
+msgid "wp-charset"
+msgstr "wp-charset"
+
+#: humanstxt.php:573
+msgid "Encoding used for pages and feeds"
+msgstr "Codificación usadas para páginas y feeds"
+
+#. translators: variable name for server timezone
+#: humanstxt.php:575
+msgid "server-timezone"
+msgstr "server-timezone"
+
+#: humanstxt.php:575
+msgid "Server timezone"
+msgstr "Zona horaria del servidor"
+
+#. translators: variable name for server ip address
+#: humanstxt.php:576
+msgid "server-ip"
+msgstr "server-ip"
+
+#: humanstxt.php:576
+msgid "Server IP address"
+msgstr "Dirección IP del servidor"
+
+#. translators: variable name for operating system name
+#: humanstxt.php:577
+msgid "server-os"
+msgstr "server-os"
+
+#: humanstxt.php:577
+msgid "Operating system name"
+msgstr "Nombre del sistema operativo"
+
+#. translators: variable name server identification string
+#: humanstxt.php:578
+msgid "server-identity"
+msgstr "server-identity"
+
+#: humanstxt.php:578
+msgid "Server identification"
+msgstr "Identificación del servidor"
+
+#. translators: variable name for php parser version
+#: humanstxt.php:579
 msgid "php-version"
 msgstr "php-version"
 
-#: humanstxt.php:553
-msgid "Running PHP parser version"
-msgstr "Versión del parser de PHP"
+#: humanstxt.php:579
+msgid "PHP parser version"
+msgstr "Versión del analizador PHP"
+
+#. translators: variable name for zend engine version
+#: humanstxt.php:580
+msgid "zend-version"
+msgstr "zend-version"
+
+#: humanstxt.php:580
+msgid "Zend Engine version"
+msgstr "Versión del motor Zend"
+
+#. translators: variable name for MySQL server version
+#: humanstxt.php:581
+msgid "mysql-version"
+msgstr "mysql-version"
+
+#: humanstxt.php:581
+msgid "MySQL server version"
+msgstr "Versión del servidor MySQL"
+
+#. translators: variable name for activated WordPress plugins
+#: humanstxt.php:583
+msgid "wp-plugins"
+msgstr "wp-plugins"
+
+#: humanstxt.php:583
+msgid "Activated WordPress plugins"
+msgstr "Plugins de Wordpress activados"
 
 #. translators: variable name for the summary of the active WordPress theme
-#: humanstxt.php:554
+#: humanstxt.php:584
 msgid "wp-theme"
 msgstr "wp-theme"
 
-#: humanstxt.php:554
+#: humanstxt.php:584
 msgid "Summary of the active WordPress theme"
 msgstr "Resumen del tema activo de WordPress"
 
 #. translators: variable name for the name of the active WordPress theme
-#: humanstxt.php:555
+#: humanstxt.php:585
 msgid "wp-theme-name"
 msgstr "wp-theme-name"
 
-#: humanstxt.php:555
+#: humanstxt.php:585
 msgid "Name of the active theme"
 msgstr "Nombre del tema activo"
 
 #. translators: variable name for the version of the active WordPress theme
-#: humanstxt.php:556
+#: humanstxt.php:586
 msgid "wp-theme-version"
 msgstr "wp-theme-version"
 
-#: humanstxt.php:556
+#: humanstxt.php:586
 msgid "Version of the active theme"
 msgstr "Versión del tema activo"
 
 #. translators: variable name for the author name of the active WordPress theme
-#: humanstxt.php:557
+#: humanstxt.php:587
 msgid "wp-theme-author"
 msgstr "wp-theme-author"
 
-#: humanstxt.php:557
+#: humanstxt.php:587
 msgid "Author name of the active theme"
 msgstr "Autor del tema activo"
 
 #. translators: variable name for the author link of the active WordPress theme
-#: humanstxt.php:558
+#: humanstxt.php:588
 msgid "wp-theme-author-link"
 msgstr "wp-theme-author-link"
 
-#: humanstxt.php:558
+#: humanstxt.php:588
 msgid "Author link of the active theme"
 msgstr "Enlace al autor del tema activo"
 
 #. translators: only translate the text inside angle brackets < > to keep the
 #. humans.txt international. if the variable names are translated, you may
 #. translate them here too.
-#: humanstxt.php:605
+#: humanstxt.php:635
 msgid ""
 "/* the humans responsible & colophon */\n"
 "/* humanstxt.org */\n"
@@ -211,24 +274,24 @@ msgstr ""
 "\tComponents: <jQuery, Typekit, Modernizr, ...>\n"
 "\tIDE: <Coda, Zend Studio, Photoshop, Terminal, ...>\n"
 
-#: options.php:114
+#: options.php:122
 msgid "Please update your WordPress installation."
 msgstr "Por favor, actualiza tu versión de WordPress"
 
-#: options.php:115
+#: options.php:123
 msgid "Humans TXT %1$s requires WordPress %2$s or higher."
 msgstr "Humans TXT %1$s necesita versión WordPress %2$s o superior."
 
 #. Plugin Name of the plugin/theme
-#: options.php:137 options.php:341 options.php:493
+#: options.php:152 options.php:441 options.php:632
 msgid "Humans TXT"
 msgstr "Humans TXT"
 
-#: options.php:175
+#: options.php:183
 msgid "What is the humans.txt?"
 msgstr "¿Qué es humans.txt?"
 
-#: options.php:176
+#: options.php:184
 msgid ""
 "It's an initiative for knowing the people behind a website. It's a TXT file "
 "in the site root that contains information about the humans who have "
@@ -238,11 +301,11 @@ msgstr ""
 "Un archivo TXT que contiene la información sobre las personas que han "
 "intervenido en la web."
 
-#: options.php:181
+#: options.php:188
 msgid "Who should I mention?"
 msgstr "¿A quién debo poner?"
 
-#: options.php:182
+#: options.php:189
 msgid ""
 "Whoever you want to, provided they wish you to do so. You can mention the "
 "developer, the designer, the copywriter, the webmaster, the editor, ... "
@@ -253,11 +316,11 @@ msgstr ""
 "SEM, al SMO... Como ves la lista es interminable, somos muchas personas las "
 "que podemos intervenir en la creación de un sitio."
 
-#: options.php:187
+#: options.php:193
 msgid "How should I format it?"
 msgstr "¿Qué formato debo darle?"
 
-#: options.php:188
+#: options.php:194
 msgid ""
 "However you want, just make sure humans can easily read it. For some "
 "inspiration check the humans.txt of <a "
@@ -271,19 +334,41 @@ msgstr ""
 "href=\"http://html5boilerplate.com/humans.txt\" "
 "rel=\"external\">html5boilerplate.com</a>."
 
-#: options.php:193
-msgid "Official Humans TXT website"
-msgstr "Web oficial de Humans TXT"
+#: options.php:197
+msgid ""
+"Variables can be used to show dynamic content in your humans.txt file. You "
+"can show your visitors for example the amount of published posts, a list of "
+"activated plugins, the name of the current theme or the installed WordPress "
+"version. Hover your cursor over a variable to see a preview of it."
+msgstr ""
+"Se pueden usar variables para mostrar contenido dinámico en su archivo "
+"humans.txt. Por ejemplo, puede mostrar a sus visitantes la cantidad de "
+"artículos publicados, una lista de los complementos activados, el nombre del "
+"tema actual o la versión instalada de WordPress.Posicione el cursor sobre "
+"una variable para obtener una vista previa de la misma."
 
-#: options.php:194
+#: options.php:200
+msgid "Humans TXT Website"
+msgstr "Sitio web Humans TXT"
+
+#: options.php:201
 msgid "Plugin Homepage"
 msgstr "Página del plugin"
 
-#: options.php:195
+#: options.php:202
 msgid "Plugin Support Forum"
 msgstr "Foro de soporte del plugin"
 
-#: options.php:282
+#: options.php:207 options.php:497 options.php:500 options.php:547
+#: options.php:554
+msgid "Humans TXT File"
+msgstr "Archivo Humans TXT"
+
+#: options.php:208 options.php:211 options.php:587
+msgid "Variables"
+msgstr "Variables"
+
+#: options.php:364
 msgid ""
 "Humans TXT includes the functionality of %1$s. Please deactivate %1$s to "
 "avoid plugin conflicts."
@@ -291,23 +376,48 @@ msgstr ""
 "Humans TXT incluye la funcionalidad de %1$s. Por favor, desactiva %1$s para "
 "evitar conflictos entre plugins."
 
-#: options.php:346
+#: options.php:443
+msgid "Please read the FAQ..."
+msgstr "Por favor, lea las preguntas más frecuentes..."
+
+#: options.php:448
 msgid "Revision restored."
 msgstr "Revisión restaurada."
 
-#: options.php:349
-msgid "Read FAQ..."
-msgstr "Preguntas frecuentes"
+#: options.php:450
+msgid "Import successful. A backup of the original file has been created."
+msgstr ""
+"Importación realizada con éxito. Se ha creado una copia del archivo original."
 
-#: options.php:352
+#: options.php:452
+msgid ""
+"Error: The content has been imported, but the original file could not be "
+"renamed."
+msgstr ""
+"Error: el contenido ha sido importado, pero el archivo original no se ha "
+"podido renombrar."
+
+#: options.php:454
+msgid "Error: Import failed."
+msgstr "Error: ha fallado la importación."
+
+#: options.php:458
 msgid "Error: WordPress is not installed in the root of the domain."
 msgstr "Error: WordPress no está instalado en la raíz del dominio."
 
-#: options.php:354
+#: options.php:462
 msgid "Error: The site root already contains a physical humans.txt file."
 msgstr "Error: El sitio ya contiene un archivo humans.txt"
 
-#: options.php:356
+#. translators: Please read the FAQ... or try to ...
+#: options.php:464
+msgid ""
+"or try to <a href=\"%s\">import and rename</a> the physical humans.txt file."
+msgstr ""
+"o intente <a href=\"%s\">importar y renombrar</a> el archivo físico "
+"humans.txt."
+
+#: options.php:468
 msgid ""
 "Error: Please <a href=\"%s\">update your permalink structure</a> to "
 "something other than the default."
@@ -315,7 +425,7 @@ msgstr ""
 "Error: Por favor <a href=\"%s\">actualiza tu estructura de enlaces "
 "permanentes</a> a algo distinto a la configuración por defecto."
 
-#: options.php:368
+#: options.php:480
 msgid ""
 "If you like this plugin, why not <a href=\"%s\" title=\"%s\" "
 "rel=\"external\">recommend it to others</a> by rating it?"
@@ -323,24 +433,15 @@ msgstr ""
 "Si te gusta este plugin, ¿por qué no <a href=\"%s\" title=\"%s\" "
 "rel=\"external\">recomendarlo a los demás</a> con tu valoración?"
 
-#: options.php:368
+#: options.php:480
 msgid "Rate this plugin on WordPress.org"
 msgstr "Vota este plugin en WordPress.org"
 
-#: options.php:385 options.php:388 options.php:433 options.php:440
-msgid "Humans TXT File"
-msgstr "Archivo Humans TXT"
+#: options.php:503
+msgid "Activate humans.txt file"
+msgstr "Activar el archivo humans.txt"
 
-#: options.php:391
-msgid "View this site's humans.txt file"
-msgstr "Ver humans.txt de este sitio"
-
-#. translators: %s: humans.txt (linked to the site's humans.txt file)
-#: options.php:392
-msgid "Activate %s file"
-msgstr "Activar fichero %s"
-
-#: options.php:395
+#: options.php:506
 msgid ""
 "Adds an <link rel=\"author\"> tag to the site's <head> tag pointing to the "
 "humans.txt file."
@@ -348,47 +449,65 @@ msgstr ""
 "Añade una etiqueta <link rel=\"author\"> a la etiqueta <head> del sitio web, "
 "apuntando al archivo humans.txt"
 
-#: options.php:397
+#: options.php:508
 msgid "Add an author link tag to the site"
 msgstr "Añade una etiqueta de enlace al autor del sitio"
 
-#: options.php:403 options.php:406
+#: options.php:514 options.php:517
 msgid "Editing Permissions"
 msgstr "Editar Permisos"
 
-#: options.php:407
+#: options.php:518
 msgid "Roles that can edit the content of the humans.txt file"
 msgstr "Roles que pueden editar el contenido del archivo humans.txt"
 
-#: options.php:441
-msgid ""
-"If you need a little help with your humans.txt, try the \"Help\" button in "
-"the top right corner of this page."
-msgstr ""
-"Si necesita ayuda con su fichero humans.txt, utilice el botón \"Ayuda\" en "
-"la esquina superior derecha de esta página."
+#: options.php:541
+msgid "View Humans TXT"
+msgstr "Ver Humans TXT"
 
-#: options.php:450
+#: options.php:555
+msgid ""
+"If you need a little help with your humans.txt, try the \"Help\" button at "
+"the top right of this page."
+msgstr ""
+"Si necesita un poco de ayuda con su humans.txt, pruebe el botón «Ayuda» en "
+"la parte superior derecha de esta página."
+
+#: options.php:566
 msgid "View Revisions"
 msgstr "Ver Revisiones"
 
-#: options.php:457
-msgid "Variables"
-msgstr "Variables"
+#: options.php:574
+msgid "Server"
+msgstr "Servidor"
 
-#: options.php:461
-msgid "Preview"
-msgstr "Vista previa"
+#: options.php:575
+msgid "Themes & Plugins"
+msgstr "Temas y complementos"
 
-#: options.php:469
+#: options.php:576
+msgid "Miscellaneous"
+msgstr "Varios"
+
+#. translators: Preview: Not available...
+#: options.php:594
+msgid "Not available..."
+msgstr "No disponible..."
+
+#. translators: %s: output preview of variable
+#: options.php:595
+msgid "Preview: %s"
+msgstr "Vista previa: %s"
+
+#: options.php:607
 msgid "Suggest another variable..."
 msgstr "Sugiera otra variable..."
 
-#: options.php:475
+#: options.php:614
 msgid "Shortcode Usage"
 msgstr "Uso de shorcodes"
 
-#: options.php:476
+#: options.php:615
 msgid ""
 "You can use the <code>[humanstxt]</code> shortcode to display the "
 "<em>humans.txt</em> file on a page or in a post. By default, all links, "
@@ -404,16 +523,20 @@ msgstr ""
 "puede configurar...</a>"
 
 #. translators: %s: revision date
-#: options.php:503
+#: options.php:642
 msgid "Revision created on %s"
 msgstr "Revisión creada el %s"
 
-#: options.php:505
+#: options.php:644
 msgid "Restore Revision"
 msgstr "Restaurar Revisión"
 
+#: options.php:649
+msgid "You cannot compare a revision to itself."
+msgstr "No se puede comparar una revisión contra sí mismo."
+
 #. translators: %s: number of stored revisions
-#: options.php:544
+#: options.php:732
 msgid ""
 "WordPress is storing the last %s revisions of your <em>humans.txt</em> file."
 msgstr ""
