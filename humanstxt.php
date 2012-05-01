@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Humans TXT
-Plugin URI: http://tillkruess.com/projects/humanstxt/
+Plugin URI: http://tillkruess.com/project/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
 Domain Path: /languages
@@ -9,6 +9,7 @@ Version: 1.2
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 /**
