@@ -3,7 +3,7 @@ Contributors: tillkruess
 Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
-Tested up to: 3.3
+Tested up to: 3.4
 Stable tag: 1.2
 
 Credit the people behind your website in your humans.txt file. Easy to edit, directly within WordPress.
