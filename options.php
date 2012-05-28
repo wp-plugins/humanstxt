@@ -438,7 +438,7 @@ function humanstxt_options() {
  */
 function humanstxt_options_page() {
 ?>
-<div id="humanstxt" class="wrap<?php if (!humanstxt_is_wp('3.2')) : ?> not-wp32<?php endif; ?>">
+<div id="humanstxt" class="wrap<?php if (!humanstxt_is_wp('3.4')) : ?> not-wp34<?php endif; ?><?php if (!humanstxt_is_wp('3.2')) : ?> not-wp32<?php endif; ?>">
 
 	<?php screen_icon() ?>
 
@@ -483,13 +483,17 @@ function humanstxt_options_page() {
 				<div id="humanstxt-metabox" class="postbox humanstxt-box">
 					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', 'humanstxt'), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', 'humanstxt')) ?></p>
 					<div class="star-holder">
-						<?php $starimg = humanstxt_is_wp('3.2') ? admin_url('images/gray-star.png?v=20110615') : admin_url('images/star.gif') ?>
-						<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
-						<div class="star star5"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('5 stars') ?>" /></div>
-						<div class="star star4"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('4 stars') ?>" /></div>
-						<div class="star star3"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('3 stars') ?>" /></div>
-						<div class="star star2"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('2 stars') ?>" /></div>
-						<div class="star star1"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('1 star') ?>" /></div>
+						<?php if (humanstxt_is_wp('3.4')) : ?>
+							<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
+						<?php else: ?>
+							<?php $starimg = humanstxt_is_wp('3.2') ? admin_url('images/gray-star.png?v=20110615') : admin_url('images/star.gif') ?>
+							<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>
+							<div class="star star5"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('5 stars') ?>" /></div>
+							<div class="star star4"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('4 stars') ?>" /></div>
+							<div class="star star3"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('3 stars') ?>" /></div>
+							<div class="star star2"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('2 stars') ?>" /></div>
+							<div class="star star1"><img src="<?php echo $starimg ?>" alt="<?php /* translators: DO NOT TRANSLATE! */ _e('1 star') ?>" /></div>
+						<?php endif; ?>
 					</div>
 					<small class="text-votes"><?php printf( /* translators: DO NOT TRANSLATE! */ _n('(based on %s rating)', '(based on %s ratings)', $rating['votes']), number_format_i18n($rating['votes'])) ?></small>
 				</div>
