@@ -410,7 +410,7 @@ function humanstxt_ajax_preview() {
 	if (isset($_GET['content']) && !empty($_GET['content'])) {
 		echo '<pre>'.esc_html(apply_filters('humans_txt', $_GET['content'])).'</pre>';
 	} else {
-		echo /* translators: DO NOT TRANSLATE! */ __('An unknown error occurred.');
+		echo /* translators: DO NOT TRANSLATE! */ __('An error has occurred. Please reload the page and try again.');
 	}
 
 	exit;
