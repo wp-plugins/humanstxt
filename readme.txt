@@ -4,7 +4,7 @@ Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
