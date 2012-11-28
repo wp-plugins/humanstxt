@@ -201,6 +201,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 == Upgrade Notice ==
 
+= 1.2.2 =
+
+This version ensures WordPress 3.5 compatibility.
+
 = 1.2.1 =
 
 Improved WordPress 3.4 compatibility and added/updated several translations.
