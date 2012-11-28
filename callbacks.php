@@ -290,7 +290,7 @@ if (!function_exists('humanstxt_callback_lastupdate')) :
  */
 function humanstxt_callback_lastupdate() {
 	global $wpdb;
-	$last_edit = $wpdb->get_var($wpdb->prepare('SELECT post_modified FROM '.$wpdb->posts.' WHERE post_status = "publish" AND (post_type = "page" OR post_type = "post") ORDER BY post_modified DESC LIMIT 1'));
+	$last_edit = $wpdb->get_var('SELECT post_modified FROM '.$wpdb->posts.' WHERE post_status = "publish" AND (post_type = "page" OR post_type = "post") ORDER BY post_modified DESC LIMIT 1');
 	if (!empty($last_edit)) {
 		$last_edit = date(apply_filters('humanstxt_lastupdate_format', 'Y/m/d'), strtotime($last_edit));
 	}
