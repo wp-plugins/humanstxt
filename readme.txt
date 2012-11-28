@@ -45,6 +45,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Romanian (ro_RO) - Ovidiu Bica ([Anunturi](http://www.jibo.ro/))
 * Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
 * Spanish (es_ES) - Juanjo Bernabeu, [Sergio Gómez](http://twitter.com/sgomez), Jose Luis Tirado
+* Swedish (sv_SE) - Christoffer Puschke, dotar
 * Turkish (tr_TR) - [Barış Ünver](http://beyn.org/)
 * Ukrainian (uk) - [Vitaly](http://web-profile.com.ua/wordpress/)
 
@@ -106,6 +107,7 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 = 1.2.2.=
 
 * WordPress 3.5 compatibility adjustments
+* Added Swedish translation
 
 = 1.2.1 =
 
