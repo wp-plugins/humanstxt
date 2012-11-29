@@ -45,7 +45,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Romanian (ro_RO) - Ovidiu Bica ([Anunturi](http://www.jibo.ro/))
 * Russian (ru_RU) - [Vladimir Epifanov](http://voldmar.ru/)
 * Spanish (es_ES) - Juanjo Bernabeu, [Sergio Gómez](http://twitter.com/sgomez), Jose Luis Tirado
-* Swedish (sv_SE) - Christoffer Puschke, dotar
+* Swedish (sv_SE) - [Christoffer Puschke](http://puschke.se/), [Torsten Augustsson](http://torstenaugustsson.com/)
 * Turkish (tr_TR) - [Barış Ünver](http://beyn.org/)
 * Ukrainian (uk) - [Vitaly](http://web-profile.com.ua/wordpress/)
 
