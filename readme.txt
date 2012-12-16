@@ -104,7 +104,7 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 == Changelog ==
 
-= 1.2.2.=
+= 1.2.2 =
 
 * WordPress 3.5 compatibility adjustments
 * Added Swedish translation
