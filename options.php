@@ -458,9 +458,7 @@ function humanstxt_options_page() {
 		<div class="error"><p><strong><?php _e('Error: Import failed.', 'humanstxt') ?></strong> <?php echo $faqlink ?></p></div>
 	<?php endif; ?>
 
-	<?php if (!humanstxt_is_rootinstall()) : ?>
-		<div class="error"><p><strong><?php _e('Error: WordPress is not installed in the root of the domain.', 'humanstxt'); ?></strong> <?php echo $faqlink ?></p></div>
-	<?php elseif (humanstxt_exists() && !isset($_GET['rename-failed'], $_GET['import-failed'])) : ?>
+	<?php if (humanstxt_exists() && !isset($_GET['rename-failed'], $_GET['import-failed'])) : ?>
 		<div class="error">
 			<p>
 				<strong><?php _e('Error: The site root already contains a physical humans.txt file.', 'humanstxt') ?></strong>
@@ -481,7 +479,7 @@ function humanstxt_options_page() {
 			<?php if (!defined('HUMANSTXT_METABOX')) define('HUMANSTXT_METABOX', true) ?>
 			<?php if (HUMANSTXT_METABOX && ($rating = humanstxt_rating()) !== false) : ?>
 				<div id="humanstxt-metabox" class="postbox humanstxt-box">
-					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', 'humanstxt'), 'http://wordpress.org/extend/plugins/humanstxt/', __('Rate this plugin on WordPress.org', 'humanstxt')) ?></p>
+					<p class="text-rateit"><?php printf(__('If you like this plugin, why not <a href="%s" title="%s" rel="external">recommend it to others</a> by rating it?', 'humanstxt'), 'http://wordpress.org/support/view/plugin-reviews/humanstxt', __('Rate this plugin on WordPress.org', 'humanstxt')) ?></p>
 					<div class="star-holder">
 						<?php if (humanstxt_is_wp('3.4')) : ?>
 							<div class="star star-rating" style="width: <?php echo esc_attr($rating['rating']) ?>px"></div>

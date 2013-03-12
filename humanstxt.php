@@ -5,7 +5,7 @@ Plugin URI: http://tillkruess.com/project/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
 Domain Path: /languages
-Version: 1.2.2
+Version: 1.2.3
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
@@ -38,7 +38,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Humans TXT plugin version.
  * @since 1.0.1
  */
-define('HUMANSTXT_VERSION', '1.2.2');
+define('HUMANSTXT_VERSION', '1.2.3');
 
 /**
  * Required WordPress version.
@@ -157,26 +157,6 @@ function humanstxt_exists() {
 }
 
 /**
- * Determines if WordPress is installed the site root.
- * Use the HUMANSTXT_IS_ROOTINSTALL constant to override.
- * 
- * @return bool
- */
-function humanstxt_is_rootinstall() {
-
-	if (defined('HUMANSTXT_IS_ROOTINSTALL'))
-		return HUMANSTXT_IS_ROOTINSTALL;
-
-	$homeurl = parse_url(home_url());
-	if (!isset($homeurl['path']) || empty($homeurl['path']) || $homeurl['path'] == '/') {
-		return true;
-	}
-
-	return false;
-
-}
-
-/**
  * Callback function for 'init' action.
  * Registers humans.txt rewrite rules and calls flush_rewrite_rules()
  * if necessary (performance friendly of course).
@@ -191,17 +171,12 @@ function humanstxt_init() {
 
 	if (humanstxt_option('enabled')) {
 
-		// rewrite humans.txt file only if installed in the root
-		if (humanstxt_is_rootinstall()) {
+		add_filter('query_vars', create_function('$qv', '$qv[] = "humans"; return $qv;'));
+		add_rewrite_rule('humans\.txt$', $wp_rewrite->index.'?humans=1', 'top');
 
-			add_filter('query_vars', create_function('$qv', '$qv[] = "humans"; return $qv;'));
-			add_rewrite_rule('humans\.txt$', $wp_rewrite->index.'?humans=1', 'top');
-
-			// register author link tag action if enabled
-			if (humanstxt_option('authortag')) {
-				add_action('wp_head', 'humanstxt_authortag', 1);
-			}
-
+		// register author link tag action if enabled
+		if (humanstxt_option('authortag')) {
+			add_action('wp_head', 'humanstxt_authortag', 1);
 		}
 
 		// flush rewrite rules if ours is missing
