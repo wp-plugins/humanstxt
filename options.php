@@ -645,7 +645,7 @@ function humanstxt_revisions_page() {
 
 	<?php if ($show_revision !== false) : ?>
 
-		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', 'humanstxt'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$show_revision]['date'])) ?></h3>
+		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', 'humanstxt'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i:s', 'revision date format'), $revisions[$show_revision]['date'])) ?></h3>
 		<pre id="revision-preview" class="postbox"><?php echo esc_html($revisions[$show_revision]['content']) ?></pre>
 		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $show_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$show_revision) ?>" class="button-primary"><?php _e('Restore Revision', 'humanstxt') ?></a></p>
 
@@ -654,14 +654,14 @@ function humanstxt_revisions_page() {
 		<?php if ($_GET['left'] == $_GET['right']) : ?>
 			<div class="error"><p><?php _e('You cannot compare a revision to itself.', 'humanstxt') ?></p></div>
 		<?php elseif (!($diff = wp_text_diff($revisions[$_GET['left']]['content'], $revisions[$_GET['right']]['content']))) : ?>
-			<div class="error"><p><?php /* translators: DO NOT TRANSLATE! */ _e('These revisions are identical.') ?></p></div>
+			<div class="error"><p><?php _e('These revisions are identical.') ?></p></div>
 		<?php else : ?>
 
 			<table class="form-table ie-fixed">
 				<tr>
 					<th class="th-full">
-						<span class="alignleft"><?php printf( /* translators: DO NOT TRANSLATE! */ __('Older: %s'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['left']]['date'])) ?></span>
-						<span class="alignright"><?php printf( /* translators: DO NOT TRANSLATE! */ __('Newer: %s'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['right']]['date'])) ?></span>
+						<span class="alignleft"><?php printf( __('Older: %s'), date_i18n( _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['left']]['date'])) ?></span>
+						<span class="alignright"><?php printf( __('Newer: %s'), date_i18n( _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['right']]['date'])) ?></span>
 					</th>
 				</tr>
 				<tr>
