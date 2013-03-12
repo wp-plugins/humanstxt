@@ -5,7 +5,6 @@
 $strings = array(
 	// singular
 	'Cheatin&#8217; uh?',
-	'These revisions are identical.',
 	'Settings',
 	'Settings saved.',
 	'WordPress',
@@ -13,9 +12,6 @@ $strings = array(
 	'For more information:',
 	'An error has occurred. Please reload the page and try again.',
 	'Save',
-	'These revisions are identical.',
-	'Older: %s',
-	'Newer: %s',
 	'Revisions',
 	'Compare Revisions',
 	'Author',
@@ -25,7 +21,7 @@ $strings = array(
 	// plural
 	'(based on %s rating)',
 	// context
-	'revision date format'.chr(4).'j F, Y @ G:i',
+	'revision date format'.chr(4).'j F, Y @ G:i:s',
 	'revisions column name'.chr(4).'Old',
 	'revisions column name'.chr(4).'New',
 	'revisions column name'.chr(4).'Date Created'
