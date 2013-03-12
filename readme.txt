@@ -3,7 +3,7 @@ Contributors: tillkruess
 Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.6
 Stable tag: 1.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -28,6 +28,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 
 * Arabic (ar) - [Yaser Maadan](http://www.englize.com/)
 * Brazilian Portuguese (pt_BR) - [Caciano Gabriel](http://ciano.co/)
+* Chinese (zh_CN) - [Chonghua He](http://hechonghua.com/)
 * Croatian (hr) - [Vedran Tomic](http://tomicinternetmarketing.com/)
 * Dutch (nl_NL) - [Anonymous](https://launchpad.net/~forkless)
 * Danish (da_DK) - [Anders Aarvik](http://aarvik.dk/)
@@ -65,10 +66,6 @@ For detailed installation instructions, please read the [standard installation p
 
 == Frequently Asked Questions ==
 
-= Error: WordPress is not installed in the root of the domain. =
-
-This plugin will only work if WordPress is installed in the root of the domain and not in a sub-directory.
-
 = Error: The site root already contains a physical humans.txt file. =
 
 If your site root contains a physical `humans.txt` file, this physical file will be shown to the visitor and the one from this plugin will be ignored. To use this plugin, please delete the physical `humans.txt` file on your server (but don't forget to migrate/backup it's contents).
@@ -103,6 +100,11 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 
 == Changelog ==
+
+= 1.2.3 =
+
+* Removed limitation to only work on non-sub-directory installations
+* Added Chinese translation
 
 = 1.2.2 =
 
@@ -200,6 +202,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 
 == Upgrade Notice ==
+
+= 1.2.3 =
+
+Removed limitation to only work on non-sub-directory installations.
 
 = 1.2.2 =
 
@@ -307,9 +313,6 @@ All callback functions of the default variables can be overridden. The callback 
 
 **HUMANSTXT_METABOX**  
 Define as `false` to disable the "rate this plugin" box on the options page.
-
-**HUMANSTXT_IS_ROOTINSTALL**  
-Overrides the result of `humanstxt_is_rootinstall()`. Define as `true`, if your WordPress installation is installed in the root of the domain, but `humanstxt_is_rootinstall()` returns `false`.
 
 
 == Plugin Actions and Filters ==

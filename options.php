@@ -660,8 +660,8 @@ function humanstxt_revisions_page() {
 			<table class="form-table ie-fixed">
 				<tr>
 					<th class="th-full">
-						<span class="alignleft"><?php printf( __('Older: %s'), date_i18n( _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['left']]['date'])) ?></span>
-						<span class="alignright"><?php printf( __('Newer: %s'), date_i18n( _x('j F, Y @ G:i', 'revision date format'), $revisions[$_GET['right']]['date'])) ?></span>
+						<span class="alignleft"><?php printf( __('Older: %s'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i:s', 'revision date format'), $revisions[$_GET['left']]['date'])) ?></span>
+						<span class="alignright"><?php printf( __('Newer: %s'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i:s', 'revision date format'), $revisions[$_GET['right']]['date'])) ?></span>
 					</th>
 				</tr>
 				<tr>
