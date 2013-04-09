@@ -4,7 +4,7 @@ Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -100,6 +100,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 
 == Changelog ==
+
+= 1.2.4 =
+
+* Fixed deprecated function calls
 
 = 1.2.3 =
 
@@ -202,6 +206,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 
 == Upgrade Notice ==
+
+= 1.2.4 =
+
+This version fixes several deprecated function calls.
 
 = 1.2.3 =
 
