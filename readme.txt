@@ -3,8 +3,8 @@ Contributors: tillkruess
 Donate link: http://tillkruess.com/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 1.2.4
+Tested up to: 3.7
+Stable tag: 1.2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -101,6 +101,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 == Changelog ==
 
+= 1.2.5 =
+
+* Added MP6 compatibility
+
 = 1.2.4 =
 
 * Fixed deprecated function calls
@@ -141,11 +145,11 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 = 1.1.2 =
 
 * Added Romanian translation
-* Removed all PHP shorthand tags to increase system compatibility 
+* Removed all PHP shorthand tags to increase system compatibility
 
 = 1.1.1 =
 
-* Added Arabic, Japanese, Korean, Persian and Spanish translations 
+* Added Arabic, Japanese, Korean, Persian and Spanish translations
 * Made admin interface compatible with right-to-left (RTL) languages
 
 = 1.1 =
@@ -159,7 +163,7 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 * Removed Subscriber from the roles list
 * `HUMANSTXT_IS_ROOTINSTALL` constant overrides the result of `humanstxt_is_rootinstall()`
 * `HUMANSTXT_METABOX` constant can be used to hide the plugin rating box
-* `humanstxt_shortcode()` is now pluggable (primarily to prevent plugin conflicts)  
+* `humanstxt_shortcode()` is now pluggable (primarily to prevent plugin conflicts)
 * Several other code and interface improvements...
 
 = 1.0.5 =
@@ -175,9 +179,9 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 * Added `[humanstxt]` shortcode with several attributes
 * Added new variables for the number of published posts and pages
-* Minor changes to admin interface text, layout and scripts 
+* Minor changes to admin interface text, layout and scripts
 * Added few shortcut functions like: `humanstxt()` and `humanstxt_authortag()`
-* Added filter for result of `$wp-language$` variable callback function 
+* Added filter for result of `$wp-language$` variable callback function
 
 = 1.0.3 =
 
@@ -206,6 +210,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 
 == Upgrade Notice ==
+
+= 1.2.5 =
+
+This version introduces MP6 compatibility.
 
 = 1.2.4 =
 
@@ -300,15 +308,15 @@ You can omit the wrapping with the `<p>` tag: `[humanstxt wrap="0"]`
 
 You can set a CSS id for the wrapping `<p>` tag: `[humanstxt id="my-humans-txt"]`
 
-You can turn off the encoding of email addresses and common text entities: `[humanstxt filter="0"]` 
+You can turn off the encoding of email addresses and common text entities: `[humanstxt filter="0"]`
 
 
 == Useful Functions ==
 
-**humanstxt()**  
-Echos the content of the virtual humans.txt file. Use `get_humanstxt()` to get the contents as a _string_. 
+**humanstxt()**
+Echos the content of the virtual humans.txt file. Use `get_humanstxt()` to get the contents as a _string_.
 
-**is_humans()**  
+**is_humans()**
 Determines if the current request is for the virtual humans.txt file.
 
 
@@ -319,7 +327,7 @@ All callback functions of the default variables can be overridden. The callback 
 
 == Plugin Constants ==
 
-**HUMANSTXT_METABOX**  
+**HUMANSTXT_METABOX**
 Define as `false` to disable the "rate this plugin" box on the options page.
 
 
@@ -327,72 +335,72 @@ Define as `false` to disable the "rate this plugin" box on the options page.
 
 = Actions =
 
-**do_humans**  
+**do_humans**
 Runs when the current request is for the *humans.txt* file, right after the `template_redirect` action.
 
-**do_humanstxt**  
+**do_humanstxt**
 Runs right before the *humans.txt* is printed to the screen.
 
 = Filters =
 
-**humans_txt**  
+**humans_txt**
 Applied to the final content of the virtual humans.txt file.
 
-**humans_authortag**  
+**humans_authortag**
 Applied to the author link tag.
 
-**humanstxt_content**  
+**humanstxt_content**
 Applied to the humans.txt content. Applied prior to the `humans_txt` filter.
 
-**humanstxt_variables**  
+**humanstxt_variables**
 Applied to the array of content-variables. See `humanstxt_variables()` for details.
 
-**humanstxt_max_revisions**  
+**humanstxt_max_revisions**
 Applied to the maximum number of stored revisions. If set to `0`, revisions will be disabled. Default is `50`.
 
-**humanstxt_shortcode_output**  
+**humanstxt_shortcode_output**
 Applied to the final `[humanstxt]` shortcode output.
 
-**humanstxt_shortcode_content**  
+**humanstxt_shortcode_content**
 Applied to the un-wrapped shortcode output.
 
-**humanstxt_shortcode_headline_replacement**  
+**humanstxt_shortcode_headline_replacement**
 Applied to replacement string for matched standard headlines: `/* Title */`. See `humanstxt_shortcode()` for details.
 
-**humanstxt_shortcode_twitter_replacement**  
+**humanstxt_shortcode_twitter_replacement**
 Applied to replacement string for matched twitter account names. See `humanstxt_shortcode()` for details.
 
-**humanstxt_separator**  
+**humanstxt_separator**
 Applied to the global text separator. Default is a comma followed by a space.
 
-**humanstxt_plugins_separator**  
+**humanstxt_plugins_separator**
 Use to override the global text separator (see `humanstxt_separator` filter) for the list of active WordPress plugins.
 
-**humanstxt_languages_separator**  
+**humanstxt_languages_separator**
 Use to override the global text separator (see `humanstxt_separator` filter), for the current WordPress language(s).
 
-**humanstxt_postcount**  
+**humanstxt_postcount**
 Applied to the number of published posts: `$wp-posts$`.
 
-**humanstxt_pagecount**  
+**humanstxt_pagecount**
 Applied to the number of published pages: `$wp-pages$`.
 
-**humanstxt_wptheme**  
+**humanstxt_wptheme**
 Applied to the summary of the active WordPress theme: `$wp-theme$`.
 
-**humanstxt_plugins**  
+**humanstxt_plugins**
 Applied to the list of active WordPress plugins: `$wp-plugins$`.
 
-**humanstxt_languages**  
+**humanstxt_languages**
 Applied to current WordPress language(s): `$wp-language$`.
 
-**humanstxt_lastupdate**  
+**humanstxt_lastupdate**
 Applied to returned date of the `$wp-lastupdate$` variable.
 
-**humanstxt_lastupdate_format**  
+**humanstxt_lastupdate_format**
 Applied to the used date-format of the `$wp-lastupdate$` variable. Default is `Y/m/d`. Read more about [date and time formatting](http://codex.wordpress.org/Formatting_Date_and_Time).
 
-**humanstxt_authors**  
+**humanstxt_authors**
 Applied to the list of active authors: `$wp-authors$`.
 
 **humanstxt_authors_format**

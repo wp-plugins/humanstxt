@@ -5,7 +5,7 @@ Plugin URI: http://tillkruess.com/project/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
 Domain Path: /languages
-Version: 1.2.4
+Version: 1.2.5
 Author: Till Krüss
 Author URI: http://tillkruess.com/
 License: GPLv3
@@ -38,7 +38,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Humans TXT plugin version.
  * @since 1.0.1
  */
-define( 'HUMANSTXT_VERSION', '1.2.4' );
+define( 'HUMANSTXT_VERSION', '1.2.5' );
 
 /**
  * Required WordPress version.
@@ -84,7 +84,7 @@ add_filter( 'humanstxt_content', 'humanstxt_content_normalize' );
 add_shortcode( 'humanstxt', '_humanstxt_shortcode' );
 
 /**
- * Load legacy code, if necessary. 
+ * Load legacy code, if necessary.
  */
 if ( version_compare( get_bloginfo( 'version' ), '3.2', '<' ) ) {
 	require_once HUMANSTXT_PLUGIN_PATH . '/legacy.php';
@@ -98,7 +98,7 @@ if ( is_admin() ) {
 }
 
 /**
- * Echos the content of the virtual humans.txt file. 
+ * Echos the content of the virtual humans.txt file.
  *
  * @since 1.0.4
  */
@@ -129,7 +129,7 @@ function humanstxt_authortag() {
  * Returns a XHTML-conform author link tag, pointed to
  * the humans.txt URL, after applying the 'humans_authortag'
  * filter to it.
- * 
+ *
  * @since 1.0.4
  *
  * @return string XHTML-conform author link tag
@@ -140,7 +140,7 @@ function get_humanstxt_authortag() {
 
 /**
  * Determines if it is a request for the humans.txt file.
- * 
+ *
  * @return bool
  */
 function is_humans() {
@@ -149,7 +149,7 @@ function is_humans() {
 
 /**
  * Determines if there is a physical humans.txt file in WP's root folder.
- * 
+ *
  * @return bool
  */
 function humanstxt_exists() {
@@ -160,7 +160,7 @@ function humanstxt_exists() {
  * Callback function for 'init' action.
  * Registers humans.txt rewrite rules and calls flush_rewrite_rules()
  * if necessary (performance friendly of course).
- * 
+ *
  * @global $wp_rewrite
  */
 function humanstxt_init() {
@@ -243,7 +243,7 @@ endif;
  * filter and the final output can be filtered with the
  * 'humanstxt_shortcode_output' filter.
  *
- * Renamed in 1.1.3 to prevent plugin conflicts. 
+ * Renamed in 1.1.3 to prevent plugin conflicts.
  *
  * @since 1.1.3
  * @see humanstxt_shortcode()
@@ -258,7 +258,7 @@ function _humanstxt_shortcode($attributes) {
 		'pre' => false, // perfect for preformatted text: <pre>[humanstxt pre="1"]</pre>
 		'plain' => false, // clean output, all options are ignored except $wrap and $id
 		'wrap' => true, // wrap content of humans.txt in <p> element
-		'filter' => true, // convert/format common entities and encode plain text email addresses		
+		'filter' => true, // convert/format common entities and encode plain text email addresses
 		'clickable' => true, // make URLs, email addresses and Twitter accounts clickable
 		'urls' => true, // force/prevent clickable URLs, regardless $clickable
 		'emails' => true, // force/prevent clickable email addresses, regardless $clickable
@@ -381,9 +381,9 @@ function humanstxt_load_options() {
 /**
  * Returns options value of given $option.
  * Returns NULL if $option doesn't exist.
- * 
+ *
  * @global $humanstxt_options
- * 
+ *
  * @param string $option Name of the option.
  * @return mixed|null Plugin option value
  */
@@ -399,7 +399,7 @@ function humanstxt_option( $option ) {
 /**
  * Returns stored humans.txt file content.
  * Stores and returns default humans.txt content, if not stored yet.
- * 
+ *
  * @return string $content
  */
 function humanstxt_content() {
@@ -422,7 +422,7 @@ function humanstxt_content() {
  * @since 1.1.0
  *
  * @param string $string String to be normalized
- * @return string Normalized string 
+ * @return string Normalized string
  */
 function humanstxt_content_normalize( $string ) {
 	$string = str_replace( "\r\n", "\n", $string );
@@ -434,9 +434,9 @@ function humanstxt_content_normalize( $string ) {
  * Returns an array with all stored revisions, containing each
  * revions's content, author-id and it's time of creation.
  * Returns FALSE if revisions are disabled.
- * 
+ *
  * @since 1.1.0
- * 
+ *
  * @return array|false Revisions of the humans.txt file
  */
 function humanstxt_revisions() {
@@ -465,9 +465,9 @@ function humanstxt_revisions() {
  * Stores a new revision with the given $content.
  * Ensures that only the last 50 revisons are stored.
  * Limit can be changed with the 'humanstxt_max_revisions' filter.
- * 
+ *
  * @since 1.1.0
- * 
+ *
  * @param string $content Revisions content
  */
 function humanstxt_add_revision( $content ) {
@@ -489,7 +489,7 @@ function humanstxt_add_revision( $content ) {
 
 /**
  * Replaces all valid content-variables in given string and returns it.
- * 
+ *
  * @param string $string String in which content-variables should be replaced.
  * @return string $string Given string with replaced content-variables.
  */
@@ -511,7 +511,7 @@ function humanstxt_replace_variables( $string ) {
 				$string = str_ireplace( $varnames, (string) $result, $string );
 			}
 
-		}			
+		}
 
 	}
 
@@ -522,11 +522,11 @@ function humanstxt_replace_variables( $string ) {
 /**
  * Returns an array of default content-variables after
  * applying the 'humanstxt_variables' filter to it.
- * 
+ *
  * Each array value represents a content-variable:
  * array(string $group, string $varname, string $translated-varname,
  *   callback $function [, string $description, bool $preview = true]);
- * 
+ *
  * @return array $variables Default content-variables.
  */
 function humanstxt_variables() {
@@ -534,7 +534,7 @@ function humanstxt_variables() {
 	humanstxt_load_textdomain();
 	require_once HUMANSTXT_PLUGIN_PATH . '/callbacks.php';
 
-	$variables = array();	
+	$variables = array();
 	$variables[] = array( 'wordpress', 'wp-title', /* translators: variable name for the site/blog name (title) */ __( 'wp-title', 'humanstxt' ), 'humanstxt_callback_wpblogname', __( 'Name (title) of site/blog', 'humanstxt' ) );
 	$variables[] = array( 'wordpress', 'wp-tagline', /* translators: variable name for the site/blog tagline (description) */ __( 'wp-tagline', 'humanstxt' ), 'humanstxt_callback_wptagline', __( 'Tagline (description) of site/blog', 'humanstxt' ) );
 	$variables[] = array( 'wordpress', 'wp-posts', /* translators: variable name for the number of published posts */ __( 'wp-posts', 'humanstxt' ), 'humanstxt_callback_wpposts', __( 'Number of published posts', 'humanstxt' ) );
@@ -567,7 +567,7 @@ function humanstxt_variables() {
 
 /**
  * Returns an array all valid content-variables.
- * 
+ *
  * @return array $variables Valid content-variables.
  */
 function humanstxt_valid_variables() {
@@ -598,7 +598,7 @@ function humanstxt_valid_variables() {
  * Returns default content of humans.txt file. Quite ugly function,
  * but fast, since we have a translated string *without* having to
  * load the plugin text-domain on every request.
- * 
+ *
  * @return string Default humans.txt file content.
  */
 function humanstxt_default_content() {
