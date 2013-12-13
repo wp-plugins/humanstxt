@@ -101,6 +101,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 == Changelog ==
 
+= 1.2.6 =
+
+* WordPress 3.8 compatibility adjustments
+
 = 1.2.5 =
 
 * Added MP6 compatibility
@@ -210,6 +214,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 
 == Upgrade Notice ==
+
+= 1.2.6 =
+
+This version adds WordPress 3.8 compatibility.
 
 = 1.2.5 =
 
