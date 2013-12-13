@@ -48,7 +48,7 @@ define('HUMANSTXT_REVISIONS_URL', add_query_arg(array('subpage' => 'revisions'),
  */
 add_action('admin_init', 'humanstxt_admin_init');
 add_action('admin_menu', 'humanstxt_admin_menu');
-add_action('admin_notices', 'humanstxt_version_warning'); 
+add_action('admin_notices', 'humanstxt_version_warning');
 add_action('admin_print_styles', create_function(null, "wp_enqueue_style('thickbox'); wp_enqueue_style('humanstxt-options');"));
 add_action('admin_print_scripts', create_function(null, "wp_enqueue_script('thickbox'); wp_enqueue_script('humanstxt-options');"));
 add_action('wp_ajax_humanstxt-preview', 'humanstxt_ajax_preview');
@@ -92,7 +92,7 @@ function humanstxt_admin_init() {
 		// import & rename physical humans.txt file?
 		if (isset($_GET['action']) && $_GET['action'] == 'import-file') {
 			check_admin_referer('import-humanstxt-file');
-			humanstxt_import_file();			
+			humanstxt_import_file();
 		}
 
 	}
@@ -112,7 +112,7 @@ function humanstxt_uninstall() {
 /**
  * Callback function for 'admin_notices' action.
  * Prints warning message if the current WP version is too old.
- * 
+ *
  * @since 1.0.1
  */
 function humanstxt_version_warning() {
@@ -128,7 +128,7 @@ function humanstxt_version_warning() {
  * Return TRUE if given $version is higher or equals the running
  * WordPress version. This function consideres pre-release versions,
  * such as 3.0.0-dev, as high as their final release counterparts (like 4.0.0).
- * 
+ *
  * @since 1.2.0
  */
 function humanstxt_is_wp($version) {
@@ -163,7 +163,7 @@ function humanstxt_admin_menu() {
 /**
  * Callback function for 'plugin_action_links_{$plugin_file}' filter.
  * Adds a link to the plugin options page.
- * 
+ *
  * @param array $actions
  * @return array $actions Hijacked actions.
  */
@@ -222,7 +222,7 @@ function humanstxt_contextual_help() {
  * Updates the current content of the humans.txt file and
  * adds it as a new revision, if the current content doesn't
  * equal the given $content.
- * 
+ *
  * @since 1.2.0
  *
  * @param string $content New content of the humans.txt file
@@ -238,7 +238,7 @@ function humanstxt_update_content($content) {
 
 /**
  * Updates the plugin options and redirects to plugin options page.
- * 
+ *
  * @global $humanstxt_options
  */
 function humanstxt_update_options() {
@@ -272,9 +272,9 @@ function humanstxt_update_options() {
 /**
  * Restores the given $revision of the humans.txt, if revisions
  * aren't disabled. Redirects to the plugin options page afterwards.
- * 
+ *
  * @since 1.1.0
- * 
+ *
  * @param int $revision Revisons number (key)
  */
 function humanstxt_restore_revision($revision) {
@@ -296,9 +296,9 @@ function humanstxt_restore_revision($revision) {
  * humans.txt file and if successful rename it to humans.txt-{time}.bak,
  * so this plugin can work properly. Redirects to the plugin
  * options page afterwards.
- * 
+ *
  * @since 1.2.0
- * 
+ *
  * @global $wp_filesystem
  */
 function humanstxt_import_file() {
@@ -371,8 +371,8 @@ function humanstxt_plugin_notice($plugin_file, $plugin_data, $status) {
 
 /**
  * Returns an array with plugin rating and total votes from WordPress.org.
- * 
- * @return array|false Plugin rating and total votes. 
+ *
+ * @return array|false Plugin rating and total votes.
  */
 function humanstxt_rating() {
 
@@ -402,7 +402,7 @@ function humanstxt_rating() {
 /**
  * Callback function of 'wp_ajax_humanstxt-preview' action.
  * Shows a preview of the humans.txt file.
- * 
+ *
  * @since 1.2.0
  */
 function humanstxt_ajax_preview() {
@@ -521,7 +521,7 @@ function humanstxt_options_page() {
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e('Editing Permissions', 'humanstxt') ?></span></legend>
-							<?php _e('Roles that can edit the content of the humans.txt file', 'humanstxt') ?>:<br/>
+							<p><?php _e('Roles that can edit the content of the humans.txt file', 'humanstxt') ?>:</p>
 							<?php
 								$humanstxt_roles = humanstxt_option('roles');
 								$wordpress_roles = get_editable_roles();
@@ -538,11 +538,11 @@ function humanstxt_options_page() {
 							<?php endforeach; ?>
 						</fieldset>
 					</td>
-				</tr>	
+				</tr>
 			</table>
 
 			<p class="submit clear">
-				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save Changes') ?>" />				
+				<input type="submit" name="submit" class="button button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save Changes') ?>" />
 				<?php if (humanstxt_option('enabled')) : ?>
 					<a href="<?php echo home_url('humans.txt') ?>" rel="external" class="button"><?php _e('View Humans TXT', 'humanstxt') ?></a>
 				<?php endif; ?>
@@ -552,7 +552,7 @@ function humanstxt_options_page() {
 
 		<h3><?php _e('Humans TXT File', 'humanstxt') ?></h3>
 
-		<div id="humanstxt-editor-wrap">			
+		<div id="humanstxt-editor-wrap">
 			<table class="form-table">
 				<tr valign="top">
 					<td>
@@ -565,7 +565,7 @@ function humanstxt_options_page() {
 				</tr>
 			</table>
 			<p class="submit">
-				<input type="submit" name="submit" class="button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save') ?>" />
+				<input type="submit" name="submit" class="button button-primary" value="<?php /* translators: DO NOT TRANSLATE! */ esc_attr_e('Save') ?>" />
 				<a href="<?php echo esc_url(admin_url('admin-ajax.php?action=humanstxt-preview')) ?>" class="button button-preview hide-if-no-js" title="<?php /* translators: DO NOT TRANSLATE! */ _e('Preview') ?>"><?php /* translators: DO NOT TRANSLATE! */ _e('Preview') ?></a>
 				<?php $revisions = humanstxt_revisions() ?>
 				<?php if (count($revisions) > 1) : ?>

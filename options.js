@@ -11,8 +11,10 @@ jQuery(document).ready(function($) {
 	$('#humanstxt-vars ul h5').hoverIntent({
 		out: function() {},
 		over: function() {
-			$(this).siblings('ul').slideDown();
-			$(this).parent().siblings().children('ul').slideUp();
+			if ( $( window ).width() > 782 ) {
+				$(this).siblings('ul').slideDown();
+				$(this).parent().siblings().children('ul').slideUp();
+			}
 		}
 	});
 
@@ -98,7 +100,7 @@ jQuery(document).ready(function($) {
 		var isRTL = $('body').hasClass('rtl');
 
 		// add tooltip div
-		$humanstxtTooltip = $('#humansTooltip');		
+		$humanstxtTooltip = $('#humansTooltip');
 		if ($humanstxtTooltip.length < 1) {
 			$humanstxtTooltip = $('<div id="humansTooltip"></div>').appendTo('body');
 		}
@@ -131,7 +133,7 @@ jQuery(document).ready(function($) {
 					top: (elementOffset.top - $humanstxtTooltip.height() - 15) + 'px',
 					left: (elementOffset.left + horizontalAdjustment) + 'px'
 				}).fadeIn(200);
-			}			
+			}
 
 		});
 
