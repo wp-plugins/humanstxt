@@ -154,7 +154,7 @@ function humanstxt_admin_menu() {
 	}
 
 	// add contextual help menu
-	if ($plugin_page) {
+	if (isset($plugin_page)) {
 		add_action('load-'.$plugin_page, 'humanstxt_contextual_help');
 	}
 
