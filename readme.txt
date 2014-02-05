@@ -1,6 +1,6 @@
 === Humans TXT ===
 Contributors: tillkruess
-Donate link: http://tillkruess.com/donations/
+Donate link: http://till.kruss.me/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
 Tested up to: 3.8
