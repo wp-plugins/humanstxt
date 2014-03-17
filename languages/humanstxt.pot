@@ -1,4 +1,4 @@
-# Copyright (C) 2013 Humans TXT
+# Copyright (C) 2014 Humans TXT
 # This file is distributed under the same license as the Humans TXT package.
 msgid ""
 msgstr ""
