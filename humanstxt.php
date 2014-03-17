@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: Humans TXT
-Plugin URI: http://tillkruess.com/project/humanstxt/
+Plugin URI: http://wordpress.org/plugins/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
 Domain Path: /languages
 Version: 1.2.6
 Author: Till Krüss
-Author URI: http://tillkruess.com/
+Author URI: http://till.kruss.me/
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -15,7 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 /**
  * This file contains the commonly used code of the Humans TXT plugin.
  *
- * Copyright 2013 Till Krüss  (www.tillkruess.com)
+ * Copyright 2014 Till Krüss  (http://till.kruss.me/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,14 +31,14 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package Humans TXT
- * @copyright 2013 Till Krüss
+ * @copyright 2014 Till Krüss
  */
 
 /**
  * Humans TXT plugin version.
  * @since 1.0.1
  */
-define( 'HUMANSTXT_VERSION', '1.2.5' );
+define( 'HUMANSTXT_VERSION', '1.2.6' );
 
 /**
  * Required WordPress version.

@@ -4,7 +4,7 @@
  * This file contains all default variable callback functions
  * of the Humans TXT plugin.
  *
- * Copyright 2013 Till Krüss  (www.tillkruess.com)
+ * Copyright 2014 Till Krüss  (http://till.kruss.me/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,16 +20,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package Humans TXT
- * @copyright 2013 Till Krüss
+ * @copyright 2014 Till Krüss
  */
 
 if ( !function_exists( 'humanstxt_callback_ip' ) ) :
 /**
  * Returns the IP address of the server under which
  * the current script is executing.
- * 
+ *
  * @since 1.2
- * 
+ *
  * @return string Value of $_SERVER['SERVER_ADDR'], or NULL
  */
 function humanstxt_callback_ip() {
@@ -40,9 +40,9 @@ endif;
 if ( !function_exists( 'humanstxt_callback_os' ) ) :
 /**
  * Returns the server's operating system name.
- * 
+ *
  * @since 1.2
- * 
+ *
  * @return string Value of php_uname('s')
  */
 function humanstxt_callback_os() {
@@ -55,9 +55,9 @@ if ( !function_exists( 'humanstxt_callback_server' ) ) :
  * Returns the server identification string,
  * given in the headers when responding to requests.
  * E.g.: Apache/2.2.17 (Unix) mod_ssl/2.2.17 DAV/2 PHP/5.3.6
- * 
+ *
  * @since 1.2
- * 
+ *
  * @return string Value of $_SERVER['SERVER_SOFTWARE']
  */
 function humanstxt_callback_server() {
@@ -68,7 +68,7 @@ endif;
 if ( !function_exists( 'humanstxt_callback_phpversion' ) ) :
 /**
  * Returns the server's PHP version.
- * 
+ *
  * @return string Value of phpversion()
  */
 function humanstxt_callback_phpversion() {
@@ -79,9 +79,9 @@ endif;
 if ( !function_exists( 'humanstxt_callback_zendversion' ) ) :
 /**
  * Returns the PHP's Zend engine version.
- * 
+ *
  * @since 1.2
- * 
+ *
  * @return string Value of zend_version()
  */
 function humanstxt_callback_zendversion() {
@@ -92,9 +92,9 @@ endif;
 if ( !function_exists( 'humanstxt_callback_mysqlversion' ) ) :
 /**
  * Returns the server's MySQL version.
- * 
+ *
  * @since 1.2
- * 
+ *
  * @return string MySQL version.
  */
 function humanstxt_callback_mysqlversion() {
@@ -108,23 +108,23 @@ if ( !function_exists( 'humanstxt_callback_timezone' ) ) :
  * Returns the server's timezone, as user-friendly as possible.
  * Something like: "US/Central (-05:00)", "Asia/Bangkok (+07:00)"
  * or "+01:00".
- * 
+ *
  * @since 1.2
- * 
+ *
  * @return string Server timezone.
  */
 function humanstxt_callback_timezone() {
 	$offset = date( 'Z' );
 	$offset = sprintf( '%s%02d:%02d', ($offset < 0 ? '-' : '+'), abs( $offset / 3600 ), abs( $offset % 3600 ) / 60 );
 	$timezone = function_exists( 'date_default_timezone_get' ) ? date_default_timezone_get() : null;
-	return empty( $timezone ) || $timezone == 'UTC' ? $offset : $timezone . ' (' . $offset . ')';    
+	return empty( $timezone ) || $timezone == 'UTC' ? $offset : $timezone . ' (' . $offset . ')';
 }
 endif;
 
 if ( !function_exists( 'humanstxt_callback_wpversion' ) ) :
 /**
  * Returns the WordPress version.
- * 
+ *
  * @return string WordPress version.
  */
 function humanstxt_callback_wpversion() {
@@ -135,7 +135,7 @@ endif;
 if ( !function_exists( 'humanstxt_callback_wpblogname' ) ) :
 /**
  * Returns the site/blog title.
- * 
+ *
  * @since 1.0.5
  *
  * @return string Site/blog name.
@@ -148,7 +148,7 @@ endif;
 if ( !function_exists( 'humanstxt_callback_wptagline' ) ) :
 /**
  * Returns the site/blog description (tagline).
- * 
+ *
  * @since 1.0.5
  *
  * @return string Site/blog description.
@@ -161,7 +161,7 @@ endif;
 if ( !function_exists( 'humanstxt_callback_wpcharset' ) ) :
 /**
  * Returns the encoding used for pages and feeds.
- * 
+ *
  * @since 1.0.5
  *
  * @return string Site/blog encoding.
@@ -176,9 +176,9 @@ if ( !function_exists( 'humanstxt_callback_wptimezone' ) ) :
  * Returns the timezone WordPress uses, as user-friendly as possible.
  * Something like: "US/Central (-05:00)", "Asia/Singapore (+08:00)"
  * or "+02:00".
- * 
+ *
  * @since 1.2
- * 
+ *
  * @return string WordPress timezone.
  */
 function humanstxt_callback_wptimezone() {
@@ -193,9 +193,9 @@ if ( !function_exists( 'humanstxt_callback_wpposts' ) ) :
 /**
  * Returns count of posts that are published. Can be
  * modified using the 'humanstxt_postcount' filter.
- * 
+ *
  * @since 1.0.4
- * 
+ *
  * @return string Number of published posts
  */
 function humanstxt_callback_wpposts() {
@@ -208,9 +208,9 @@ if ( !function_exists( 'humanstxt_callback_wppages' ) ) :
 /**
  * Returns count of pages that are published. Can be
  * modified using the 'humanstxt_pagecount' filter.
- * 
+ *
  * @since 1.0.4
- * 
+ *
  * @return string Number of published pages
  */
 function humanstxt_callback_wppages() {
@@ -223,11 +223,11 @@ if ( !function_exists( 'humanstxt_callback_wplanguage' ) ) :
 /**
  * Returns user-friendly language of WordPress.
  * Supports WPML, qTranslate and xili-language.
- * 
+ *
  * @global $sitepress
  * @global $q_config
  * @global $xili_language
- * 
+ *
  * @return string Name(s) of language(s).
  */
 function humanstxt_callback_wplanguage() {
@@ -284,8 +284,8 @@ if ( !function_exists( 'humanstxt_callback_lastupdate' ) ) :
  * Returns YYYY/MM/DD timestamp of the latest modified post/page which is published.
  * The date format can be modified with the 'humanstxt_lastupdate_format' filter.
  * The final funtion result can be modified with the 'humanstxt_lastupdate' filter.
- * 
- * @global $wpdb 
+ *
+ * @global $wpdb
  * @return string $last_edit Timestamp of last modified post/page.
  */
 function humanstxt_callback_lastupdate() {
@@ -336,7 +336,7 @@ if ( !function_exists( 'humanstxt_callback_wpplugins' ) ) :
  * Uses the 'humanstxt_separator' filter which is ', ' (comma + space) by
  * which is rewritable with the 'humanstxt_plugins_separator' filter.
  * Final function result can be modified with the 'humanstxt_plugins' filter.
- * 
+ *
  * @return string|null $active_plugins List of active WP plugins.
  */
 function humanstxt_callback_wpplugins() {
@@ -361,7 +361,7 @@ if ( !function_exists( 'humanstxt_callback_wptheme' ) ) :
  * Returns a summary of the active WordPress theme:
  * "Theme-Name (Version) by Author (Author-Link)"
  * Function result can be modified with the 'humanstxt_wptheme' filter.
- * 
+ *
  * @return string|null The theme's author name.
  */
 function humanstxt_callback_wptheme() {
@@ -389,7 +389,7 @@ endif;
 if ( !function_exists( 'humanstxt_callback_wptheme_name' ) ) :
 /**
  * Returns the theme name or NULL if n/a.
- *  
+ *
  * @return string|null The theme name.
  */
 function humanstxt_callback_wptheme_name() {
@@ -402,7 +402,7 @@ endif;
 if ( !function_exists( 'humanstxt_callback_wptheme_version' ) ) :
 /**
  * Returns the theme's version or NULL if n/a.
- *  
+ *
  * @return string|null The theme's version name.
  */
 function humanstxt_callback_wptheme_version() {
@@ -415,7 +415,7 @@ endif;
 if ( !function_exists( 'humanstxt_callback_wptheme_author' ) ) :
 /**
  * Returns the theme's author name or NULL if n/a.
- *  
+ *
  * @return string|null The theme's author name.
  */
 function humanstxt_callback_wptheme_author() {
@@ -428,7 +428,7 @@ endif;
 if ( !function_exists( 'humanstxt_callback_wptheme_author_link' ) ) :
 /**
  * Returns the theme's author link or NULL if n/a.
- *  
+ *
  * @return string|null The theme's author URI.
  */
 function humanstxt_callback_wptheme_author_link() {

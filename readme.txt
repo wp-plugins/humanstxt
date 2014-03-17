@@ -3,7 +3,7 @@ Contributors: tillkruess
 Donate link: http://till.kruss.me/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 3.9
 Stable tag: 1.2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -33,7 +33,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Dutch (nl_NL) - [Anonymous](https://launchpad.net/~forkless)
 * Danish (da_DK) - [Anders Aarvik](http://aarvik.dk/)
 * French (fr_FR) - [Maître Mô](http://maitremo.fr/)
-* German (de_DE) - [Till Krüss](http://tillkruess.com/)
+* German (de_DE) - [Till Krüss](http://till.kruss.me/)
 * Hungarian (hu_HU) - [Győző Farkas](http://www.wordpress2you.com/)
 * Indonesian (id_ID) - [Dedy Sofyan](http://sys-talk.com/)
 * Italian (it_IT) - [Gianni Diurno](http://gidibao.net/)
