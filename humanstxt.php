@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/plugins/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
 Domain Path: /languages
-Version: 1.2.6
+Version: 1.2.7
 Author: Till Krüss
 Author URI: http://till.kruss.me/
 License: GPLv3
@@ -38,7 +38,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Humans TXT plugin version.
  * @since 1.0.1
  */
-define( 'HUMANSTXT_VERSION', '1.2.6' );
+define( 'HUMANSTXT_VERSION', '1.2.7' );
 
 /**
  * Required WordPress version.
@@ -499,8 +499,8 @@ function humanstxt_replace_variables( $string ) {
 
 	foreach ( $variables as $variable) {
 
-		// 0 = english; 1 = translated varname
-		$varnames = array( '$' . $variable[0] . '$', '$' . $variable[1] . '$' );
+		// 1 = english; 2 = translated varname
+		$varnames = array( '$' . $variable[1] . '$', '$' . $variable[2] . '$' );
 
 		// does one of the variables occur in the string?
 		if ( stripos( $string, $varnames[0] ) !== false || stripos( $string, $varnames[1] ) !== false) {
