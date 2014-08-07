@@ -101,6 +101,12 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 == Changelog ==
 
+= 1.2.7 =
+
+* Fixed issue that caused translated variables not to work
+* Updated Turkish and Persian translation
+* Removed MP6 related styles
+
 = 1.2.6 =
 
 * WordPress 3.8 compatibility adjustments
@@ -214,6 +220,10 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 
 == Upgrade Notice ==
+
+= 1.2.7 =
+
+This version fixes an issue that caused translated variables not to work.
 
 = 1.2.6 =
 
