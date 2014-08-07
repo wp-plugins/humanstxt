@@ -3,7 +3,7 @@
 /**
  * This file contains legacy code for the Humans TXT plugin.
  *
- * Copyright 2013 Till Krüss  (www.tillkruess.com)
+ * Copyright 2014 Till Krüss  (http://till.kruss.me/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,17 +20,17 @@
  *
  * @since 1.1
  * @package Humans TXT
- * @copyright 2013 Till Krüss
+ * @copyright 2014 Till Krüss
  */
 
 /**
  * WP filter callback for 'admin_body_class'. Adds 'rtl' to
  * the body classes list, if is_rtl() is TRUE.
- * 
+ *
  * @since 1.1.1
- * 
+ *
  * @param string $classes
- * @return string $classes 
+ * @return string $classes
  */
 function humanstxt_admin_body_class( $classes ) {
 	if ( is_rtl() && strpos( $classes, 'rtl' ) === false ) {
@@ -83,7 +83,7 @@ function str_ireplace( $search, $replace, $subject ) {
 	foreach ( $search as $search_key => $search_value ) {
 		$search[ $search_key ] = '/' . preg_quote( $search_value, '/' ) . '/i';
 	}
-	
+
 	// Prepare the replace array (escape backreferences)
 	$replace = str_replace( array( '\\', '$' ), array( '\\\\', '\$' ), $replace );
 
