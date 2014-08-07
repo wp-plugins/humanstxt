@@ -113,13 +113,6 @@
 .not-wp32 div.star img { border-color: #fff; }
 
 
-/* MP6 adjustments */
-
-.mp6 #humanstxt-metabox { max-width: 220px; }
-.mp6 .form-table th, .mp6 .form-table td { border-bottom: none; }
-.mp6 #humanstxt .submit { padding-top: 1em; }
-
-
 /* rough IE 6-7 fixes */
 * html #humanstxt-metabox { display: none !important; }
 *+html #humanstxt-metabox { display: none !important; }
