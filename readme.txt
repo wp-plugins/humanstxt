@@ -3,7 +3,7 @@ Contributors: tillkruess
 Donate link: http://till.kruss.me/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 1.2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -50,7 +50,7 @@ More information on the Humans TXT can be found on the [official Humans TXT webs
 * Turkish (tr_TR) - [Barış Ünver](http://beyn.org/)
 * Ukrainian (uk) - [Vitaly](http://web-profile.com.ua/wordpress/)
 
-If you would like to help translating this plugin into other languages, [drop me a line](http://tillkruess.com/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
+If you would like to help translating this plugin into other languages, [drop me a line](http://till.kruss.me/contact/) or just [start translating...](https://translations.launchpad.net/humanstxt-wp-plugin)
 
 
 == Installation ==
