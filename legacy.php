@@ -1,27 +1,6 @@
 <?php
 
-/**
- * This file contains legacy code for the Humans TXT plugin.
- *
- * Copyright 2014 Till Krüss  (http://till.kruss.me/)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * @since 1.1
- * @package Humans TXT
- * @copyright 2014 Till Krüss
- */
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * WP filter callback for 'admin_body_class'. Adds 'rtl' to

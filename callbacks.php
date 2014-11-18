@@ -1,29 +1,6 @@
 <?php
 
-/**
- * This file contains all default variable callback functions
- * of the Humans TXT plugin.
- *
- * Copyright 2014 Till Krüss  (http://till.kruss.me/)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * @package Humans TXT
- * @copyright 2014 Till Krüss
- */
-
-if ( !function_exists( 'humanstxt_callback_ip' ) ) :
+if ( ! function_exists( 'humanstxt_callback_ip' ) ) :
 /**
  * Returns the IP address of the server under which
  * the current script is executing.
@@ -37,7 +14,7 @@ function humanstxt_callback_ip() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_os' ) ) :
+if ( ! function_exists( 'humanstxt_callback_os' ) ) :
 /**
  * Returns the server's operating system name.
  *
@@ -50,7 +27,7 @@ function humanstxt_callback_os() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_server' ) ) :
+if ( ! function_exists( 'humanstxt_callback_server' ) ) :
 /**
  * Returns the server identification string,
  * given in the headers when responding to requests.
@@ -65,7 +42,7 @@ function humanstxt_callback_server() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_phpversion' ) ) :
+if ( ! function_exists( 'humanstxt_callback_phpversion' ) ) :
 /**
  * Returns the server's PHP version.
  *
@@ -76,7 +53,7 @@ function humanstxt_callback_phpversion() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_zendversion' ) ) :
+if ( ! function_exists( 'humanstxt_callback_zendversion' ) ) :
 /**
  * Returns the PHP's Zend engine version.
  *
@@ -89,7 +66,7 @@ function humanstxt_callback_zendversion() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_mysqlversion' ) ) :
+if ( ! function_exists( 'humanstxt_callback_mysqlversion' ) ) :
 /**
  * Returns the server's MySQL version.
  *
@@ -103,7 +80,7 @@ function humanstxt_callback_mysqlversion() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_timezone' ) ) :
+if ( ! function_exists( 'humanstxt_callback_timezone' ) ) :
 /**
  * Returns the server's timezone, as user-friendly as possible.
  * Something like: "US/Central (-05:00)", "Asia/Bangkok (+07:00)"
@@ -121,7 +98,7 @@ function humanstxt_callback_timezone() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wpversion' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wpversion' ) ) :
 /**
  * Returns the WordPress version.
  *
@@ -132,7 +109,7 @@ function humanstxt_callback_wpversion() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wpblogname' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wpblogname' ) ) :
 /**
  * Returns the site/blog title.
  *
@@ -145,7 +122,7 @@ function humanstxt_callback_wpblogname() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wptagline' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wptagline' ) ) :
 /**
  * Returns the site/blog description (tagline).
  *
@@ -158,7 +135,7 @@ function humanstxt_callback_wptagline() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wpcharset' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wpcharset' ) ) :
 /**
  * Returns the encoding used for pages and feeds.
  *
@@ -171,7 +148,7 @@ function humanstxt_callback_wpcharset() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wptimezone' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wptimezone' ) ) :
 /**
  * Returns the timezone WordPress uses, as user-friendly as possible.
  * Something like: "US/Central (-05:00)", "Asia/Singapore (+08:00)"
@@ -189,7 +166,7 @@ function humanstxt_callback_wptimezone() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wpposts' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wpposts' ) ) :
 /**
  * Returns count of posts that are published. Can be
  * modified using the 'humanstxt_postcount' filter.
@@ -204,7 +181,7 @@ function humanstxt_callback_wpposts() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wppages' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wppages' ) ) :
 /**
  * Returns count of pages that are published. Can be
  * modified using the 'humanstxt_pagecount' filter.
@@ -219,7 +196,7 @@ function humanstxt_callback_wppages() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wplanguage' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wplanguage' ) ) :
 /**
  * Returns user-friendly language of WordPress.
  * Supports WPML, qTranslate and xili-language.
@@ -279,7 +256,7 @@ function humanstxt_callback_wplanguage() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_lastupdate' ) ) :
+if ( ! function_exists( 'humanstxt_callback_lastupdate' ) ) :
 /**
  * Returns YYYY/MM/DD timestamp of the latest modified post/page which is published.
  * The date format can be modified with the 'humanstxt_lastupdate_format' filter.
@@ -298,7 +275,7 @@ function humanstxt_callback_lastupdate() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wpauthors' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wpauthors' ) ) :
 /**
  * Returns all authors with a least 1 post. The format can be adjusted
  * with the 'humanstxt_authors_format' filter and the returned list
@@ -330,7 +307,7 @@ function humanstxt_callback_wpauthors() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wpplugins' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wpplugins' ) ) :
 /**
  * Returns a comma separated list of all active WordPress plugins.
  * Uses the 'humanstxt_separator' filter which is ', ' (comma + space) by
@@ -356,7 +333,7 @@ function humanstxt_callback_wpplugins() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wptheme' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wptheme' ) ) :
 /**
  * Returns a summary of the active WordPress theme:
  * "Theme-Name (Version) by Author (Author-Link)"
@@ -386,7 +363,7 @@ function humanstxt_callback_wptheme() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wptheme_name' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wptheme_name' ) ) :
 /**
  * Returns the theme name or NULL if n/a.
  *
@@ -399,7 +376,7 @@ function humanstxt_callback_wptheme_name() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wptheme_version' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wptheme_version' ) ) :
 /**
  * Returns the theme's version or NULL if n/a.
  *
@@ -412,7 +389,7 @@ function humanstxt_callback_wptheme_version() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wptheme_author' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wptheme_author' ) ) :
 /**
  * Returns the theme's author name or NULL if n/a.
  *
@@ -425,7 +402,7 @@ function humanstxt_callback_wptheme_author() {
 }
 endif;
 
-if ( !function_exists( 'humanstxt_callback_wptheme_author_link' ) ) :
+if ( ! function_exists( 'humanstxt_callback_wptheme_author_link' ) ) :
 /**
  * Returns the theme's author link or NULL if n/a.
  *
