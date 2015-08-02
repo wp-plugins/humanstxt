@@ -422,7 +422,7 @@ function humanstxt_options_page() {
 
 	<?php screen_icon() ?>
 
-	<h2><?php _e('Humans TXT', 'humanstxt') ?></h2>
+	<h1><?php _e('Humans TXT', 'humanstxt') ?></h1>
 
 	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Please read the FAQ...', 'humanstxt')) ?>
 
@@ -477,7 +477,7 @@ function humanstxt_options_page() {
 				</div>
 			<?php endif; ?>
 
-			<h3><?php /* translators: DO NOT TRANSLATE! */ _e('Settings') ?></h3>
+			<h2><?php /* translators: DO NOT TRANSLATE! */ _e('Settings') ?></h2>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"><?php _e('Humans TXT File', 'humanstxt') ?></th>
@@ -530,7 +530,7 @@ function humanstxt_options_page() {
 
 		<?php endif; ?>
 
-		<h3><?php _e('Humans TXT File', 'humanstxt') ?></h3>
+		<h2><?php _e('Humans TXT File', 'humanstxt') ?></h2>
 
 		<div id="humanstxt-editor-wrap">
 			<table class="form-table">
@@ -570,11 +570,11 @@ function humanstxt_options_page() {
 		?>
 		<?php if (!empty($variable_groups)) : ?>
 			<div id="humanstxt-vars">
-				<h4><?php _e('Variables', 'humanstxt') ?></h4>
+				<h3><?php _e('Variables', 'humanstxt') ?></h3>
 				<ul>
 					<?php foreach ($variable_groups as $group => $variables) : ?>
 						<li>
-							<h5><?php echo $group_names[$group] ?></h5>
+							<h4><?php echo $group_names[$group] ?></h4>
 							<ul class="hidden">
 								<?php foreach ($variables as $variable) : ?>
 									<?php $preview = !isset($variable[5]) || $variable[5] ? call_user_func($variable[3]) : /* translators: Preview: Not available... */ __('Not available...', 'humanstxt') ?>
@@ -597,7 +597,7 @@ function humanstxt_options_page() {
 
 		<div class="clear"></div>
 
-		<h3><?php _e('Shortcode Usage', 'humanstxt') ?></h3>
+		<h2><?php _e('Shortcode Usage', 'humanstxt') ?></h2>
 		<p><?php printf(__('You can use the <code>[humanstxt]</code> shortcode to display the <em>humans.txt</em> file on a page or in a post. By default, all links, email addresses and Twitter account names will be converted into clickable links and email addresses will be encoded to block spam bots. <a href="%s" rel="external">Of course you can customize it...</a>', 'humanstxt'), 'http://wordpress.org/extend/plugins/humanstxt/other_notes/#Shortcode-Usage') ?></p>
 
 	</form>
@@ -615,7 +615,7 @@ function humanstxt_revisions_page() {
 
 	<?php screen_icon() ?>
 
-	<h2><?php _e('Humans TXT', 'humanstxt') ?>: <?php _e('Revisions') ?></h2>
+	<h1><?php _e('Humans TXT', 'humanstxt') ?>: <?php _e('Revisions') ?></h1>
 
 	<?php
 		$revisions = humanstxt_revisions(); krsort($revisions);
@@ -625,7 +625,7 @@ function humanstxt_revisions_page() {
 
 	<?php if ($show_revision !== false) : ?>
 
-		<h3><?php printf( /* translators: %s: revision date */ __('Revision created on %s', 'humanstxt'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i:s', 'revision date format'), $revisions[$show_revision]['date'])) ?></h3>
+		<h2><?php printf( /* translators: %s: revision date */ __('Revision created on %s', 'humanstxt'), date_i18n( /* translators: DO NOT TRANSLATE! */ _x('j F, Y @ G:i:s', 'revision date format'), $revisions[$show_revision]['date'])) ?></h2>
 		<pre id="revision-preview" class="postbox"><?php echo esc_html($revisions[$show_revision]['content']) ?></pre>
 		<p class="submit"><a href="<?php echo wp_nonce_url(add_query_arg(array('revision' => $show_revision, 'action' => 'restore'), HUMANSTXT_OPTIONS_URL), 'restore-humanstxt_'.$show_revision) ?>" class="button-primary"><?php _e('Restore Revision', 'humanstxt') ?></a></p>
 
@@ -655,7 +655,7 @@ function humanstxt_revisions_page() {
 
 	<?php endif; ?>
 
-	<h3><?php /* translators: DO NOT TRANSLATE! */ _e('Revisions') ?></h3>
+	<h2><?php /* translators: DO NOT TRANSLATE! */ _e('Revisions') ?></h2>
 
 	<form action="<?php echo admin_url('options-general.php') ?>" method="get">
 
