@@ -9,7 +9,7 @@
 #humanstxt .form-table { clear: left; float: left; width: auto; margin-top: 0; }
 #humanstxt-editor-wrap { float: left; padding-right: 10px; }
 	#humanstxt-editor-wrap .form-table { float: none; }
-		#humanstxt-editor-wrap .form-table td { padding-top: 0; }
+		#humanstxt-editor-wrap .form-table td { padding: 0; }
 			#humanstxt-editor-wrap .form-table fieldset { max-width: 570px; }
 				#humanstxt_content { resize: none; }
 	#humanstxt-editor-wrap .submit { margin-top: 0; padding-top: 1em; clear: both; }
@@ -18,10 +18,10 @@
 	@media (min-width: 1200px) { #humanstxt-vars { max-width: 400px; clear: none; float: left; } }
 	@media (min-width: 1500px) { #humanstxt-vars { max-width: 700px; } }
 	@media (min-width: 1800px) { #humanstxt-vars { max-width: 1000px; } }
-	#humanstxt-vars h3 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }
+	#humanstxt-vars h4 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }
 	#humanstxt-vars .submit { padding-top: .7em; }
-	#humanstxt-vars ul, #humanstxt-vars p { padding-left: 10px; }
-		#humanstxt-vars h4 { font-size: 14px; font-weight: bold; margin: 0 0 1em 0; cursor: pointer; display: inline-block; }
+	#humanstxt-vars ul { padding-left: 10px; }
+		#humanstxt-vars h5 { font-size: 14px; font-weight: bold; margin: 0 0 1em 0; cursor: pointer; display: inline-block; }
 		#humanstxt-vars ul ul { margin-bottom: 1em; }
 			#humanstxt-vars li:first-child ul, .no-js #humanstxt-vars ul ul { display: block; }
 			#humanstxt-vars li code { font-size: 13px; }
