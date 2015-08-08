@@ -1,26 +1,6 @@
 <?php
 
-/**
- * This file contains backend related code of the Humans TXT plugin.
- *
- * Copyright 2014 Till Krüss  (http://till.kruss.me/)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * @package Humans TXT
- * @copyright 2014 Till Krüss
- */
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * URL to Humans TXT plugin folder.
@@ -442,7 +422,7 @@ function humanstxt_options_page() {
 
 	<?php screen_icon() ?>
 
-	<h2><?php _e('Humans TXT', 'humanstxt') ?></h2>
+	<h1><?php _e('Humans TXT', 'humanstxt') ?></h1>
 
 	<?php $faqlink = sprintf('<a href="%s">%s</a>', 'http://wordpress.org/extend/plugins/humanstxt/faq/', __('Please read the FAQ...', 'humanstxt')) ?>
 
@@ -609,9 +589,6 @@ function humanstxt_options_page() {
 						</li>
 					<?php endforeach; ?>
 				</ul>
-				<p class="submit">
-					<a href="http://wordpress.org/tags/humanstxt" rel="external" class="button"><?php _e('Suggest another variable...', 'humanstxt') ?></a>
-				</p>
 			</div>
 		<?php endif; ?>
 
@@ -635,7 +612,7 @@ function humanstxt_revisions_page() {
 
 	<?php screen_icon() ?>
 
-	<h2><?php _e('Humans TXT', 'humanstxt') ?>: <?php _e('Revisions') ?></h2>
+	<h1><?php _e('Humans TXT', 'humanstxt') ?>: <?php _e('Revisions') ?></h1>
 
 	<?php
 		$revisions = humanstxt_revisions(); krsort($revisions);

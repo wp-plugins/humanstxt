@@ -5,40 +5,20 @@ Plugin URI: http://wordpress.org/plugins/humanstxt/
 Description: Credit the people behind your website in your <strong>humans.txt</strong> file. Easy to edit, directly within WordPress.
 Text Domain: humanstxt
 Domain Path: /languages
-Version: 1.2.7
+Version: 1.2.8
 Author: Till Krüss
 Author URI: http://till.kruss.me/
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
-/**
- * This file contains the commonly used code of the Humans TXT plugin.
- *
- * Copyright 2014 Till Krüss  (http://till.kruss.me/)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * @package Humans TXT
- * @copyright 2014 Till Krüss
- */
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Humans TXT plugin version.
  * @since 1.0.1
  */
-define( 'HUMANSTXT_VERSION', '1.2.7' );
+define( 'HUMANSTXT_VERSION', '1.2.8' );
 
 /**
  * Required WordPress version.
