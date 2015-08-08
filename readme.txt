@@ -4,7 +4,7 @@ Donate link: http://till.kruss.me/donations/
 Tags: Humans TXT, HumansTXT, humans.txt, human, humans, author, authors, contributor, contributors, credit, credits, robot, robots, robots.txt
 Requires at least: 3.0
 Tested up to: 4.3
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -100,6 +100,11 @@ Theoretically in the root of your site, **however** this plugin doesn't create a
 
 
 == Changelog ==
+
+= 1.2.8 =
+
+* Removed “suggest variable” button
+* Use `<h1>` for admin UI headlines
 
 = 1.2.7 =
 
